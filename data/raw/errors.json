@@ -1,0 +1,62 @@
+[
+  {
+    "source": "business-scotland",
+    "url": "https://businessscotland.co.uk/search?q=investment+funding",
+    "error": "ECONNREFUSED — site unreachable",
+    "timestamp": "2026-05-25T00:00:00Z"
+  },
+  {
+    "source": "scotsman-business",
+    "url": "https://www.scotsman.com/business",
+    "error": "HTTP 403 Forbidden — access blocked",
+    "timestamp": "2026-05-25T00:00:00Z"
+  },
+  {
+    "source": "herald-business",
+    "url": "https://www.heraldscotland.com/business",
+    "error": "Fetch blocked — heraldscotland.com not accessible",
+    "timestamp": "2026-05-25T00:00:00Z"
+  },
+  {
+    "source": "insider-co-uk",
+    "url": "https://www.insider.co.uk/search?q=funding+investment+venture",
+    "error": "Rendered only navigation/header content — no article data returned (best_effort)",
+    "timestamp": "2026-05-25T00:00:00Z"
+  },
+  {
+    "source": "crunchbase-scotland",
+    "url": "https://www.crunchbase.com/discover/funding_rounds?location=Scotland&date_range=90d",
+    "error": "Paywalled — no usable content returned (best_effort)",
+    "timestamp": "2026-05-25T00:00:00Z"
+  },
+  {
+    "source": "beauhurst",
+    "url": "https://www.beauhurst.com",
+    "error": "Paywalled — no usable content returned (best_effort)",
+    "timestamp": "2026-05-25T00:00:00Z"
+  },
+  {
+    "source": "techstart-news",
+    "url": "https://techstart.vc/news",
+    "error": "HTTP 404 Not Found",
+    "timestamp": "2026-05-25T00:00:00Z"
+  },
+  {
+    "source": "octopus-ventures-news",
+    "url": "https://www.octopusventures.com/news",
+    "error": "HTTP 404 Not Found",
+    "timestamp": "2026-05-25T00:00:00Z"
+  },
+  {
+    "source": "par-equity-news",
+    "url": "https://par-equity.com/news",
+    "error": "ECONNREFUSED — site unreachable (Par Equity merged with Praetura to form PXN Ventures; original URL may be defunct)",
+    "timestamp": "2026-05-25T00:00:00Z"
+  },
+  {
+    "source": "seiicef-news",
+    "url": "https://www.seiicef.scot/news",
+    "error": "ECONNREFUSED — site unreachable",
+    "timestamp": "2026-05-25T00:00:00Z"
+  }
+]

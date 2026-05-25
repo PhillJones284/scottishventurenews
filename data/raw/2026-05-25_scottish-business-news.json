@@ -1,0 +1,19 @@
+[
+  {
+    "company_name": "Esk",
+    "company_location": "Edinburgh",
+    "company_sector": "Entertainment Technology / Live Experiences",
+    "round_type": "Growth",
+    "amount_raised": "£2.6m",
+    "currency": "GBP",
+    "lead_investor": "Maven Capital Partners",
+    "other_investors": ["Investment Fund for Scotland (British Business Bank)"],
+    "announcement_date": "2026-05-11",
+    "source_url": "https://scottishbusinessnews.net/maven-backs-esk-with-2-6m-investment-to-support-international-growth/",
+    "source_name": "Scottish Business News",
+    "headline": "Maven backs Esk with £2.6m investment to support international growth",
+    "summary": "Edinburgh-based live entertainment technology company Esk has secured £2.6m from Maven Capital Partners and the Investment Fund for Scotland. Esk specialises in licensing iconic IP and producing live experiences for brands including Netflix, Paramount and BAFTA. The funding will support international expansion, marketing, and development of its proprietary hardware.",
+    "confidence": "high",
+    "raw_snippet": "Maven has completed an investment in Esk, a global entertainment company which delivers high-end live experiences for blue chip brands such as Netflix, Paramount and BAFTA. The company specializes in licensing intellectual property and transforming it into live entertainment formats. CEO Sam Weatherstone said: 'This investment from Maven and the British Business Bank is a massive vote of confidence in the company and our approach.'"
+  }
+]

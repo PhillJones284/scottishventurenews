@@ -14,7 +14,79 @@
       "hq": "Edinburgh",
       "stage_focus": ["Seed", "Series A"],
       "scotland_active": true,
-      "notes": "Edinburgh-based, strong Scottish focus"
+      "notes": "Edinburgh-based, strong Scottish focus. Merged with Praetura Ventures in 2025 to form PXN Ventures — see PXN Ventures entry."
+    },
+    {
+      "canonical_name": "PXN Ventures",
+      "aliases": ["PXN", "Par Equity (now PXN Ventures)"],
+      "hq": "Edinburgh",
+      "stage_focus": ["Seed", "Series A"],
+      "scotland_active": true,
+      "notes": "Formed from the merger of Par Equity and Praetura Ventures in 2025. Co-led the £2.5m seed round for Quantcore alongside Blackfinch and Scottish Enterprise."
+    },
+    {
+      "canonical_name": "Maven Capital Partners",
+      "aliases": ["Maven", "Maven Equity Finance"],
+      "hq": "Glasgow / Edinburgh",
+      "stage_focus": ["Seed", "Series A", "Growth"],
+      "scotland_active": true,
+      "notes": "Fund manager for the British Business Bank's Investment Fund for Scotland. Highly active across sectors; appeared in Highway Data Systems, Nami Surgical, and Esk deals in May 2026."
+    },
+    {
+      "canonical_name": "Axeleo Capital",
+      "aliases": ["AXC Greentech Industry", "Axeleo"],
+      "hq": "Paris, France",
+      "stage_focus": ["Seed", "Series A"],
+      "scotland_active": true,
+      "notes": "European deeptech and climate VC. Led the £10m seed round for Edinburgh's Exergy3 in April 2026 — largest Scottish deal that run."
+    },
+    {
+      "canonical_name": "STAC Invest",
+      "aliases": ["STAC"],
+      "hq": "Glasgow",
+      "stage_focus": ["Pre-Seed", "Seed"],
+      "scotland_active": true,
+      "notes": "Glasgow-based deeptech accelerator and investor operating from Skypark. Invested in Quantcore, Vuabl, and Airspection as part of a £772k cohort round in early 2026. Aspires to be UK's most active deeptech investor."
+    },
+    {
+      "canonical_name": "Tensor Ventures",
+      "aliases": ["Tensor"],
+      "hq": "Unknown",
+      "stage_focus": ["Pre-Seed", "Seed"],
+      "scotland_active": true,
+      "notes": "Led the $3m pre-seed round for Edinburgh's Cnuic in April 2026. HQ uncertain — co-founder Martin Drdúl may be Central European."
+    },
+    {
+      "canonical_name": "Eos Advisory",
+      "aliases": ["Eos"],
+      "hq": "Unknown",
+      "stage_focus": ["Growth"],
+      "scotland_active": true,
+      "notes": "Led the £1.9m growth round for Stirling-based Nami Surgical in January 2026. Very limited public profile."
+    },
+    {
+      "canonical_name": "Bayern Kapital",
+      "aliases": [],
+      "hq": "Landshut, Germany",
+      "stage_focus": ["Seed", "Series A"],
+      "scotland_active": true,
+      "notes": "Bavarian state-backed VC. Participated in the £10m seed round for Edinburgh's Exergy3 in April 2026."
+    },
+    {
+      "canonical_name": "Quantum Exponential",
+      "aliases": [],
+      "hq": "UK",
+      "stage_focus": ["Pre-Seed", "Seed"],
+      "scotland_active": true,
+      "notes": "Quantum-focused VC fund. Participated in the £2.5m seed round for Glasgow's Quantcore."
+    },
+    {
+      "canonical_name": "EverQuest Capital Partners",
+      "aliases": ["EverQuest Capital"],
+      "hq": "Unknown",
+      "stage_focus": ["Seed"],
+      "scotland_active": true,
+      "notes": "Participated in the £1.58m seed round for Edinburgh's BIOCAPTIVA in March 2026. Limited public profile."
     },
     {
       "canonical_name": "Scottish Enterprise Investment Fund",

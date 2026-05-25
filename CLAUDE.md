@@ -27,26 +27,28 @@ A Markdown report containing:
 ## Running the agent
 If asked to "run the agent", execute the full pipeline in sequence using the Agent tool, with a gate check after each stage. Stop and report failure if any gate fails — do not proceed to the next stage.
 
+**How to invoke each stage:** Use the Agent tool with `subagent_type: "general-purpose"`. Read the body of the relevant `.claude/agents/<stage>.md` file (everything after the second `---` frontmatter delimiter) and use it as the prompt, prepending `Today's date is YYYY-MM-DD.` with today's actual date substituted.
+
 ### Stage 1 — Scraper
-Invoke the `scraper` sub-agent with the prompt: "Run the scraper task."
+Agent tool: `subagent_type: "general-purpose"`, prompt = today's date + body of `.claude/agents/scraper.md`
 
 **Gate**: At least one `data/raw/YYYY-MM-DD_*.json` file (matching today's date) must exist and contain at least one record (i.e. not an empty array `[]`).
 If the gate fails: stop, tell Phill the scraper produced no records, and suggest checking `data/raw/errors.json` for source failures.
 
 ### Stage 2 — Parser
-Invoke the `parser` sub-agent with the prompt: "Run the parser task."
+Agent tool: `subagent_type: "general-purpose"`, prompt = today's date + body of `.claude/agents/parser.md`
 
 **Gate**: `data/processed/investments.json` must exist and have `record_count > 0`.
 If the gate fails: stop, tell Phill the parser produced no records, and show the list of raw files that were consumed.
 
 ### Stage 3 — Deduplicator
-Invoke the `deduplicator` sub-agent with the prompt: "Run the deduplicator task."
+Agent tool: `subagent_type: "general-purpose"`, prompt = today's date + body of `.claude/agents/deduplicator.md`
 
 **Gate**: `data/processed/investments_deduped.json` must exist.
 If the gate fails: stop, tell Phill the deduplicator did not produce output.
 
 ### Stage 4 — Reporter
-Invoke the `reporter` sub-agent with the prompt: "Run the reporter task."
+Agent tool: `subagent_type: "general-purpose"`, prompt = today's date + body of `.claude/agents/reporter.md`
 
 **Gate**: A file matching `data/reports/YYYY-MM-DD_vc-report.md` (today's date) must exist.
 If the gate fails: stop, tell Phill the reporter did not produce a report.

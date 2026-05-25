@@ -121,12 +121,12 @@
       "notes": "Check for Scottish deal announcements"
     },
     {
-      "slug": "par-equity-news",
-      "name": "Par Equity — News",
+      "slug": "pxn-ventures-news",
+      "name": "PXN Ventures — News",
       "type": "vc_newsrooms",
-      "url": "https://par-equity.com/news",
+      "url": "https://www.pxnventures.co.uk/news",
       "search_path": null,
-      "notes": "Edinburgh-based, strong Scottish focus"
+      "notes": "Edinburgh-based successor to Par Equity (merged with Praetura Ventures in 2025). Strong Scottish focus."
     },
     {
       "slug": "olderbull-news",

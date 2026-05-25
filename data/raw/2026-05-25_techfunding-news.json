@@ -1,0 +1,53 @@
+[
+  {
+    "company_name": "Quantcore",
+    "company_location": "Glasgow",
+    "company_sector": "Deep Tech / Quantum Computing / Semiconductors",
+    "round_type": "Seed",
+    "amount_raised": "£250k",
+    "currency": "GBP",
+    "lead_investor": "STAC Invest",
+    "other_investors": [],
+    "announcement_date": "2026-04-01",
+    "source_url": "https://futurescot.com/three-glasgow-deeptech-companies-complete-772000-investment-round/",
+    "source_name": "FutureScot",
+    "headline": "Three Glasgow 'deeptech' companies complete £772,000 investment round",
+    "summary": "Quantcore received £250k from STAC Invest as part of a £772k round covering three Glasgow deeptech companies that completed STAC's 18-month accelerator. Note: Quantcore also separately raised £2.5m in seed funding in February 2026 (see duckduckgo-scottish-vc.json); the STAC £250k appears to be a separate tranche or earlier element of the wider round.",
+    "confidence": "high",
+    "raw_snippet": "Three Glasgow 'deeptech' companies spanning quantum computing, housing management and offshore wind infrastructure have completed a £772,000 investment round. STAC aims to become UK's most active deeptech investor, making more than ten investments a year."
+  },
+  {
+    "company_name": "Vuabl",
+    "company_location": "Glasgow",
+    "company_sector": "PropTech / Property Assessment Software",
+    "round_type": "Pre-Seed",
+    "amount_raised": "£222k",
+    "currency": "GBP",
+    "lead_investor": "STAC Invest",
+    "other_investors": [],
+    "announcement_date": "2026-04-01",
+    "source_url": "https://futurescot.com/three-glasgow-deeptech-companies-complete-772000-investment-round/",
+    "source_name": "FutureScot",
+    "headline": "Three Glasgow 'deeptech' companies complete £772,000 investment round",
+    "summary": "Vuabl, a Glasgow proptech startup using smartphone LIDAR sensors to create 3D property models and assess energy performance, raised £222k from STAC Invest. The company is running a pilot with Glasgow's Wheatley Group covering 65,000 homes. Funding will support further pilots and expansion to housing providers facing new regulatory obligations.",
+    "confidence": "high",
+    "raw_snippet": "Three Glasgow 'deeptech' companies spanning quantum computing, housing management and offshore wind infrastructure have completed a £772,000 investment round. Vuabl uses the LIDAR sensors found in modern phones to create 3D models, estimate energy performance and flag maintenance issues — tools intended to help landlords and social housing providers meet tightening regulatory requirements."
+  },
+  {
+    "company_name": "Airspection",
+    "company_location": "Glasgow",
+    "company_sector": "Deep Tech / Offshore Wind Infrastructure / Inspection Technology",
+    "round_type": "Pre-Seed",
+    "amount_raised": "£300k",
+    "currency": "GBP",
+    "lead_investor": "STAC Invest",
+    "other_investors": [],
+    "announcement_date": "2026-04-01",
+    "source_url": "https://futurescot.com/three-glasgow-deeptech-companies-complete-772000-investment-round/",
+    "source_name": "FutureScot",
+    "headline": "Three Glasgow 'deeptech' companies complete £772,000 investment round",
+    "summary": "Airspection, a Glasgow deeptech company focused on offshore wind infrastructure inspection, raised £300k from STAC Invest. The company completed STAC's 18-month accelerator programme and established its first headquarters at thebeyond, STAC's technology hub at Skypark in Glasgow.",
+    "confidence": "medium",
+    "raw_snippet": "Three Glasgow 'deeptech' companies spanning quantum computing, housing management and offshore wind infrastructure have completed a £772,000 investment round. Airspection and Vuabl establishing their first HQ's at thebeyond, STAC's 22,000 sq ft technology hub at Skypark in Glasgow."
+  }
+]
