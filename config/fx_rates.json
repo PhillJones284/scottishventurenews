@@ -1,0 +1,15 @@
+{
+  "_note": "Approximate FX rates for normalisation purposes only. Update periodically. All rates are TO GBP (i.e. multiply by this to get GBP).",
+  "_last_updated": "2026-05",
+  "rates": {
+    "GBP": 1.0,
+    "USD": 0.741,
+    "EUR": 0.863,
+    "CAD": 0.537,
+    "AUD": 0.531,
+    "CHF": 0.949,
+    "SEK": 0.0799,
+    "NOK": 0.0802,
+    "DKK": 0.1155
+  }
+}

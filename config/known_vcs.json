@@ -1,0 +1,132 @@
+{
+  "known_vcs": [
+    {
+      "canonical_name": "Techstart Ventures",
+      "aliases": ["Techstart", "TechStart Ventures"],
+      "hq": "Belfast / Edinburgh",
+      "stage_focus": ["Pre-Seed", "Seed"],
+      "scotland_active": true,
+      "notes": "Very active in Scotland, particularly tech/software"
+    },
+    {
+      "canonical_name": "Par Equity",
+      "aliases": ["PAR Equity", "PAR"],
+      "hq": "Edinburgh",
+      "stage_focus": ["Seed", "Series A"],
+      "scotland_active": true,
+      "notes": "Edinburgh-based, strong Scottish focus"
+    },
+    {
+      "canonical_name": "Scottish Enterprise Investment Fund",
+      "aliases": ["SEICF", "Scottish Enterprise", "SE Investment Fund"],
+      "hq": "Glasgow",
+      "stage_focus": ["Pre-Seed", "Seed"],
+      "scotland_active": true,
+      "notes": "Quasi-public, co-invests with VCs"
+    },
+    {
+      "canonical_name": "BGF",
+      "aliases": ["Business Growth Fund"],
+      "hq": "London",
+      "stage_focus": ["Growth", "Series B", "Series C+"],
+      "scotland_active": true,
+      "notes": "Has Edinburgh office, growth-stage focus"
+    },
+    {
+      "canonical_name": "Octopus Ventures",
+      "aliases": ["Octopus", "Octopus Capital"],
+      "hq": "London",
+      "stage_focus": ["Seed", "Series A", "Series B"],
+      "scotland_active": true,
+      "notes": "Active across UK, some Scottish portfolio"
+    },
+    {
+      "canonical_name": "Blackfinch Ventures",
+      "aliases": ["Blackfinch"],
+      "hq": "Gloucester",
+      "stage_focus": ["Seed", "Series A"],
+      "scotland_active": true,
+      "notes": "EIS/SEIS focused, some Scottish deals"
+    },
+    {
+      "canonical_name": "Archangels",
+      "aliases": ["Archangel Informal Investment", "Archangels Syndicate"],
+      "hq": "Edinburgh",
+      "stage_focus": ["Pre-Seed", "Seed"],
+      "scotland_active": true,
+      "notes": "Scotland's oldest and largest angel syndicate"
+    },
+    {
+      "canonical_name": "Old College Capital",
+      "aliases": ["OCC", "Old College"],
+      "hq": "Edinburgh",
+      "stage_focus": ["Pre-Seed", "Seed"],
+      "scotland_active": true,
+      "notes": "University of Edinburgh's venture fund"
+    },
+    {
+      "canonical_name": "Mercia Asset Management",
+      "aliases": ["Mercia", "Mercia Fund Managers"],
+      "hq": "Birmingham",
+      "stage_focus": ["Seed", "Series A", "Series B"],
+      "scotland_active": true,
+      "notes": "Has MEIF and other funds active in Scotland"
+    },
+    {
+      "canonical_name": "Kelvin Capital",
+      "aliases": ["Kelvin"],
+      "hq": "Glasgow",
+      "stage_focus": ["Seed", "Series A"],
+      "scotland_active": true,
+      "notes": "Glasgow-based, West of Scotland focus"
+    },
+    {
+      "canonical_name": "SIS Ventures",
+      "aliases": ["Social Investment Scotland", "SIS"],
+      "hq": "Edinburgh",
+      "stage_focus": ["Seed", "Series A"],
+      "scotland_active": true,
+      "notes": "Impact/social enterprise focus"
+    },
+    {
+      "canonical_name": "Epidarex Capital",
+      "aliases": ["Epidarex"],
+      "hq": "Edinburgh",
+      "stage_focus": ["Seed", "Series A", "Series B"],
+      "scotland_active": true,
+      "notes": "Life sciences specialist"
+    },
+    {
+      "canonical_name": "Parkwalk Advisors",
+      "aliases": ["Parkwalk"],
+      "hq": "London",
+      "stage_focus": ["Seed", "Series A"],
+      "scotland_active": true,
+      "notes": "University spinout specialist, active with Scottish universities"
+    },
+    {
+      "canonical_name": "Pentech Ventures",
+      "aliases": ["Pentech"],
+      "hq": "Edinburgh",
+      "stage_focus": ["Seed", "Series A"],
+      "scotland_active": true,
+      "notes": "Edinburgh-based early-stage tech"
+    },
+    {
+      "canonical_name": "Northern Gritstone",
+      "aliases": ["Gritstone"],
+      "hq": "Leeds",
+      "stage_focus": ["Seed", "Series A", "Series B"],
+      "scotland_active": false,
+      "notes": "Northern England focus, occasionally overlaps"
+    },
+    {
+      "canonical_name": "Amadeus Capital Partners",
+      "aliases": ["Amadeus"],
+      "hq": "Cambridge",
+      "stage_focus": ["Series A", "Series B"],
+      "scotland_active": false,
+      "notes": "Deep tech, has backed some Scottish spinouts"
+    }
+  ]
+}

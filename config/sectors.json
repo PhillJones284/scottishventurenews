@@ -1,0 +1,60 @@
+{
+  "sectors": [
+    {
+      "canonical": "Fintech",
+      "aliases": ["financial technology", "payments", "banking tech", "insurtech", "wealthtech", "regtech"]
+    },
+    {
+      "canonical": "Healthtech",
+      "aliases": ["health technology", "medtech", "medical technology", "digital health", "health AI", "diagnostics tech"]
+    },
+    {
+      "canonical": "Life Sciences",
+      "aliases": ["biotech", "biotechnology", "pharma", "pharmaceutical", "therapeutics", "genomics", "drug discovery"]
+    },
+    {
+      "canonical": "Energy & Cleantech",
+      "aliases": ["cleantech", "clean technology", "renewable energy", "energy storage", "net zero", "sustainability tech", "offshore tech", "hydrogen"]
+    },
+    {
+      "canonical": "Deep Tech",
+      "aliases": ["deeptech", "quantum", "semiconductors", "materials science", "advanced manufacturing", "robotics", "photonics"]
+    },
+    {
+      "canonical": "AI & Machine Learning",
+      "aliases": ["artificial intelligence", "machine learning", "AI", "ML", "data science", "NLP", "computer vision", "generative AI"]
+    },
+    {
+      "canonical": "SaaS & Enterprise Software",
+      "aliases": ["SaaS", "software as a service", "B2B software", "enterprise software", "cloud software", "HR tech", "edtech", "legaltech"]
+    },
+    {
+      "canonical": "Space & Defence",
+      "aliases": ["space technology", "satellite", "aerospace", "defence tech", "dual-use technology"]
+    },
+    {
+      "canonical": "Agritech & Foodtech",
+      "aliases": ["agritech", "agricultural technology", "foodtech", "food technology", "precision agriculture", "aquatech"]
+    },
+    {
+      "canonical": "Property & Construction Tech",
+      "aliases": ["proptech", "property technology", "construction tech", "contech", "real estate tech"]
+    },
+    {
+      "canonical": "Mobility & Transport",
+      "aliases": ["mobility tech", "transport tech", "logistics tech", "autonomous vehicles", "EV", "electric vehicles"]
+    },
+    {
+      "canonical": "Consumer & Retail",
+      "aliases": ["consumer tech", "retail tech", "e-commerce", "D2C", "direct to consumer", "marketplace"]
+    },
+    {
+      "canonical": "Creative & Media",
+      "aliases": ["media tech", "creative tech", "games", "gaming", "entertainment tech", "content tech", "AdTech"]
+    },
+    {
+      "canonical": "Other",
+      "aliases": []
+    }
+  ]
+}

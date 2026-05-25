@@ -1,0 +1,164 @@
+{
+  "sources": [
+    {
+      "slug": "business-scotland",
+      "name": "Business Scotland Magazine",
+      "type": "news_site",
+      "url": "https://businessscotland.co.uk",
+      "search_path": "/search?q=investment+funding",
+      "notes": "Good for mid-market and growth deals"
+    },
+    {
+      "slug": "scotsman-business",
+      "name": "The Scotsman — Business",
+      "type": "news_site",
+      "url": "https://www.scotsman.com/business",
+      "search_path": null,
+      "notes": "Scan business section headlines"
+    },
+    {
+      "slug": "herald-business",
+      "name": "The Herald — Business",
+      "type": "news_site",
+      "url": "https://www.heraldscotland.com/business",
+      "search_path": null,
+      "notes": "Strong Glasgow/West of Scotland coverage"
+    },
+    {
+      "slug": "insider-co-uk",
+      "name": "Insider.co.uk",
+      "type": "news_site",
+      "url": "https://www.insider.co.uk",
+      "search_path": "/search?q=funding+investment+venture",
+      "notes": "Scottish business focused, very relevant"
+    },
+    {
+      "slug": "techhub-scotland",
+      "name": "TechHub Scotland / Scottish Tech Scene blogs",
+      "type": "aggregator",
+      "url": "https://www.scottishbusinessnews.net",
+      "search_path": null,
+      "notes": "Aggregates Scottish business news"
+    },
+    {
+      "slug": "crunchbase-scotland",
+      "name": "Crunchbase — Scotland recent",
+      "type": "database",
+      "url": "https://www.crunchbase.com/discover/funding_rounds",
+      "search_path": "?location=Scotland&date_range=90d",
+      "best_effort": true,
+      "notes": "Filter by Scotland, last 90 days. Partially paywalled — extract whatever free content is visible"
+    },
+    {
+      "slug": "duckduckgo-scottish-vc",
+      "name": "DuckDuckGo — Scottish VC search",
+      "type": "search",
+      "url": "https://html.duckduckgo.com/html/",
+      "queries": [
+        "Scottish startup funding round 2026",
+        "Scotland venture capital investment 2026",
+        "Edinburgh startup raises million 2026",
+        "Glasgow startup funding 2026",
+        "Scottish scaleup Series A 2026",
+        "Scotland VC backed 2026"
+      ],
+      "notes": "Run each query as ?q=<encoded query>. JS-free endpoint, returns plain HTML results"
+    },
+    {
+      "slug": "techcrunch-scotland",
+      "name": "TechCrunch — Scotland search",
+      "type": "search",
+      "url": "https://techcrunch.com/search/scotland+funding",
+      "notes": "Larger deals that make international press"
+    },
+    {
+      "slug": "sifted-uk",
+      "name": "Sifted — UK/Scotland",
+      "type": "news_site",
+      "url": "https://sifted.eu",
+      "search_path": "/search?q=scotland",
+      "notes": "European startup media, covers UK deals well"
+    },
+    {
+      "slug": "beauhurst",
+      "name": "Beauhurst",
+      "type": "database",
+      "url": "https://www.beauhurst.com",
+      "search_path": null,
+      "best_effort": true,
+      "notes": "UK equity investment tracker. Mostly paywalled — extract whatever free headlines are visible"
+    },
+    {
+      "slug": "tech-funding-news",
+      "name": "Tech Funding News",
+      "type": "news_site",
+      "url": "https://techfundingnews.com",
+      "search_path": "/?s=scotland",
+      "notes": "Covers UK/EU startup funding rounds"
+    },
+    {
+      "slug": "techstart-news",
+      "name": "Techstart Ventures — News",
+      "type": "vc_newsrooms",
+      "url": "https://techstart.vc/news",
+      "search_path": null,
+      "notes": "Pre-seed/seed investor very active in Scotland"
+    },
+    {
+      "slug": "octopus-ventures-news",
+      "name": "Octopus Ventures — News",
+      "type": "vc_newsrooms",
+      "url": "https://www.octopusventures.com/news",
+      "search_path": null,
+      "notes": "UK-wide VC with some Scottish portfolio companies"
+    },
+    {
+      "slug": "highlight-capital-news",
+      "name": "Highlight Capital — News",
+      "type": "vc_newsrooms",
+      "url": "https://www.highlightcapital.com/news",
+      "search_path": null,
+      "notes": "Check for Scottish deal announcements"
+    },
+    {
+      "slug": "par-equity-news",
+      "name": "Par Equity — News",
+      "type": "vc_newsrooms",
+      "url": "https://par-equity.com/news",
+      "search_path": null,
+      "notes": "Edinburgh-based, strong Scottish focus"
+    },
+    {
+      "slug": "olderbull-news",
+      "name": "Older Bull — Portfolio News",
+      "type": "vc_newsrooms",
+      "url": "https://www.olderbull.com/portfolio-news",
+      "search_path": null,
+      "notes": "Check for Scottish deal announcements"
+    },
+    {
+      "slug": "seiicef-news",
+      "name": "Scottish Enterprise Investment Fund — News",
+      "type": "vc_newsrooms",
+      "url": "https://www.seiicef.scot/news",
+      "search_path": null,
+      "notes": "Quasi-public co-investor, frequently appears alongside VC deals"
+    },
+    {
+      "slug": "bgf-news",
+      "name": "BGF — News",
+      "type": "vc_newsrooms",
+      "url": "https://www.bgf.co.uk/news",
+      "search_path": null,
+      "notes": "Growth-stage investor with Edinburgh office"
+    },
+    {
+      "slug": "prairie-fund-news",
+      "name": "Prairie Fund — News",
+      "type": "vc_newsrooms",
+      "url": "https://www.prairiefund.com/news",
+      "search_path": null,
+      "notes": "Check for Scottish deal announcements"
+    }
+  ]
+}
