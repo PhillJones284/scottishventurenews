@@ -1,0 +1,267 @@
+TASK: Pythonize the scraper's fetch layer
+
+Before writing any code, read these files to understand the existing implementation:
+  - pipeline/fetcher.py         (does not exist yet — you are creating it)
+  - pipeline/run.py             (orchestrator you will update)
+  - pipeline/parser.py          (reference: follow its run(date) / __main__ pattern)
+  - .claude/agents/scraper.md   (agent prompt you will rewrite)
+  - config/sources.json         (all source definitions — understand the schema)
+  - pipeline/requirements.txt   (dependency manifest — add trafilatura here)
+
+The pipeline's Stage 1 is currently a Claude agent that both fetches content from the
+web and extracts structured investment data. The fetching is mechanical work that burns
+tokens unnecessarily. This task splits Stage 1 into two steps:
+
+  1a. pipeline/fetcher.py  — new Python script, fetches and keyword-filters content
+  1b. .claude/agents/scraper.md — modified to read pre-fetched candidates, no WebFetch
+
+The LLM's job becomes extraction and judgment only. No tool calls for HTTP.
+
+
+────────────────────────────────────────────────────────────────
+STEP 1: Create pipeline/fetcher.py
+────────────────────────────────────────────────────────────────
+
+Accept an optional --date YYYY-MM-DD argument (default: today). Follow the same date
+convention as parser.py and deduplicator.py.
+
+Dependencies:
+  - httpx (already installed)
+  - xml.etree.ElementTree (stdlib)
+  - trafilatura — add to pipeline/requirements.txt and install:
+      .venv/bin/pip install trafilatura
+
+The script must:
+
+1. Load config/sources.json
+
+2. For each source, fetch content according to its type:
+
+   RSS sources (rss_url is set):
+   - GET the rss_url with httpx (timeout 15s)
+   - Parse XML with xml.etree.ElementTree
+   - Support both RSS 2.0 (<item>) and Atom (<entry>) formats
+   - For each item, extract: title, link, pubDate/published, description/summary
+   - Keyword-filter items (see KEYWORD FILTER below)
+   - For items that pass the filter, GET the full article at the item's link URL
+   - Extract article text using trafilatura.extract() — fall back to the RSS
+     description/summary if trafilatura returns nothing
+   - If the RSS feed is unreachable or returns no items, fall back to fetching
+     source["url"] directly and extracting text with trafilatura
+
+   search_path sources (search_path is set, no rss_url):
+   - GET source["url"] + source["search_path"]
+   - Extract text with trafilatura
+   - Keyword-filter the full page text; if it passes, treat the whole page as one
+     candidate (the LLM will split out individual articles from the text)
+
+   queries sources (queries array is set):
+   - For each query string, GET:
+       https://html.duckduckgo.com/html/?q=<url-encoded-query>
+   - Extract text with trafilatura
+   - Keyword-filter; treat each result page as one candidate
+
+   direct sources (no rss_url, no search_path, no queries):
+   - GET source["url"]
+   - Extract text with trafilatura
+   - Keyword-filter; include as one candidate if it passes
+
+3. KEYWORD FILTER
+   A piece of text passes if it contains at least one term from each of these two groups:
+
+   Group A (investment signal):
+     raise, raised, funding, investment, invested, backed, backer, venture, capital,
+     round, seed, series a, series b, series c, pre-seed, growth round, angel
+
+   Group B (amount or Scottish signal):
+     million, £, $m, €m, scotland, scottish, edinburgh, glasgow, aberdeen, dundee
+
+   Apply the filter case-insensitively to the title + description/summary for RSS items,
+   or to the first 2000 characters of extracted text for other source types. This keeps
+   the filter fast and avoids false negatives from later article paragraphs.
+
+4. For each candidate that passes the filter, build a candidate record:
+
+   {
+     "source_slug":   string — from sources.json
+     "source_name":   string — from sources.json
+     "url":           string — the article URL (or source URL for non-RSS sources)
+     "title":         string or null
+     "published":     string or null — ISO8601 date if available
+     "text":          string — full extracted article text (or RSS summary as fallback)
+   }
+
+5. Write all candidates to:
+     data/raw/YYYY-MM-DD_candidates.json
+   as a JSON array. An empty array [] is valid if nothing passes the filter.
+
+6. Write a fetch log to:
+     data/raw/YYYY-MM-DD_fetch_log.json
+   This is the primary debugging tool for diagnosing missed deals or filter problems.
+   It must be written even if candidates.json is empty. Format: a JSON array, one entry
+   per source attempted:
+
+   {
+     "source_slug":         string
+     "url_fetched":         string — the actual URL requested (rss_url or constructed URL)
+     "http_status":         integer or null if request failed before a response
+     "items_found":         integer — RSS items parsed, or 1 for page-level sources
+     "items_passed_filter": integer — items that matched the keyword filter
+     "candidates_added":    integer — items that produced a candidate record
+                                      (may be < items_passed_filter if text extraction failed)
+     "text_extract_failures": integer — items where trafilatura returned None
+     "error":               string or null — exception message if the source failed entirely
+     "timestamp":           ISO8601
+   }
+
+7. Error handling:
+   - Wrap each source fetch in try/except
+   - On failure, set error in the fetch_log entry and append to data/raw/errors.json
+     using the existing schema: {"source": slug, "url": url, "error": message, "timestamp": ISO8601}
+   - Sources with best_effort: true must not raise; log and continue
+   - A source that times out or 4xx/5xx is logged and skipped — not a pipeline failure
+
+8. Log a summary line to stdout on completion:
+     Fetcher complete: N candidates from M sources (K errors)
+
+The script must expose a callable run(date=None) function (for import by run.py,
+following the same pattern as pipeline/parser.py and pipeline/deduplicator.py) as
+well as a __main__ block for standalone use:
+
+  python pipeline/fetcher.py
+  python pipeline/fetcher.py --date 2026-05-26
+
+run(date) should return a dict:
+  {
+    "candidates": int,   # total candidate records written
+    "sources_ok": int,   # sources that completed without error
+    "errors": int,       # sources that failed
+    "fallback_needed": bool  # True if candidates file is empty or missing
+  }
+
+
+────────────────────────────────────────────────────────────────
+STEP 2: Update CLAUDE.md pipeline instructions
+────────────────────────────────────────────────────────────────
+
+Stage 1 becomes two sub-steps:
+
+  Stage 1a — Fetcher (Python):
+    Run: python pipeline/fetcher.py  (or --date YYYY-MM-DD)
+    Gate: data/raw/YYYY-MM-DD_candidates.json must exist. Empty array [] is acceptable.
+    On gate failure: proceed to Stage 1b anyway — the scraper agent will fall back to
+    full WebFetch mode (see Step 3). Before proceeding, read data/raw/errors.json and
+    data/raw/YYYY-MM-DD_fetch_log.json (if either exists) and report to Phill:
+      - that the fetcher failed and fallback mode will be used this run
+      - a brief summary of what went wrong (error messages, which sources failed)
+      - that the fetch_log is available for bug fixing before the next run
+    This surfaces the problem without blocking the pipeline.
+
+  Stage 1b — Scraper (Claude agent):
+    Same Agent tool invocation as before, but with the modified prompt (see Step 3)
+    Gate: unchanged — at least one data/raw/YYYY-MM-DD_*.json file with a non-empty array
+
+  Post-run check (after Stage 1b completes):
+    Read data/raw/YYYY-MM-DD_fetch_log.json if it exists. If any entry shows
+    items_found > 0 but candidates_added = 0, or text_extract_failures > 0, report
+    these to Phill as potential filter or extraction issues worth investigating —
+    even if the overall run succeeded. A source producing items but zero candidates
+    may indicate the keyword filter is too aggressive for that source.
+
+Update the "Running the agent" section and the stage-by-stage instructions accordingly.
+
+Update pipeline/run.py as follows (read it before editing — it uses imported function
+calls for parser and deduplicator, and subprocess for the claude CLI agent stages):
+
+  1. Add "from pipeline import fetcher" alongside the existing parser/deduplicator imports
+
+  2. Add a _gate_fetcher(run_date) function that checks whether
+     data/raw/YYYY-MM-DD_candidates.json exists. Returns (True, None) if it does
+     (even if empty), (False, reason_string) if not.
+
+  3. In main(), insert Stage 1a immediately before the existing Stage 1 block:
+
+       # Stage 1a — Fetcher (Python)
+       logger.info("=== Stage 1a: Fetcher ===")
+       try:
+           fetch_result = fetcher.run(date=run_date)
+       except Exception as e:
+           fetch_result = {"candidates": 0, "errors": 1, "fallback_needed": True}
+           logger.warning("Fetcher raised an exception: %s — scraper will use fallback mode", e)
+       ok, err = _gate_fetcher(run_date)
+       if not ok:
+           logger.warning("Stage 1a gate: %s — scraper will use fallback mode", err)
+       else:
+           logger.info("Stage 1a gate passed. Candidates: %d", fetch_result.get("candidates", 0))
+
+     Note: this gate must NOT call sys.exit(1) on failure. It logs a warning and
+     continues — the scraper agent handles fallback mode itself.
+
+  4. After the existing Stage 1b gate check, add a post-run fetch_log check:
+
+       fetch_log_path = DATA_RAW / f"{run_date}_fetch_log.json"
+       if fetch_log_path.exists():
+           fetch_log = json.loads(fetch_log_path.read_text())
+           issues = [
+               e for e in fetch_log
+               if (e.get("items_found", 0) > 0 and e.get("candidates_added", 0) == 0)
+               or e.get("text_extract_failures", 0) > 0
+           ]
+           if issues:
+               logger.warning(
+                   "Fetch log has %d source(s) with filter or extraction issues: %s",
+                   len(issues),
+                   [i["source_slug"] for i in issues],
+               )
+
+
+────────────────────────────────────────────────────────────────
+STEP 3: Rewrite .claude/agents/scraper.md
+────────────────────────────────────────────────────────────────
+
+Replace the "Sources to Check" and fetching logic with the following:
+
+  ## Mode selection
+
+  Check whether data/raw/YYYY-MM-DD_candidates.json exists and contains at least one
+  record (where YYYY-MM-DD is today's date).
+
+  If yes — PRE-FETCHED MODE:
+    Read data/raw/YYYY-MM-DD_candidates.json. Each record contains: source_slug,
+    source_name, url, title, published, and text (full article text).
+    Extract structured investment records from the pre-fetched text.
+    Do NOT use WebFetch or WebSearch.
+
+  If no — FALLBACK MODE:
+    The Python fetcher did not run or failed. Proceed with the original fetch behaviour:
+    load config/sources.json and fetch each source using WebFetch/WebSearch as described
+    in the original scraper instructions. Log a note in each output file's metadata that
+    fallback mode was used, e.g. "fetch_mode": "fallback".
+
+  In both modes the extraction schema, output format, confidence guide, staging rules
+  for unknown VCs and sources, and all other instructions remain identical.
+
+Keep everything else in scraper.md unchanged: the extraction schema, confidence guide,
+output format, staging rules for unknown VCs and sources, and the important notes.
+
+The agent's tools list should be updated to: Read, Write, WebFetch, WebSearch, Bash
+(WebFetch and WebSearch are retained for fallback mode)
+
+
+────────────────────────────────────────────────────────────────
+IMPLEMENTATION NOTES
+────────────────────────────────────────────────────────────────
+
+- trafilatura.extract() returns None if it cannot extract text; always handle that case
+- Some RSS feeds mix Atom and RSS 2.0 namespaces; handle both <pubDate> and <published>,
+  and both <description> and <content> / <content:encoded>
+- httpx default headers may be blocked by some sites; set a realistic User-Agent:
+    "Mozilla/5.0 (compatible; Scottish-VC-Tracker/1.0)"
+- For the DuckDuckGo queries source, the HTML endpoint is rate-sensitive; add a 2-second
+  sleep between queries
+- Do not modify config/sources.json, config/known_vcs.json, or any data files other than
+  writing the candidates file and appending to errors.json
+- All local execution uses `python`, never `python3` (pyenv controls the version)
+- Virtual environment is at .venv/; the script is invoked as:
+    .venv/bin/python pipeline/fetcher.py
+  but `python pipeline/fetcher.py` must also work when the venv is active
