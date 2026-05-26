@@ -58,5 +58,65 @@
     "url": "https://www.seiicef.scot/news",
     "error": "ECONNREFUSED — site unreachable",
     "timestamp": "2026-05-25T00:00:00Z"
+  },
+  {
+    "source": "business-scotland",
+    "url": "https://businessscotland.co.uk/search?q=investment+funding",
+    "error": "ECONNREFUSED — site unreachable",
+    "timestamp": "2026-05-26T00:00:00Z"
+  },
+  {
+    "source": "scotsman-business",
+    "url": "https://www.scotsman.com/business",
+    "error": "HTTP 403 Forbidden — access blocked",
+    "timestamp": "2026-05-26T00:00:00Z"
+  },
+  {
+    "source": "herald-business",
+    "url": "https://www.heraldscotland.com/business",
+    "error": "Fetch blocked — heraldscotland.com not accessible",
+    "timestamp": "2026-05-26T00:00:00Z"
+  },
+  {
+    "source": "insider-co-uk",
+    "url": "https://www.insider.co.uk/search?q=funding+investment+venture",
+    "error": "Rendered only navigation/header content — no article data returned (best_effort)",
+    "timestamp": "2026-05-26T00:00:00Z"
+  },
+  {
+    "source": "crunchbase-scotland",
+    "url": "https://www.crunchbase.com/discover/funding_rounds?location=Scotland&date_range=90d",
+    "error": "HTTP 403 Forbidden — paywalled (best_effort)",
+    "timestamp": "2026-05-26T00:00:00Z"
+  },
+  {
+    "source": "beauhurst",
+    "url": "https://www.beauhurst.com",
+    "error": "No usable funding content on homepage — paywalled (best_effort)",
+    "timestamp": "2026-05-26T00:00:00Z"
+  },
+  {
+    "source": "highlight-capital-news",
+    "url": "https://www.highlightcapital.com/news",
+    "error": "Request timeout (60000ms exceeded)",
+    "timestamp": "2026-05-26T00:00:00Z"
+  },
+  {
+    "source": "olderbull-news",
+    "url": "https://www.olderbull.com/portfolio-news",
+    "error": "ECONNREFUSED — site unreachable",
+    "timestamp": "2026-05-26T00:00:00Z"
+  },
+  {
+    "source": "prairie-fund-news",
+    "url": "https://www.prairiefund.com/news",
+    "error": "No content returned — site may be offline or JS-rendered",
+    "timestamp": "2026-05-26T00:00:00Z"
+  },
+  {
+    "source": "seiicef-news",
+    "url": "https://www.seiicef.scot/news",
+    "error": "ECONNREFUSED — site unreachable",
+    "timestamp": "2026-05-26T00:00:00Z"
   }
 ]
