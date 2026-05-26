@@ -176,6 +176,7 @@ When proposing a new entry, it must include all of the following fields:
   "name": "human readable name of the publication or site",
   "type": "news_site | search | database | vc_newsrooms | aggregator",
   "url": "base url of the source",
+  "rss_url": "full URL of the RSS or Atom feed, or null if none — scraper prefers this over HTML fetching when set",
   "search_path": "path/query string to append to url, or null if not applicable",
   "queries": "array of search strings — only valid on type: search sources, used instead of search_path when multiple queries must be run",
   "best_effort": "true if the source is partially paywalled or JS-rendered — scraper should attempt it but treat failure as non-blocking",

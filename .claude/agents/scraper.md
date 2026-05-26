@@ -22,14 +22,17 @@ Investment events that match ALL of the following:
 
 Load `config/sources.json` to get the list of sources. For each source:
 
-1. Construct the URL to fetch:
-   - If `search_path` is set: append it to `url` (e.g. `url + search_path`)
-   - If `queries` is set (type: search only): run each query string separately and aggregate results
-   - If both are null: fetch `url` directly
+1. Construct the URL to fetch — in priority order:
+   - If `rss_url` is set: fetch the RSS/Atom feed (XML). Parse each `<item>` or `<entry>`: extract title, link, pubDate, and description/summary. Filter for items likely to be Scottish investment news (keywords: fund, raise, investment, million, seed, Series, venture). For promising items, fetch the full article at the item's link URL.
+   - Else if `search_path` is set: append it to `url` and fetch the resulting HTML page
+   - Else if `queries` is set (type: search only): run each query string separately and aggregate results
+   - Else: fetch `url` directly
 2. Scan headlines and article snippets for Scottish investment news
 3. For promising hits, fetch the full article
 4. Extract the structured data fields listed below
 5. Save results to `data/raw/YYYY-MM-DD_<source-slug>.json`
+
+**RSS feeds are more reliable than HTML scraping** — they are structured, machine-readable, and less likely to be blocked. When `rss_url` is set, always prefer it over HTML fetching.
 
 ## Extraction Schema
 

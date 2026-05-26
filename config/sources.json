@@ -7,6 +7,7 @@
       "url": "https://scottishfinancialreview.com",
       "search_path": null,
       "queries": [],
+      "rss_url": "https://scottishfinancialreview.com/feed/",
       "best_effort": false,
       "notes": "Dedicated Scottish financial and business news site. High signal-to-noise for Scottish VC deals — confirmed 6 relevant deals in the May 2026 run. URL structure: /YYYY/MM/DD/slug."
     },
@@ -24,7 +25,8 @@
       "type": "news_site",
       "url": "https://www.scotsman.com/business",
       "search_path": null,
-      "notes": "Scan business section headlines"
+      "rss_url": "https://www.scotsman.com/rss",
+      "notes": "Scan business section headlines. No section-specific feed — full-site RSS used."
     },
     {
       "slug": "herald-business",
@@ -40,6 +42,7 @@
       "type": "news_site",
       "url": "https://www.insider.co.uk",
       "search_path": "/search?q=funding+investment+venture",
+      "rss_url": "https://www.insider.co.uk/news/?service=rss",
       "notes": "Scottish business focused, very relevant"
     },
     {
@@ -48,6 +51,7 @@
       "type": "aggregator",
       "url": "https://www.scottishbusinessnews.net",
       "search_path": null,
+      "rss_url": "https://scottishbusinessnews.net/feed/",
       "notes": "Aggregates Scottish business news"
     },
     {
@@ -87,6 +91,7 @@
       "type": "news_site",
       "url": "https://sifted.eu",
       "search_path": "/search?q=scotland",
+      "rss_url": "https://sifted.eu/feed/?post_type=article",
       "notes": "European startup media, covers UK deals well"
     },
     {
@@ -104,6 +109,7 @@
       "type": "news_site",
       "url": "https://techfundingnews.com",
       "search_path": "/?s=scotland",
+      "rss_url": "https://techfundingnews.com/feed/",
       "notes": "Covers UK/EU startup funding rounds"
     },
     {
@@ -136,6 +142,7 @@
       "type": "vc_newsrooms",
       "url": "https://www.pxnventures.co.uk/news",
       "search_path": null,
+      "rss_url": "https://www.pxnventures.co.uk/feed/",
       "notes": "Edinburgh-based successor to Par Equity (merged with Praetura Ventures in 2025). Strong Scottish focus."
     },
     {
@@ -160,7 +167,8 @@
       "type": "vc_newsrooms",
       "url": "https://www.bgf.co.uk/news",
       "search_path": null,
-      "notes": "Growth-stage investor with Edinburgh office"
+      "rss_url": "https://www.bgf.co.uk/feed/",
+      "notes": "Growth-stage investor with Edinburgh office. RSS feed exists but was empty at last check — fall back to HTML if feed yields nothing."
     },
     {
       "slug": "prairie-fund-news",
@@ -184,6 +192,7 @@
       "type": "vc_newsrooms",
       "url": "https://www.kelvincapital.com/news-blog/",
       "search_path": null,
+      "rss_url": "https://www.kelvincapital.com/feed/",
       "notes": "Glasgow-based VC with West of Scotland focus. Active deal announcements and portfolio milestones."
     },
     {
@@ -192,6 +201,7 @@
       "type": "vc_newsrooms",
       "url": "https://epidarex.com/news-2/",
       "search_path": null,
+      "rss_url": "https://epidarex.com/feed/",
       "notes": "Edinburgh-based life sciences specialist. Covers funding rounds and portfolio milestones for biotech/medtech companies."
     },
     {
@@ -200,6 +210,7 @@
       "type": "vc_newsrooms",
       "url": "https://www.mercia.co.uk/news/",
       "search_path": null,
+      "rss_url": "https://www.mercia.co.uk/feed/",
       "notes": "UK-wide VC with MEIF and other funds active in Scotland. Deal announcements cover Seed through Series B."
     },
     {
@@ -224,6 +235,7 @@
       "type": "vc_newsrooms",
       "url": "https://archangelsonline.com/about-us/news/",
       "search_path": null,
+      "rss_url": "https://archangelsonline.com/feed/",
       "notes": "Scotland's oldest and largest angel syndicate. Consistently active in Edinburgh life sciences, medtech, and software. High-signal source for early-stage Scottish deals."
     }
   ]
