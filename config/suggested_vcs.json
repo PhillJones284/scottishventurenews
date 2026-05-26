@@ -1,2 +1,58 @@
 [
+  {
+    "canonical_name": "Twin Path Ventures",
+    "aliases": ["Twin Path"],
+    "hq": "United Kingdom",
+    "stage_focus": "Pre-seed",
+    "scotland_active": true,
+    "notes": "UK's only dedicated pre-seed investor in AI-first startups; typically invests £100k–£750k. Led TileBio £1.6m seed round (Glasgow, March 2026). British Business Investments committed £10m to the fund in February 2025. Source: https://glasgowcityofscienceandinnovation.com/glasgow-healthtech-spinout-raises-1-6m-to-transform-cancer-diagnosis-with-ai/"
+  },
+  {
+    "canonical_name": "R42 Group",
+    "aliases": ["R42"],
+    "hq": "Stanford, California, USA",
+    "stage_focus": "Pre-seed, Seed",
+    "scotland_active": true,
+    "notes": "Venture fund and institute focused on AI, deep science, 5G, biotech, and fintech. Long-term investor in Edinburgh-based stampfree.ai — participated in every fundraising round including the May 2026 £1.03m raise. Source: https://www.digit.fyi/edinburgh-ai-ecommerce-firm-raises-over-1m-in-new-investment/"
+  },
+  {
+    "canonical_name": "Blank Space Ventures",
+    "aliases": ["BlankSpace Ventures"],
+    "hq": "Silicon Valley, USA",
+    "stage_focus": "Pre-seed, Seed",
+    "scotland_active": true,
+    "notes": "Silicon Valley-based VC. Co-led Cnuic $3m pre-seed round (Edinburgh, April 2026) alongside Tensor Ventures. Source: https://tech.eu/2026/04/28/cnuic-secures-eur3m-pre-seed-to-unlock-next-generation-photonic-chip-production/"
+  },
+  {
+    "canonical_name": "Silicon Roundabout Ventures",
+    "aliases": ["Silicon Roundabout"],
+    "hq": "United Kingdom",
+    "stage_focus": "Pre-seed, Seed",
+    "scotland_active": true,
+    "notes": "UK-based deep-tech VC. Participated in Cnuic $3m pre-seed round (Edinburgh, April 2026). Source: https://tech.eu/2026/04/28/cnuic-secures-eur3m-pre-seed-to-unlock-next-generation-photonic-chip-production/"
+  },
+  {
+    "canonical_name": "Phasechange",
+    "aliases": [],
+    "hq": null,
+    "stage_focus": "Pre-seed",
+    "scotland_active": true,
+    "notes": "Participated in Cnuic $3m pre-seed round (Edinburgh, April 2026). Very limited public profile. Source: https://tech.eu/2026/04/28/cnuic-secures-eur3m-pre-seed-to-unlock-next-generation-photonic-chip-production/"
+  },
+  {
+    "canonical_name": "SANDS",
+    "aliases": [],
+    "hq": null,
+    "stage_focus": "Pre-seed",
+    "scotland_active": true,
+    "notes": "Participated in Cnuic $3m pre-seed round (Edinburgh, April 2026). Very limited public profile. Source: https://tech.eu/2026/04/28/cnuic-secures-eur3m-pre-seed-to-unlock-next-generation-photonic-chip-production/"
+  },
+  {
+    "canonical_name": "Superlative",
+    "aliases": [],
+    "hq": null,
+    "stage_focus": "Pre-seed",
+    "scotland_active": true,
+    "notes": "Participated in Cnuic $3m pre-seed round (Edinburgh, April 2026). Very limited public profile. Source: https://tech.eu/2026/04/28/cnuic-secures-eur3m-pre-seed-to-unlock-next-generation-photonic-chip-production/"
+  }
 ]

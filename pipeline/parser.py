@@ -199,7 +199,10 @@ def _parse_amount(raw_str, fx_rates):
         number *= 1000
     elif unit in ("k", "thousand"):
         number /= 1000
-    # "m" / "million" → already in millions; no suffix → assume millions
+    elif not unit and number >= 1000:
+        # Raw currency value (e.g. £1,029,968) — convert to millions
+        number /= 1_000_000
+    # "m" / "million" → already in millions; bare small number → assume millions
 
     currency = CURRENCY_SYMBOLS.get(symbol, "GBP")
     rate = fx_rates.get(currency, 1.0)

@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "slug": "digit-fyi",
+    "name": "DIGIT",
+    "type": "news_site",
+    "url": "https://www.digit.fyi",
+    "search_path": "/category/funding/",
+    "queries": [],
+    "best_effort": false,
+    "notes": "Scottish tech news site with a dedicated funding category and monthly deal roundup articles (e.g. 'DIGIT Deal Roundup | March 2026'). Found TileBio seed round, stampfree.ai raise, and STAC investments in this run. High signal-to-noise for Scottish tech VC deals. URL pattern: /digit-deal-roundup-MONTH-YEAR/ for roundups."
+  },
+  {
+    "slug": "businesscloud-scotland",
+    "name": "BusinessCloud — Scotland",
+    "type": "news_site",
+    "url": "https://businesscloud.co.uk",
+    "search_path": null,
+    "queries": ["Scottish startup funding 2026"],
+    "best_effort": false,
+    "notes": "UK tech/business news site with good Scottish coverage. Found STAC £772k investment in Quantcore, Vuabl, and Airspection in this run. Worth adding as a supplementary search source."
+  },
+  {
+    "slug": "daily-business-group",
+    "name": "Daily Business Group",
+    "type": "news_site",
+    "url": "https://dailybusinessgroup.co.uk",
+    "search_path": null,
+    "queries": [],
+    "best_effort": false,
+    "notes": "Scottish business news site covering deals and investments. Homepage and categories produced multiple Scottish VC deal leads including SWURF, EnteroBiotix, Esk in this run. Worth adding as a source with direct homepage scraping."
+  },
+  {
+    "slug": "campfire-scot",
+    "name": "Campfire Scotland Newsletter",
+    "type": "news_site",
+    "url": "https://www.campfire.scot",
+    "search_path": null,
+    "queries": [],
+    "best_effort": true,
+    "notes": "Weekly Scottish startup newsletter covering deals, funding rounds, and ecosystem news. Found Cyacomb and GeneralPractice.AI deals in a 2025 edition. Substack-based — may require free subscription. Best effort as content may be paywalled."
+  }
+]
