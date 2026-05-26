@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+
+# Environment files
+.env
+
+# IDEs
+.vscode/
+.idea/
+
+# OS noise
+.DS_Store
+
+# Project data outputs (IMPORTANT: adjust to your needs)
+data/raw/
+data/processed/
+
+# If you ever add testing
+.pytest_cache/
+.mypy_cache/
