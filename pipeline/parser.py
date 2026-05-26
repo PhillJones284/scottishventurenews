@@ -119,23 +119,52 @@ def _sector_word_match(needle, haystack):
 
 
 def _normalise_sector(raw_sector, sectors):
+    """Return (list_of_canonical_sectors, sector_normalised_bool).
+
+    Phase 1 collects all exact matches (canonical or alias). Phase 2 falls back
+    to substring matching only when Phase 1 finds nothing, so a raw value like
+    "AI and Fintech" can match multiple taxonomy entries.
+    """
     if not raw_sector:
-        return None, False
+        return [], False
     lower = raw_sector.lower().strip()
+    matched = []
+    seen = set()
+
+    # Phase 1: exact matches
     for s in sectors:
-        if lower == s["canonical"].lower():
-            return s["canonical"], True
+        canonical = s["canonical"]
+        if canonical in seen:
+            continue
+        if lower == canonical.lower():
+            matched.append(canonical)
+            seen.add(canonical)
+            continue
         for alias in s.get("aliases", []):
             if lower == alias.lower():
-                return s["canonical"], True
-    # Substring fallback: sector text contains a canonical name or alias as a whole word
-    for s in sectors:
-        if _sector_word_match(s["canonical"], lower):
-            return s["canonical"], True
-        for alias in s.get("aliases", []):
-            if _sector_word_match(alias, lower):
-                return s["canonical"], True
-    return raw_sector, False
+                matched.append(canonical)
+                seen.add(canonical)
+                break
+
+    # Phase 2: substring fallback only when Phase 1 found nothing
+    if not matched:
+        for s in sectors:
+            canonical = s["canonical"]
+            if canonical in seen:
+                continue
+            if _sector_word_match(canonical, lower):
+                matched.append(canonical)
+                seen.add(canonical)
+                continue
+            for alias in s.get("aliases", []):
+                if _sector_word_match(alias, lower):
+                    matched.append(canonical)
+                    seen.add(canonical)
+                    break
+
+    if matched:
+        return matched, True
+    return [raw_sector], False
 
 
 def _normalise_round(raw_round):
@@ -313,9 +342,9 @@ def _normalise_record(raw, sectors, fx_rates, vc_lookup):
     company_location = _normalise_location(location_raw)
 
     sector_raw = raw.get("company_sector") or raw.get("sector") or ""
-    company_sector, sector_normalised = _normalise_sector(sector_raw, sectors)
-    if company_sector is None:
-        company_sector = "Other"
+    company_sectors, sector_normalised = _normalise_sector(sector_raw, sectors)
+    if not company_sectors:
+        company_sectors = ["Other"]
         sector_normalised = False
 
     round_type = _normalise_round(raw.get("round_type") or raw.get("funding_round") or "")
@@ -343,7 +372,7 @@ def _normalise_record(raw, sectors, fx_rates, vc_lookup):
         "id": "",  # filled below
         "company_name": company_name,
         "company_location": company_location,
-        "company_sector": company_sector,
+        "company_sectors": company_sectors,
         "sector_normalised": sector_normalised,
         "round_type": round_type,
         "amount_original": str(amount_original) if amount_original else None,

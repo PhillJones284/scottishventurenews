@@ -34,8 +34,9 @@ For each record, apply these cleaning rules:
 - If the article says "Scottish" without a city, use `Other Scotland`
 
 **Sector**
-- Normalise to one of the standard categories in `config/sectors.json`
-- If no match, use the scraper's raw value but flag it as `"sector_normalised": false`
+- Normalise to one or more of the standard categories in `config/sectors.json` (a company can belong to multiple sectors)
+- Collect all matching canonical sectors from the taxonomy — do not discard secondary matches
+- If no taxonomy match is found, preserve the scraper's raw value as a single-element list and set `"sector_normalised": false`
 
 **Round type**
 - Normalise to: `Pre-Seed | Seed | Series A | Series B | Series C+ | Growth | Bridge | Unknown`
@@ -105,7 +106,7 @@ Write to `data/processed/investments.json`:
       "id": "unique string — format: {normalised-company-name}_{round-type}_{announcement-date}",
       "company_name": "string",
       "company_location": "Edinburgh | Glasgow | ...",
-      "company_sector": "string",
+      "company_sectors": ["string"],
       "sector_normalised": true,
       "round_type": "string",
       "amount_original": "string or null",

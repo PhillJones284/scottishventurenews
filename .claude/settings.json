@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch"
+      "WebFetch",
+      "WebSearch",
+      "Write(/Users/philljones/projects/scottish-vc-tracker2/data/**)",
+      "Edit(/Users/philljones/projects/scottish-vc-tracker2/data/**)",
+      "Write(/Users/philljones/projects/scottish-vc-tracker2/config/suggested_vcs.json)",
+      "Write(/Users/philljones/projects/scottish-vc-tracker2/config/suggested_sources.json)"
     ]
   }
 }

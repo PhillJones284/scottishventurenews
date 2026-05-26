@@ -111,14 +111,28 @@ def _match_type(a, b):
     return None
 
 
+def _union_sectors(a, b):
+    """Return sorted union of two company_sectors lists, handling legacy string field."""
+    def _to_set(rec):
+        v = rec.get("company_sectors")
+        if isinstance(v, list):
+            return set(v)
+        # legacy single-string field
+        v = rec.get("company_sector")
+        return {v} if v else set()
+    return sorted(_to_set(a) | _to_set(b)) or ["Other"]
+
+
 def _merge(base, other, merge_confidence):
     """Merge `other` into `base`, filling nulls and combining sources."""
     merged = dict(base)
     for key, val in other.items():
-        if key in ("source_url", "source_urls"):
+        if key in ("source_url", "source_urls", "company_sectors"):
             continue
         if merged.get(key) is None and val is not None:
             merged[key] = val
+
+    merged["company_sectors"] = _union_sectors(base, other)
 
     # Combine source URLs
     existing_urls = set()
@@ -264,9 +278,12 @@ def run(date: str = None):
         else:
             # Update existing ledger entry
             first_seen = ledger_match.get("first_seen", run_date)
+            unioned_sectors = _union_sectors(ledger_match, record)
             ledger_match.update(record)
             ledger_match["first_seen"] = first_seen
             ledger_match["last_seen"] = run_date
+            ledger_match["company_sectors"] = unioned_sectors
+            ledger_match.pop("company_sector", None)
 
             # Merge source URLs in ledger
             existing_urls = set(ledger_match.get("source_urls", []))

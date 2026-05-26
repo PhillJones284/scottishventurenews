@@ -73,6 +73,40 @@ If a source is unreachable or returns an error, append to `data/raw/errors.json`
 
 Sources with `"best_effort": true` are partially paywalled or JS-rendered. Attempt them anyway and extract whatever free content is visible, but if they fail or return no usable content, log to `errors.json` and continue — do not treat this as a pipeline failure.
 
+## Staging Unknown VCs and Sources
+
+### Unknown investors
+If you encounter an investor not already in `config/known_vcs.json`, **do not add them to `known_vcs.json`**. Instead, append a staging entry to `config/suggested_vcs.json`:
+
+```json
+{
+  "canonical_name": "name as found in the article",
+  "aliases": [],
+  "hq": "if known, otherwise null",
+  "stage_focus": "if evident from the article, otherwise null",
+  "scotland_active": true,
+  "notes": "source article URL and a one-line reason this firm was flagged"
+}
+```
+
+Still record the deal using the investor name as found — do not discard the record because the VC is unknown.
+
+### Unknown sources
+If you find a source not in `config/sources.json` that produced useful Scottish VC news, **do not add it to `sources.json`**. Instead, append a staging entry to `config/suggested_sources.json`:
+
+```json
+{
+  "slug": "lowercase-hyphenated-identifier",
+  "name": "human readable name",
+  "type": "news_site | search | database | vc_newsrooms | aggregator",
+  "url": "base url",
+  "search_path": "path/query string or null",
+  "queries": [],
+  "best_effort": false,
+  "notes": "what kind of deals this source covers and why it is worth adding"
+}
+```
+
 ## Important Notes
 
 - Do NOT invent data. If a field is unknown, use `null`

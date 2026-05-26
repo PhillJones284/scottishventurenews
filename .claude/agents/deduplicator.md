@@ -40,13 +40,14 @@ When merging duplicates:
 4. Add `"duplicate_of": null` to the canonical record
 5. Record how many sources confirmed this: `"source_count": 3`
 6. Set `"merge_confidence": "definite | probable"`
+7. **Union `company_sectors` arrays** — never overwrite; sectors accumulate across sources and runs
 
 ## Ledger Management
 
 The ledger (`ledger.json`) is a persistent record across all runs. After deduplication:
 
 1. For each investment in the current deduped set:
-   - If it matches an entry already in the ledger → update that entry (refresh date, add new sources)
+   - If it matches an entry already in the ledger → update that entry (refresh date, add new sources, **union `company_sectors`** — never overwrite)
    - If it's new → append it to the ledger
 2. Add `"first_seen": "YYYY-MM-DD"` and `"last_seen": "YYYY-MM-DD"` to every ledger entry
 3. Write the updated ledger back to `data/processed/ledger.json`

@@ -3,7 +3,6 @@
     "id": "exergy3_seed_2026-04-21",
     "company_name": "Exergy3",
     "company_location": "Edinburgh",
-    "company_sector": "Energy & Cleantech",
     "round_type": "Seed",
     "amount_gbp_millions": 10.0,
     "investors": [
@@ -34,13 +33,15 @@
     "issues": [],
     "raw_snippet": "Exergy3, a University of Edinburgh spinout founded on technology invented by Dr Adam Robinson, secured \u00a310m in seed funding led by Axeleo Capital's Article 9 Green Tech Industry I fund. Other investors include Bayern Capital, Kibo Invest, Scottish Enterprise, Zero Carbon Capital, and Old College Capital. The technology converts surplus renewable electricity into industrial heat and was piloted at Annandale Distillery. Announced 21 April 2026.",
     "merge_confidence": null,
-    "duplicate_of": null
+    "duplicate_of": null,
+    "company_sectors": [
+      "Energy & Cleantech"
+    ]
   },
   {
     "id": "highway-data-systems_seed_2026-04-30",
     "company_name": "Highway Data Systems",
     "company_location": "Glasgow",
-    "company_sector": "Road Technology / Infrastructure Tech",
     "round_type": "Seed",
     "amount_gbp_millions": 1.25,
     "investors": [
@@ -66,13 +67,15 @@
     "issues": [],
     "raw_snippet": "Glasgow-based Highway Data Systems (HDS), a provider of automated roadside quality assurance, has secured a \u00a31.25 million investment from the British Business Bank's Investment Fund for Scotland, through Fund Manager, Maven. HDS is the first business to secure investment through the Greater Glasgow Innovation Cluster via the Investment Fund for Scotland.",
     "merge_confidence": null,
-    "duplicate_of": null
+    "duplicate_of": null,
+    "company_sectors": [
+      "Road Technology / Infrastructure Tech"
+    ]
   },
   {
     "id": "cnuic_pre-seed_2026-04-28",
     "company_name": "Cnuic",
     "company_location": "Edinburgh",
-    "company_sector": "Deep Tech",
     "round_type": "Pre-Seed",
     "amount_gbp_millions": 2.223,
     "investors": [
@@ -103,13 +106,15 @@
     "issues": [],
     "raw_snippet": "Cnuic has raised $3 million in pre-seed funding led by Tensor Ventures, together with the Silicon Valley-based Blank Space Ventures. The round also saw participation from Silicon Roundabout Ventures, Phasechange, SANDS, and Superlative, and was oversubscribed. Martin Drd\u00fal, co-founder of Tensor Ventures, characterizes this as 'a completely new technology and a major breakthrough that could mean a whole new role for Europe in the semiconductor industry'.",
     "merge_confidence": null,
-    "duplicate_of": null
+    "duplicate_of": null,
+    "company_sectors": [
+      "Deep Tech"
+    ]
   },
   {
     "id": "quantcore_seed_2026-02-24",
     "company_name": "Quantcore",
     "company_location": "Glasgow",
-    "company_sector": "Deep Tech",
     "round_type": "Seed",
     "amount_gbp_millions": 2.5,
     "investors": [
@@ -140,13 +145,15 @@
     "summary": "Quantcore, a University of Glasgow spinout and the only UK company manufacturing niobium-based quantum components, raised \u00a32.5m in seed funding co-led by PXN Ventures, Blackfinch Ventures and Scottish Enterprise. The company supplies quantum processors, resonators, and sensors to UK national laboratories. Funding will support headcount growth from 4 to 12 employees over 18 months.",
     "issues": [],
     "raw_snippet": "Quantcore, a University of Glasgow spin-out, has raised \u00a32.5m in seed funding to create a sovereign supply chain for quantum hardware. The round was co-led by PXN Ventures, Blackfinch Ventures and Scottish Enterprise, with investment also coming from Quantum Exponential and STAC. The company manufactures niobium-based quantum components, operating from the James Watt Nanofabrication Centre.",
-    "duplicate_of": null
+    "duplicate_of": null,
+    "company_sectors": [
+      "Deep Tech"
+    ]
   },
   {
     "id": "biocaptiva_unknown_2026-03-09",
     "company_name": "Biocaptiva",
     "company_location": "Edinburgh",
-    "company_sector": "Life Sciences",
     "round_type": "Unknown",
     "amount_gbp_millions": 1.58,
     "investors": [
@@ -176,13 +183,15 @@
     "issues": [],
     "raw_snippet": "BIOCAPTIVA secured \u00a31.58m in funding led by Archangels, with participation from Old College Capital, BBI, Scottish Enterprise, and new investor EverQuest Capital Partners. The company's msX technology extracts cell-free DNA directly from whole blood without centrifuges, enabling larger samples, faster extraction, simpler processing, and fully automatable capabilities. CEO Jeremy Wheeler said the innovation 'has the potential to revolutionise how samples are collected' for liquid biopsy cancer research.",
     "merge_confidence": null,
-    "duplicate_of": null
+    "duplicate_of": null,
+    "company_sectors": [
+      "Life Sciences"
+    ]
   },
   {
     "id": "swurf_pre-seed_2026-03-09",
     "company_name": "Swurf",
     "company_location": "Edinburgh",
-    "company_sector": "Worktech / Flexible workspace platform",
     "round_type": "Pre-Seed",
     "amount_gbp_millions": 0.2,
     "investors": [
@@ -210,13 +219,15 @@
     "issues": [],
     "raw_snippet": "SWURF secured \u00a3200,000 of investment on March 9, 2026, to accelerate expansion. Existing backers include Gareth Williams (Skyscanner co-founder) and Anna Lagerqvist Christopherson (owner of Boda BV, Green Room and Victoria Bar). New investors are unnamed high-net-worth individuals. Platform currently lists over 450 venues and serves approximately 14,000 users. Board chaired by Alison Grieve (G-Hold founder).",
     "merge_confidence": null,
-    "duplicate_of": null
+    "duplicate_of": null,
+    "company_sectors": [
+      "Worktech / Flexible workspace platform"
+    ]
   },
   {
     "id": "nami-surgical_growth_2026-01-29",
     "company_name": "Nami Surgical",
     "company_location": "Unknown",
-    "company_sector": "Healthtech",
     "round_type": "Growth",
     "amount_gbp_millions": 1.9,
     "investors": [
@@ -247,13 +258,15 @@
     ],
     "raw_snippet": "Nami recently completed its latest investment, a \u00a31.9 million round led by Eos Advisory with participation from the Investment Fund for Scotland managed by Maven Capital Partners (and delivered by the British Business Bank), and Scottish Enterprise. The funding supports the company's transition from advanced development to commercialisation as Nami targets the global robotic-assisted surgery market, which is forecast to reach over $25 billion by 2030.",
     "merge_confidence": null,
-    "duplicate_of": null
+    "duplicate_of": null,
+    "company_sectors": [
+      "Healthtech"
+    ]
   },
   {
     "id": "esk_growth_2026-05-11",
     "company_name": "Esk",
     "company_location": "Edinburgh",
-    "company_sector": "Creative & Media",
     "round_type": "Growth",
     "amount_gbp_millions": 2.6,
     "investors": [
@@ -282,13 +295,15 @@
     "issues": [],
     "raw_snippet": "Maven leads \u00a32.6m investment in Esk, an Edinburgh-based global entertainment technology company that delivers high-end live experiences for brands such as Netflix, Paramount and BAFTA. Funding from Maven Income and Growth VCTs and the Investment Fund for Scotland (IFS Maven Equity Finance), delivered by the British Business Bank. The capital will enable Esk to invest in business development, marketing, IP portfolio expansion, and proprietary hardware development. Announced May 11, 2026.",
     "merge_confidence": null,
-    "duplicate_of": null
+    "duplicate_of": null,
+    "company_sectors": [
+      "Creative & Media"
+    ]
   },
   {
     "id": "vuabl_pre-seed_2026-04-01",
     "company_name": "Vuabl",
     "company_location": "Glasgow",
-    "company_sector": "Property & Construction Tech",
     "round_type": "Pre-Seed",
     "amount_gbp_millions": 0.222,
     "investors": [
@@ -314,13 +329,15 @@
     "issues": [],
     "raw_snippet": "Three Glasgow 'deeptech' companies spanning quantum computing, housing management and offshore wind infrastructure have completed a \u00a3772,000 investment round. Vuabl uses the LIDAR sensors found in modern phones to create 3D models, estimate energy performance and flag maintenance issues \u2014 tools intended to help landlords and social housing providers meet tightening regulatory requirements.",
     "merge_confidence": null,
-    "duplicate_of": null
+    "duplicate_of": null,
+    "company_sectors": [
+      "Property & Construction Tech"
+    ]
   },
   {
     "id": "airspection_pre-seed_2026-04-01",
     "company_name": "Airspection",
     "company_location": "Glasgow",
-    "company_sector": "Deep Tech",
     "round_type": "Pre-Seed",
     "amount_gbp_millions": 0.3,
     "investors": [
@@ -346,13 +363,15 @@
     "issues": [],
     "raw_snippet": "Three Glasgow 'deeptech' companies spanning quantum computing, housing management and offshore wind infrastructure have completed a \u00a3772,000 investment round. Airspection and Vuabl establishing their first HQ's at thebeyond, STAC's 22,000 sq ft technology hub at Skypark in Glasgow.",
     "merge_confidence": null,
-    "duplicate_of": null
+    "duplicate_of": null,
+    "company_sectors": [
+      "Deep Tech"
+    ]
   },
   {
     "id": "bioliberty_series-a_2026-03-19",
     "company_name": "Bioliberty",
     "company_location": "Edinburgh",
-    "company_sector": "Healthtech",
     "sector_normalised": true,
     "round_type": "Series A",
     "amount_original": "\u00a37.7m",
@@ -385,13 +404,15 @@
     "duplicate_of": null,
     "first_seen": "2026-05-26",
     "last_seen": "2026-05-26",
-    "is_new_this_run": true
+    "is_new_this_run": true,
+    "company_sectors": [
+      "Healthtech"
+    ]
   },
   {
     "id": "earth-blox_growth_2026-03-18",
     "company_name": "Earth Blox",
     "company_location": "Edinburgh",
-    "company_sector": "Climate tech / Nature risk analytics",
     "sector_normalised": false,
     "round_type": "Growth",
     "amount_original": "\u00a36m",
@@ -422,13 +443,15 @@
     "duplicate_of": null,
     "first_seen": "2026-05-26",
     "last_seen": "2026-05-26",
-    "is_new_this_run": true
+    "is_new_this_run": true,
+    "company_sectors": [
+      "Climate tech / Nature risk analytics"
+    ]
   },
   {
     "id": "carbogenics_seed_2026-01-19",
     "company_name": "Carbogenics",
     "company_location": "Edinburgh",
-    "company_sector": "Energy & Cleantech",
     "sector_normalised": true,
     "round_type": "Seed",
     "amount_original": "$3m",
@@ -460,13 +483,15 @@
     "duplicate_of": null,
     "first_seen": "2026-05-26",
     "last_seen": "2026-05-26",
-    "is_new_this_run": true
+    "is_new_this_run": true,
+    "company_sectors": [
+      "Energy & Cleantech"
+    ]
   },
   {
     "id": "highway-data-systems_unknown_2026-04-30",
     "company_name": "Highway Data Systems",
     "company_location": "Glasgow",
-    "company_sector": "Property & Construction Tech",
     "sector_normalised": true,
     "round_type": "Unknown",
     "amount_original": "\u00a31.25m",
@@ -493,13 +518,15 @@
     "duplicate_of": null,
     "first_seen": "2026-05-26",
     "last_seen": "2026-05-26",
-    "is_new_this_run": true
+    "is_new_this_run": true,
+    "company_sectors": [
+      "Property & Construction Tech"
+    ]
   },
   {
     "id": "epass_unknown_2026-05-25",
     "company_name": "ePass",
     "company_location": "Other Scotland",
-    "company_sector": "GovTech / Licensing and permitting platform",
     "sector_normalised": false,
     "round_type": "Unknown",
     "amount_original": null,
@@ -527,6 +554,9 @@
     "duplicate_of": null,
     "first_seen": "2026-05-26",
     "last_seen": "2026-05-26",
-    "is_new_this_run": true
+    "is_new_this_run": true,
+    "company_sectors": [
+      "GovTech / Licensing and permitting platform"
+    ]
   }
 ]

@@ -46,7 +46,7 @@ For each investment (sorted by date descending, then by amount descending):
 
 ```
 ### [Company Name] — [Round Type] — [Amount]
-**Sector**: [sector]  
+**Sector**: [comma-separated list from `company_sectors` array]  
 **Location**: [city]  
 **Lead investor**: [name or "undisclosed"]  
 **Co-investors**: [list or "none named"]  

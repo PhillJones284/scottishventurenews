@@ -27,7 +27,12 @@ A Markdown report containing:
 ## Running the agent
 If asked to "run the agent", execute the full pipeline in sequence using the Agent tool, with a gate check after each stage. Stop and report failure if any gate fails — do not proceed to the next stage.
 
-**How to invoke each stage:** Use the Agent tool with `subagent_type: "general-purpose"`. Read the body of the relevant `.claude/agents/<stage>.md` file (everything after the second `---` frontmatter delimiter) and use it as the prompt, prepending `Today's date is YYYY-MM-DD.` with today's actual date substituted.
+**Stages 1 and 4** (scraper, reporter) are Claude agents — invoke them with the Agent tool.
+**Stages 2 and 3** (parser, deduplicator) are Python — run them with `python pipeline/parser.py` and `python pipeline/deduplicator.py` via the Bash tool. Both accept an optional `--date YYYY-MM-DD` argument; omit it to default to today.
+
+**How to invoke agent stages:** Use the Agent tool with `subagent_type: "general-purpose"`. Read the body of the relevant `.claude/agents/<stage>.md` file (everything after the second `---` frontmatter delimiter) and use it as the prompt, prepending `Today's date is YYYY-MM-DD.` with today's actual date substituted.
+
+**Headless / automated runs:** `pipeline/run.py` orchestrates all four stages in one command (`python pipeline/run.py [--date YYYY-MM-DD]`). It requires `ANTHROPIC_API_KEY` to be set and the `claude` CLI to be on `$PATH`. Use this for cron or CI; use the Agent tool approach for interactive runs.
 
 ### Stage 1 — Scraper
 Agent tool: `subagent_type: "general-purpose"`, prompt = today's date + body of `.claude/agents/scraper.md`
@@ -35,14 +40,14 @@ Agent tool: `subagent_type: "general-purpose"`, prompt = today's date + body of 
 **Gate**: At least one `data/raw/YYYY-MM-DD_*.json` file (matching today's date) must exist and contain at least one record (i.e. not an empty array `[]`).
 If the gate fails: stop, tell Phill the scraper produced no records, and suggest checking `data/raw/errors.json` for source failures.
 
-### Stage 2 — Parser
-Agent tool: `subagent_type: "general-purpose"`, prompt = today's date + body of `.claude/agents/parser.md`
+### Stage 2 — Parser (Python)
+Run: `python pipeline/parser.py` (or `python pipeline/parser.py --date YYYY-MM-DD`)
 
 **Gate**: `data/processed/investments.json` must exist and have `record_count > 0`.
 If the gate fails: stop, tell Phill the parser produced no records, and show the list of raw files that were consumed.
 
-### Stage 3 — Deduplicator
-Agent tool: `subagent_type: "general-purpose"`, prompt = today's date + body of `.claude/agents/deduplicator.md`
+### Stage 3 — Deduplicator (Python)
+Run: `python pipeline/deduplicator.py` (or `python pipeline/deduplicator.py --date YYYY-MM-DD`)
 
 **Gate**: `data/processed/investments_deduped.json` must exist.
 If the gate fails: stop, tell Phill the deduplicator did not produce output.
@@ -76,9 +81,17 @@ scottish-vc-tracker/
 │       ├── deduplicator.md      ← Stage 3: Deduplication + ledger
 │       └── reporter.md          ← Stage 4: Report generation
 │
+├── pipeline/
+│   ├── __init__.py
+│   ├── run.py                   ← Pipeline entry point
+│   ├── parser.py                ← Stage 2: Normalisation (Python)
+│   └── deduplicator.py          ← Stage 3: Deduplication + ledger (Python)
+│
 ├── config/
-│   ├── sources.json             ← News sources and search queries
-│   ├── known_vcs.json           ← VC firm profiles and aliases
+│   ├── sources.json             ← News sources and search queries (curated — do not edit directly)
+│   ├── known_vcs.json           ← VC firm profiles and aliases (curated — do not edit directly)
+│   ├── suggested_sources.json   ← Staging area for unknown sources found by scraper
+│   ├── suggested_vcs.json       ← Staging area for unknown VCs found by scraper
 │   ├── sectors.json             ← Sector taxonomy
 │   └── fx_rates.json            ← Currency conversion rates
 │
@@ -111,6 +124,7 @@ scottish-vc-tracker/
 - `config/known_vcs.json` uses `canonical_name` as a key — do not rename existing entries
 - Deduplication is conservative: when in doubt, flag for review rather than merge
 - Investment record IDs follow the format `{normalised-company-name}_{round-type}_{announcement-date}` (e.g. `wallet-ai_series-a_2026-03-15`) — set by the parser, referenced by the deduplicator; must be consistent between stages
+- `company_sectors` is an **array**, not a string — a company can belong to multiple sectors; the parser collects all taxonomy matches and the deduplicator unions arrays across runs (sectors accumulate, never overwrite)
 
 ## Managing known VCs
 
@@ -143,7 +157,7 @@ If Phill asks to review suggested VCs, go through `config/suggested_vcs.json` on
 summarise what you found about each firm, and ask whether to move it to `known_vcs.json`,
 leave it staged, or discard it.
 
-### known_vcs.json schema reminder
+When moving an entry to `known_vcs.json`, ensure:
 - `canonical_name` is used as a key — once set, do not change it
 - `scotland_active` should only be `true` if there is evidence of actual Scottish deals
 - `aliases` should capture all common shorthand names the scraper might encounter
@@ -186,7 +200,9 @@ Only sources that have demonstrably produced relevant Scottish VC news should be
 
 ## Managing Sectors
 ### config/sectors.json
-Do not modify this file unless Phill explicitly asks you to. If a company's sector does not match any entry in the taxonomy, use `"Other"` and flag it in the record's `issues` array as `"sector_not_in_taxonomy"` so Phill can decide whether a new sector is warranted.
+Do not modify this file unless Phill explicitly asks you to.
+
+If a company's sector does not match any entry in the taxonomy, the parser preserves the raw sector value as a single-element array (e.g. `["underwater basket weaving"]`) and sets `sector_normalised: false`. It does **not** replace the value with `"Other"` — `"Other"` only appears when the raw sector field is blank. Unrecognised sectors are surfaced via `sector_normalised: false` on the record — the parser does not add an `issues` flag for this. When reviewing records, use `sector_normalised: false` to identify companies whose sector may warrant a new taxonomy entry.
 
 ## Managing FX rates
 ### config/fx_rates.json
