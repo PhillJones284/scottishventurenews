@@ -1,7 +1,8 @@
 {
-  "generated_at": "2026-05-27T15:48:06.613380+00:00",
-  "record_count": 92,
+  "generated_at": "2026-05-27T17:05:56.668922+00:00",
+  "record_count": 149,
   "source_files": [
+    "2026-05-27_angel-capital-scotland.json",
     "2026-05-27_archangels-news.json",
     "2026-05-27_candidates.json",
     "2026-05-27_duckduckgo-scottish-vc.json",
@@ -19,6 +20,226 @@
   ],
   "parse_errors": [],
   "investments": [
+    {
+      "id": "jet-connectivity_growth_undated",
+      "company_name": "JET Connectivity",
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Deep Tech"
+      ],
+      "sector_normalised": true,
+      "round_type": "Growth",
+      "amount_original": "\u00a31.2m",
+      "amount_gbp_millions": 1.2,
+      "currency_original": "GBP",
+      "investors": [
+        "Tricapital Angels"
+      ],
+      "lead_investor": "Tricapital Angels",
+      "announcement_date": null,
+      "source_url": "https://angelcapital.scot/deals/tricapital-angels-leads-1-2m-investment-into-sovereign-dual-use-5g-solutions/",
+      "source_name": "Angel Capital Scotland",
+      "headline": "TRICAPITAL Angels leads \u00a31.2m investment into sovereign dual use 5G solutions",
+      "summary": "JET Connectivity, a UK-developed technology company delivering ultra-reliable, infrastructure-independent 5G connectivity to hard-to-reach locations, secured a \u00a31.2m investment led by Tricapital Angels. The funding will accelerate growth at a time of increasing global focus on national resilience and secure communications infrastructure. JET Connectivity provides land and sea-based alternatives to satellite networks for offshore, coastal and ultra-remote sites.",
+      "confidence": "high",
+      "data_quality_score": 75,
+      "issues": [
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": "A pioneering UK-developed technology delivering ultra-reliable, infrastructure-independent 5G connectivity to the world's hardest-to-reach locations has secured a \u00a31.2million investment to accelerate its growth. JET Connectivity has developed land and sea-based alternatives to satellite networks such as Starlink and brings secure, high-bandwidth communications to offshore, coastal and ultra-remote sites anywhere on the planet."
+    },
+    {
+      "id": "lentitek_seed_undated",
+      "company_name": "Lentitek",
+      "company_location": "Edinburgh",
+      "company_sectors": [
+        "Life Sciences"
+      ],
+      "sector_normalised": true,
+      "round_type": "Seed",
+      "amount_original": "\u00a3700k",
+      "amount_gbp_millions": 0.7,
+      "currency_original": "GBP",
+      "investors": [
+        "Equity Gap",
+        "Gabriel-IS",
+        "Apollo Informal Investment",
+        "Scottish Enterprise Investment Fund"
+      ],
+      "lead_investor": "Equity Gap",
+      "announcement_date": null,
+      "source_url": "https://angelcapital.scot/news/lentitek-raises-700k-for-cancer-treatment-technology/",
+      "source_name": "Angel Capital Scotland",
+      "headline": "Lentitek raises \u00a3700k for cancer treatment technology",
+      "summary": "Edinburgh biotech Lentitek secured \u00a3700,000 from Equity Gap, the Scottish angel syndicate, to accelerate its next-generation cancer treatments. The round brings total investment to \u00a31m in the last six months, following a \u00a3300,000 Innovate UK grant. Funding was also provided by Gabriel-IS, Apollo Informal Investment, Scottish Enterprise and prominent private investors.",
+      "confidence": "high",
+      "data_quality_score": 90,
+      "issues": [
+        "date_missing",
+        "possible_grant_not_vc"
+      ],
+      "raw_snippet": "Biotech company Lentitek has secured \u00a3700,000 from Equity Gap, the Scottish angel syndicate, to accelerate its next-generation cancer treatments. It brings total investment in the Edinburgh business to \u00a31 million in the last six months, following a \u00a3300,000 Innovate UK grant."
+    },
+    {
+      "id": "bioliberty_series-a_undated",
+      "company_name": "Bioliberty",
+      "company_location": "Other Scotland",
+      "company_sectors": [
+        "Healthtech"
+      ],
+      "sector_normalised": true,
+      "round_type": "Series A",
+      "amount_original": "\u00a36.2m",
+      "amount_gbp_millions": 6.2,
+      "currency_original": "GBP",
+      "investors": [
+        "Scottish National Investment Bank",
+        "Archangels",
+        "Eos Advisory",
+        "Old College Capital",
+        "Hanna Capital SEZC",
+        "Conduit Connect"
+      ],
+      "lead_investor": "Scottish National Investment Bank",
+      "announcement_date": null,
+      "source_url": "https://angelcapital.scot/deals/healthtech-firm-bioliberty-to-accelerate-international-growth-with-new-investment/",
+      "source_name": "Angel Capital Scotland",
+      "headline": "Healthtech firm Bioliberty to accelerate international growth with new investment",
+      "summary": "Healthtech firm Bioliberty secured \u00a37.7m in total funding over the last 10 months, including a \u00a36.2m Series A led by \u00a33m from the Scottish National Investment Bank alongside existing investors Archangels, Eos Advisory, Old College Capital, and Hanna Capital SEZC, plus new investor Conduit Connect. The full Series A round is expected to close later this year. This follows a \u00a31.5m pre-Series A round in mid-2025 from the existing investor group.",
+      "confidence": "high",
+      "data_quality_score": 85,
+      "issues": [
+        "date_missing"
+      ],
+      "raw_snippet": "Healthtech firm, Bioliberty, has secured a total of \u00a37.7m of funding over the last 10 months. The most recent \u00a36.2m Series A investment was led by \u00a33m from the Scottish National Investment Bank, alongside participation from existing investors Archangels, Eos Advisory, Old College Capital, and Hanna Capital SEZC, as well as new investor Conduit Connect."
+    },
+    {
+      "id": "earth-blox_growth_undated",
+      "company_name": "Earth Blox",
+      "company_location": "Edinburgh",
+      "company_sectors": [
+        "Energy & Cleantech"
+      ],
+      "sector_normalised": true,
+      "round_type": "Growth",
+      "amount_original": "\u00a36m",
+      "amount_gbp_millions": 6.0,
+      "currency_original": "GBP",
+      "investors": [
+        "PXN Ventures",
+        "Scottish Enterprise Investment Fund",
+        "Archangels",
+        "European Space Agency"
+      ],
+      "lead_investor": "PXN Ventures",
+      "announcement_date": null,
+      "source_url": "https://angelcapital.scot/deals/earth-blox-secures-6m-to-help-businesses-and-banks-finance-the-transition-to-a-nature-positive-economy/",
+      "source_name": "Angel Capital Scotland",
+      "headline": "Earth Blox secures \u00a36m to help businesses and banks finance the transition to a nature-positive economy",
+      "summary": "Edinburgh-based Earth Blox, which helps organisations understand how nature loss and climate hazards affect financial performance, secured \u00a36m in new investment led by PXN Ventures with support from Scottish Enterprise and follow-on from Archangels and funding from the European Space Agency. The investment comes as banks and businesses face growing pressure to understand environmental risks affecting assets and supply chains.",
+      "confidence": "high",
+      "data_quality_score": 85,
+      "issues": [
+        "date_missing"
+      ],
+      "raw_snippet": "Earth Blox, an Edinburgh-based technology company helping organisations understand how nature loss and climate hazards affect financial performance, has secured \u00a36 million in new investment led by PXN Ventures with support from Scottish Enterprise, follow-on investment from Archangels and funding from the European Space Agency (ESA)."
+    },
+    {
+      "id": "quantcore_seed_undated",
+      "company_name": "Quantcore",
+      "company_location": "Glasgow",
+      "company_sectors": [
+        "Deep Tech"
+      ],
+      "sector_normalised": true,
+      "round_type": "Seed",
+      "amount_original": "\u00a32.5m",
+      "amount_gbp_millions": 2.5,
+      "currency_original": "GBP",
+      "investors": [
+        "PXN Ventures",
+        "Blackfinch Ventures",
+        "Scottish Enterprise Investment Fund",
+        "Quantum Exponential",
+        "STAC Invest"
+      ],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://angelcapital.scot/news/scottish-quantum-hardware-company-raises-2-5m-to-build-uks-sovereign-manufacturing-capability/",
+      "source_name": "Angel Capital Scotland",
+      "headline": "Scottish quantum hardware company raises \u00a32.5m to build UK's sovereign manufacturing capability",
+      "summary": "Quantcore, a University of Glasgow spin-out, raised \u00a32.5m in seed funding to create a sovereign supply chain for quantum hardware as the UK races to build domestic capacity in critical technologies. The round was co-led by PXN Ventures, Blackfinch Ventures and Scottish Enterprise, with investment also from Quantum Exponential and STAC. Quantcore plans to grow its team from four to 12 employees over the next 18 months.",
+      "confidence": "high",
+      "data_quality_score": 90,
+      "issues": [
+        "date_missing"
+      ],
+      "raw_snippet": "Quantcore, a University of Glasgow spin-out, has raised \u00a32.5m in seed funding to create a sovereign supply chain for quantum hardware, as the UK races to build domestic capacity in technologies critical to national security and economic competitiveness. The round was co-led by PXN Ventures, Blackfinch Ventures and Scottish Enterprise, with investment also coming from Quantum Exponential and STAC."
+    },
+    {
+      "id": "biocaptiva_unknown_undated",
+      "company_name": "Biocaptiva",
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Life Sciences"
+      ],
+      "sector_normalised": true,
+      "round_type": "Unknown",
+      "amount_original": "\u00a31.6m",
+      "amount_gbp_millions": 1.6,
+      "currency_original": "GBP",
+      "investors": [
+        "Archangels",
+        "Old College Capital",
+        "British Business Investments",
+        "Scottish Enterprise Investment Fund",
+        "EverQuest Capital Partners"
+      ],
+      "lead_investor": "Archangels",
+      "announcement_date": null,
+      "source_url": "https://angelcapital.scot/deals/edinburgh-uni-spin-out-at-cutting-edge-of-cancer-research-gets-1-6m-injection/",
+      "source_name": "Angel Capital Scotland",
+      "headline": "Edinburgh Uni spin-out at cutting edge of cancer research gets \u00a31.6m injection",
+      "summary": "BIOCAPTIVA, a Scottish biotech behind a platform for early diagnosis and monitoring of difficult-to-detect cancers, raised \u00a31.6m in a fresh funding round and launched its first product in the US. The round was led by existing investor Archangels with support from Old College Capital, BBI, Scottish Enterprise and new investor EverQuest Capital Partners.",
+      "confidence": "high",
+      "data_quality_score": 65,
+      "issues": [
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": "A Scottish biotech firm behind a platform that could revolutionise the early diagnosis and monitoring of difficult-to-detect cancers has raised \u00a31.6 million in a fresh funding round and launched its first product in the US. Its latest financing round was led by existing investor Archangels, with support from Old College Capital, BBI, Scottish Enterprise and new investor EverQuest Capital Partners."
+    },
+    {
+      "id": "launchpad_series-a_undated",
+      "company_name": "Launchpad",
+      "company_location": "Other Scotland",
+      "company_sectors": [
+        "Deep Tech"
+      ],
+      "sector_normalised": true,
+      "round_type": "Series A",
+      "amount_original": "$11m",
+      "amount_gbp_millions": 8.151,
+      "currency_original": "USD",
+      "investors": [
+        "PXN Ventures"
+      ],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://angelcapital.scot/news/launchpad-announces-pxn-ventures-as-its-newest-strategic-investor/",
+      "source_name": "Angel Capital Scotland",
+      "headline": "Launchpad announces PXN Ventures as its newest strategic investor",
+      "summary": "Launchpad, an AI-first robotics company powering real-world assembly automation, announced PXN Ventures as a new strategic investor, adding to its oversubscribed $11m Series A fundraising announced in October 2025. PXN Ventures forms part of PXN Group with \u00a3700m AUM across over 120 portfolio companies following its launch in November 2025 after the merger of Par Equity and Praetura Ventures.",
+      "confidence": "medium",
+      "data_quality_score": 90,
+      "issues": [
+        "date_missing"
+      ],
+      "raw_snippet": "Launchpad, the AI-first robotics company powering real-world assembly automation, today announced PXN Ventures as a new investor. This builds on the company's oversubscribed, $11M Series A fundraising, announced in October 2025."
+    },
     {
       "id": "bioliberty_series-a_2026-03-19",
       "company_name": "Bioliberty",
@@ -99,6 +320,35 @@
       "investors": [],
       "lead_investor": null,
       "announcement_date": "2026-05-27",
+      "source_url": "https://scottishfinancialreview.com/2026/05/27/scots-angel-investors-back-41000-jobs-at-lower-cost/",
+      "source_name": "Scottish Financial Review",
+      "headline": "Scots angel investors back 41,000 jobs \u2018at lower cost\u2019",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 10,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_2026-05-27",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": "2026-05-27",
       "source_url": "https://scottishfinancialreview.com/2026/05/27/scottish-mortgage-returns-27-boosted-by-spacex/",
       "source_name": "Scottish Financial Review",
       "headline": "Scottish Mortgage returns 27%, boosted by SpaceX",
@@ -131,35 +381,6 @@
       "source_url": "https://scottishfinancialreview.com/2026/05/22/edinburgh-has-highest-employment-rate-in-uk/",
       "source_name": "Scottish Financial Review",
       "headline": "Edinburgh has highest employment rate in UK",
-      "summary": "",
-      "confidence": "medium",
-      "data_quality_score": 10,
-      "issues": [
-        "amount_missing",
-        "investor_unnamed",
-        "location_unknown",
-        "company_not_clearly_scottish"
-      ],
-      "raw_snippet": ""
-    },
-    {
-      "id": "unknown_unknown_2026-05-19",
-      "company_name": null,
-      "company_location": "Unknown",
-      "company_sectors": [
-        "Other"
-      ],
-      "sector_normalised": false,
-      "round_type": "Unknown",
-      "amount_original": null,
-      "amount_gbp_millions": null,
-      "currency_original": "GBP",
-      "investors": [],
-      "lead_investor": null,
-      "announcement_date": "2026-05-19",
-      "source_url": "https://scottishfinancialreview.com/2026/05/19/edinburgh-council-settles-in-tram-law-firm-case/",
-      "source_name": "Scottish Financial Review",
-      "headline": "Edinburgh Council settles in tram law firm case",
       "summary": "",
       "confidence": "medium",
       "data_quality_score": 10,
@@ -219,6 +440,36 @@
       "source_url": "https://www.scotsman.com/business/scottish-mortgage-investment-trust-sees-elon-musks-spacex-take-off-8642694",
       "source_name": "The Scotsman \u2014 Business",
       "headline": "Scottish Mortgage Investment Trust sees Elon Musk\u2019s SpaceX take off",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.scotsman.com/business/offshore-wind-firm-secures-almost-4000-square-feet-in-landmark-glasgow-office-building-8642492",
+      "source_name": "The Scotsman \u2014 Business",
+      "headline": "Offshore wind firm secures almost 4,000 square feet in landmark Glasgow office building",
       "summary": "",
       "confidence": "medium",
       "data_quality_score": 0,
@@ -516,9 +767,9 @@
       "investors": [],
       "lead_investor": null,
       "announcement_date": null,
-      "source_url": "https://html.duckduckgo.com/html/?q=Scottish+startup+funding+round+2026",
+      "source_url": "https://www.scottishedge.com/",
       "source_name": "DuckDuckGo \u2014 Scottish VC search",
-      "headline": "",
+      "headline": "Scottish EDGE - Scotland's biggest business funding competition",
       "summary": "",
       "confidence": "medium",
       "data_quality_score": 0,
@@ -546,9 +797,9 @@
       "investors": [],
       "lead_investor": null,
       "announcement_date": null,
-      "source_url": "https://html.duckduckgo.com/html/?q=Scotland+venture+capital+investment+2026",
+      "source_url": "https://bgscapital.co.uk/startup-funding-scotland-the-comprehensive-2026-founders-resource/",
       "source_name": "DuckDuckGo \u2014 Scottish VC search",
-      "headline": "",
+      "headline": "Startup Funding Scotland: The Comprehensive 2026 Founder's Resource",
       "summary": "",
       "confidence": "medium",
       "data_quality_score": 0,
@@ -576,9 +827,131 @@
       "investors": [],
       "lead_investor": null,
       "announcement_date": null,
-      "source_url": "https://html.duckduckgo.com/html/?q=Edinburgh+startup+raises+million+2026",
+      "source_url": "https://aberdeenbusinessnews.co.uk/scottish-edge-opens-2026-regional-award-category/",
       "source_name": "DuckDuckGo \u2014 Scottish VC search",
-      "headline": "",
+      "headline": "Scottish EDGE opens 2026 regional award category",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "possible_grant_not_vc",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.scottishfinancialnews.com/articles/funding-round-worth-ps200k-to-help-scottish-startup-make-edinburgh-most-flexible-working-capital",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Funding round worth \u00a3200k to help Scottish startup make Edinburgh most ...",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.gov.scot/news/growing-scotlands-entrepreneurial-economy/",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Growing Scotland's entrepreneurial economy - gov.scot",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.find-government-grants.service.gov.uk/grants/business-support-for-scotland",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Business Support for Scotland - GOV-UK Find a grant",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "possible_grant_not_vc",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://inspirent.co.uk/the-ecosystem-fund/",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "The Ecosystem Fund - inspirent",
       "summary": "",
       "confidence": "medium",
       "data_quality_score": 0,
@@ -606,9 +979,9 @@
       "investors": [],
       "lead_investor": null,
       "announcement_date": null,
-      "source_url": "https://html.duckduckgo.com/html/?q=Glasgow+startup+funding+2026",
+      "source_url": "https://www.digit.fyi/scottish-startup-funding/",
       "source_name": "DuckDuckGo \u2014 Scottish VC search",
-      "headline": "",
+      "headline": "Scots Gov announces \u00a32.5m support package for entrepreneurs",
       "summary": "",
       "confidence": "medium",
       "data_quality_score": 0,
@@ -636,9 +1009,9 @@
       "investors": [],
       "lead_investor": null,
       "announcement_date": null,
-      "source_url": "https://html.duckduckgo.com/html/?q=Scottish+scaleup+Series+A+2026",
+      "source_url": "https://www.scottish-enterprise.com/how-we-can-help/funding-and-grants",
       "source_name": "DuckDuckGo \u2014 Scottish VC search",
-      "headline": "",
+      "headline": "Funding and grants for businesses in Scotland | Scottish Enterprise",
       "summary": "",
       "confidence": "medium",
       "data_quality_score": 0,
@@ -666,9 +1039,1085 @@
       "investors": [],
       "lead_investor": null,
       "announcement_date": null,
-      "source_url": "https://html.duckduckgo.com/html/?q=Scotland+VC+backed+2026",
+      "source_url": "https://www.failory.com/startups/scotland",
       "source_name": "DuckDuckGo \u2014 Scottish VC search",
-      "headline": "",
+      "headline": "Top 60 Scotland Startups to Watch in 2026 - Failory",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.thatround.com/rankings/best-venture-capital-scotland",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Best Venture Capital Investors in Scotland - thatround.com",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://incubatorlist.com/top-vcs-in-scotland",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Top VCs & Startup Programs in Scotland (2026) \u2014 Open Deadlines ...",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.ukprivatecapital.co.uk/events/calendar/invest-scotland-forum-2026.html",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Invest Scotland Forum",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.cooperparry.com/news/v3-ventureceo-scotland-finale/",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "What does the Scaling Journey for Scottish Founders look like in 2026?",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.linkedin.com/posts/dealroom-co_snippet-scottish-deep-tech-report-2026-activity-7463502228193005569-bwzh",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Snippet: Scottish Deep Tech Report 2026 - Dealroom | Dealroom.co - LinkedIn",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://dsw.vc/locations/scotland/",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Venture Capital Scotland - Venture Capital in Scotland",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.invest2scale.com/news/unlocking-growth-potential-through-scottish-scale-up-investments",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Venture Capital Investment Growth in Scotland \u2014 Invest2Scale",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://angelcapital.scot/",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Angel Capital Scotland - Scotlands Angel Capital Association",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.scottish-enterprise.com/how-we-can-help/funding-and-grants/accessing-business-finance-and-attracting-investment/scottish-venture-fund",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Scottish Venture Fund",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://techround.co.uk/guides/10-scottish-vcs-investing-in-early-stage-startups/",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "10 Scottish VCs Investing In Early Stage Startups - TechRound",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_2026-05-01",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": "2026-05-01",
+      "source_url": "https://theedinburghreporter.co.uk/2026/05/edinburgh-cyber-security-start-up-raises-millions-in-pre-seed-round/",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Edinburgh cyber security start up raises millions in pre-seed round",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 10,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_2026-04-01",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": "2026-04-01",
+      "source_url": "https://www.eu-startups.com/2026/04/edinburghs-exergy3-raises-e11-4-million-to-turn-surplus-renewable-power-into-clean-industrial-heat/",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Edinburgh's Exergy3 raises \u20ac11.4 million to turn surplus renewable ...",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 10,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.startupmag.co.uk/funding/",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Latest Startup Funding News UK",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://edinburgh-innovations.ed.ac.uk/news/spinout-exergy3-raises-10m-to-decarbonise-industrial-heat",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Edinburgh Innovations | Spinout Exergy3 raises \u00a310m to decarbonise\u2026",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://startupmafia.eu/edinburgh-based-earth-blox-raises-e6-9-million-to-link-climate-and-financial-performance",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Edinburgh-based Earth Blox Raises \u20ac6.9 Million to Link Climate and ...",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_2026-02-16",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": "2026-02-16",
+      "source_url": "https://news.fundsforngos.org/2026/02/16/edinburgh-biochar-startup-carbogenics-wins-3m-to-boost-carbon-removal-efforts/",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Edinburgh's Carbogenics Raises $3M to Expand Carbon Removal Solutions",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 15,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://celticcongresscornwall.co.uk/edinburgh-fintech-startup-raises-75-million-for-blockchain-expansion/",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Edinburgh Fintech Startup Raises $75 Million for Blockchain Expansion",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.failory.com/startups/edinburgh",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Top 59 Edinburgh Startups to Watch in 2026 - Failory",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.prolificnorth.co.uk/news/edinburgh-robotics-firm-raises-11million/",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Edinburgh robotics firm raises $11million - Prolific North",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.scotsman.com/business/university-of-edinburgh-spinout-raises-ps10-million-to-help-address-three-of-europes-most-pressing-challenges-6923499",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "University of Edinburgh spinout raises \u00a310 million to help address ...",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.startupmag.co.uk/startups/glasgow/",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "26 Glasgow Startups UK (Free List)",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.seedtable.com/best-startups-in-glasgow",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "69 Best Startups in Glasgow to Watch in 2026 - Seedtable",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.glasgow.gov.uk/article/15027/Funding-Opportunities",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Funding Opportunities - Glasgow City Council",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.vcbacked.co/directory/cities/united-kingdom/glasgow",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "20 VC-Backed Startups in Glasgow, United Kingdom (2026)",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://startupmaglive.vercel.app/startups/glasgow/",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Top 26 Glasgow Startups UK (Free List)",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://glasgowcityregion.co.uk/funding/",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Open Calls for Funding - Glasgow City Region",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.f6s.com/companies/united-kingdom/glasgow/lo",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "100 top companies and startups in Glasgow in May 2026 - F6S",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://fundcreators.com/funding/glasgow",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Crowdfunding & Startup Funding in Glasgow | FundCreators",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://incubatorlist.com/top-venture-capital-firms-in-glasgow",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Top VCs & Startup Programs in Glasgow (2026) \u2014 Open Deadlines & Funding ...",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.scaleupscotland.co.uk/",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Home - Scale Up Scotland",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://nowscaleit.com/Scottish_Scale_Up_Panel_-_Scaling_Scotland.pdf",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "PDF Scottish Scale Up Panel - Scaling Scotland (final)",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.uktech.news/biotech/scottish-biotech-raises-19m-to-fund-ibs-drug-trial-20260505",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Scottish biotech raises \u00a319m to fund IBS drug trial",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_2026-03-04",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": "2026-03-04",
+      "source_url": "https://scottishfinancialreview.com/2026/03/04/scots-female-founded-scaleups-outpacing-uk/",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Scots female-founded scaleups outpacing UK - Scottish Financial Review",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 10,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.ukprivatecapital.co.uk/resource/private-capital-in-scotland-bvca-factsheet.html",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Private Capital in Scotland - Factsheet",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://sovereignai.gov.uk/",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "UK Sovereign AI Fund | Backing British AI Startups",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.gov.scot/publications/scottish-spending-review-2026/",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "Scottish Spending Review 2026 - gov.scot",
       "summary": "",
       "confidence": "medium",
       "data_quality_score": 0,
@@ -819,66 +2268,6 @@
       "source_url": "https://techfundingnews.com/stord-raises-250-million-to-help-independent-brands-rival-amazon/",
       "source_name": "Tech Funding News",
       "headline": "Kleiner Perkins, Founders Fund double down on Stord in $250M round at $3B valuation to help independent brands take on Amazon",
-      "summary": "",
-      "confidence": "medium",
-      "data_quality_score": 5,
-      "issues": [
-        "amount_missing",
-        "investor_unnamed",
-        "date_missing",
-        "location_unknown",
-        "company_not_clearly_scottish"
-      ],
-      "raw_snippet": ""
-    },
-    {
-      "id": "unknown_unknown_undated",
-      "company_name": null,
-      "company_location": "Unknown",
-      "company_sectors": [
-        "Other"
-      ],
-      "sector_normalised": false,
-      "round_type": "Unknown",
-      "amount_original": null,
-      "amount_gbp_millions": null,
-      "currency_original": "GBP",
-      "investors": [],
-      "lead_investor": null,
-      "announcement_date": null,
-      "source_url": "https://techfundingnews.com/quorn-pacifico-raises-7m-series-a/",
-      "source_name": "Tech Funding News",
-      "headline": "Quorn rival Pacifico Biolabs raises \u20ac7M Series A to scale mycelium fermentation in Europe\u2019s disused brewery tanks",
-      "summary": "",
-      "confidence": "medium",
-      "data_quality_score": 5,
-      "issues": [
-        "amount_missing",
-        "investor_unnamed",
-        "date_missing",
-        "location_unknown",
-        "company_not_clearly_scottish"
-      ],
-      "raw_snippet": ""
-    },
-    {
-      "id": "unknown_unknown_undated",
-      "company_name": null,
-      "company_location": "Unknown",
-      "company_sectors": [
-        "Other"
-      ],
-      "sector_normalised": false,
-      "round_type": "Unknown",
-      "amount_original": null,
-      "amount_gbp_millions": null,
-      "currency_original": "GBP",
-      "investors": [],
-      "lead_investor": null,
-      "announcement_date": null,
-      "source_url": "https://techfundingnews.com/this-oxford-spinout-just-raised-4-3m-to-fix-tidal-techs-biggest-problem/",
-      "source_name": "Tech Funding News",
-      "headline": "This Oxford spinout just raised \u00a34.3M to fix tidal tech\u2019s biggest problem",
       "summary": "",
       "confidence": "medium",
       "data_quality_score": 5,
@@ -1591,6 +2980,306 @@
       "investors": [],
       "lead_investor": null,
       "announcement_date": null,
+      "source_url": "https://angelcapital.scot/news/where-angels-tread-understanding-the-economic-impact-of-early-stage-risk-capital-in-scotland-1996-2023/",
+      "source_name": "Angel Capital Scotland",
+      "headline": "Where Angels Tread: Understanding the Economic Impact of Early-Stage Risk Capital in Scotland, 1996-2023",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://angelcapital.scot/deals/scarlet-therapeutics-raises-3-2m-seed-to-reduce-donor-dependence-with-lab%e2%80%91grown-rbcs/",
+      "source_name": "Angel Capital Scotland",
+      "headline": "Scarlet Therapeutics raises \u00a33.2m seed to reduce donor dependence with lab\u2011grown RBCs",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://angelcapital.scot/deals/tricapital-angels-leads-1-2m-investment-into-sovereign-dual-use-5g-solutions/",
+      "source_name": "Angel Capital Scotland",
+      "headline": "TRICAPITAL Angels leads \u00a31.2m investment into sovereign dual use 5G solutions",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://angelcapital.scot/news/lentitek-raises-700k-for-cancer-treatment-technology/",
+      "source_name": "Angel Capital Scotland",
+      "headline": "Lentitek raises \u00a3700k for cancer treatment technology",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://angelcapital.scot/deals/healthtech-firm-bioliberty-to-accelerate-international-growth-with-new-investment/",
+      "source_name": "Angel Capital Scotland",
+      "headline": "Healthtech firm Bioliberty to accelerate international growth with new investment",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://angelcapital.scot/deals/earth-blox-secures-6m-to-help-businesses-and-banks-finance-the-transition-to-a-nature-positive-economy/",
+      "source_name": "Angel Capital Scotland",
+      "headline": "Earth Blox secures \u00a36m to help businesses and banks finance the transition to a nature-positive economy",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://angelcapital.scot/news/kelvin-capital-launches-new-sme-focused-investment-fund/",
+      "source_name": "Angel Capital Scotland",
+      "headline": "Kelvin Capital launches new SME-focused investment fund",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://angelcapital.scot/deals/edinburgh-uni-spin-out-at-cutting-edge-of-cancer-research-gets-1-6m-injection/",
+      "source_name": "Angel Capital Scotland",
+      "headline": "Edinburgh Uni spin-out at cutting edge of cancer research gets \u00a31.6m injection",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://angelcapital.scot/news/scottish-quantum-hardware-company-raises-2-5m-to-build-uks-sovereign-manufacturing-capability/",
+      "source_name": "Angel Capital Scotland",
+      "headline": "Scottish quantum hardware company raises \u00a32.5m to build UK\u2019s sovereign manufacturing capability",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://angelcapital.scot/news/launchpad-announces-pxn-ventures-as-its-newest-strategic-investor/",
+      "source_name": "Angel Capital Scotland",
+      "headline": "Launchpad announces PXN Ventures as its newest strategic investor",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
       "source_url": "https://archangelsonline.com/bioliberty-announces-10-5-million-series-a-financing-to-build-functional-intelligence-capabilities-for-post-acute-care/?utm_source=rss&utm_medium=rss&utm_campaign=bioliberty-announces-10-5-million-series-a-financing-to-build-functional-intelligence-capabilities-for-post-acute-care",
       "source_name": "Archangels \u2014 News",
       "headline": "Bioliberty Announces $10.5 million Series A Financing to Build Functional Intelligence Capabilities for Post-Acute Care",
@@ -1843,6 +3532,36 @@
       "data_quality_score": 100,
       "issues": [],
       "raw_snippet": "Exergy3, an Edinburgh-based CleanTech startup specialising in ultra-high temperature thermal energy storage solutions, has raised \u20ac11.4 million (\u00a310 million) in Seed funding to scale its proprietary technology, addressing industrial decarbonisation, grid balancing and energy security. Lead investors: Axeleo Capital (Article 9 Green Tech Industry I fund), Bayern Capital, Kibo Invest. Follow-on investors: Scottish Enterprise, Zero Carbon Capital, Old College Capital."
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
     },
     {
       "id": "unknown_unknown_undated",

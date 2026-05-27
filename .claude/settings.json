@@ -1,6 +1,7 @@
 {
   "permissions": {
     "allow": [
+      "Read(/Users/philljones/projects/scottish-vc-tracker/**)",
       "WebFetch",
       "WebSearch",
       "Write(/Users/philljones/projects/scottish-vc-tracker2/data/**)",

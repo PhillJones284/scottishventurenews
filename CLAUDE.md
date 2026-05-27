@@ -49,7 +49,27 @@ Agent tool: `subagent_type: "general-purpose"`, prompt = today's date + body of 
 **Gate**: At least one `data/raw/YYYY-MM-DD_*.json` file (matching today's date) must exist and contain at least one record (i.e. not an empty array `[]`).
 If the gate fails: stop, tell Phill the scraper produced no records, and suggest checking `data/raw/errors.json` for source failures.
 
-**Post-run check**: After Stage 1b completes, read `data/raw/YYYY-MM-DD_fetch_log.json` if it exists. If any entry shows `items_found > 0` but `candidates_added = 0`, or `text_extract_failures > 0`, report these to Phill as potential filter or extraction issues worth investigating — even if the overall run succeeded. A source producing items but zero candidates may indicate the keyword filter is too aggressive for that source.
+**Post-run check**: After Stage 1b completes, run both of the following checks:
+
+1. **Coverage check** — compare the source slugs present in `data/raw/YYYY-MM-DD_candidates.json` against the output files written by the scraper (`data/raw/YYYY-MM-DD_<slug>.json`). Report any slugs that appear in the candidates file but have no corresponding output file. These are sources the scraper silently skipped and whose candidates were not processed. Example one-liner:
+   ```bash
+   python -c "
+   import json, glob
+   from pathlib import Path
+   date = 'YYYY-MM-DD'
+   candidates = json.load(open(f'data/raw/{date}_candidates.json'))
+   slugs_in_candidates = {c['source_slug'] for c in candidates}
+   written = {Path(f).stem.replace(f'{date}_','') for f in glob.glob(f'data/raw/{date}_*.json')}
+   written -= {'candidates', 'fetch_log'}
+   missing = slugs_in_candidates - written
+   if missing:
+       print('SKIPPED SOURCES (candidates not processed):', missing)
+   else:
+       print('All candidate sources processed.')
+   "
+   ```
+
+2. **Filter/extraction check** — read `data/raw/YYYY-MM-DD_fetch_log.json` if it exists. If any entry shows `items_found > 0` but `candidates_added = 0`, or `text_extract_failures > 0`, report these to Phill as potential filter or extraction issues worth investigating — even if the overall run succeeded. A source producing items but zero candidates may indicate the keyword filter is too aggressive for that source.
 
 ### Stage 2 — Parser (Python)
 Run: `python pipeline/parser.py` (or `python pipeline/parser.py --date YYYY-MM-DD`)

@@ -148,5 +148,35 @@
     "url": "https://www.seiicef.scot/news",
     "error": "[Errno 8] nodename nor servname provided, or not known",
     "timestamp": "2026-05-27T15:37:13.827836+00:00"
+  },
+  {
+    "source": "business-scotland",
+    "url": "https://businessscotland.co.uk/search?q=investment+funding",
+    "error": "[Errno 8] nodename nor servname provided, or not known",
+    "timestamp": "2026-05-27T16:56:18.215978+00:00"
+  },
+  {
+    "source": "crunchbase-scotland",
+    "url": "https://www.crunchbase.com/discover/funding_rounds?location=Scotland&date_range=90d",
+    "error": "Client error '403 Forbidden' for url 'https://www.crunchbase.com/discover/funding_rounds?location=Scotland&date_range=90d'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+    "timestamp": "2026-05-27T16:56:22.905685+00:00"
+  },
+  {
+    "source": "highlight-capital-news",
+    "url": "https://www.highlightcapital.com/news",
+    "error": "timed out",
+    "timestamp": "2026-05-27T16:57:09.492766+00:00"
+  },
+  {
+    "source": "olderbull-news",
+    "url": "https://www.olderbull.com/portfolio-news",
+    "error": "[SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1081)",
+    "timestamp": "2026-05-27T16:57:28.604534+00:00"
+  },
+  {
+    "source": "seiicef-news",
+    "url": "https://www.seiicef.scot/news",
+    "error": "[Errno 8] nodename nor servname provided, or not known",
+    "timestamp": "2026-05-27T16:57:28.831027+00:00"
   }
 ]
