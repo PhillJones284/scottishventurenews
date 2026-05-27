@@ -230,6 +230,17 @@
       "notes": "University of Edinburgh's commercialisation arm. Covers spinout funding rounds and investment news via Old College Capital. High relevance for Edinburgh deep tech and life sciences deals."
     },
     {
+      "slug": "angel-capital-scotland",
+      "name": "Angel Capital Scotland",
+      "type": "vc_newsrooms",
+      "url": "https://angelcapital.scot",
+      "search_path": null,
+      "queries": [],
+      "rss_url": "https://angelcapital.scot/feed/",
+      "best_effort": false,
+      "notes": "News feed for the Angel Capital Association of Scotland — covers deals from Equity Gap, Tricapital, and other Scottish angel syndicates. Confirmed source for Lentitek, JET Connectivity, Jump Ship Brewing in May 2026 comparison test."
+    },
+    {
       "slug": "archangels-news",
       "name": "Archangels — News",
       "type": "vc_newsrooms",

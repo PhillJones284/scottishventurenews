@@ -88,6 +88,7 @@ scottish-vc-tracker/
 ├── .claude/
 │   └── agents/
 │       ├── scraper.md           ← Stage 1b: Claude agent prompt
+│       ├── scraper-baseline.md  ← Baseline scraper (direct-fetch, no candidates file) — used for comparison testing only
 │       ├── parser.md            ← Stage 2: Reference spec only (implemented in pipeline/parser.py)
 │       ├── deduplicator.md      ← Stage 3: Reference spec only (implemented in pipeline/deduplicator.py)
 │       └── reporter.md          ← Stage 4: Claude agent prompt
@@ -225,6 +226,38 @@ Do not modify unless Phill asks. If asked to update, fetch current mid-market ra
 
 If the current rate in fx_rates.json is more than 15% different from the mid-market rate, tell Phill which rate has the mismatch, what the current rate in fx_rates.json is and what the current mid-market rate is. Propose that the rate be changed before writing.
 
+
+## Architecture comparison test
+
+To verify the Python fetcher is not losing deals compared to the original all-Claude architecture, run:
+
+**Step 1 — Back up current data:**
+```
+cp -r data/ /tmp/scottish-vc-backup-YYYY-MM-DD/
+```
+
+**Step 2 — Run the baseline scraper** (writes to `data/raw/old-arch-test/`, never touches live data):
+
+Use the Agent tool with `subagent_type: "general-purpose"`, prompt = today's date + body of `.claude/agents/scraper-baseline.md`.
+
+**Step 3 — Parse the baseline output:**
+```python
+import json, sys
+from pathlib import Path
+sys.path.insert(0, 'pipeline')
+import parser as p
+p.RAW_DIR = Path('data/raw/old-arch-test')
+result = p.run(date='YYYY-MM-DD')
+with open('data/processed/investments_old_arch.json', 'w') as f:
+    json.dump(result, f, indent=2)
+```
+Then restore `data/processed/investments.json` from the backup (the step above overwrites it).
+
+**Step 4 — Compare:**
+Compare company names in `investments_old_arch.json` vs the new-arch Stage 1b scraper output files (`data/raw/YYYY-MM-DD_*.json`), cross-referenced against the ledger to distinguish genuine data loss from records already captured in prior runs.
+
+**Step 5 — Clean up:**
+Delete `data/raw/old-arch-test/` and `data/processed/investments_old_arch.json` when done.
 
 ## Development ground rules
 - Propose changes and wait for approval before modifying any file

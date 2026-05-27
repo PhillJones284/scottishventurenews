@@ -1,13 +1,15 @@
 """Stage 1a: Fetch and keyword-filter content from configured sources."""
 
 import argparse
+import html as html_lib
 import json
 import logging
+import re
 import time
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import quote_plus
+from urllib.parse import quote_plus, unquote
 
 import httpx
 import trafilatura
@@ -23,7 +25,8 @@ USER_AGENT = "Mozilla/5.0 (compatible; Scottish-VC-Tracker/1.0)"
 GROUP_A = [
     "raise", "raised", "funding", "investment", "invested", "backed", "backer",
     "venture", "capital", "round", "seed", "series a", "series b", "series c",
-    "pre-seed", "growth round", "angel",
+    "pre-seed", "growth round", "angel", "strategic investor", "new backer",
+    "secures", "closes", "equity investment", "equity round",
 ]
 GROUP_B = [
     "million", "£", "$m", "€m", "scotland", "scottish", "edinburgh",
@@ -235,39 +238,125 @@ def _fetch_page(client: httpx.Client, url: str, source: dict, candidates: list, 
         log["candidates_added"] = 1
 
 
+def _parse_search_results(html: str) -> list:
+    """Extract individual result URLs and titles from a DuckDuckGo HTML results page."""
+    results = []
+    # Match <a ... class="result__a" ... href="URL">TITLE</a> (attribute order varies)
+    link_re = re.compile(
+        r'<a[^>]+class=["\']result__a["\'][^>]+href=["\']([^"\']+)["\'][^>]*>(.*?)</a>',
+        re.IGNORECASE | re.DOTALL,
+    )
+    snippet_re = re.compile(
+        r'class=["\']result__snippet["\'][^>]*>(.*?)</(?:a|span|div)>',
+        re.IGNORECASE | re.DOTALL,
+    )
+
+    def _clean(s):
+        return html_lib.unescape(re.sub(r"<[^>]+>", "", s)).strip()
+
+    snippets = [_clean(m) for m in snippet_re.findall(html)]
+
+    for i, (href, title_raw) in enumerate(link_re.findall(html)):
+        # Resolve DuckDuckGo redirect URLs
+        if "duckduckgo.com/l/" in href:
+            m = re.search(r"uddg=([^&]+)", href)
+            href = unquote(m.group(1)) if m else ""
+        elif href.startswith("//"):
+            href = "https:" + href
+
+        if not href.startswith("http"):
+            continue
+
+        results.append(
+            {
+                "url": href,
+                "title": _clean(title_raw),
+                "snippet": snippets[i] if i < len(snippets) else "",
+            }
+        )
+
+    return results
+
+
 def _fetch_queries(client: httpx.Client, source: dict, candidates: list, log: dict) -> None:
     log["url_fetched"] = source["url"]
     queries = source.get("queries") or []
     total_found = total_passed = total_added = total_failures = 0
     last_status = None
     errors_list = []
+    seen_urls: set = set()
 
     for i, query in enumerate(queries):
         if i > 0:
             time.sleep(2)
-        url = f"{source['url']}?q={quote_plus(query)}"
+        search_url = f"{source['url']}?q={quote_plus(query)}"
         try:
-            resp = client.get(url)
+            resp = client.get(search_url)
             last_status = resp.status_code
             resp.raise_for_status()
-            total_found += 1
-            text = trafilatura.extract(resp.text)
-            if not text:
-                total_failures += 1
+
+            results = _parse_search_results(resp.text)
+
+            # Fall back to blob approach if parsing found nothing
+            if not results:
+                total_found += 1
+                text = trafilatura.extract(resp.text)
+                if not text:
+                    total_failures += 1
+                elif _passes_filter(text[:2000]):
+                    candidates.append(
+                        {
+                            "source_slug": source["slug"],
+                            "source_name": source["name"],
+                            "url": search_url,
+                            "title": None,
+                            "published": None,
+                            "text": text,
+                        }
+                    )
+                    total_passed += 1
+                    total_added += 1
                 continue
-            if _passes_filter(text[:2000]):
-                candidates.append(
-                    {
-                        "source_slug": source["slug"],
-                        "source_name": source["name"],
-                        "url": url,
-                        "title": None,
-                        "published": None,
-                        "text": text,
-                    }
-                )
+
+            total_found += len(results)
+
+            for result in results:
+                result_url = result["url"]
+                if result_url in seen_urls:
+                    continue
+
+                filter_text = (result["title"] + " " + result["snippet"])[:2000]
+                if not _passes_filter(filter_text):
+                    continue
+
+                seen_urls.add(result_url)
                 total_passed += 1
-                total_added += 1
+
+                article_text = None
+                try:
+                    article_resp = client.get(result_url)
+                    article_resp.raise_for_status()
+                    article_text = trafilatura.extract(article_resp.text)
+                except Exception:
+                    pass
+
+                if not article_text:
+                    total_failures += 1
+                    article_text = result["snippet"] or result["title"]
+
+                if article_text:
+                    candidates.append(
+                        {
+                            "source_slug": source["slug"],
+                            "source_name": source["name"],
+                            "url": result_url,
+                            "title": result["title"] or None,
+                            "published": None,
+                            "text": article_text,
+                        }
+                    )
+                    total_added += 1
+
         except Exception as e:
             total_found += 1
             errors_list.append(f"query '{query}': {e}")
