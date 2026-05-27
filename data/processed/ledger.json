@@ -661,7 +661,7 @@
     "sector_normalised": true,
     "round_type": "Growth",
     "amount_original": "\u00a31,029,968",
-    "amount_gbp_millions": 1029968.0,
+    "amount_gbp_millions": 1.03,
     "currency_original": "GBP",
     "investors": [
       "R42 Group",
