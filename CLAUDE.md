@@ -25,20 +25,31 @@ A Markdown report containing:
 
 
 ## Running the agent
-If asked to "run the agent", execute the full pipeline in sequence using the Agent tool, with a gate check after each stage. Stop and report failure if any gate fails — do not proceed to the next stage.
+If asked to "run the agent", execute the full pipeline in sequence using the Agent tool, with a gate check after each stage. Stop and report failure if any gate fails — do not proceed to the next stage (except Stage 1a, which has a soft gate — see below).
 
-**Stages 1 and 4** (scraper, reporter) are Claude agents — invoke them with the Agent tool.
+**Stage 1** has two sub-steps: **Stage 1a** (Fetcher, Python) and **Stage 1b** (Scraper, Claude agent). **Stage 4** (reporter) is a Claude agent.
 **Stages 2 and 3** (parser, deduplicator) are Python — run them with `python pipeline/parser.py` and `python pipeline/deduplicator.py` via the Bash tool. Both accept an optional `--date YYYY-MM-DD` argument; omit it to default to today.
 
 **How to invoke agent stages:** Use the Agent tool with `subagent_type: "general-purpose"`. Read the body of the relevant `.claude/agents/<stage>.md` file (everything after the second `---` frontmatter delimiter) and use it as the prompt, prepending `Today's date is YYYY-MM-DD.` with today's actual date substituted.
 
 **Headless / automated runs:** `pipeline/run.py` orchestrates all four stages in one command (`python pipeline/run.py [--date YYYY-MM-DD]`). It requires `ANTHROPIC_API_KEY` to be set and the `claude` CLI to be on `$PATH`. Use this for cron or CI; use the Agent tool approach for interactive runs.
 
-### Stage 1 — Scraper
+### Stage 1a — Fetcher (Python)
+Run: `python pipeline/fetcher.py` (or `python pipeline/fetcher.py --date YYYY-MM-DD`)
+
+**Gate**: `data/raw/YYYY-MM-DD_candidates.json` must exist. An empty array `[]` is acceptable.
+If the gate fails: do **not** stop — proceed to Stage 1b anyway (the scraper agent will fall back to WebFetch mode). Before proceeding, read `data/raw/errors.json` and `data/raw/YYYY-MM-DD_fetch_log.json` (if either exists) and report to Phill:
+- that the fetcher failed and fallback mode will be used this run
+- a brief summary of what went wrong (error messages, which sources failed)
+- that the fetch_log is available for bug fixing before the next run
+
+### Stage 1b — Scraper (Claude agent)
 Agent tool: `subagent_type: "general-purpose"`, prompt = today's date + body of `.claude/agents/scraper.md`
 
 **Gate**: At least one `data/raw/YYYY-MM-DD_*.json` file (matching today's date) must exist and contain at least one record (i.e. not an empty array `[]`).
 If the gate fails: stop, tell Phill the scraper produced no records, and suggest checking `data/raw/errors.json` for source failures.
+
+**Post-run check**: After Stage 1b completes, read `data/raw/YYYY-MM-DD_fetch_log.json` if it exists. If any entry shows `items_found > 0` but `candidates_added = 0`, or `text_extract_failures > 0`, report these to Phill as potential filter or extraction issues worth investigating — even if the overall run succeeded. A source producing items but zero candidates may indicate the keyword filter is too aggressive for that source.
 
 ### Stage 2 — Parser (Python)
 Run: `python pipeline/parser.py` (or `python pipeline/parser.py --date YYYY-MM-DD`)

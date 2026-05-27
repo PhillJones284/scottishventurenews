@@ -1,3 +1,5 @@
 rapidfuzz
 python-dateutil
 anthropic
+trafilatura
+httpx

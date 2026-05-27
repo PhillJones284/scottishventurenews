@@ -48,7 +48,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 sys.path.insert(0, str(ROOT))
-from pipeline import parser, deduplicator
+from pipeline import fetcher, parser, deduplicator
 
 
 def _read_agent_prompt(stage_name, run_date):
@@ -83,6 +83,13 @@ def _run_claude_agent(stage_name, run_date):
     )
     if result.returncode != 0:
         raise RuntimeError(f"claude CLI exited with code {result.returncode} for stage {stage_name}")
+
+
+def _gate_fetcher(run_date):
+    path = DATA_RAW / f"{run_date}_candidates.json"
+    if path.exists():
+        return True, None
+    return False, f"data/raw/{run_date}_candidates.json not found."
 
 
 def _gate_scraper(run_date):
@@ -143,15 +150,43 @@ def main():
     run_date = args.date or datetime.now(timezone.utc).strftime("%Y-%m-%d")
     logger.info("Pipeline starting. Run date: %s", run_date)
 
-    # Stage 1 — Scraper (Claude agent)
-    logger.info("=== Stage 1: Scraper ===")
+    # Stage 1a — Fetcher (Python)
+    logger.info("=== Stage 1a: Fetcher ===")
+    try:
+        fetch_result = fetcher.run(date=run_date)
+    except Exception as e:
+        fetch_result = {"candidates": 0, "errors": 1, "fallback_needed": True}
+        logger.warning("Fetcher raised an exception: %s — scraper will use fallback mode", e)
+    ok, err = _gate_fetcher(run_date)
+    if not ok:
+        logger.warning("Stage 1a gate: %s — scraper will use fallback mode", err)
+    else:
+        logger.info("Stage 1a gate passed. Candidates: %d", fetch_result.get("candidates", 0))
+
+    # Stage 1b — Scraper (Claude agent)
+    logger.info("=== Stage 1b: Scraper ===")
     _run_claude_agent("scraper", run_date)
     ok, err = _gate_scraper(run_date)
     if not ok:
-        print(f"GATE FAIL (Stage 1 — Scraper): {err}", file=sys.stderr)
+        print(f"GATE FAIL (Stage 1b — Scraper): {err}", file=sys.stderr)
         print("Check data/raw/errors.json for source failures.", file=sys.stderr)
         sys.exit(1)
-    logger.info("Stage 1 gate passed.")
+    logger.info("Stage 1b gate passed.")
+
+    fetch_log_path = DATA_RAW / f"{run_date}_fetch_log.json"
+    if fetch_log_path.exists():
+        fetch_log = json.loads(fetch_log_path.read_text())
+        issues = [
+            e for e in fetch_log
+            if (e.get("items_found", 0) > 0 and e.get("candidates_added", 0) == 0)
+            or e.get("text_extract_failures", 0) > 0
+        ]
+        if issues:
+            logger.warning(
+                "Fetch log has %d source(s) with filter or extraction issues: %s",
+                len(issues),
+                [i["source_slug"] for i in issues],
+            )
 
     # Stage 2 — Parser (Python)
     logger.info("=== Stage 2: Parser ===")

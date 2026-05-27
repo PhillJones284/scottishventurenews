@@ -18,7 +18,19 @@ Investment events that match ALL of the following:
 - The news is **publicly reported** (press release, news article, Companies House data referenced in an article, etc.)
 - The event occurred in the **last 90 days** (or is undated but clearly recent)
 
-## Sources to Check
+## Mode Selection
+
+Check whether `data/raw/YYYY-MM-DD_candidates.json` exists and contains at least one record (where YYYY-MM-DD is today's date).
+
+### Pre-fetched mode (candidates file exists and is non-empty)
+
+Read `data/raw/YYYY-MM-DD_candidates.json`. Each record contains: `source_slug`, `source_name`, `url`, `title`, `published`, and `text` (full article text already extracted by the Python fetcher).
+
+Extract structured investment records from the pre-fetched text. **Do NOT use WebFetch or WebSearch.**
+
+### Fallback mode (candidates file missing or empty)
+
+The Python fetcher did not run or produced no results. Proceed with direct web fetching:
 
 Load `config/sources.json` to get the list of sources. For each source:
 
@@ -33,6 +45,8 @@ Load `config/sources.json` to get the list of sources. For each source:
 5. Save results to `data/raw/YYYY-MM-DD_<source-slug>.json`
 
 **RSS feeds are more reliable than HTML scraping** — they are structured, machine-readable, and less likely to be blocked. When `rss_url` is set, always prefer it over HTML fetching. If an RSS feed returns no items or is unreachable, fall back to fetching `url` directly (or `url + search_path` if set).
+
+Add `"fetch_mode": "fallback"` to each output file's metadata when operating in fallback mode.
 
 ## Extraction Schema
 
