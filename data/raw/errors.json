@@ -2,37 +2,37 @@
   {
     "source": "business-scotland",
     "url": "https://businessscotland.co.uk/search?q=investment+funding",
-    "error": "ECONNREFUSED — site unreachable",
+    "error": "ECONNREFUSED \u2014 site unreachable",
     "timestamp": "2026-05-25T00:00:00Z"
   },
   {
     "source": "scotsman-business",
     "url": "https://www.scotsman.com/business",
-    "error": "HTTP 403 Forbidden — access blocked",
+    "error": "HTTP 403 Forbidden \u2014 access blocked",
     "timestamp": "2026-05-25T00:00:00Z"
   },
   {
     "source": "herald-business",
     "url": "https://www.heraldscotland.com/business",
-    "error": "Fetch blocked — heraldscotland.com not accessible",
+    "error": "Fetch blocked \u2014 heraldscotland.com not accessible",
     "timestamp": "2026-05-25T00:00:00Z"
   },
   {
     "source": "insider-co-uk",
     "url": "https://www.insider.co.uk/search?q=funding+investment+venture",
-    "error": "Rendered only navigation/header content — no article data returned (best_effort)",
+    "error": "Rendered only navigation/header content \u2014 no article data returned (best_effort)",
     "timestamp": "2026-05-25T00:00:00Z"
   },
   {
     "source": "crunchbase-scotland",
     "url": "https://www.crunchbase.com/discover/funding_rounds?location=Scotland&date_range=90d",
-    "error": "Paywalled — no usable content returned (best_effort)",
+    "error": "Paywalled \u2014 no usable content returned (best_effort)",
     "timestamp": "2026-05-25T00:00:00Z"
   },
   {
     "source": "beauhurst",
     "url": "https://www.beauhurst.com",
-    "error": "Paywalled — no usable content returned (best_effort)",
+    "error": "Paywalled \u2014 no usable content returned (best_effort)",
     "timestamp": "2026-05-25T00:00:00Z"
   },
   {
@@ -50,49 +50,49 @@
   {
     "source": "par-equity-news",
     "url": "https://par-equity.com/news",
-    "error": "ECONNREFUSED — site unreachable (Par Equity merged with Praetura to form PXN Ventures; original URL may be defunct)",
+    "error": "ECONNREFUSED \u2014 site unreachable (Par Equity merged with Praetura to form PXN Ventures; original URL may be defunct)",
     "timestamp": "2026-05-25T00:00:00Z"
   },
   {
     "source": "seiicef-news",
     "url": "https://www.seiicef.scot/news",
-    "error": "ECONNREFUSED — site unreachable",
+    "error": "ECONNREFUSED \u2014 site unreachable",
     "timestamp": "2026-05-25T00:00:00Z"
   },
   {
     "source": "business-scotland",
     "url": "https://businessscotland.co.uk/search?q=investment+funding",
-    "error": "ECONNREFUSED — site unreachable",
+    "error": "ECONNREFUSED \u2014 site unreachable",
     "timestamp": "2026-05-26T00:00:00Z"
   },
   {
     "source": "scotsman-business",
     "url": "https://www.scotsman.com/business",
-    "error": "HTTP 403 Forbidden — access blocked",
+    "error": "HTTP 403 Forbidden \u2014 access blocked",
     "timestamp": "2026-05-26T00:00:00Z"
   },
   {
     "source": "herald-business",
     "url": "https://www.heraldscotland.com/business",
-    "error": "Fetch blocked — heraldscotland.com not accessible",
+    "error": "Fetch blocked \u2014 heraldscotland.com not accessible",
     "timestamp": "2026-05-26T00:00:00Z"
   },
   {
     "source": "insider-co-uk",
     "url": "https://www.insider.co.uk/search?q=funding+investment+venture",
-    "error": "Rendered only navigation/header content — no article data returned (best_effort)",
+    "error": "Rendered only navigation/header content \u2014 no article data returned (best_effort)",
     "timestamp": "2026-05-26T00:00:00Z"
   },
   {
     "source": "crunchbase-scotland",
     "url": "https://www.crunchbase.com/discover/funding_rounds?location=Scotland&date_range=90d",
-    "error": "HTTP 403 Forbidden — paywalled (best_effort)",
+    "error": "HTTP 403 Forbidden \u2014 paywalled (best_effort)",
     "timestamp": "2026-05-26T00:00:00Z"
   },
   {
     "source": "beauhurst",
     "url": "https://www.beauhurst.com",
-    "error": "No usable funding content on homepage — paywalled (best_effort)",
+    "error": "No usable funding content on homepage \u2014 paywalled (best_effort)",
     "timestamp": "2026-05-26T00:00:00Z"
   },
   {
@@ -104,19 +104,49 @@
   {
     "source": "olderbull-news",
     "url": "https://www.olderbull.com/portfolio-news",
-    "error": "ECONNREFUSED — site unreachable",
+    "error": "ECONNREFUSED \u2014 site unreachable",
     "timestamp": "2026-05-26T00:00:00Z"
   },
   {
     "source": "prairie-fund-news",
     "url": "https://www.prairiefund.com/news",
-    "error": "No content returned — site may be offline or JS-rendered",
+    "error": "No content returned \u2014 site may be offline or JS-rendered",
     "timestamp": "2026-05-26T00:00:00Z"
   },
   {
     "source": "seiicef-news",
     "url": "https://www.seiicef.scot/news",
-    "error": "ECONNREFUSED — site unreachable",
+    "error": "ECONNREFUSED \u2014 site unreachable",
     "timestamp": "2026-05-26T00:00:00Z"
+  },
+  {
+    "source": "business-scotland",
+    "url": "https://businessscotland.co.uk/search?q=investment+funding",
+    "error": "[Errno 8] nodename nor servname provided, or not known",
+    "timestamp": "2026-05-27T15:36:30.792603+00:00"
+  },
+  {
+    "source": "crunchbase-scotland",
+    "url": "https://www.crunchbase.com/discover/funding_rounds?location=Scotland&date_range=90d",
+    "error": "Client error '403 Forbidden' for url 'https://www.crunchbase.com/discover/funding_rounds?location=Scotland&date_range=90d'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+    "timestamp": "2026-05-27T15:36:34.618640+00:00"
+  },
+  {
+    "source": "highlight-capital-news",
+    "url": "https://www.highlightcapital.com/news",
+    "error": "timed out",
+    "timestamp": "2026-05-27T15:36:54.453771+00:00"
+  },
+  {
+    "source": "olderbull-news",
+    "url": "https://www.olderbull.com/portfolio-news",
+    "error": "[SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1081)",
+    "timestamp": "2026-05-27T15:37:13.460968+00:00"
+  },
+  {
+    "source": "seiicef-news",
+    "url": "https://www.seiicef.scot/news",
+    "error": "[Errno 8] nodename nor servname provided, or not known",
+    "timestamp": "2026-05-27T15:37:13.827836+00:00"
   }
 ]

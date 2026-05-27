@@ -7,9 +7,7 @@
       "Edit(/Users/philljones/projects/scottish-vc-tracker2/data/**)",
       "Write(/Users/philljones/projects/scottish-vc-tracker2/config/suggested_vcs.json)",
       "Write(/Users/philljones/projects/scottish-vc-tracker2/config/suggested_sources.json)",
-      "Bash(python pipeline/parser.py*)",
-      "Bash(python pipeline/deduplicator.py*)",
-      "Bash(python pipeline/run.py*)"
+      "Bash"
     ]
   }
 }

@@ -38,5 +38,15 @@
     "queries": [],
     "best_effort": true,
     "notes": "Weekly Scottish startup newsletter covering deals, funding rounds, and ecosystem news. Found Cyacomb and GeneralPractice.AI deals in a 2025 edition. Substack-based — may require free subscription. Best effort as content may be paywalled."
+  },
+  {
+    "slug": "scottish-financial-news",
+    "name": "Scottish Financial News",
+    "type": "news_site",
+    "url": "https://www.scottishfinancialnews.com",
+    "search_path": null,
+    "queries": [],
+    "best_effort": false,
+    "notes": "Scottish business and finance news site. Produced the SWURF £200k growth round article (March 2026) covering Edinburgh startup deals. Distinct from scottishfinancialreview.com. Has a dedicated articles section. Note: homepage returned 403 for the fetcher — may need search path or RSS check."
   }
 ]

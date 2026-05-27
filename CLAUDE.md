@@ -87,7 +87,7 @@ scottish-vc-tracker/
 │
 ├── .claude/
 │   └── agents/
-│       ├── scraper.md           ← Stage 1: Claude agent prompt
+│       ├── scraper.md           ← Stage 1b: Claude agent prompt
 │       ├── parser.md            ← Stage 2: Reference spec only (implemented in pipeline/parser.py)
 │       ├── deduplicator.md      ← Stage 3: Reference spec only (implemented in pipeline/deduplicator.py)
 │       └── reporter.md          ← Stage 4: Claude agent prompt
@@ -95,6 +95,7 @@ scottish-vc-tracker/
 ├── pipeline/
 │   ├── __init__.py
 │   ├── run.py                   ← Pipeline entry point
+│   ├── fetcher.py               ← Stage 1a: Fetch + keyword-filter (Python)
 │   ├── parser.py                ← Stage 2: Normalisation (Python)
 │   └── deduplicator.py          ← Stage 3: Deduplication + ledger (Python)
 │
@@ -122,7 +123,9 @@ scottish-vc-tracker/
 
 | File | Contents |
 |---|---|
-| `data/raw/*.json` | Raw scraped data per source |
+| `data/raw/YYYY-MM-DD_candidates.json` | Pre-fetched + keyword-filtered article candidates |
+| `data/raw/YYYY-MM-DD_fetch_log.json` | Per-source fetch diagnostics (items found, filtered, errors) |
+| `data/raw/*.json` | Raw scraped data per source (scraper output) |
 | `data/processed/investments.json` | Normalised records for this run |
 | `data/processed/investments_deduped.json` | Deduplicated records with new/updated flags |
 | `data/processed/ledger.json` | Persistent all-time record — do not delete |

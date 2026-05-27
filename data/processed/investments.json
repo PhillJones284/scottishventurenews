@@ -1,25 +1,21 @@
 {
-  "generated_at": "2026-05-26T18:33:14.452448+00:00",
-  "record_count": 20,
+  "generated_at": "2026-05-27T15:48:06.613380+00:00",
+  "record_count": 92,
   "source_files": [
-    "2026-05-26_archangels-news.json",
-    "2026-05-26_bgf-news.json",
-    "2026-05-26_duckduckgo-scottish-vc.json",
-    "2026-05-26_edinburgh-innovations-news.json",
-    "2026-05-26_epidarex-news.json",
-    "2026-05-26_kelvin-capital-news.json",
-    "2026-05-26_maven-cap-news.json",
-    "2026-05-26_mercia-news.json",
-    "2026-05-26_octopus-ventures-blog.json",
-    "2026-05-26_olderbull-news.json",
-    "2026-05-26_parkwalk-news.json",
-    "2026-05-26_pxn-ventures-news.json",
-    "2026-05-26_scottish-financial-review.json",
-    "2026-05-26_sifted-uk.json",
-    "2026-05-26_tech-funding-news.json",
-    "2026-05-26_techcrunch-scotland.json",
-    "2026-05-26_techhub-scotland.json",
-    "2026-05-26_techstart-portfolio.json"
+    "2026-05-27_archangels-news.json",
+    "2026-05-27_candidates.json",
+    "2026-05-27_duckduckgo-scottish-vc.json",
+    "2026-05-27_edinburgh-innovations-news.json",
+    "2026-05-27_fetch_log.json",
+    "2026-05-27_kelvin-capital-news.json",
+    "2026-05-27_maven-cap-news.json",
+    "2026-05-27_mercia-news.json",
+    "2026-05-27_parkwalk-news.json",
+    "2026-05-27_pxn-ventures-news.json",
+    "2026-05-27_scotsman-business.json",
+    "2026-05-27_scottish-financial-review.json",
+    "2026-05-27_tech-funding-news.json",
+    "2026-05-27_techhub-scotland.json"
   ],
   "parse_errors": [],
   "investments": [
@@ -29,65 +25,36 @@
       "company_location": "Edinburgh",
       "company_sectors": [
         "Healthtech",
-        "Deep Tech"
+        "SaaS & Enterprise Software"
       ],
       "sector_normalised": true,
       "round_type": "Series A",
-      "amount_original": "\u00a37.7m",
-      "amount_gbp_millions": 7.7,
-      "currency_original": "GBP",
+      "amount_original": "$10.5m",
+      "amount_gbp_millions": 7.78,
+      "currency_original": "USD",
       "investors": [
         "Scottish National Investment Bank",
+        "Conduit Connect",
         "Archangels",
         "Eos Advisory",
-        "Old College Capital",
         "Hanna Capital SEZC",
-        "Conduit Connect"
+        "Old College Capital"
       ],
       "lead_investor": "Scottish National Investment Bank",
       "announcement_date": "2026-03-19",
       "source_url": "https://archangelsonline.com/bioliberty-announces-10-5-million-series-a-financing-to-build-functional-intelligence-capabilities-for-post-acute-care/",
-      "source_name": "Archangels \u2014 News",
-      "headline": "Bioliberty Announces $10.5 Million Series A Financing to Build Functional Intelligence Capabilities for Post-Acute Care",
-      "summary": "Bioliberty, headquartered at The National Robotarium in Edinburgh with manufacturing in Fife, raised \u00a37.7m ($10.5m) in a Series A round led by the Scottish National Investment Bank. The company develops AI-enabled soft-robotic wearables for patient rehabilitation and will use the funding to advance product development and expand US operations. CEO Rowan Armstrong stated the investment enables significant capability expansion in computer vision, AI-driven assessments, and home-based therapy delivery.",
+      "source_name": "Archangels",
+      "headline": "Bioliberty Announces $10.5 million Series A Financing to Build Functional Intelligence Capabilities for Post-Acute Care",
+      "summary": "Edinburgh- and Boston-based Bioliberty raised $10.5 million in a Series A led by the Scottish National Investment Bank. The funds will expand the company's Lifehub Clinic platform \u2014 which uses AI and robotics to monitor functional recovery in post-acute care settings \u2014 and commercialise Lifehub Home for in-home physical therapy tracking. The round brings total funding to $17.5 million.",
       "confidence": "high",
       "data_quality_score": 95,
       "issues": [],
-      "raw_snippet": "Bioliberty, headquartered at The National Robotarium in Edinburgh, has secured \u00a37.7m in Series A funding led by the Scottish National Investment Bank (SNIB, contributing \u00a33m). The round also includes Archangels, Eos Advisory, Old College Capital, Hanna Capital SEZC, and new investor Conduit Connect. The funding will advance product development in Scotland and expand US operations. Founded in 2019 by University of Edinburgh engineering graduates, the company develops soft-robotic wearables combined with AI to support patient rehabilitation."
-    },
-    {
-      "id": "earth-blox_growth_2026-03-18",
-      "company_name": "Earth Blox",
-      "company_location": "Edinburgh",
-      "company_sectors": [
-        "Energy & Cleantech"
-      ],
-      "sector_normalised": true,
-      "round_type": "Growth",
-      "amount_original": "\u00a36m",
-      "amount_gbp_millions": 6.0,
-      "currency_original": "GBP",
-      "investors": [
-        "PXN Ventures",
-        "Archangels",
-        "Scottish Enterprise Investment Fund",
-        "European Space Agency"
-      ],
-      "lead_investor": "PXN Ventures",
-      "announcement_date": "2026-03-18",
-      "source_url": "https://archangelsonline.com/earth-blox-secures-6m-to-help-businesses-and-banks-finance-the-transition-to-a-nature-positive-economy/",
-      "source_name": "Archangels \u2014 News",
-      "headline": "Earth Blox secures \u00a36m to help businesses and banks finance the transition to a nature-positive economy",
-      "summary": "Edinburgh-based Earth Blox secured \u00a36m led by PXN Ventures to expand its nature risk analytics platform, which combines satellite data with AI to help financial institutions assess ecosystem degradation impacts. The round includes follow-on investment from Archangels, Scottish Enterprise, and the European Space Agency. The funding will support team expansion and accelerate product development.",
-      "confidence": "high",
-      "data_quality_score": 95,
-      "issues": [],
-      "raw_snippet": "Earth Blox, an Edinburgh-based startup, secured \u00a36m in new funding led by PXN Ventures, with participation from Archangels (follow-on), Scottish Enterprise, and the European Space Agency. The company's platform integrates satellite data, environmental information, and portfolio analysis using AI to help global banks, consumer brands, energy firms, and agricultural businesses assess how ecosystem degradation and climate hazards impact financial performance. A new Director of Nature and Climate from PwC UK was announced simultaneously."
+      "raw_snippet": "Bioliberty is an Edinburgh- and Boston-based startup... Participating in the round were new investors including lead investor The Scottish National Investment Bank and Conduit Connect. Returning investors Archangel Investors, Eos Advisory, Hanna Capital, and Old College Capital also participated."
     },
     {
       "id": "biocaptiva_unknown_2026-03-09",
       "company_name": "Biocaptiva",
-      "company_location": "Edinburgh",
+      "company_location": "Unknown",
       "company_sectors": [
         "Life Sciences"
       ],
@@ -106,301 +73,1745 @@
       "lead_investor": "Archangels",
       "announcement_date": "2026-03-09",
       "source_url": "https://archangelsonline.com/biocaptiva-secures-1-58m-to-transform-how-blood-samples-are-prepared-for-liquid-biopsy/",
-      "source_name": "Archangels \u2014 News",
+      "source_name": "Archangels",
       "headline": "BIOCAPTIVA secures \u00a31.58M to transform how blood samples are prepared for liquid biopsy",
-      "summary": "BIOCAPTIVA, a University of Edinburgh spinout based at the Easter Bush Campus, raised \u00a31.58m led by Archangels to advance its magnetic bead platform for liquid biopsy cancer testing. The patented msX technology extracts cell-free DNA from whole blood without centrifuges, enabling faster processing and higher-quality results. Funds will support US market entry and R&D expansion.",
+      "summary": "BIOCAPTIVA, headquartered at Roslin Innovation Centre in Midlothian, raised \u00a31.58 million led by Archangels. The funding will support R&D to expand its msX magnetic bead platform \u2014 which extracts cell-free DNA from whole blood without centrifuges \u2014 and has enabled the company to launch its first product in the US market.",
       "confidence": "high",
-      "data_quality_score": 85,
-      "issues": [],
-      "raw_snippet": "BIOCAPTIVA secured \u00a31.58m in funding led by Archangels, with participation from Old College Capital, BBI, Scottish Enterprise, and new investor EverQuest Capital Partners. The company's msX technology extracts cell-free DNA directly from whole blood without centrifuges, enabling larger samples, faster extraction, simpler processing, and fully automatable capabilities. CEO Jeremy Wheeler said the innovation 'has the potential to revolutionise how samples are collected' for liquid biopsy cancer research."
-    },
-    {
-      "id": "carbogenics_seed_2026-01-19",
-      "company_name": "Carbogenics",
-      "company_location": "Edinburgh",
-      "company_sectors": [
-        "Energy & Cleantech"
-      ],
-      "sector_normalised": true,
-      "round_type": "Seed",
-      "amount_original": "$3m",
-      "amount_gbp_millions": 2.223,
-      "currency_original": "USD",
-      "investors": [
-        "Dangerous Ventures",
-        "Green Angel Ventures",
-        "Old College Capital",
-        "Scottish Enterprise Investment Fund"
-      ],
-      "lead_investor": null,
-      "announcement_date": "2026-01-19",
-      "source_url": "https://adbioresources.org/newsroom/member-press-release-3-million-investment-for-edinburgh-based-specialist-bio-carbon-designer-carbogenics/",
-      "source_name": "DuckDuckGo \u2014 Scottish VC search (via ADBA press release)",
-      "headline": "$3 Million Investment for Edinburgh-Based Specialist Bio-Carbon Designer Carbogenics",
-      "summary": "Carbogenics, a University of Edinburgh spinout founded in 2016, closed a $3m funding round on January 19, 2026 to accelerate development and international expansion of its CreChar biochar product. Equity investors include Dangerous Ventures (US), Green Angel Ventures (UK), and Old College Capital; grant funding from Innovate UK, New Mexico Gas, and New Mexico Government Economic Development Department also contributed. The company plans US manufacturing expansion alongside scaled UK operations.",
-      "confidence": "medium",
-      "data_quality_score": 100,
-      "issues": [
-        "possible_grant_not_vc"
-      ],
-      "raw_snippet": "Carbogenics closed $3 million in investment and grant funding on January 19, 2026. Equity investors: Dangerous Ventures, Green Angel Ventures, Old College Capital (University of Edinburgh venture fund), Scottish Enterprise. Grant bodies: Innovate UK, New Mexico Gas, New Mexico Government Economic Development Department. Funds accelerate development of CreChar biochar for the biogas industry and support US manufacturing expansion."
-    },
-    {
-      "id": "swurf_pre-seed_2026-03-09",
-      "company_name": "Swurf",
-      "company_location": "Edinburgh",
-      "company_sectors": [
-        "Worktech / Flexible workspace platform"
-      ],
-      "sector_normalised": false,
-      "round_type": "Pre-Seed",
-      "amount_original": "\u00a3200k",
-      "amount_gbp_millions": 0.2,
-      "currency_original": "GBP",
-      "investors": [
-        "Gareth Williams (Skyscanner co-founder)",
-        "Anna Lagerqvist Christopherson (Boda Bars)",
-        "unnamed HNW investors"
-      ],
-      "lead_investor": null,
-      "announcement_date": "2026-03-09",
-      "source_url": "https://dailybusinessgroup.co.uk/2026/03/gibson-raises-200k-to-expand-swurf-platform/",
-      "source_name": "DuckDuckGo \u2014 Scottish VC search (via Daily Business)",
-      "headline": "SWURF raises \u00a3200k to expand platform",
-      "summary": "Edinburgh-based SWURF, a remote-working platform connecting workers to on-demand private meeting pods, raised \u00a3200k in March 2026 from existing angel backers including Skyscanner co-founder Gareth Williams, alongside new unnamed high-net-worth investors. The funding will accelerate rollout of SWURF Pods across Edinburgh with the goal of making Edinburgh the world's most flexible working-friendly city.",
-      "confidence": "medium",
-      "data_quality_score": 85,
-      "issues": [],
-      "raw_snippet": "SWURF secured \u00a3200,000 of investment on March 9, 2026, to accelerate expansion. Existing backers include Gareth Williams (Skyscanner co-founder) and Anna Lagerqvist Christopherson (owner of Boda BV, Green Room and Victoria Bar). New investors are unnamed high-net-worth individuals. Platform currently lists over 450 venues and serves approximately 14,000 users. Board chaired by Alison Grieve (G-Hold founder)."
-    },
-    {
-      "id": "enterobiotix_growth_2026-04-29",
-      "company_name": "EnteroBiotix",
-      "company_location": "Unknown",
-      "company_sectors": [
-        "Life Sciences"
-      ],
-      "sector_normalised": true,
-      "round_type": "Growth",
-      "amount_original": "\u00a319m",
-      "amount_gbp_millions": 19.0,
-      "currency_original": "GBP",
-      "investors": [
-        "Thairm Bio",
-        "Scottish National Investment Bank",
-        "existing and new investors (undisclosed)"
-      ],
-      "lead_investor": "Thairm Bio",
-      "announcement_date": "2026-04-29",
-      "source_url": "https://scottishfinancialreview.com/2026/04/29/enterobiotix-bellshill-biopharma-raises-19m/",
-      "source_name": "DuckDuckGo \u2014 Scottish VC search (via Scottish Financial Review)",
-      "headline": "EnteroBiotix, Bellshill biopharma, raises \u00a319m",
-      "summary": "EnteroBiotix, a Bellshill-based biopharmaceutical company focused on microbiome therapeutics, raised \u00a319m in growth financing led by Thairm Bio, with participation from the Scottish National Investment Bank. The funds will advance lead candidate EBX-102-02 into Phase 2b development for irritable bowel syndrome with constipation, following a positive Phase 2a trial. First patient dosing is expected Q2 2026 with topline data anticipated H2 2027.",
-      "confidence": "high",
-      "data_quality_score": 85,
+      "data_quality_score": 75,
       "issues": [
         "location_unknown",
         "company_not_clearly_scottish"
       ],
-      "raw_snippet": "EnteroBiotix secured \u00a319m in growth financing led by Thairm Bio and the Scottish National Investment Bank. Following the positive Phase 2a TrIuMPH trial outcome demonstrating efficacy of EBX-102-02 over placebo in IBS patients, the company will commence the largest ever full-spectrum microbiome therapeutic trial in IBS. CEO James McIlroy confirmed first patient dosing expected Q2 2026 and topline efficacy data anticipated H2 2027. Announced April 29, 2026."
+      "raw_snippet": "The raise was led by existing investor Archangels, with support from Old College Capital, BBI, Scottish Enterprise, and new investor EverQuest Capital Partners... BIOCAPTIVA has raised \u00a31.58 million in a new funding round and launched its first product in the US."
     },
     {
-      "id": "entourage-ai_pre-seed_2026-03-18",
-      "company_name": "Entourage AI",
-      "company_location": "Glasgow",
+      "id": "unknown_unknown_2026-05-27",
+      "company_name": null,
+      "company_location": "Unknown",
       "company_sectors": [
-        "Healthtech",
-        "AI & Machine Learning"
+        "Other"
       ],
-      "sector_normalised": true,
-      "round_type": "Pre-Seed",
-      "amount_original": "$5m",
-      "amount_gbp_millions": 3.705,
-      "currency_original": "USD",
-      "investors": [
-        "Provision",
-        "GU Holdings Ltd (University of Glasgow)",
-        "David Peterson",
-        "Brad Peltz",
-        "angel investors"
-      ],
-      "lead_investor": "Provision",
-      "announcement_date": "2026-03-18",
-      "source_url": "https://scottishfinancialreview.com/2026/03/18/entourage-ai-glasgow-uni-health-spinout-in-5m-raise/",
-      "source_name": "DuckDuckGo \u2014 Scottish VC search (via Scottish Financial Review)",
-      "headline": "Entourage AI, Glasgow uni health spinout, in $5m raise",
-      "summary": "Entourage AI, a University of Glasgow spinout focused on longevity science and AI-powered health data analysis, raised $5m in a pre-seed round led by Provision. The company opened a Research and Operations Centre at Glasgow's West of Scotland Science Park, with Scottish Government Business Minister Richard Lochhead attending. The company was founded by Professor Patrick T. Gunning and aims to transform how human healthspan is measured and extended.",
-      "confidence": "high",
-      "data_quality_score": 95,
-      "issues": [],
-      "raw_snippet": "Entourage AI secured $5 million in pre-seed funding led by Provision, with participation from GU Holdings Ltd (University of Glasgow's investment arm), David Peterson, Brad Peltz, and angel investors. The University of Glasgow spinout opened a Research and Operations Centre in Glasgow's West of Scotland Science Park. Founded by serial entrepreneur Professor Patrick T. Gunning, the company focuses on longevity science using AI to transform how human health is measured. Announced March 18, 2026."
-    },
-    {
-      "id": "tilebio_seed_2026-03-03",
-      "company_name": "TileBio",
-      "company_location": "Glasgow",
-      "company_sectors": [
-        "Healthtech",
-        "AI & Machine Learning"
-      ],
-      "sector_normalised": true,
-      "round_type": "Seed",
-      "amount_original": "\u00a31.6m",
-      "amount_gbp_millions": 1.6,
-      "currency_original": "GBP",
-      "investors": [
-        "Twin Path Ventures",
-        "Scottish Enterprise Investment Fund",
-        "GU Holdings Ltd (University of Glasgow)"
-      ],
-      "lead_investor": "Twin Path Ventures",
-      "announcement_date": "2026-03-03",
-      "source_url": "https://glasgowcityofscienceandinnovation.com/glasgow-healthtech-spinout-raises-1-6m-to-transform-cancer-diagnosis-with-ai/",
-      "source_name": "DuckDuckGo \u2014 Scottish VC search (via Glasgow City of Science and Innovation)",
-      "headline": "Glasgow healthtech spinout raises \u00a31.6m to transform cancer diagnosis with AI",
-      "summary": "TileBio, a University of Glasgow spinout, raised \u00a31.6m in seed funding led by Twin Path Ventures to commercialise AI technology capable of learning the 'language of cancer' from unlabelled tissue images. The company's self-learning models bypass the need for manual data annotation \u2014 a key bottleneck in digital pathology AI \u2014 and will use the funding to accelerate commercialisation and clinical deployment of its diagnostic platform.",
-      "confidence": "high",
-      "data_quality_score": 95,
-      "issues": [],
-      "raw_snippet": "TileBio secured \u00a31.6m in seed funding led by Twin Path Ventures, with participation from Scottish Enterprise and GU Holdings Ltd. CEO Dr Christopher Walsh: 'We have developed a method that allows AI systems to interpret the language of tissue directly from millions of unlabelled images.' Twin Path Ventures' Katie Lockwood: 'Their models completely bypass the industry's biggest bottleneck: the need for manual data annotation.' Announced March 3, 2026."
-    },
-    {
-      "id": "cnuic_pre-seed_2026-04-28",
-      "company_name": "Cnuic",
-      "company_location": "Edinburgh",
-      "company_sectors": [
-        "Deep Tech"
-      ],
-      "sector_normalised": true,
-      "round_type": "Pre-Seed",
-      "amount_original": "$3m",
-      "amount_gbp_millions": 2.223,
-      "currency_original": "USD",
-      "investors": [
-        "Tensor Ventures",
-        "Blank Space Ventures",
-        "Silicon Roundabout Ventures",
-        "Phasechange",
-        "SANDS",
-        "Superlative"
-      ],
-      "lead_investor": "Tensor Ventures",
-      "announcement_date": "2026-04-28",
-      "source_url": "https://tech.eu/2026/04/28/cnuic-secures-eur3m-pre-seed-to-unlock-next-generation-photonic-chip-production/",
-      "source_name": "DuckDuckGo \u2014 Scottish VC search (via Tech.eu)",
-      "headline": "Cnuic secures $3m pre-seed to unlock next-generation photonic chip production",
-      "summary": "Edinburgh-based Cnuic raised $3m in an oversubscribed pre-seed round led by Tensor Ventures to develop a new photolithography device that uses light rather than electrons to enable fast, reconfigurable production of photonic chips. The technology is intended to democratise access to photonic chip manufacturing, with potential implications for European semiconductor sovereignty. Co-founder Omar Durrani described it as 'building the tools that make that possible at scale.'",
-      "confidence": "high",
-      "data_quality_score": 95,
-      "issues": [],
-      "raw_snippet": "Cnuic, headquartered in Edinburgh, raised $3m in pre-seed funding led by Tensor Ventures and Blank Space Ventures, with Silicon Roundabout Ventures, Phasechange, SANDS, and Superlative also participating. The company has built a working prototype of a new photolithography device using light for fast, reconfigurable chip production. Co-founder Omar Durrani: 'We learned to use electrons. Now we are learning to use light.' Tensor Ventures' Martin Drd\u00fal: 'This is a completely new technology and a major breakthrough.' Announced April 28, 2026."
-    },
-    {
-      "id": "quantcore_unknown_2026-04-01",
-      "company_name": "Quantcore",
-      "company_location": "Glasgow",
-      "company_sectors": [
-        "Deep Tech"
-      ],
-      "sector_normalised": true,
+      "sector_normalised": false,
       "round_type": "Unknown",
-      "amount_original": "\u00a3250k",
-      "amount_gbp_millions": 0.25,
+      "amount_original": null,
+      "amount_gbp_millions": null,
       "currency_original": "GBP",
-      "investors": [
-        "STAC Invest"
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": "2026-05-27",
+      "source_url": "https://scottishfinancialreview.com/2026/05/27/scottish-mortgage-returns-27-boosted-by-spacex/",
+      "source_name": "Scottish Financial Review",
+      "headline": "Scottish Mortgage returns 27%, boosted by SpaceX",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 10,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "location_unknown",
+        "company_not_clearly_scottish"
       ],
-      "lead_investor": "STAC Invest",
-      "announcement_date": "2026-04-01",
-      "source_url": "https://businesscloud.co.uk/live-blog/stac-backs-three-scottish-deeptech-companies/",
-      "source_name": "DuckDuckGo \u2014 Scottish VC search (via BusinessCloud)",
-      "headline": "STAC backs three Scottish deeptech companies with \u00a3772k",
-      "summary": "STAC invested \u00a3250k in Quantcore Technologies as part of a \u00a3772k cohort round covering three companies completing STAC's 18-month accelerator programme. This investment is separate from, and additive to, Quantcore's larger \u00a32.5m seed round co-led by PXN Ventures announced March 5, 2026. The STAC tranche supports quantum hardware manufacturing development at the James Watt Nanofabrication Centre.",
-      "confidence": "high",
-      "data_quality_score": 90,
-      "issues": [],
-      "raw_snippet": "STAC deployed \u00a3772,000 across three Glasgow-based deeptech ventures: Quantcore Technologies (\u00a3250,000), Vuabl (\u00a3222,000), and Airspection (\u00a3300,000). All three completed STAC's 18-month accelerator programme. Quantcore is the only company in the UK manufacturing niobium-based superconducting circuits. Announced April 1, 2026."
+      "raw_snippet": ""
     },
     {
-      "id": "vuabl_pre-seed_2026-04-01",
-      "company_name": "Vuabl",
-      "company_location": "Glasgow",
+      "id": "unknown_unknown_2026-05-22",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": "2026-05-22",
+      "source_url": "https://scottishfinancialreview.com/2026/05/22/edinburgh-has-highest-employment-rate-in-uk/",
+      "source_name": "Scottish Financial Review",
+      "headline": "Edinburgh has highest employment rate in UK",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 10,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_2026-05-19",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": "2026-05-19",
+      "source_url": "https://scottishfinancialreview.com/2026/05/19/edinburgh-council-settles-in-tram-law-firm-case/",
+      "source_name": "Scottish Financial Review",
+      "headline": "Edinburgh Council settles in tram law firm case",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 10,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.scotsman.com/sport/rugby-union/riley-higgins-brother-joins-edinburgh-rugby-something-pretty-special-8642901",
+      "source_name": "The Scotsman \u2014 Business",
+      "headline": "Riley Higgins' brother joins Edinburgh Rugby - 'something pretty special'",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.scotsman.com/business/scottish-mortgage-investment-trust-sees-elon-musks-spacex-take-off-8642694",
+      "source_name": "The Scotsman \u2014 Business",
+      "headline": "Scottish Mortgage Investment Trust sees Elon Musk\u2019s SpaceX take off",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.scotsman.com/recommended/cremo-razor-grooming-shaving-fathers-day-8640317",
+      "source_name": "The Scotsman \u2014 Business",
+      "headline": "Best-selling Cremo razor drops to \u00a314.95 in major summer grooming sale (aff)",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.scotsman.com/health/scotlands-health-awards-2026-nominations-open-as-health-secretary-angela-constance-urges-people-to-get-involved-8637854",
+      "source_name": "The Scotsman \u2014 Business",
+      "headline": "Scotland's Health Awards 2026: Nominations open as Health Secretary urges people to get involved",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.scotsman.com/business/tricapital-scots-syndicate-leads-ps3m-plus-deals-and-unveils-key-hire-8640052",
+      "source_name": "The Scotsman \u2014 Business",
+      "headline": "Tricapital: Scots syndicate leads \u00a33m-plus deals and unveils key hire",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://scottishbusinessnews.net/rollermania-reignites-as-rollers-forever-announces-2026-scottish-tour/",
+      "source_name": "TechHub Scotland / Scottish Tech Scene blogs",
+      "headline": "Rollermania reignites as Rollers Forever announces 2026 Scottish Tour",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://scottishbusinessnews.net/court-ruling-sparks-vat-warning-for-charities-and-colleges-over-public-funding/",
+      "source_name": "TechHub Scotland / Scottish Tech Scene blogs",
+      "headline": "Court ruling sparks VAT warning for charities and colleges over public funding",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://scottishbusinessnews.net/wbg-calls-summer-vat-cut-a-missed-opportunity/",
+      "source_name": "TechHub Scotland / Scottish Tech Scene blogs",
+      "headline": "Wbg calls summer VAT cut a \u201cmissed opportunity\u201d",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://scottishbusinessnews.net/energy-bills-to-rise-13-from-july-as-iran-war-drives-up-uk-price-cap/",
+      "source_name": "TechHub Scotland / Scottish Tech Scene blogs",
+      "headline": "Energy bills to rise 13% from July as Iran war drives up UK price cap",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://scottishbusinessnews.net/veteran-bike-mechanic-launches-dundee-repair-shop-after-30-years-in-trade/",
+      "source_name": "TechHub Scotland / Scottish Tech Scene blogs",
+      "headline": "Veteran bike mechanic launches Dundee repair shop after 30 years in trade",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://scottishbusinessnews.net/ardent-expands-scottish-presence-with-senior-associate-director-hire/",
+      "source_name": "TechHub Scotland / Scottish Tech Scene blogs",
+      "headline": "Ardent expands Scottish presence with Senior Associate Director hire",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://html.duckduckgo.com/html/?q=Scottish+startup+funding+round+2026",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://html.duckduckgo.com/html/?q=Scotland+venture+capital+investment+2026",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://html.duckduckgo.com/html/?q=Edinburgh+startup+raises+million+2026",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://html.duckduckgo.com/html/?q=Glasgow+startup+funding+2026",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://html.duckduckgo.com/html/?q=Scottish+scaleup+Series+A+2026",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://html.duckduckgo.com/html/?q=Scotland+VC+backed+2026",
+      "source_name": "DuckDuckGo \u2014 Scottish VC search",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://techfundingnews.com/airis-labs-emerges-stealth-field-video-intelligence/",
+      "source_name": "Tech Funding News",
+      "headline": "Airis Labs emerges from stealth with $60M in funding to create mission-ready intelligence from raw visual data",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://techfundingnews.com/a-female-founded-bristol-startup-is-transforming-the-future-of-construction-from-fungi-and-just-raised-4m-to-scale-it/",
+      "source_name": "Tech Funding News",
+      "headline": "A female-founded Bristol startup is transforming the future of construction from fungi and just raised \u00a34M to scale it",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://techfundingnews.com/longwall-british-business-bank/",
+      "source_name": "Tech Funding News",
+      "headline": "\u2018A shot in the arm for UK tech\u2019: British Business Bank anchors Longwall\u2019s \u00a3100M deeptech fund with \u00a350M\u00a0",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://techfundingnews.com/allo-14m-series-a-zigg-capital/",
+      "source_name": "Tech Funding News",
+      "headline": "Germany\u2019s allO secures $14M Series A to replace restaurant admin with AI",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://techfundingnews.com/stord-raises-250-million-to-help-independent-brands-rival-amazon/",
+      "source_name": "Tech Funding News",
+      "headline": "Kleiner Perkins, Founders Fund double down on Stord in $250M round at $3B valuation to help independent brands take on Amazon",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://techfundingnews.com/quorn-pacifico-raises-7m-series-a/",
+      "source_name": "Tech Funding News",
+      "headline": "Quorn rival Pacifico Biolabs raises \u20ac7M Series A to scale mycelium fermentation in Europe\u2019s disused brewery tanks",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://techfundingnews.com/this-oxford-spinout-just-raised-4-3m-to-fix-tidal-techs-biggest-problem/",
+      "source_name": "Tech Funding News",
+      "headline": "This Oxford spinout just raised \u00a34.3M to fix tidal tech\u2019s biggest problem",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.pxnventures.co.uk/imperagen-secures-5m-to-power-next-gen-enzyme-engineering/",
+      "source_name": "PXN Ventures \u2014 News",
+      "headline": "Imperagen secures \u00a35m to power next gen enzyme engineering",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.pxnventures.co.uk/rightbrain-raises-3m-npif-ii-to-help-businesses-become-ai-native/",
+      "source_name": "PXN Ventures \u2014 News",
+      "headline": "Rightbrain raises \u00a33m from NPIF II to help businesses become AI-native",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.pxnventures.co.uk/pxn-group-named-on-sifteds-2026-list-of-the-50-best-uk-ireland-investors/",
+      "source_name": "PXN Ventures \u2014 News",
+      "headline": "PXN Group named on Sifted\u2019s top 50 investors list",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.pxnventures.co.uk/earth-blox-secures-6m-to-finance-the-transition-to-a-nature-positive-economy/",
+      "source_name": "PXN Ventures \u2014 News",
+      "headline": "Earth Blox secures \u00a36m to finance the transition to a nature-positive economy",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.pxnventures.co.uk/praeseed-reopens-for-northern-startups-with-up-to-1-6m-to-invest/",
+      "source_name": "PXN Ventures \u2014 News",
+      "headline": "PraeSeed reopens for Northern startups with up to \u00a31.6m to invest",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.pxnventures.co.uk/quantcore-raises-2-5m-to-build-sovereign-quantum-supply-chain/",
+      "source_name": "PXN Ventures \u2014 News",
+      "headline": "Quantcore raises \u00a32.5m to build sovereign quantum supply chain",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.pxnventures.co.uk/npif-ii-leads-2-4m-round-into-lcrs-made-with-intent/",
+      "source_name": "PXN Ventures \u2014 News",
+      "headline": "NPIF II leads \u00a32.4m round into LCR\u2019s Made With Intent",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.pxnventures.co.uk/launchpad-welcomes-strategic-investor-pxn-ventures/",
+      "source_name": "PXN Ventures \u2014 News",
+      "headline": "Launchpad welcomes strategic investor PXN Ventures",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.pxnventures.co.uk/homecooks-raises-1-4m-to-scale-restaurant-quality-meal-prep-and-accelerate-its-growth/",
+      "source_name": "PXN Ventures \u2014 News",
+      "headline": "HomeCooks raises \u00a31.4m to scale restaurant-quality meal prep and accelerate its growth",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.mavencp.com/latest-news",
+      "source_name": "Maven Capital Partners \u2014 Latest News",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_2026-03-27",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": "2026-03-27",
+      "source_url": "https://www.kelvincapital.com/2026/03/27/a-turning-point-for-private-markets/",
+      "source_name": "Kelvin Capital \u2014 News",
+      "headline": "A Turning Point for Private Markets",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 10,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_2026-03-16",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": "2026-03-16",
+      "source_url": "https://www.kelvincapital.com/2026/03/16/kelvin-capital-announces-the-catalyst-fund/",
+      "source_name": "Kelvin Capital \u2014 News",
+      "headline": "Kelvin Capital Announces The Catalyst Fund",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 10,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_2025-08-06",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": "2025-08-06",
+      "source_url": "https://www.kelvincapital.com/2025/08/06/former-aim-boss-to-chair-private-shares-platform-jp-jenkins/",
+      "source_name": "Kelvin Capital \u2014 News",
+      "headline": "Former AIM Boss to Chair Private Shares Platform JP Jenkins",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 10,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_2025-07-21",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": "2025-07-21",
+      "source_url": "https://www.kelvincapital.com/2025/07/21/innovatium-secures-strategic-investment-from-bank-and-hitachi-industrial-equipment-systems/",
+      "source_name": "Kelvin Capital \u2014 News",
+      "headline": "Innovatium Secures Strategic Investment from Bank and Hitachi Industrial Equipment Systems",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 10,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_2025-04-03",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": "2025-04-03",
+      "source_url": "https://www.kelvincapital.com/2025/04/03/breakthrough-investment-for-scots-firm-fuels-future-of-spaceflight/",
+      "source_name": "Kelvin Capital \u2014 News",
+      "headline": "Breakthrough investment for Scots firm fuels future of spaceflight",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 10,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.mercia.co.uk/lab-simulator-firm-targets-asia-pacific-after-1-6m-fundraise/",
+      "source_name": "Mercia Asset Management \u2014 News",
+      "headline": "Lab simulator firm targets Asia-Pacific after \u00a31.6m fundraise",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.mercia.co.uk/student-review-platform-raises-further-7m-for-expansion-into-europe-and-us/",
+      "source_name": "Mercia Asset Management \u2014 News",
+      "headline": "Student review platform raises \u00a37m to expand into Europe and US",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.mercia.co.uk/alesi-surgical-secures-7m-to-tackle-hazardous-smoke-in-operating-theatres/",
+      "source_name": "Mercia Asset Management \u2014 News",
+      "headline": "Alesi Surgical secures \u00a37m to tackle hazardous smoke in operating theatres",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.mercia.co.uk/fast-growing-customer-experience-platform-raises-further-5m/",
+      "source_name": "Mercia Asset Management \u2014 News",
+      "headline": "Fast-growing customer experience platform raises further \u00a35m",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.mercia.co.uk/avid-games-launches-new-wild-cards-card-battler/",
+      "source_name": "Mercia Asset Management \u2014 News",
+      "headline": "Avid Games launches new \u2018Wild Cards\u2019 card battler",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.mercia.co.uk/windfarm-software-firm-raises-750k-in-first-deal-by-north-east-accelerate-fund/",
+      "source_name": "Mercia Asset Management \u2014 News",
+      "headline": "CleanTech firm raises \u00a3750k in first deal by North East Accelerate Fund",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://www.mercia.co.uk/tozaro-raises-6m-for-smart-polymers-to-cut-cost-of-gene-therapies/",
+      "source_name": "Mercia Asset Management \u2014 News",
+      "headline": "Tozaro raises \u00a36m to cut cost of breakthrough gene therapies",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://parkwalk.vc/news/",
+      "source_name": "Parkwalk \u2014 News",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 5,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://archangelsonline.com/bioliberty-announces-10-5-million-series-a-financing-to-build-functional-intelligence-capabilities-for-post-acute-care/?utm_source=rss&utm_medium=rss&utm_campaign=bioliberty-announces-10-5-million-series-a-financing-to-build-functional-intelligence-capabilities-for-post-acute-care",
+      "source_name": "Archangels \u2014 News",
+      "headline": "Bioliberty Announces $10.5 million Series A Financing to Build Functional Intelligence Capabilities for Post-Acute Care",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://archangelsonline.com/earth-blox-secures-6m-to-help-businesses-and-banks-finance-the-transition-to-a-nature-positive-economy/?utm_source=rss&utm_medium=rss&utm_campaign=earth-blox-secures-6m-to-help-businesses-and-banks-finance-the-transition-to-a-nature-positive-economy",
+      "source_name": "Archangels \u2014 News",
+      "headline": "Earth Blox secures \u00a36m to help businesses and banks finance the transition to a nature-positive economy",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://archangelsonline.com/biocaptiva-secures-1-58m-to-transform-how-blood-samples-are-prepared-for-liquid-biopsy/?utm_source=rss&utm_medium=rss&utm_campaign=biocaptiva-secures-1-58m-to-transform-how-blood-samples-are-prepared-for-liquid-biopsy",
+      "source_name": "Archangels \u2014 News",
+      "headline": "BIOCAPTIVA secures \u00a31.58M to transform how blood samples are prepared for liquid biopsy",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://archangelsonline.com/2025-archangels-leveraged-41m-of-investment-in-scottish-scaleups/?utm_source=rss&utm_medium=rss&utm_campaign=2025-archangels-leveraged-41m-of-investment-in-scottish-scaleups",
+      "source_name": "Archangels \u2014 News",
+      "headline": "2025: Archangels leveraged \u00a341M of investment in Scottish scaleups",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://archangelsonline.com/1nhaler-secures-1-5-million-in-funding-to-advance-paper-inhaler-platform/?utm_source=rss&utm_medium=rss&utm_campaign=1nhaler-secures-1-5-million-in-funding-to-advance-paper-inhaler-platform",
+      "source_name": "Archangels \u2014 News",
+      "headline": "1nhaler secures \u00a31.5 million in funding to advance paper inhaler platform",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://archangelsonline.com/powerphotonic-bags-2-6-million-to-scale-operations/?utm_source=rss&utm_medium=rss&utm_campaign=powerphotonic-bags-2-6-million-to-scale-operations",
+      "source_name": "Archangels \u2014 News",
+      "headline": "PowerPhotonic bags \u00a32.6 million to scale operations",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "https://archangelsonline.com/csignum-secures-6m-to-transform-underwater-wireless-networks/?utm_source=rss&utm_medium=rss&utm_campaign=csignum-secures-6m-to-transform-underwater-wireless-networks",
+      "source_name": "Archangels \u2014 News",
+      "headline": "CSignum secures \u00a36M to transform underwater wireless networks",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "swurf_growth_2026-03-09",
+      "company_name": "Swurf",
+      "company_location": "Edinburgh",
       "company_sectors": [
         "Property & Construction Tech"
       ],
       "sector_normalised": true,
-      "round_type": "Pre-Seed",
-      "amount_original": "\u00a3222k",
-      "amount_gbp_millions": 0.222,
+      "round_type": "Growth",
+      "amount_original": "\u00a3200,000",
+      "amount_gbp_millions": 0.2,
       "currency_original": "GBP",
       "investors": [
-        "STAC Invest"
+        "Gareth Williams",
+        "Anna Lagerqvist Christopherson"
       ],
-      "lead_investor": "STAC Invest",
-      "announcement_date": "2026-04-01",
-      "source_url": "https://businesscloud.co.uk/live-blog/stac-backs-three-scottish-deeptech-companies/",
-      "source_name": "DuckDuckGo \u2014 Scottish VC search (via BusinessCloud)",
-      "headline": "STAC backs three Scottish deeptech companies with \u00a3772k",
-      "summary": "Glasgow-based Vuabl raised \u00a3222k from the STAC Invest syndicate as part of a \u00a3772k cohort investment in three companies completing STAC's 18-month accelerator programme. Vuabl has built software using the LIDAR sensors in modern smartphones to scan properties and generate comprehensive condition reports, supporting housing providers meeting new energy efficiency and tenant safety regulations.",
-      "confidence": "high",
+      "lead_investor": null,
+      "announcement_date": "2026-03-09",
+      "source_url": "https://www.scottishfinancialnews.com/articles/funding-round-worth-ps200k-to-help-scottish-startup-make-edinburgh-most-flexible-working-capital",
+      "source_name": "Scottish Financial News",
+      "headline": "Funding round worth \u00a3200k to help Scottish startup make Edinburgh most flexible working capital",
+      "summary": "Edinburgh-based remote working platform SWURF secured \u00a3200,000 from angel investors including Skyscanner co-founder Gareth Williams and hospitality entrepreneur Anna Lagerqvist Christopherson. The funding will support rollout of SWURF Pods \u2014 private soundproofed meeting spaces already installed at Edinburgh Airport and YOTEL \u2014 and expand the platform's 450+ venue and 14,000 active user network.",
+      "confidence": "medium",
       "data_quality_score": 100,
       "issues": [],
-      "raw_snippet": "STAC deployed \u00a3772,000 across three Glasgow-based deeptech ventures: Quantcore Technologies (\u00a3250,000), Vuabl (\u00a3222,000), and Airspection (\u00a3300,000). All three completed STAC's 18-month accelerator programme. Vuabl uses smartphone LIDAR sensors for property condition reports and EPC ratings. Announced April 1, 2026."
-    },
-    {
-      "id": "airspection_pre-seed_2026-04-01",
-      "company_name": "Airspection",
-      "company_location": "Glasgow",
-      "company_sectors": [
-        "Envirotech / Autonomous drone inspection"
-      ],
-      "sector_normalised": false,
-      "round_type": "Pre-Seed",
-      "amount_original": "\u00a3300k",
-      "amount_gbp_millions": 0.3,
-      "currency_original": "GBP",
-      "investors": [
-        "STAC Invest"
-      ],
-      "lead_investor": "STAC Invest",
-      "announcement_date": "2026-04-01",
-      "source_url": "https://businesscloud.co.uk/live-blog/stac-backs-three-scottish-deeptech-companies/",
-      "source_name": "DuckDuckGo \u2014 Scottish VC search (via BusinessCloud)",
-      "headline": "STAC backs three Scottish deeptech companies with \u00a3772k",
-      "summary": "Glasgow-based Airspection raised \u00a3300k from the STAC Invest syndicate as part of a \u00a3772k cohort investment in three companies completing STAC's 18-month accelerator programme. Airspection builds autonomous drone technology for offshore wind turbine inspections, flying from safe locations to remote infrastructure in extreme conditions to enhance safety and reduce environmental impact.",
-      "confidence": "high",
-      "data_quality_score": 90,
-      "issues": [],
-      "raw_snippet": "STAC deployed \u00a3772,000 across three Glasgow-based deeptech ventures: Quantcore Technologies (\u00a3250,000), Vuabl (\u00a3222,000), and Airspection (\u00a3300,000). All three completed STAC's 18-month accelerator programme. Airspection's drones fly to remote locations for offshore wind, power lines, rail networks, and coastal assets. Announced April 1, 2026."
-    },
-    {
-      "id": "stampfreeai_growth_2026-05-20",
-      "company_name": "Stampfree.Ai",
-      "company_location": "Edinburgh",
-      "company_sectors": [
-        "AI & Machine Learning"
-      ],
-      "sector_normalised": true,
-      "round_type": "Growth",
-      "amount_original": "\u00a31,029,968",
-      "amount_gbp_millions": 1029968.0,
-      "currency_original": "GBP",
-      "investors": [
-        "R42 Group",
-        "Crowdcube investors",
-        "Republic investors",
-        "unnamed existing and new investors"
-      ],
-      "lead_investor": "R42 Group",
-      "announcement_date": "2026-05-20",
-      "source_url": "https://www.digit.fyi/edinburgh-ai-ecommerce-firm-raises-over-1m-in-new-investment/",
-      "source_name": "DuckDuckGo \u2014 Scottish VC search (via DIGIT)",
-      "headline": "Edinburgh AI ecommerce firm raises over \u00a31m in new investment",
-      "summary": "Edinburgh-based stampfree.ai, which develops AI-powered parcel shipping and returns technology, raised just over \u00a31m in a new round led by long-term backer R42 Group alongside crowdfunding investors on Crowdcube and Republic. The company's innovations include WhatsApp-based returns management and patented label-free shipping technology deployed with Royal Mail, Evri, and QazPost in Kazakhstan. CEO Hugh Craigie Halkett described the round as oversubscribed.",
-      "confidence": "medium",
-      "data_quality_score": 95,
-      "issues": [],
-      "raw_snippet": "stampfree.ai raised \u00a31,029,968 in a new investment round as of May 20, 2026. R42 Group is described as a 'long-term investor' providing 'continued backing' across all fundraising rounds. Additional investors include the Crowdcube and Republic crowdfunding communities plus unnamed existing and new investors. CEO Hugh Craigie Halkett: 'This latest investment round was once again hugely oversubscribed, reflecting the confidence both of existing and new investors.' The company has secured EU and US patents for its label-free technology."
+      "raw_snippet": "Edinburgh-based remote working platform SWURF has secured \u00a3200,000 in new funding. Investors include Gareth Williams (Skyscanner co-founder) and Anna Lagerqvist Christopherson (hospitality entrepreneur). The investment will primarily support rollout of SWURF Pods."
     },
     {
       "id": "exergy3_seed_2026-04-21",
@@ -416,7 +1827,7 @@
       "currency_original": "GBP",
       "investors": [
         "Axeleo Capital",
-        "Bayern Capital",
+        "Bayern Kapital",
         "Kibo Invest",
         "Scottish Enterprise Investment Fund",
         "Zero Carbon Capital",
@@ -425,186 +1836,934 @@
       "lead_investor": "Axeleo Capital",
       "announcement_date": "2026-04-21",
       "source_url": "https://edinburgh-innovations.ed.ac.uk/news/spinout-exergy3-raises-10m-to-decarbonise-industrial-heat",
-      "source_name": "Edinburgh Innovations \u2014 News",
+      "source_name": "Edinburgh Innovations",
       "headline": "Spinout Exergy3 raises \u00a310m to decarbonise industrial heat",
-      "summary": "Exergy3, a University of Edinburgh spinout, raised \u00a310m in a seed round led by Axeleo Capital to commercialise its ultra-high-temperature thermal energy storage system. The technology converts surplus renewable electricity into industrial-grade heat up to 1,200\u00b0C, addressing both wasted renewable generation and the need for decarbonised industrial processes. The company piloted its system at Annandale Distillery, enabling one of the world's first low-carbon whisky productions.",
+      "summary": "Exergy3, a University of Edinburgh spinout, raised \u00a310 million (\u20ac11.4m) in seed funding to commercialise its thermal energy storage technology that converts excess renewable electricity into high-temperature industrial heat. The round was led by Axeleo Capital's Article 9 Green Tech fund alongside Bayern Kapital and Kibo Invest, with support from Scottish Enterprise, Zero Carbon Capital, and Old College Capital. The company has already piloted its system at Annandale Distillery in southwest Scotland.",
       "confidence": "high",
       "data_quality_score": 100,
       "issues": [],
-      "raw_snippet": "Exergy3, a University of Edinburgh spinout founded on technology invented by Dr Adam Robinson, secured \u00a310m in seed funding led by Axeleo Capital's Article 9 Green Tech Industry I fund. Other investors include Bayern Capital, Kibo Invest, Scottish Enterprise, Zero Carbon Capital, and Old College Capital. The technology converts surplus renewable electricity into industrial heat and was piloted at Annandale Distillery. Announced 21 April 2026."
+      "raw_snippet": "Exergy3, an Edinburgh-based CleanTech startup specialising in ultra-high temperature thermal energy storage solutions, has raised \u20ac11.4 million (\u00a310 million) in Seed funding to scale its proprietary technology, addressing industrial decarbonisation, grid balancing and energy security. Lead investors: Axeleo Capital (Article 9 Green Tech Industry I fund), Bayern Capital, Kibo Invest. Follow-on investors: Scottish Enterprise, Zero Carbon Capital, Old College Capital."
     },
     {
-      "id": "bioliberty_series-a_2026-03-19",
-      "company_name": "Bioliberty",
-      "company_location": "Edinburgh",
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
       "company_sectors": [
-        "Healthtech",
-        "Deep Tech"
+        "Other"
       ],
-      "sector_normalised": true,
-      "round_type": "Series A",
-      "amount_original": "\u00a37.7m",
-      "amount_gbp_millions": 7.7,
-      "currency_original": "GBP",
-      "investors": [
-        "Scottish National Investment Bank",
-        "Archangels",
-        "Eos Advisory",
-        "Old College Capital",
-        "Hanna Capital SEZC",
-        "Conduit Connect"
-      ],
-      "lead_investor": "Scottish National Investment Bank",
-      "announcement_date": "2026-03-19",
-      "source_url": "https://edinburgh-innovations.ed.ac.uk/news/bioliberty-7-7m-investment",
-      "source_name": "Edinburgh Innovations \u2014 News",
-      "headline": "Bioliberty \u00a37.7m investment",
-      "summary": "University of Edinburgh spinout Bioliberty secured \u00a37.7m in Series A funding to accelerate product development and support international growth of its AI-enabled soft-robotic rehabilitation technology. The Scottish National Investment Bank led the round with \u00a33m, supported by existing and new investors.",
-      "confidence": "high",
-      "data_quality_score": 100,
-      "issues": [],
-      "raw_snippet": "Edinburgh Innovations news confirms Bioliberty secured \u00a37.7m in Series A investment to accelerate product development and international growth. The company is headquartered at The National Robotarium in Edinburgh with manufacturing in Fife. Announced 19 March 2026."
-    },
-    {
-      "id": "esk_growth_2026-05-11",
-      "company_name": "Esk",
-      "company_location": "Edinburgh",
-      "company_sectors": [
-        "Creative & Media"
-      ],
-      "sector_normalised": true,
-      "round_type": "Growth",
-      "amount_original": "\u00a32.6m",
-      "amount_gbp_millions": 2.6,
-      "currency_original": "GBP",
-      "investors": [
-        "Maven Capital Partners",
-        "Maven Income and Growth VCTs",
-        "Investment Fund for Scotland (IFS Maven Equity Finance)",
-        "British Business Bank"
-      ],
-      "lead_investor": "Maven Capital Partners",
-      "announcement_date": "2026-05-11",
-      "source_url": "https://www.mavencp.com/latest-news/maven-leads-2.6-million-funding-round-in-esk",
-      "source_name": "Maven Capital Partners \u2014 Latest News",
-      "headline": "Maven leads \u00a32.6 million funding round in Esk",
-      "summary": "Edinburgh-based Esk, which delivers high-end live experiences for blue-chip brands including Netflix, Paramount, and BAFTA, secured \u00a32.6m from Maven Capital Partners via its VCTs and the Investment Fund for Scotland. The funding will support business development, marketing, IP portfolio growth, and development of the company's proprietary hardware technology. Esk has completed over 550 shows globally.",
-      "confidence": "high",
-      "data_quality_score": 100,
-      "issues": [],
-      "raw_snippet": "Maven leads \u00a32.6m investment in Esk, an Edinburgh-based global entertainment technology company that delivers high-end live experiences for brands such as Netflix, Paramount and BAFTA. Funding from Maven Income and Growth VCTs and the Investment Fund for Scotland (IFS Maven Equity Finance), delivered by the British Business Bank. The capital will enable Esk to invest in business development, marketing, IP portfolio expansion, and proprietary hardware development. Announced May 11, 2026."
-    },
-    {
-      "id": "highway-data-systems_unknown_2026-04-30",
-      "company_name": "Highway Data Systems",
-      "company_location": "Glasgow",
-      "company_sectors": [
-        "Property & Construction Tech"
-      ],
-      "sector_normalised": true,
-      "round_type": "Unknown",
-      "amount_original": "\u00a31.25m",
-      "amount_gbp_millions": 1.25,
-      "currency_original": "GBP",
-      "investors": [
-        "Investment Fund for Scotland (IFS Maven Equity Finance)"
-      ],
-      "lead_investor": "Investment Fund for Scotland (IFS Maven Equity Finance)",
-      "announcement_date": "2026-04-30",
-      "source_url": "https://www.mavencp.com/latest-news/ifs-maven-equity-finance-invests-in-1.25-million-in-highway-data-systems",
-      "source_name": "Maven Capital Partners \u2014 Latest News",
-      "headline": "IFS Maven Equity Finance invests \u00a31.25 million in Highway Data Systems",
-      "summary": "Glasgow-based Highway Data Systems (HDS) secured \u00a31.25m from the Investment Fund for Scotland, managed by Maven Capital Partners and delivered by the British Business Bank. HDS develops automated quality assurance technology combining hardware, electronics, and software to replace manual testing processes in road construction. HDS was the first business to secure funding through the Greater Glasgow Innovation Cluster.",
-      "confidence": "high",
-      "data_quality_score": 90,
-      "issues": [],
-      "raw_snippet": "IFS Maven Equity Finance invests \u00a31.25 million in Highway Data Systems, a Glasgow-based company that develops automated quality assurance technologies for the road construction and asphalt industries. HDS serves major contractors including Eurovia, Holcim, and Tarmac across UK and US markets. The company is the first to secure investment through the Greater Glasgow Innovation Cluster. Announced April 30, 2026."
-    },
-    {
-      "id": "earth-blox_growth_2026-03-18",
-      "company_name": "Earth Blox",
-      "company_location": "Edinburgh",
-      "company_sectors": [
-        "Energy & Cleantech"
-      ],
-      "sector_normalised": true,
-      "round_type": "Growth",
-      "amount_original": "\u00a36m",
-      "amount_gbp_millions": 6.0,
-      "currency_original": "GBP",
-      "investors": [
-        "PXN Ventures",
-        "Archangels",
-        "Scottish Enterprise Investment Fund",
-        "European Space Agency"
-      ],
-      "lead_investor": "PXN Ventures",
-      "announcement_date": "2026-03-18",
-      "source_url": "https://www.pxnventures.co.uk/earth-blox-secures-6m-to-finance-the-transition-to-a-nature-positive-economy/",
-      "source_name": "PXN Ventures \u2014 News",
-      "headline": "Earth Blox secures \u00a36m to finance the transition to a nature-positive economy",
-      "summary": "Edinburgh-based Earth Blox secured \u00a36m led by PXN Ventures to expand its nature risk analytics platform, combining satellite data with AI to help financial institutions and businesses assess ecosystem degradation impacts. The round includes follow-on from Archangels, Scottish Enterprise, and the European Space Agency. Funding will grow the team and accelerate product development.",
-      "confidence": "high",
-      "data_quality_score": 95,
-      "issues": [],
-      "raw_snippet": "PXN Ventures news confirms Earth Blox secured \u00a36m in funding led by PXN Ventures, with Archangels (follow-on), Scottish Enterprise, and the European Space Agency participating. The platform integrates satellite data, environmental information, and portfolio analysis using AI. Announced March 18, 2026."
-    },
-    {
-      "id": "quantcore_seed_2026-03-05",
-      "company_name": "Quantcore",
-      "company_location": "Glasgow",
-      "company_sectors": [
-        "Deep Tech"
-      ],
-      "sector_normalised": true,
-      "round_type": "Seed",
-      "amount_original": "\u00a32.5m",
-      "amount_gbp_millions": 2.5,
-      "currency_original": "GBP",
-      "investors": [
-        "PXN Ventures",
-        "Blackfinch Ventures",
-        "Scottish Enterprise Investment Fund",
-        "Quantum Exponential",
-        "STAC Invest"
-      ],
-      "lead_investor": "PXN Ventures",
-      "announcement_date": "2026-03-05",
-      "source_url": "https://www.pxnventures.co.uk/quantcore-raises-2-5m-to-build-sovereign-quantum-supply-chain/",
-      "source_name": "PXN Ventures \u2014 News",
-      "headline": "Quantcore raises \u00a32.5m to build sovereign quantum supply chain",
-      "summary": "Glasgow-based Quantcore, a University of Glasgow spin-out, secured \u00a32.5m in a seed round co-led by PXN Ventures, Blackfinch Ventures, and Scottish Enterprise, with Quantum Exponential and STAC also participating. The company manufactures niobium-based superconducting circuits used in quantum computers and advanced sensing systems, and is described as the only UK company producing quantum hardware using niobium. Funds will support team expansion and product development for sovereign quantum supply chain capabilities.",
-      "confidence": "high",
-      "data_quality_score": 95,
-      "issues": [],
-      "raw_snippet": "Quantcore, a University of Glasgow spin-out based at the James Watt Nanofabrication Centre, raised \u00a32.5m in seed funding co-led by PXN Ventures, Blackfinch Ventures, and Scottish Enterprise, with Quantum Exponential and STAC also participating. CEO Dr Jack Brennan: 'This technology is extremely powerful... you need to be able to manufacture it domestically so you can control every part of it.' Announced March 5, 2026."
-    },
-    {
-      "id": "epass_unknown_2026-05-25",
-      "company_name": "ePass",
-      "company_location": "Other Scotland",
-      "company_sectors": [
-        "SaaS & Enterprise Software"
-      ],
-      "sector_normalised": true,
+      "sector_normalised": false,
       "round_type": "Unknown",
       "amount_original": null,
       "amount_gbp_millions": null,
       "currency_original": "GBP",
       "investors": [],
       "lead_investor": null,
-      "announcement_date": "2026-05-25",
-      "source_url": "https://scottishbusinessnews.net/govtech-startup-epass-rolls-out-nationwide-platform-after-1m-debut-year/",
-      "source_name": "TechHub Scotland / Scottish Business News",
-      "headline": "GovTech startup ePass rolls out nationwide platform after \u00a31m debut year",
-      "summary": "Edinburgh-based ePass, founded in 2024 by James Buchan and Chris Renga following a CivTech competition win, achieved \u00a31m revenue in its first twelve months and deployed its licensing platform across all 32 Scottish local authorities serving over 15,000 businesses. The company is actively engaging with VC and investor communities and is likely to pursue its first external fundraising round later in 2026. This is not yet a closed investment round.",
-      "confidence": "low",
-      "data_quality_score": 55,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
       "issues": [
         "amount_missing",
-        "investor_unnamed"
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
       ],
-      "raw_snippet": "GovTech startup ePass generated \u00a31m revenue in its debut year and rolled out its platform nationwide across Scotland's 32 local authorities. Co-founders James Buchan (CEO) and Chris Renga (CTO) note the company is 'actively engaging with venture capital and investor communities' and is 'likely to embark on its first external fundraising round later this year.' No external VC investment has yet been closed as of announcement date May 25, 2026."
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "unknown_unknown_undated",
+      "company_name": null,
+      "company_location": "Unknown",
+      "company_sectors": [
+        "Other"
+      ],
+      "sector_normalised": false,
+      "round_type": "Unknown",
+      "amount_original": null,
+      "amount_gbp_millions": null,
+      "currency_original": "GBP",
+      "investors": [],
+      "lead_investor": null,
+      "announcement_date": null,
+      "source_url": "",
+      "source_name": "",
+      "headline": "",
+      "summary": "",
+      "confidence": "medium",
+      "data_quality_score": 0,
+      "issues": [
+        "amount_missing",
+        "investor_unnamed",
+        "date_missing",
+        "location_unknown",
+        "company_not_clearly_scottish"
+      ],
+      "raw_snippet": ""
+    },
+    {
+      "id": "earth-blox_series-a_2026-03-18",
+      "company_name": "Earth Blox",
+      "company_location": "Edinburgh",
+      "company_sectors": [
+        "Energy & Cleantech"
+      ],
+      "sector_normalised": true,
+      "round_type": "Series A",
+      "amount_original": "\u00a36m",
+      "amount_gbp_millions": 6.0,
+      "currency_original": "GBP",
+      "investors": [
+        "PXN Ventures",
+        "Scottish Enterprise Investment Fund",
+        "Archangels",
+        "European Space Agency"
+      ],
+      "lead_investor": "PXN Ventures",
+      "announcement_date": "2026-03-18",
+      "source_url": "https://www.pxnventures.co.uk/earth-blox-secures-6m-to-finance-the-transition-to-a-nature-positive-economy/",
+      "source_name": "PXN Ventures",
+      "headline": "Earth Blox secures \u00a36m to finance the transition to a nature-positive economy",
+      "summary": "Edinburgh-based Earth Blox secured \u00a36 million led by PXN Ventures to help organisations understand how nature loss and climate hazards affect financial performance. The round also includes follow-on investment from Archangels, support from Scottish Enterprise, and funding from the European Space Agency. The platform combines satellite, environmental, and portfolio data with AI-powered analysis for global banks and businesses.",
+      "confidence": "high",
+      "data_quality_score": 95,
+      "issues": [],
+      "raw_snippet": "Earth Blox, an Edinburgh-based technology company helping organisations understand how nature loss and climate hazards affect financial performance, has secured \u00a36 million in new investment led by PXN Ventures with support from Scottish Enterprise, follow-on investment from Archangels and funding from the European Space Agency (ESA)."
+    },
+    {
+      "id": "honuworx_seed_2026-05-26",
+      "company_name": "HonuWorx",
+      "company_location": "Other Scotland",
+      "company_sectors": [
+        "Deep Tech"
+      ],
+      "sector_normalised": true,
+      "round_type": "Seed",
+      "amount_original": "\u00a3506,000",
+      "amount_gbp_millions": 0.506,
+      "currency_original": "GBP",
+      "investors": [
+        "Tricapital",
+        "Scottish Enterprise Investment Fund"
+      ],
+      "lead_investor": "Tricapital",
+      "announcement_date": "2026-05-26",
+      "source_url": "https://www.scotsman.com/business/tricapital-scots-syndicate-leads-ps3m-plus-deals-and-unveils-key-hire-8640052",
+      "source_name": "The Scotsman",
+      "headline": "Tricapital: Scots syndicate leads \u00a33m-plus deals and unveils key hire",
+      "summary": "Scottish angel syndicate Tricapital invested \u00a3506,000 in HonuWorx, a subsea robotics specialist. The deal forms part of a batch of investments totalling more than \u00a33 million by Tricapital, whose members have invested \u00a36.8m in Scottish businesses over two and a half years, matched by Scottish Enterprise. HonuWorx recently secured its first NATO contract through the defence innovation accelerator for the North Atlantic programme.",
+      "confidence": "high",
+      "data_quality_score": 95,
+      "issues": [],
+      "raw_snippet": "The latest investments involve \u00a3506,000 of backing for subsea robotics specialist HonuWorx... Angel syndicate Tricapital has led a series of fresh investments totalling more than \u00a33 million as it focuses on critical areas such as the industrial transition and ocean technology."
+    },
+    {
+      "id": "kaly_seed_2026-05-26",
+      "company_name": "Kaly",
+      "company_location": "Other Scotland",
+      "company_sectors": [
+        "Life Sciences",
+        "Agritech & Foodtech"
+      ],
+      "sector_normalised": true,
+      "round_type": "Seed",
+      "amount_original": "\u00a3430,000",
+      "amount_gbp_millions": 0.43,
+      "currency_original": "GBP",
+      "investors": [
+        "Tricapital",
+        "Scottish Enterprise Investment Fund"
+      ],
+      "lead_investor": "Tricapital",
+      "announcement_date": "2026-05-26",
+      "source_url": "https://www.scotsman.com/business/tricapital-scots-syndicate-leads-ps3m-plus-deals-and-unveils-key-hire-8640052",
+      "source_name": "The Scotsman",
+      "headline": "Tricapital: Scots syndicate leads \u00a33m-plus deals and unveils key hire",
+      "summary": "Tricapital invested \u00a3430,000 in Kaly, a sustainable seaweed business expanding its island-based seaweed supply chain. The investment is part of Tricapital's wider \u00a33m-plus investment batch focused on the industrial transition and ocean technology sectors in Scotland.",
+      "confidence": "high",
+      "data_quality_score": 95,
+      "issues": [],
+      "raw_snippet": "\u00a3430,000 for sustainable seaweed business Kaly... Kaly expands its island-based seaweed supply chain."
+    },
+    {
+      "id": "sisaltech_seed_2026-05-26",
+      "company_name": "Sisaltech",
+      "company_location": "Other Scotland",
+      "company_sectors": [
+        "Energy & Cleantech"
+      ],
+      "sector_normalised": true,
+      "round_type": "Seed",
+      "amount_original": "\u00a3620,000",
+      "amount_gbp_millions": 0.62,
+      "currency_original": "GBP",
+      "investors": [
+        "Tricapital",
+        "Scottish Enterprise Investment Fund"
+      ],
+      "lead_investor": "Tricapital",
+      "announcement_date": "2026-05-26",
+      "source_url": "https://www.scotsman.com/business/tricapital-scots-syndicate-leads-ps3m-plus-deals-and-unveils-key-hire-8640052",
+      "source_name": "The Scotsman",
+      "headline": "Tricapital: Scots syndicate leads \u00a33m-plus deals and unveils key hire",
+      "summary": "Tricapital invested \u00a3620,000 in Sisaltech, a low-carbon insulation manufacturer scaling production of natural fibre insulation products. The deal is part of Tricapital's latest batch of investments totalling over \u00a33 million in early-stage Scottish businesses.",
+      "confidence": "high",
+      "data_quality_score": 95,
+      "issues": [],
+      "raw_snippet": "\u00a3620,000 for low-carbon insulation manufacturer Sisaltech... Sisaltech continues to scale production of natural fibre insulation products."
     }
   ]
 }

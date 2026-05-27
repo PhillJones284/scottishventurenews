@@ -25,7 +25,7 @@ The system is a deterministic pipeline that converts unstructured news into stru
 
 ### Pipeline
 
-News Sources → Scraper → Parser → Deduplicator → Ledger → Reporter → Weekly Report
+News Sources → Fetcher → Scraper → Parser → Deduplicator → Ledger → Reporter → Weekly Report
 
 Each stage performs a single transformation with clearly defined inputs and outputs.
 
@@ -35,13 +35,24 @@ Each stage performs a single transformation with clearly defined inputs and outp
 
 The system is composed of four stages:
 
-### 1. Scraper
+### 1a. Fetcher (Python)
 
-Responsible for collecting raw mentions of venture capital activity from configured sources.
+Responsible for fetching content from configured sources and filtering it down to investment-relevant candidates.
 
 * Input: `config/sources.json`
-* Output: `data/raw/`
-* Function: extraction of unstructured investment-related content
+* Output: `data/raw/YYYY-MM-DD_candidates.json`, `data/raw/YYYY-MM-DD_fetch_log.json`
+* Function: HTTP fetching, RSS/Atom parsing, text extraction (trafilatura), keyword filtering
+* Implementation: `pipeline/fetcher.py`
+
+---
+
+### 1b. Scraper (Claude agent)
+
+Reads pre-fetched candidates and extracts structured investment records. Falls back to direct web fetching if the fetcher did not run or produced no results.
+
+* Input: `data/raw/YYYY-MM-DD_candidates.json` (or `config/sources.json` in fallback mode)
+* Output: `data/raw/YYYY-MM-DD_<source-slug>.json` per source
+* Function: extraction of structured investment data from unstructured text
 
 ---
 
@@ -176,14 +187,16 @@ Open the project in Claude Code and say "run the agent". Claude will invoke each
 
 ### Individual stages
 
-Stages 1 and 4 are Claude agents — run them interactively via Claude Code.
+Stage 1b and Stage 4 are Claude agents — run them interactively via Claude Code.
 
-Stages 2 and 3 are Python and can be run directly:
+Stages 1a, 2, and 3 are Python and can be run directly:
 
 ```bash
+python pipeline/fetcher.py
 python pipeline/parser.py
 python pipeline/deduplicator.py
 # or with a specific date:
+python pipeline/fetcher.py --date 2026-05-26
 python pipeline/parser.py --date 2026-05-26
 python pipeline/deduplicator.py --date 2026-05-26
 ```
@@ -209,7 +222,9 @@ A structured Markdown report containing:
 
 | File                                      | Description                  |
 | ----------------------------------------- | ---------------------------- |
-| `data/raw/*`                              | Raw extracted source data    |
+| `data/raw/YYYY-MM-DD_candidates.json`     | Keyword-filtered fetch candidates |
+| `data/raw/YYYY-MM-DD_fetch_log.json`      | Per-source fetch diagnostics |
+| `data/raw/*`                              | Per-source structured records (scraper output) |
 | `data/processed/investments.json`         | Normalised dataset           |
 | `data/processed/investments_deduped.json` | Deduplicated dataset         |
 | `data/processed/ledger.json`              | Persistent historical record |
