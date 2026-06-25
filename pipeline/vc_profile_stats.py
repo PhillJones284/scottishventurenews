@@ -57,6 +57,11 @@ def compute_stats(canonical_name, ledger, known_vc):
     trailing_6mo = sum(1 for d in dates if d >= six_mo_ago)
     prior_6mo = sum(1 for d in dates if twelve_mo_ago <= d < six_mo_ago)
 
+    ytd_start = date(today.year, 1, 1).isoformat()
+    ytd_deals = [d for d in deals if d.get("announcement_date") and d["announcement_date"] >= ytd_start]
+    ytd_deal_count = len(ytd_deals)
+    ytd_capital_gbp_millions = round(sum(d.get("amount_gbp_millions") or 0 for d in ytd_deals), 2)
+
     return {
         "canonical_name": canonical_name,
         "hq": known_vc.get("hq") if known_vc else None,
@@ -69,6 +74,8 @@ def compute_stats(canonical_name, ledger, known_vc):
         "most_recent_deal_date": max(dates) if dates else None,
         "trailing_6mo_deal_count": trailing_6mo,
         "prior_6mo_deal_count": prior_6mo,
+        "ytd_deal_count": ytd_deal_count,
+        "ytd_capital_gbp_millions": ytd_capital_gbp_millions,
         "deals": [
             {
                 "id": d["id"],

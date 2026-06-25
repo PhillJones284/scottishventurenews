@@ -95,14 +95,31 @@ def _investor_rankings(q_records, top_n=5):
     )
 
 
-def _breakdowns(q_records):
-    stage, sector, location = defaultdict(int), defaultdict(int), defaultdict(int)
-    for r in q_records:
+def _breakdowns(records):
+    stage, location = defaultdict(int), defaultdict(int)
+    for r in records:
         stage[r.get("round_type") or "Unknown"] += 1
-        for s in r.get("company_sectors") or []:
-            sector[s] += 1
         location[r.get("company_location") or "Unknown"] += 1
-    return dict(stage), dict(sector), dict(location)
+    return dict(stage), dict(location)
+
+
+def _sector_count_and_capital(records):
+    """Deal count and capital deployed per sector.
+
+    A deal with multiple `company_sectors` contributes its full amount to each
+    one, so summing the capital dict across sectors over-counts the true total
+    for any quarter with multi-sector deals — by design, since the point is to
+    show each sector's draw on capital, not to partition a single total across
+    sectors. Use `quarter_capital_gbp_millions` / `ytd_capital_gbp_millions` for
+    the real total, never a sum over this breakdown.
+    """
+    count, capital = defaultdict(int), defaultdict(float)
+    for r in records:
+        amt = r.get("amount_gbp_millions") or 0
+        for s in r.get("company_sectors") or []:
+            count[s] += 1
+            capital[s] += amt
+    return dict(count), {k: round(v, 3) for k, v in capital.items()}
 
 
 def _slim(r):
@@ -164,7 +181,10 @@ def run(date_str=None):
     q_count, q_capital = _sum_and_count(q_records)
     ytd_count, ytd_capital = _sum_and_count(ytd_records)
     by_count, by_capital = _investor_rankings(q_records)
-    stage_mix, sector_mix, location_mix = _breakdowns(q_records)
+    stage_mix, location_mix = _breakdowns(q_records)
+    ytd_stage_mix, _ = _breakdowns(ytd_records)
+    sector_mix, sector_capital_mix = _sector_count_and_capital(q_records)
+    ytd_sector_mix, ytd_sector_capital_mix = _sector_count_and_capital(ytd_records)
 
     history = _load_history()
     prior_candidates = [h for h in history if h["run_date"] != run_date_str]
@@ -194,7 +214,11 @@ def run(date_str=None):
         "most_active_investors_by_count": by_count,
         "most_active_investors_by_capital": by_capital,
         "stage_mix": stage_mix,
+        "ytd_stage_mix": ytd_stage_mix,
         "sector_mix": sector_mix,
+        "sector_capital_mix": sector_capital_mix,
+        "ytd_sector_mix": ytd_sector_mix,
+        "ytd_sector_capital_mix": ytd_sector_capital_mix,
         "location_mix": location_mix,
         "this_run": _this_run_split(run_date),
     }

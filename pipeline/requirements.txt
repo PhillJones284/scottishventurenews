@@ -3,3 +3,5 @@ python-dateutil
 anthropic
 trafilatura
 httpx
+matplotlib
+python-dotenv

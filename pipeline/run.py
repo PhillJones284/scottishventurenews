@@ -50,9 +50,10 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 sys.path.insert(0, str(ROOT))
-from pipeline import fetcher, parser, deduplicator, report_stats, vc_profile_stats
+from pipeline import fetcher, parser, deduplicator, report_stats, chart_generator, vc_profile_stats
 
 DOCS_VC_PROFILES = ROOT / "docs" / "vc-profiles"
+DATA_REPORTS_CHARTS = DATA_REPORTS / "charts"
 
 
 def _read_agent_prompt(stage_name, run_date):
@@ -139,6 +140,16 @@ def _gate_report_stats():
     if path.exists():
         return True, None
     return False, "data/processed/report_stats.json not found."
+
+
+def _gate_chart_generator(run_date):
+    trend_path = DATA_REPORTS_CHARTS / f"{run_date}_trend.png"
+    stage_path = DATA_REPORTS_CHARTS / f"{run_date}_stage.png"
+    sector_path = DATA_REPORTS_CHARTS / f"{run_date}_sector.png"
+    missing = [p.name for p in (trend_path, stage_path, sector_path) if not p.exists()]
+    if missing:
+        return False, f"Missing chart(s): {missing}"
+    return True, None
 
 
 def _gate_reporter(run_date):
@@ -285,6 +296,19 @@ def main():
         print("Do not let the reporter fall back to computing totals from the ledger itself.", file=sys.stderr)
         sys.exit(1)
     logger.info("Stage 3.5 gate passed.")
+
+    # Stage 3.6 — Chart Generator (Python)
+    logger.info("=== Stage 3.6: Chart Generator ===")
+    try:
+        chart_generator.run(date_str=run_date)
+    except Exception as e:
+        print(f"GATE FAIL (Stage 3.6 — Chart Generator): Exception during chart generation: {e}", file=sys.stderr)
+        sys.exit(1)
+    ok, err = _gate_chart_generator(run_date)
+    if not ok:
+        print(f"GATE FAIL (Stage 3.6 — Chart Generator): {err}", file=sys.stderr)
+        sys.exit(1)
+    logger.info("Stage 3.6 gate passed.")
 
     # Stage 4 — Reporter (Claude agent)
     logger.info("=== Stage 4: Reporter ===")

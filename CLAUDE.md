@@ -25,12 +25,12 @@ Full per-VC historical profiles are *not* rebuilt in the weekly report — see [
 ## Running the agent
 If asked to "run the agent", execute the full pipeline in sequence using the Agent tool, with a gate check after each stage. Stop and report failure if any gate fails — do not proceed to the next stage (except Stage 1a, which has a soft gate — see below).
 
-**Stage 1** has two sub-steps: **Stage 1a** (Fetcher, Python) and **Stage 1b** (Scraper, Claude agent). **Stage 3.5** (Report Stats) is a pure Python step that runs between the deduplicator and the reporter — see below for why. **Stage 4** (reporter) is a Claude agent. **Stage 5** (VC profiler) has a Python stats step and a Claude agent step, same shape as Stage 1.
-**Stages 2, 3, and 3.5** (parser, deduplicator, report stats) are Python — run them with `python pipeline/parser.py`, `python pipeline/deduplicator.py`, and `python pipeline/report_stats.py` via the Bash tool. All three accept an optional `--date YYYY-MM-DD` argument; omit it to default to today.
+**Stage 1** has two sub-steps: **Stage 1a** (Fetcher, Python) and **Stage 1b** (Scraper, Claude agent). **Stage 3.5** (Report Stats) and **Stage 3.6** (Chart Generator) are pure Python steps that run between the deduplicator and the reporter — see below for why. **Stage 4** (reporter) is a Claude agent. **Stage 5** (VC profiler) has a Python stats step and a Claude agent step, same shape as Stage 1.
+**Stages 2, 3, 3.5, and 3.6** (parser, deduplicator, report stats, chart generator) are Python — run them with `python pipeline/parser.py`, `python pipeline/deduplicator.py`, `python pipeline/report_stats.py`, and `python pipeline/chart_generator.py` via the Bash tool. All four accept an optional `--date YYYY-MM-DD` argument; omit it to default to today.
 
 **How to invoke agent stages:** Use the Agent tool with `subagent_type: "general-purpose"`. Read the body of the relevant `.claude/agents/<stage>.md` file (everything after the second `---` frontmatter delimiter) and use it as the prompt, prepending `Today's date is YYYY-MM-DD.` with today's actual date substituted.
 
-**`pipeline/run.py`** orchestrates the full pipeline (including Stage 3.5) in one command (`python pipeline/run.py [--date YYYY-MM-DD]`) for unattended use. In practice this project runs on Phill's own laptop, not a server or cron job — there is no scenario where a run happens without Phill present, so the synchronous duplicate-review behaviour in [Reviewing merge candidates](#reviewing-merge-candidates) always applies in full; `run.py` existing as a script doesn't change that.
+**`pipeline/run.py`** orchestrates the full pipeline (including Stages 3.5 and 3.6) in one command (`python pipeline/run.py [--date YYYY-MM-DD]`) for unattended use. In practice this project runs on Phill's own laptop, not a server or cron job — there is no scenario where a run happens without Phill present, so the synchronous duplicate-review behaviour in [Reviewing merge candidates](#reviewing-merge-candidates) always applies in full; `run.py` existing as a script doesn't change that.
 
 ### Stage 1a — Fetcher (Python)
 Run: `python pipeline/fetcher.py` (or `python pipeline/fetcher.py --date YYYY-MM-DD`)
@@ -91,7 +91,21 @@ If the gate fails because of an exception, check whether it's the pending-duplic
 
 This stage exists because LLM agents are unreliable at exactly the kind of deterministic bookkeeping "The Numbers" section needs — in practice, the reporter repeatedly double-counted a pending duplicate when computing totals straight from the ledger itself, even with explicit instructions and `merge_candidates.json` right there to check. `report_stats.py` computes every number that section needs in Python instead: quarter/year deal count and capital, investor rankings, stage/sector/location mix, and the revision delta against the previous issue. It also maintains `data/processed/report_history.json`, a small persistent record of each run's stated totals — so next week's delta is computed from structured history, not by an agent re-reading last week's markdown and hoping it extracts the right numbers. The reporter (Stage 4) must treat `report_stats.json` as the sole source for these figures; see `.claude/agents/reporter.md`.
 
+Alongside `sector_mix` (this quarter's deal count per sector, used in the reporter's narrative paragraph), this stage also computes `sector_capital_mix` (this quarter's capital deployed per sector) and the year-to-date equivalents `ytd_sector_mix` / `ytd_sector_capital_mix`, all four feeding the `_sector.png` chart below. A deal with multiple `company_sectors` contributes its full amount to every sector it's tagged with, so summing any of these capital breakdowns across sectors over-counts the real total — always use `quarter_capital_gbp_millions` / `ytd_capital_gbp_millions` for the actual total, never a sum over the per-sector breakdown.
+
 **Pending-duplicate hard gate**: `report_stats.py` refuses to run — raising an error instead of producing output — if `merge_candidates.json` contains any `status: "pending"` entry. By policy there should never be one at this point: Stage 3's gate above already requires resolving any new pending entry with Phill immediately, before Stage 3.5 ever runs. If this gate fires, it means that step was skipped — stop, resolve the pending pair(s) with Phill now (merge, fix the underlying data, or explicitly mark them as separate deals — same process as [Reviewing merge candidates](#reviewing-merge-candidates)), then re-run `report_stats.py`. Do not add logic to `report_stats.py` that counts around an unresolved pair — that reintroduces the exact failure mode this gate exists to catch.
+
+### Stage 3.6 — Chart Generator (Python)
+Run: `python pipeline/chart_generator.py` (or `python pipeline/chart_generator.py --date YYYY-MM-DD`)
+
+**Gate**: `data/reports/charts/YYYY-MM-DD_stage.png` and `_sector.png` must both exist.
+If the gate fails: stop, tell Phill chart generation failed, and do not let the reporter proceed without the charts (it would either skip them or, worse, invent a description of a chart it can't see).
+
+This stage exists for the same reason Stage 3.5 does: charts are visual arithmetic, and an LLM drawing or describing a chart from numbers is exactly the kind of deterministic task that should be computed, not narrated. `chart_generator.py` reads `report_stats.json` (this run's figures) and renders two PNGs with matplotlib (shared styling lives in `pipeline/chart_style.py`):
+- `_stage.png` — deals by stage, two panels side by side: quarter-to-date (left, from `report_stats.json`'s `stage_mix`) vs. year-to-date (right, from `ytd_stage_mix`). Each panel is an independent diverging-bar breakdown for its own window, the same "each panel ranks its own metric/window independently" approach as the `_sector.png` grid below. Centred/diverging bars on a zero baseline (height = % of that panel's deals, width fills the slot), in the earth-tone palette and label conventions of Phill's `linkedin_cohort_ceiling.py` reference chart. Round types are bucketed onto a 4-category progression — Pre-Seed / Seed / Growth/Series A+ / Unknown (see `STAGE_BUCKET_ORDER` and `ROUND_TYPE_TO_BUCKET` in `chart_style.py`) — so the axis stays consistent week to week even when a bucket is empty (shown as a boxed "0%"). Series A, Series B/C+, and Growth all fold into "Growth/Series A+" since A and B are individually rare. "Grant" is a real funding stage that sits before Pre-Seed when present, but is omitted from a panel's axis entirely in a window with none — no source we follow has ever surfaced one. "Unknown" (the catch-all for anything outside the progression, including Bridge) is offset from the other bars by a visual gap (`UNKNOWN_GAP` in `chart_generator.py`) so it doesn't read as part of the sequence. Bar labels show both the deal count and the percentage (e.g. "7 (37%)").
+- `_sector.png` — deals by sector, a 2x2 grid: capital deployed (top row) vs. deal count (bottom row), quarter-to-date (left column) vs. year-to-date (right column), from `report_stats.json`'s `sector_capital_mix` / `sector_mix` / `ytd_sector_capital_mix` / `ytd_sector_mix`. Each panel is an independent top-5 ranking for its own metric/window — the leading sector by capital needn't be the leading sector by deal count, and that's the point of showing both. Bars use the earth-tone palette (`EARTH_PALETTE`, cycled one colour per bar); capital panels are labelled with a plain £ amount, count panels with a plain deal count. Labels are placed inside the bar in white when they fit, determined by actually measuring the rendered text's pixel width against the bar's (`SECTOR_LABEL_FIT_BUFFER_PX` in `chart_generator.py`), not a fixed threshold — capital labels and count labels take up very different space at the same font size.
+
+The reporter (Stage 4) embeds these two files as-is; see `.claude/agents/reporter.md`. If you ever need to change a chart's look, follow the `matplotlib-render-review` skill's render → Read the PNG → refine workflow rather than judging the styling from code alone.
 
 ### Stage 4 — Reporter
 Agent tool: `subagent_type: "general-purpose"`, prompt = today's date + body of `.claude/agents/reporter.md`
@@ -140,6 +154,8 @@ scottish-vc-tracker/
 │   ├── parser.py                ← Stage 2: Normalisation (Python)
 │   ├── deduplicator.py          ← Stage 3: Deduplication + ledger (Python)
 │   ├── report_stats.py          ← Stage 3.5: Deterministic report numbers (Python) — see Dedup confidence policy
+│   ├── chart_generator.py       ← Stage 3.6: Report charts (Python) — minimalist consulting style
+│   ├── chart_style.py           ← Shared matplotlib styling for chart_generator.py
 │   └── vc_profile_stats.py      ← Stage 5: Per-VC stats aggregation (Python)
 │
 ├── config/
@@ -161,6 +177,7 @@ scottish-vc-tracker/
 │   │   ├── report_history.json  ← PERSISTENT: each run's stated totals, for next run's revision delta
 │   │   └── vc_stats.json        ← Stage 5 stats output (this run/request) — transient
 │   └── reports/                 ← Final Markdown reports
+│       └── charts/              ← Stage 3.6 output — stage + sector PNGs per run, transient
 │
 └── docs/                        ← For user documentation, do not make changes unless told
     ├── opening-prompt.md        ← Development prompt for pasting in. Do not touch.
@@ -181,6 +198,8 @@ scottish-vc-tracker/
 | `data/processed/report_stats.json` | Stage 3.5 output — quarter/year totals, rankings, breakdowns, revision delta; transient, overwritten each run; reporter's sole source for these figures |
 | `data/processed/report_history.json` | Persistent — one entry per run's stated totals, used to compute the next run's revision delta; do not delete |
 | `data/processed/vc_stats.json` | Stage 5 stats for VCs being refreshed — transient, overwritten per run/request |
+| `data/reports/charts/YYYY-MM-DD_stage.png` | Stage 3.6 output — this quarter's deals by stage; transient, overwritten each run |
+| `data/reports/charts/YYYY-MM-DD_sector.png` | Stage 3.6 output — this quarter's deals by sector; transient, overwritten each run |
 | `data/reports/YYYY-MM-DD_vc-report.md` | Weekly intelligence report — one file per run |
 | `docs/vc-profiles/<slug>.md` | Standing per-VC reference profile — persistent, refreshed selectively |
 
@@ -192,7 +211,7 @@ scottish-vc-tracker/
 - Deduplication is conservative: when in doubt, flag for review rather than merge — concretely, the deduplicator's three-tier match confidence (`definite` / `probable` / `possible`) only **auto-merges `definite` matches**. `probable` and `possible` matches are never auto-merged and never silently dropped — they're staged in `data/processed/merge_candidates.json` for Phill to approve or dismiss. See [Dedup confidence policy](#dedup-confidence-policy)
 - Investment record IDs follow the format `{normalised-company-name}_{round-type}_{announcement-date}` (e.g. `wallet-ai_series-a_2026-03-15`) — set by the parser, referenced by the deduplicator; must be consistent between stages
 - `company_sectors` is an **array**, not a string — a company can belong to multiple sectors; the parser collects all taxonomy matches and the deduplicator unions arrays across runs (sectors accumulate, never overwrite)
-- Anything that needs to be deterministically correct — arithmetic, deduplication-aware counting — is computed in Python (Stage 3.5, `pipeline/report_stats.py`), never delegated to an LLM agent's prompt-following. The reporter only narrates numbers it's given; see [Stage 3.5](#stage-35--report-stats-python)
+- Anything that needs to be deterministically correct — arithmetic, deduplication-aware counting, chart rendering — is computed in Python (Stage 3.5 `pipeline/report_stats.py`, Stage 3.6 `pipeline/chart_generator.py`), never delegated to an LLM agent's prompt-following. The reporter only narrates numbers and embeds charts it's given; see [Stage 3.5](#stage-35--report-stats-python) and [Stage 3.6](#stage-36--chart-generator-python)
 
 ## Dedup confidence policy
 
