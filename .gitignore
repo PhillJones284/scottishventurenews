@@ -18,6 +18,7 @@ __pycache__/
 .DS_Store
 
 # Project data outputs (IMPORTANT: adjust to your needs)
+data/processed/publish_manifest_*.json
 data/raw/
 data/processed/investments.json
 data/processed/investments_deduped.json

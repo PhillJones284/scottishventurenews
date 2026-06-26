@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scottish VC Tracker</title>
+  <style>
+    :root {
+      --navy:       #1F3B57;
+      --slate:      #7C93A8;
+      --grey:       #9AA0A6;
+      --light-grey: #D8DCE0;
+      --blue:       #7B9EB9;
+      --green:      #6BA58A;
+      --gold:       #C49A5A;
+      --ink:        #222222;
+      --bg:         #F7F7F6;
+      --white:      #FFFFFF;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    a { color: var(--navy); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 760px; margin: 0 auto; padding: 40px 20px 64px; }
+
+    /* ── header ── */
+    .site-header { margin-bottom: 32px; }
+    .site-header h1 {
+      font-size: 24px; font-weight: 700; color: var(--navy);
+      letter-spacing: -0.02em; margin-bottom: 8px;
+    }
+    .site-header p {
+      color: var(--slate); font-size: 13px; max-width: 600px; line-height: 1.5;
+    }
+
+    /* ── nav cards ── */
+    .nav-cards {
+      display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px;
+    }
+    .nav-card {
+      flex: 1; min-width: 200px;
+      background: var(--white); border: 1px solid var(--light-grey);
+      border-radius: 6px; padding: 16px 18px;
+      display: flex; flex-direction: column; gap: 4px;
+      color: inherit;
+    }
+    .nav-card:hover { border-color: var(--blue); text-decoration: none; }
+    .nav-card-label {
+      font-size: 10px; font-weight: 600; color: var(--slate);
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .nav-card-title {
+      font-size: 14px; font-weight: 600; color: var(--navy);
+    }
+    .nav-card-desc { font-size: 12px; color: var(--grey); }
+
+    /* ── subscribe bar ── */
+    .subscribe-bar {
+      background: var(--navy); border-radius: 6px;
+      padding: 18px 20px; margin-bottom: 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .subscribe-bar p {
+      color: #d4e0eb; font-size: 13px;
+    }
+    .subscribe-bar strong { color: var(--white); }
+    .subscribe-links { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+    .btn-subscribe {
+      background: var(--gold); color: var(--white);
+      font-size: 13px; font-weight: 600;
+      padding: 8px 16px; border-radius: 4px;
+      white-space: nowrap;
+    }
+    .btn-subscribe:hover { opacity: 0.9; text-decoration: none; }
+    .btn-archive {
+      color: #adc6db; font-size: 12px; white-space: nowrap;
+    }
+    .btn-archive:hover { color: var(--white); text-decoration: none; }
+
+    /* ── issue divider ── */
+    .issue-header {
+      display: flex; align-items: baseline; gap: 12px;
+      margin-bottom: 20px;
+    }
+    .issue-label {
+      font-size: 10px; font-weight: 600; color: var(--slate);
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .issue-title { font-size: 13px; color: var(--grey); }
+
+    /* ── report body ── */
+    .report-body h2 {
+      font-size: 15px; font-weight: 700; color: var(--navy);
+      margin: 28px 0 8px; padding-top: 24px;
+      border-top: 1px solid var(--light-grey);
+    }
+    .report-body h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+    .report-body h3 {
+      font-size: 13px; font-weight: 700; color: var(--ink);
+      margin: 18px 0 6px;
+    }
+    .report-body p { margin-bottom: 10px; font-size: 14px; }
+    .report-body ul {
+      margin: 6px 0 14px 18px;
+    }
+    .report-body li { margin-bottom: 6px; font-size: 14px; }
+    .report-body em {
+      color: var(--slate); font-style: normal; font-size: 12px;
+    }
+    .report-body strong { font-weight: 600; }
+    .report-body a { color: var(--blue); }
+    .report-body .report-img {
+      max-width: 100%; height: auto;
+      border: 1px solid var(--light-grey); border-radius: 4px;
+      margin: 8px 0 16px; display: block;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header class="site-header">
+    <h1>Scottish VC Tracker</h1>
+    <p>A weekly intelligence briefing monitoring public news coverage for venture capital investment
+    activity in Scottish startups and scaleups — tracking who's investing, at what stages,
+    in which sectors, and with what cadence.</p>
+  </header>
+
+  <div class="nav-cards">
+    <a class="nav-card" href="deals/">
+      <span class="nav-card-label">Resource</span>
+      <span class="nav-card-title">Deal Table →</span>
+      <span class="nav-card-desc">Searchable, filterable table of every deal tracked this quarter and year to date</span>
+    </a>
+    <a class="nav-card" href="investors/">
+      <span class="nav-card-label">Resource</span>
+      <span class="nav-card-title">Investor Directory →</span>
+      <span class="nav-card-desc">Per-investor stats and profiles for every VC firm active in Scotland</span>
+    </a>
+  </div>
+
+  <div class="subscribe-bar">
+    <p><strong>Get it in your inbox.</strong> New issue each week, free.</p>
+    <div class="subscribe-links">
+      <a class="btn-subscribe" href="https://buttondown.com/scottish-vc-tracker">Subscribe</a>
+      <a class="btn-archive" href="https://buttondown.com/scottish-vc-tracker/archive">Past issues →</a>
+    </div>
+  </div>
+
+  <div class="issue-header">
+    <span class="issue-label">Latest issue</span>
+    <span class="issue-title">Scottish VC Tracker — 8 June 2026</span>
+  </div>
+
+  <div class="report-body">
+    <p><em>This is an automated newsletter, written by Claude, based on news coverage scraped from 32 websites.</em></p>
+<h2>This Week</h2>
+<ul>
+<li>A £200k pre-seed round for Edinburgh's Swurf, a remote-working platform connecting workers to on-demand private meeting pods, surfaced this week via Daily Business Group and Scottish Financial News — the round actually closed back in March, backed by Skyscanner co-founder Gareth Williams among other angels.</li>
+<li>A £2.6m growth round for Edinburgh's Esk, an entertainment technology company building live experiences for brands including Netflix and BAFTA, also surfaced this week — it was led by Maven Capital Partners back in May, via the Investment Fund for Scotland.</li>
+</ul>
+<h2>The Numbers</h2>
+<p>This is the first issue, so here's where things stand: <strong>Q2 2026</strong> has seen <strong>19 deals worth £107.5m</strong>, with the year to date at <strong>29 deals worth £141.6m</strong>.</p>
+<p><img src="charts/2026-06-08_stage.png" alt="Deals by stage — this quarter" class="report-img"></p>
+<p><img src="charts/2026-06-08_sector.png" alt="Deals by sector — this quarter" class="report-img"></p>
+<p>Tricapital is the most active investor by deal count this quarter with 4 (its angel syndicate backed HonuWorx, Kaly and Sisaltech in a single announcement), followed by Scottish Enterprise Investment Fund with 3 and a tie between Maven Capital Partners and STAC Invest at 2 each. By capital, Index Ventures and Highland Europe are tied at the top with £51.9m each — both backed Wordsmith AI's Series B — ahead of Scottish Enterprise Investment Fund's £22.5m spread across three deals. Seed is the dominant stage this quarter, with Growth-stage deals (mostly Tricapital's smaller angel cheques) close behind Pre-Seed. AI & Machine Learning and SaaS & Enterprise Software lead on capital deployed, driven largely by the Wordsmith AI and Aveni rounds, while Deep Tech leads on deal count thanks to Tricapital's multi-company angel cheques — a split worth noting, since the biggest-money sectors aren't the most active ones by number of deals. Edinburgh accounts for the largest share of deals by location, with Glasgow and the rest of Scotland trailing some way behind.</p>
+<h2>Deal Spotlight</h2>
+<h3>Wordsmith AI — Series B — £51.9m ($70m)</h3>
+<p><strong>Lead investor</strong>: Highland Europe · <strong>Co-investors</strong>: Index Ventures · <strong>Sector</strong>: AI & Machine Learning, SaaS & Enterprise Software · <strong>Location</strong>: Edinburgh</p>
+<p>Wordsmith is an Edinburgh-based legal AI startup building an operations platform for in-house legal teams. The round, announced as €60.2m ($70m), brings the company's total funding to €86m ($100m) and was led by Highland Europe with participation from Index Ventures. Wordsmith says it's now used by more than 500 companies, including BT, the Financial Times, Safelite, Trip.com and Canva.</p>
+<p>Source: eu-startups.com (<a href="https://www.eu-startups.com/2026/06/edinburgh-based-wordsmith-raises-e60-2-million-series-b-to-scale-legal-ai-platform-for-in-house-teams/">https://www.eu-startups.com/2026/06/edinburgh-based-wordsmith-raises-e60-2-million-series-b-to-scale-legal-ai-platform-for-in-house-teams/</a>)</p>
+<h3>Aveni — Growth — £12m</h3>
+<p><strong>Lead investor</strong>: PXN Ventures · <strong>Co-investors</strong>: Puma Growth Partners, Lloyds Banking Group, Nationwide, Scottish Enterprise Investment Fund · <strong>Sector</strong>: Fintech, AI & Machine Learning · <strong>Location</strong>: Edinburgh</p>
+<p>Aveni, a University of Edinburgh spinout building AI tools for wealth management, financial advice and banking, raised £12m led by PXN Ventures, with existing backers Puma Growth Partners, Lloyds Banking Group, Nationwide and Scottish Enterprise all returning. The funding will go toward Aveni's Unified Assurance Platform and two new products, Agent Assure and Agent Approve. Two high-street banks backing the same round is a notable detail for a company still at growth stage rather than a later round.</p>
+<p>Source: scottishfinancialreview.com (<a href="https://scottishfinancialreview.com/2026/06/04/aveni-edinburgh-ai-wealth-startup-raises-12m/">https://scottishfinancialreview.com/2026/06/04/aveni-edinburgh-ai-wealth-startup-raises-12m/</a>)</p>
+<h2>Sources</h2>
+<ul>
+<li><strong>Swurf</strong>: <a href="https://dailybusinessgroup.co.uk/2026/03/gibson-raises-200k-to-expand-swurf-platform/">Daily Business Group</a>, <a href="https://www.scottishfinancialnews.com/articles/funding-round-worth-ps200k-to-help-scottish-startup-make-edinburgh-most-flexible-working-capital">scottishfinancialnews.com</a></li>
+<li><strong>Esk</strong>: <a href="https://www.mavencp.com/latest-news/maven-leads-2.6-million-funding-round-in-esk">mavencp.com</a></li>
+</ul>
+<h2>Notes</h2>
+<p>Both deals surfacing this week were old news by the time we found them — Swurf's £200k round closed in March and Esk's £2.6m round in May. Neither reflects a current lull in deal activity; see The Numbers above for the actual run-rate this quarter.</p>
+  </div>
+
+</div>
+</body>
+</html>

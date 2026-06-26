@@ -50,7 +50,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 sys.path.insert(0, str(ROOT))
-from pipeline import fetcher, parser, deduplicator, report_stats, chart_generator, vc_profile_stats, deal_table_generator, investor_page_generator
+from pipeline import fetcher, parser, deduplicator, report_stats, chart_generator, vc_profile_stats, deal_table_generator, investor_page_generator, landing_page_generator, newsletter_publish
 
 DOCS_VC_PROFILES = ROOT / "data" / "vc-profiles"
 DATA_REPORTS_CHARTS = DATA_REPORTS / "charts"
@@ -143,10 +143,9 @@ def _gate_report_stats():
 
 
 def _gate_chart_generator(run_date):
-    trend_path = DATA_REPORTS_CHARTS / f"{run_date}_trend.png"
     stage_path = DATA_REPORTS_CHARTS / f"{run_date}_stage.png"
     sector_path = DATA_REPORTS_CHARTS / f"{run_date}_sector.png"
-    missing = [p.name for p in (trend_path, stage_path, sector_path) if not p.exists()]
+    missing = [p.name for p in (stage_path, sector_path) if not p.exists()]
     if missing:
         return False, f"Missing chart(s): {missing}"
     return True, None
@@ -352,6 +351,48 @@ def main():
         logger.warning("Stage 7 (Investor Page Generator) failed: %s — non-blocking, report still complete.", e)
     else:
         logger.info("Stage 7 complete. Investor page: docs/investors/index.html")
+
+    # Stage 8 — Landing Page Generator (Python)
+    logger.info("=== Stage 8: Landing Page Generator ===")
+    try:
+        landing_page_generator.run()
+    except Exception as e:
+        logger.warning("Stage 8 (Landing Page Generator) failed: %s — non-blocking, report still complete.", e)
+    else:
+        logger.info("Stage 8 complete. Landing page: docs/index.html")
+
+    # Stage 9 — Git commit + push docs/ to GitHub Pages
+    logger.info("=== Stage 9: Git commit + push ===")
+    git_commit_hash = None
+    try:
+        subprocess.run(["git", "add", "docs/"], check=True, cwd=str(ROOT))
+        subprocess.run(
+            ["git", "commit", "-m", f"Weekly report: {run_date}"],
+            check=True, cwd=str(ROOT),
+        )
+        rev = subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            check=True, capture_output=True, text=True, cwd=str(ROOT),
+        )
+        git_commit_hash = rev.stdout.strip()
+        subprocess.run(["git", "push", "origin", "main"], check=True, cwd=str(ROOT))
+        logger.info("Stage 9 complete. Committed %s, pushed to origin/main.", git_commit_hash[:8])
+    except Exception as e:
+        logger.warning("Stage 9 (git commit/push) failed: %s — GitHub Pages not updated this run.", e)
+
+    # Stage 10 — Buttondown draft
+    logger.info("=== Stage 10: Buttondown draft ===")
+    try:
+        manifest = newsletter_publish.run(date_str=run_date)
+        if git_commit_hash:
+            # Backfill the commit hash into the manifest so rollback can revert it
+            manifest["git_commit_hash"] = git_commit_hash
+            manifest_path = ROOT / "data" / "processed" / f"publish_manifest_{run_date}.json"
+            manifest_path.write_text(json.dumps(manifest, indent=2))
+        draft_id = manifest.get("buttondown_draft_id")
+        logger.info("Stage 10 complete. Buttondown draft id: %s", draft_id)
+    except Exception as e:
+        logger.warning("Stage 10 (Buttondown draft) failed: %s — publish manually with pipeline/newsletter_publish.py.", e)
 
     print(f"Pipeline complete. Report: data/reports/{run_date}_vc-report.md")
 

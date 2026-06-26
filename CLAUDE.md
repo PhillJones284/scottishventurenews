@@ -26,8 +26,8 @@ Full per-VC historical profiles are *not* rebuilt in the weekly report — see [
 ## Running the agent
 If asked to "run the agent", execute the full pipeline in sequence using the Agent tool, with a gate check after each stage. Stop and report failure if any gate fails — do not proceed to the next stage (except Stage 1a, which has a soft gate — see below).
 
-**Stage 1** has two sub-steps: **Stage 1a** (Fetcher, Python) and **Stage 1b** (Scraper, Claude agent). **Stage 3.5** (Report Stats) and **Stage 3.6** (Chart Generator) are pure Python steps that run between the deduplicator and the reporter — see below for why. **Stage 4** (reporter) is a Claude agent. **Stage 5** (VC profiler) has a Python stats step and a Claude agent step, same shape as Stage 1. **Stage 6** (Deal Table Generator) is a pure Python step that runs after Stage 5. **Stage 7** (Investor Page Generator) is a pure Python step that runs after Stage 6.
-**Stages 2, 3, 3.5, 3.6, and 6** (parser, deduplicator, report stats, chart generator, deal table generator) are Python — run them with `python pipeline/parser.py`, `python pipeline/deduplicator.py`, `python pipeline/report_stats.py`, `python pipeline/chart_generator.py`, and `python pipeline/deal_table_generator.py` via the Bash tool. All five accept an optional `--date YYYY-MM-DD` argument; omit it to default to today.
+**Stage 1** has two sub-steps: **Stage 1a** (Fetcher, Python) and **Stage 1b** (Scraper, Claude agent). **Stage 3.5** (Report Stats) and **Stage 3.6** (Chart Generator) are pure Python steps that run between the deduplicator and the reporter — see below for why. **Stage 4** (reporter) is a Claude agent. **Stage 5** (VC profiler) has a Python stats step and a Claude agent step, same shape as Stage 1. **Stage 6** (Deal Table Generator) is a pure Python step that runs after Stage 5. **Stage 7** (Investor Page Generator) is a pure Python step that runs after Stage 6. **Stage 8** (Landing Page Generator) is a pure Python step that runs after Stage 7. **Stage 9** (git commit + push) and **Stage 10** (Buttondown draft) are the final two steps, both soft.
+**Stages 2, 3, 3.5, 3.6, 6, 7, and 8** are Python — run them with the relevant `python pipeline/<script>.py` command via the Bash tool. Stages 2, 3, 3.5, and 3.6 accept an optional `--date YYYY-MM-DD` argument; omit it to default to today. Stages 6, 7, and 8 take no arguments.
 
 **How to invoke agent stages:** Use the Agent tool with `subagent_type: "general-purpose"`. Read the body of the relevant `.claude/agents/<stage>.md` file (everything after the second `---` frontmatter delimiter) and use it as the prompt, prepending `Today's date is YYYY-MM-DD.` with today's actual date substituted.
 
@@ -137,6 +137,35 @@ Reads `data/processed/ledger.json`, `config/known_vcs.json`, and `data/vc-profil
 
 **Gate (soft)**: `docs/investors/index.html` must exist. If it fails, log a warning but do not block.
 
+### Stage 8 — Landing Page Generator (Python)
+Run: `python pipeline/landing_page_generator.py`
+
+Reads the latest `data/reports/YYYY-MM-DD_vc-report.md`, copies the associated chart PNGs to `docs/charts/`, converts the report markdown to HTML, and writes `docs/index.html` — the public-facing landing page served at the GitHub Pages root. The page includes the site title and description, nav cards to `/deals/` and `/investors/`, a Buttondown subscribe CTA with an archive link, and the full latest issue rendered inline. No external dependencies.
+
+**Gate (soft)**: `docs/index.html` must exist. If it fails, log a warning but do not block.
+
+### Stage 9 — Git commit + push (Python, via subprocess in run.py)
+Not a standalone script. `run.py` runs `git add docs/` → `git commit -m "Weekly report: YYYY-MM-DD"` → `git push origin main` after Stage 8. Only `docs/` is committed — data files (ledger, reports, vc-profiles) are not touched and must be committed manually by Phill after review. The commit hash is written into `data/processed/publish_manifest_YYYY-MM-DD.json` for use by the rollback.
+
+**Gate (soft)**: warns on failure but does not block. If Stage 9 fails, GitHub Pages is not updated this run — push manually or investigate with `git status`.
+
+### Stage 10 — Buttondown draft (Python)
+Run standalone: `python pipeline/newsletter_publish.py [--date YYYY-MM-DD]`
+
+Uploads the two chart PNGs to ImgBB (Buttondown's API doesn't accept file attachments), rewrites local chart paths to ImgBB URLs, and creates a Buttondown draft (`status: "draft"` — nothing goes to subscribers until Phill sends from the dashboard). Writes `data/processed/publish_manifest_YYYY-MM-DD.json` with the draft ID and ImgBB delete URLs so `pipeline/rollback.py` can undo the publish. Requires `IMGBB_API_KEY` and `BUTTONDOWN_API_KEY` in `.env`.
+
+**Gate (soft)**: warns on failure but does not block. If Stage 10 fails, publish manually with `python pipeline/newsletter_publish.py`.
+
+### Rolling back a run
+Run: `python pipeline/rollback.py [--date YYYY-MM-DD]`
+
+Reads `data/processed/publish_manifest_YYYY-MM-DD.json` and undoes the publish in three steps:
+1. Attempts to delete ImgBB images via their delete URLs (best-effort — prints the URL for manual deletion if the automated request fails)
+2. Calls `DELETE /v1/emails/{id}` on the Buttondown API to remove the draft
+3. `git revert {commit_hash} --no-edit` + `git push origin main` — creates a revert commit rather than force-pushing, so history stays clean and GitHub Pages rolls back safely
+
+**Data files are not touched.** The ledger, report markdown, vc-profiles, merge_candidates, and report_history are all left intact so you can fix the data and re-run without starting the pipeline from scratch.
+
 Report output lands in `data/reports/`. Static web pages land in `docs/`. Anything else is development work.
 
 ## Project structure
@@ -173,7 +202,10 @@ scottish-vc-tracker/
 │   ├── chart_style.py           ← Shared matplotlib styling for chart_generator.py
 │   ├── vc_profile_stats.py      ← Stage 5: Per-VC stats aggregation (Python)
 │   ├── deal_table_generator.py  ← Stage 6: Static deal table HTML (Python)
-│   └── investor_page_generator.py ← Stage 7: Static investor page HTML (Python)
+│   ├── investor_page_generator.py ← Stage 7: Static investor page HTML (Python)
+│   ├── landing_page_generator.py ← Stage 8: Landing page HTML (Python)
+│   ├── newsletter_publish.py     ← Stage 10: Buttondown draft + ImgBB upload (Python)
+│   └── rollback.py               ← Undo a publish: delete ImgBB images, delete draft, revert GitHub Pages
 │
 ├── config/
 │   ├── sources.json             ← News sources and search queries (curated — do not edit directly)
@@ -205,7 +237,10 @@ scottish-vc-tracker/
     └── deals/
         └── index.html           ← Stage 6 output: static deal table, overwritten each run
     └── investors/
-        └── index.html           ← Stage 7 output: static investor page, overwritten each run
+    │   └── index.html           ← Stage 7 output: static investor page, overwritten each run
+    └── charts/
+    │   └── YYYY-MM-DD_*.png     ← Stage 8 copies charts here from data/reports/charts/
+    └── index.html               ← Stage 8 output: landing page, overwritten each run
 ```
 
 ### Data Files
@@ -228,6 +263,9 @@ scottish-vc-tracker/
 | `data/vc-profiles/<slug>.md` | Standing per-VC reference profile — persistent, refreshed selectively |
 | `docs/deals/index.html` | Stage 6 output — static deal table for GitHub Pages; overwritten each run |
 | `docs/investors/index.html` | Stage 7 output — static investor page for GitHub Pages; overwritten each run |
+| `docs/charts/YYYY-MM-DD_*.png` | Stage 8 copies these from `data/reports/charts/` so the landing page can reference them |
+| `docs/index.html` | Stage 8 output — landing page for GitHub Pages; overwritten each run |
+| `data/processed/publish_manifest_YYYY-MM-DD.json` | Stage 10 output — Buttondown draft ID, ImgBB delete URLs, git commit hash; used by rollback.py |
 
 ## Key design decisions
 - Agents communicate via JSON files in `data/`, not stdout
