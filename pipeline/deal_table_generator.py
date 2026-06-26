@@ -12,7 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 LEDGER = ROOT / "data" / "processed" / "ledger.json"
-OUT = ROOT / "docs" / "deals.html"
+OUT = ROOT / "docs" / "index.html"
 
 
 def quarter_bounds(d: date) -> tuple[date, date]:
