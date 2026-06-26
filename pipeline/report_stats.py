@@ -32,6 +32,7 @@ MERGE_CANDIDATES_PATH = PROCESSED_DIR / "merge_candidates.json"
 DEDUPED_PATH = PROCESSED_DIR / "investments_deduped.json"
 HISTORY_PATH = PROCESSED_DIR / "report_history.json"
 OUT_PATH = PROCESSED_DIR / "report_stats.json"
+SOURCES_PATH = ROOT / "config" / "sources.json"
 
 # How recent an announcement_date has to be (relative to the run date) to count
 # as "fresh news" rather than backfill in the this-run new/backfill split.
@@ -163,6 +164,18 @@ def _load_history():
     return []
 
 
+def _monitored_source_count():
+    """Number of curated sources the scraper monitors, for the report's disclaimer line.
+
+    Counts entries in config/sources.json directly rather than letting the
+    reporter state this from memory — same reasoning as every other figure
+    in this file.
+    """
+    if not SOURCES_PATH.exists():
+        return 0
+    return len(json.loads(SOURCES_PATH.read_text()).get("sources", []))
+
+
 def run(date_str=None):
     run_date_str = date_str or datetime.now(timezone.utc).strftime("%Y-%m-%d")
     run_date = datetime.strptime(run_date_str, "%Y-%m-%d").date()
@@ -221,6 +234,7 @@ def run(date_str=None):
         "ytd_sector_capital_mix": ytd_sector_capital_mix,
         "location_mix": location_mix,
         "this_run": _this_run_split(run_date),
+        "monitored_source_count": _monitored_source_count(),
     }
 
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)

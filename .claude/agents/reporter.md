@@ -25,6 +25,13 @@ Write a Markdown report to `data/reports/YYYY-MM-DD_vc-report.md` (use today's d
 
 ## Report Structure
 
+### Header
+Start with an H1 title using today's date: `# Scottish VC Tracker — [Day Month Year]` (e.g. `# Scottish VC Tracker — 22 June 2026`).
+
+Immediately below it, on its own line, write this disclaimer, substituting `report_stats.json`'s `monitored_source_count` for the number — never guess or hardcode this figure:
+
+*This is an automated newsletter, written by Claude, based on news coverage scraped from [N] websites.*
+
 ### 1. This Week
 3–5 bullets covering everything new or updated in this run. One line each: company, round, amount, lead investor — pull the deal detail from `investments_deduped.json`, but use `report_stats.json`'s `this_run.genuinely_new_records` / `this_run.backfill_records` to know which bucket each one belongs in. Don't re-derive this split yourself from `is_new_this_run` + `announcement_date` — it's already computed.
 
@@ -63,10 +70,23 @@ Source: [name with URL]
 
 Every other deal from this run is already covered by its one-line bullet in Section 1 — do not repeat it here.
 
-### 4. Notes
+### 4. Sources
+List the source article(s) behind every deal counted this run — the same set covered in Section 1: every record in `report_stats.json`'s `this_run.genuinely_new_records` and `backfill_records` combined. Look each one up by `id` in `investments_deduped.json` for its `source_urls` (and `source_name` where present). One line per company:
+
+```
+- **[Company Name]**: [source label](url)
+```
+
+If a record has more than one `source_url`, list each as a separate link on the same line, comma-separated. Derive the link label from the source name if one is given, otherwise the site's domain (e.g. `eu-startups.com`) — never the raw URL as the link text. Use proper markdown hyperlink syntax: `[label](url)` — never `label (url)` or the raw URL on its own.
+
+A continuously updated full list of every source this newsletter draws from is planned as a standing reference page, to be linked from here once it exists. It does not exist yet — do not invent it, reference it, or add a placeholder link for it.
+
+### 5. Notes
 Caveats and housekeeping the reader should know about, stated once, in plain prose — not a bulleted log of bolded field labels. Cover, where relevant:
 - Records that are unconfirmed or still being verified
 - Anything that needed a second look: a source that failed to load, or a deal whose announcement date is much older than when it surfaced — make clear this is about *when we found it*, not a lull in deal activity; point to The Numbers for the actual run-rate
+
+Do not mention internal classification or data-quality bookkeeping — e.g. whether a company's sector mapped cleanly onto the taxonomy, or that something is "pending a closer look" for an internal reason. That's for Phill's review (see `sector_normalised` in CLAUDE.md), not the reader; if the sector itself is uncertain in a way that affects the deal's facts, just state the sector as given without narrating how it was classified.
 
 Write 1–3 short paragraphs. Only include a point if there's something to say — never state an empty result (e.g. "no new sources were added").
 

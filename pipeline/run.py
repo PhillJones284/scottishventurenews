@@ -50,7 +50,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 sys.path.insert(0, str(ROOT))
-from pipeline import fetcher, parser, deduplicator, report_stats, chart_generator, vc_profile_stats
+from pipeline import fetcher, parser, deduplicator, report_stats, chart_generator, vc_profile_stats, deal_table_generator
 
 DOCS_VC_PROFILES = ROOT / "docs" / "vc-profiles"
 DATA_REPORTS_CHARTS = DATA_REPORTS / "charts"
@@ -334,6 +334,15 @@ def main():
             logger.info("Stage 5 gate passed.")
     else:
         logger.info("No known VCs active this run — nothing to refresh.")
+
+    # Stage 6 — Deal Table Generator (Python)
+    logger.info("=== Stage 6: Deal Table Generator ===")
+    try:
+        deal_table_generator.run(date_str=run_date)
+    except Exception as e:
+        logger.warning("Stage 6 (Deal Table Generator) failed: %s — non-blocking, report still complete.", e)
+    else:
+        logger.info("Stage 6 complete. Static table: data/reports/deals.html")
 
     print(f"Pipeline complete. Report: data/reports/{run_date}_vc-report.md")
 

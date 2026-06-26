@@ -13,11 +13,12 @@ You achieve this by producing a weekly analyst-quality intelligence report that 
 
 ### Weekly Report (`data/reports/YYYY-MM-DD_vc-report.md`)
 
-A short Markdown briefing containing:
+A short Markdown briefing, opening with a one-line disclaimer ("This is an automated newsletter, written by Claude, based on news coverage scraped from N websites" — N is `monitored_source_count` from Stage 3.5, a count of `config/sources.json`, never guessed by the reporter), then containing:
 1. **This Week** — 3–5 bullets on what's new or updated this run
 2. **The Numbers** — quarter/year running totals (computed deterministically by Stage 3.5, by `announcement_date`; Stage 3.5 refuses to run at all if a duplicate is still unresolved, so there is never a pending pair left to double-count) with explicit revision deltas for backfilled deals, plus a brief stage/sector/geography narrative
 3. **Deal Spotlight** — 1–2 deep write-ups on the most notable deals this run
-4. **Notes** — low-confidence records, data notes, and caveats (stated once, in plain prose)
+4. **Sources** — links to the news articles behind this run's new-or-updated deals. A standing, continuously updated full source list is planned as a separate reference page to link from here, but doesn't exist yet
+5. **Notes** — low-confidence records, data notes, and caveats (stated once, in plain prose)
 
 Full per-VC historical profiles are *not* rebuilt in the weekly report — see [Managing VC profiles](#managing-vc-profiles) below for the standing reference instead.
 

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scottish VC Deals — Q2 2026 / 2026 YTD</title>
+  <style>
+    :root {
+      --navy:       #1F3B57;
+      --slate:      #7C93A8;
+      --grey:       #9AA0A6;
+      --light-grey: #D8DCE0;
+      --blue:       #7B9EB9;
+      --green:      #6BA58A;
+      --gold:       #C49A5A;
+      --maroon:     #A07878;
+      --tan:        #A89B8C;
+      --ink:        #222222;
+      --bg:         #F7F7F6;
+      --white:      #FFFFFF;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.45;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .container { max-width: 1280px; margin: 0 auto; padding: 28px 20px 48px; }
+
+    /* ── header ── */
+    header { margin-bottom: 24px; }
+    header h1 { font-size: 20px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; }
+    header p { color: var(--slate); font-size: 12px; margin-top: 5px; }
+
+    /* ── tabs ── */
+    .tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 16px;
+      border-bottom: 2px solid var(--light-grey);
+    }
+    .tab {
+      padding: 8px 20px;
+      cursor: pointer;
+      color: var(--slate);
+      font-size: 13px;
+      font-weight: 500;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: color 0.1s;
+    }
+    .tab.active { color: var(--navy); border-bottom-color: var(--navy); }
+    .tab:hover:not(.active) { color: var(--ink); }
+
+    /* ── stats bar ── */
+    .stats-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      margin-bottom: 16px;
+      background: var(--white);
+      border: 1px solid var(--light-grey);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .stat {
+      flex: 1;
+      min-width: 110px;
+      padding: 12px 18px;
+      border-right: 1px solid var(--light-grey);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-value { font-size: 20px; font-weight: 700; color: var(--navy); }
+    .stat-label { font-size: 10px; color: var(--slate); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+    /* ── controls ── */
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .controls input[type="text"] {
+      padding: 6px 10px;
+      border: 1px solid var(--light-grey);
+      border-radius: 4px;
+      font-size: 13px;
+      width: 230px;
+      background: var(--white);
+      outline: none;
+    }
+    .controls input[type="text"]:focus { border-color: var(--blue); }
+    .controls select {
+      padding: 6px 8px;
+      border: 1px solid var(--light-grey);
+      border-radius: 4px;
+      font-size: 12px;
+      color: var(--ink);
+      background: var(--white);
+      cursor: pointer;
+      outline: none;
+    }
+    .controls select:focus { border-color: var(--blue); }
+    .btn-reset {
+      padding: 6px 12px;
+      border: 1px solid var(--light-grey);
+      border-radius: 4px;
+      background: var(--white);
+      color: var(--slate);
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .btn-reset:hover { color: var(--ink); border-color: var(--grey); }
+    .result-count { color: var(--slate); font-size: 12px; margin-left: auto; }
+
+    /* ── table ── */
+    .table-wrap { overflow-x: auto; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border: 1px solid var(--light-grey);
+      border-radius: 6px;
+      overflow: hidden;
+      min-width: 860px;
+    }
+    thead th {
+      text-align: left;
+      padding: 9px 12px;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--slate);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: #F0F1F2;
+      border-bottom: 1px solid var(--light-grey);
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+    }
+    thead th:last-child { cursor: default; }
+    thead th:hover:not(:last-child) { color: var(--navy); }
+    .sort-icon { color: var(--light-grey); margin-left: 3px; font-style: normal; }
+    th.sort-asc .sort-icon, th.sort-desc .sort-icon { color: var(--navy); }
+    tbody tr { border-bottom: 1px solid var(--light-grey); transition: background 0.08s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #F4F5F6; }
+    td { padding: 9px 12px; vertical-align: top; }
+
+    /* ── cell styles ── */
+    .date { color: var(--slate); white-space: nowrap; font-size: 12px; }
+    .company-name { font-weight: 600; color: var(--navy); }
+    .headline { font-size: 11px; color: var(--grey); margin-top: 2px; line-height: 1.35; max-width: 260px; }
+    .location { color: var(--slate); font-size: 12px; }
+    .sector-tag {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 3px;
+      background: var(--light-grey);
+      color: var(--slate);
+      font-size: 10px;
+      margin: 1px 2px 1px 0;
+      white-space: nowrap;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .badge-stage { background: #ECF1F7; color: var(--navy); }
+    .badge-high   { background: #E8F4EF; color: #3A7860; }
+    .badge-medium { background: #FEF4E3; color: #8A6828; }
+    .badge-low    { background: #F5ECEC; color: #8A4848; }
+    .amount { font-weight: 600; color: var(--navy); white-space: nowrap; }
+    .amount-undisclosed { color: var(--grey); font-style: italic; white-space: nowrap; }
+    .lead-investor { font-weight: 500; }
+    .other-investors { color: var(--slate); font-size: 11px; margin-top: 2px; }
+    .source-link {
+      color: var(--blue);
+      font-size: 14px;
+      display: inline-block;
+      line-height: 1;
+    }
+    .source-link:hover { color: var(--navy); }
+
+    /* ── no results ── */
+    .no-results {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+      color: var(--grey);
+      background: var(--white);
+      border: 1px solid var(--light-grey);
+      border-radius: 6px;
+      margin-top: 0;
+    }
+
+    /* ── footer ── */
+    footer {
+      margin-top: 20px;
+      color: var(--grey);
+      font-size: 11px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>Scottish VC Deals</h1>
+    <p>Automated pipeline &nbsp;·&nbsp; Generated 2026-06-26 &nbsp;·&nbsp; Source: public news coverage</p>
+  </header>
+
+  <div class="tabs">
+    <div class="tab active" data-window="quarter" id="tab-quarter">Q2 2026</div>
+    <div class="tab" data-window="ytd" id="tab-ytd">2026 YTD</div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-value" id="stat-deals">—</div>
+      <div class="stat-label">Deals</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" id="stat-capital">—</div>
+      <div class="stat-label">Capital raised</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" id="stat-disclosed">—</div>
+      <div class="stat-label">Amount disclosed</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" id="stat-investors">—</div>
+      <div class="stat-label">Investors active</div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <input type="text" id="search" placeholder="Search company, investor…" autocomplete="off">
+    <select id="filter-stage"><option value="">All stages</option></select>
+    <select id="filter-sector"><option value="">All sectors</option></select>
+    <select id="filter-location"><option value="">All locations</option></select>
+    <select id="filter-confidence">
+      <option value="">All confidence</option>
+      <option value="high">High confidence</option>
+      <option value="medium">Medium confidence</option>
+      <option value="low">Low confidence</option>
+    </select>
+    <button class="btn-reset" id="btn-reset">Reset</button>
+    <span class="result-count" id="result-count"></span>
+  </div>
+
+  <div class="table-wrap">
+    <table id="deals-table">
+      <thead>
+        <tr>
+          <th data-col="announcement_date">Date<i class="sort-icon">↕</i></th>
+          <th data-col="company_name">Company<i class="sort-icon">↕</i></th>
+          <th data-col="company_location">Location<i class="sort-icon">↕</i></th>
+          <th>Sector</th>
+          <th data-col="round_type">Stage<i class="sort-icon">↕</i></th>
+          <th data-col="amount_gbp_millions">Amount<i class="sort-icon">↕</i></th>
+          <th data-col="lead_investor">Investors<i class="sort-icon">↕</i></th>
+          <th data-col="confidence">Confidence<i class="sort-icon">↕</i></th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody id="deals-tbody"></tbody>
+    </table>
+    <div class="no-results" id="no-results">No deals match your filters.</div>
+  </div>
+
+  <footer>Scottish VC Tracker &nbsp;·&nbsp; Data sourced from public news coverage only &nbsp;·&nbsp; Not investment advice</footer>
+
+</div>
+<script>
+const DATA = {"quarter_label":"Q2 2026","year":2026,"generated":"2026-06-26","quarter_deals":[{"id":"bead-biopharma_unknown_2026-06-23","company_name":"Bead BioPharma","company_location":"Other Scotland","company_sectors":["Life Sciences"],"round_type":"Unknown","amount_gbp_millions":null,"investors":["Archangels"],"lead_investor":"Archangels","announcement_date":"2026-06-23","source_url":"https://angelcapital.scot/news/scottish-biotech-bead-biopharma-emerges-from-stealth-mode-with-novel-cancer-drug-platform/","headline":"Scottish biotech Bead BioPharma emerges from stealth mode with novel cancer drug platform","confidence":"low"},{"id":"honuworx_seed_2026-06-09","company_name":"HonuWorx","company_location":"Other Scotland","company_sectors":["Deep Tech"],"round_type":"Seed","amount_gbp_millions":0.506,"investors":["Tricapital"],"lead_investor":"Tricapital","announcement_date":"2026-06-09","source_url":"https://angelcapital.scot/deals/tricapital-scots-syndicate-leads-3m-plus-deals-and-unveils-key-hire/","headline":"Tricapital: Scots syndicate leads £3m-plus deals and unveils key hire","confidence":"medium"},{"id":"kaly_seed_2026-06-09","company_name":"Kaly","company_location":"Other Scotland","company_sectors":["Agritech & Foodtech","Life Sciences"],"round_type":"Seed","amount_gbp_millions":0.43,"investors":["Tricapital"],"lead_investor":"Tricapital","announcement_date":"2026-06-09","source_url":"https://angelcapital.scot/deals/tricapital-scots-syndicate-leads-3m-plus-deals-and-unveils-key-hire/","headline":"Tricapital: Scots syndicate leads £3m-plus deals and unveils key hire","confidence":"medium"},{"id":"sisaltech_seed_2026-06-09","company_name":"Sisaltech","company_location":"Other Scotland","company_sectors":["Energy & Cleantech","low-carbon insulation, sustainability"],"round_type":"Seed","amount_gbp_millions":0.62,"investors":["Tricapital"],"lead_investor":"Tricapital","announcement_date":"2026-06-09","source_url":"https://angelcapital.scot/deals/tricapital-scots-syndicate-leads-3m-plus-deals-and-unveils-key-hire/","headline":"Tricapital: Scots syndicate leads £3m-plus deals and unveils key hire","confidence":"medium"},{"id":"aveni_growth_2026-06-04","company_name":"Aveni","company_location":"Edinburgh","company_sectors":["AI & Machine Learning","Fintech"],"round_type":"Growth","amount_gbp_millions":12.0,"investors":["PXN Ventures","Puma Growth Partners","Lloyds Banking Group","Nationwide","Scottish Enterprise Investment Fund"],"lead_investor":"PXN Ventures","announcement_date":"2026-06-04","source_url":"https://scottishfinancialreview.com/2026/06/04/aveni-edinburgh-ai-wealth-startup-raises-12m/","headline":"Aveni, Edinburgh AI wealth startup, raises £12m","confidence":"high"},{"id":"wordsmith-ai_series-b_2026-06-03","company_name":"Wordsmith AI","company_location":"Edinburgh","company_sectors":["AI & Machine Learning","SaaS & Enterprise Software"],"round_type":"Series B","amount_gbp_millions":51.87,"investors":["Highland Europe","Index Ventures"],"lead_investor":"Highland Europe","announcement_date":"2026-06-03","source_url":"https://www.eu-startups.com/2026/06/edinburgh-based-wordsmith-raises-e60-2-million-series-b-to-scale-legal-ai-platform-for-in-house-teams/","headline":"Edinburgh-based Wordsmith raises €60.2 million Series B to scale legal AI platform","confidence":"high"},{"id":"go-swag_seed_2026-05-27","company_name":"Go Swag","company_location":"Glasgow","company_sectors":["SaaS & Enterprise Software"],"round_type":"Seed","amount_gbp_millions":3.705,"investors":["Mercia Ventures","Techstart Ventures"],"lead_investor":"Mercia Ventures","announcement_date":"2026-05-27","source_url":"https://www.uktechnews.info/category/region/scotland/","headline":"Go Swag raises $5 million led by Mercia Ventures","confidence":"high"},{"id":"epass_unknown_2026-05-25","company_name":"ePass","company_location":"Other Scotland","company_sectors":["GovTech / Licensing and permitting platform","SaaS & Enterprise Software"],"round_type":"Unknown","amount_gbp_millions":null,"investors":[],"lead_investor":"","announcement_date":"2026-05-25","source_url":"https://scottishbusinessnews.net/govtech-startup-epass-rolls-out-nationwide-platform-after-1m-debut-year/","headline":"GovTech startup ePass rolls out nationwide platform after £1m debut year","confidence":"low"},{"id":"stampfreeai_growth_2026-05-20","company_name":"Stampfree.Ai","company_location":"Edinburgh","company_sectors":["AI & Machine Learning"],"round_type":"Growth","amount_gbp_millions":1.03,"investors":["R42 Group","Crowdcube investors","Republic investors","unnamed existing and new investors"],"lead_investor":"R42 Group","announcement_date":"2026-05-20","source_url":"https://www.digit.fyi/edinburgh-ai-ecommerce-firm-raises-over-1m-in-new-investment/","headline":"Edinburgh AI ecommerce firm raises over £1m in new investment","confidence":"medium"},{"id":"esk_growth_2026-05-11","company_name":"Esk","company_location":"Edinburgh","company_sectors":["Creative & Media","creative industries, film services"],"round_type":"Growth","amount_gbp_millions":2.6,"investors":["Maven Capital Partners","Maven Income and Growth VCTs","Investment Fund for Scotland (IFS Maven Equity Finance)","British Business Bank"],"lead_investor":"Maven Capital Partners","announcement_date":"2026-05-11","source_url":"https://www.mavencp.com/latest-news/maven-leads-2.6-million-funding-round-in-esk","headline":"Maven leads £2.6 million funding round in Esk","confidence":"high"},{"id":"lentitek_seed_2026-05-01","company_name":"Lentitek","company_location":"Edinburgh","company_sectors":["Healthtech","Life Sciences"],"round_type":"Seed","amount_gbp_millions":0.7,"investors":["Equity Gap","Gabriel-IS","Apollo Informal Investment","Scottish Enterprise Investment Fund"],"lead_investor":"Equity Gap","announcement_date":"2026-05-01","source_url":"https://angelcapital.scot/news/lentitek-raises-700k-for-cancer-treatment-technology/","headline":"Lentitek raises £700k for cancer treatment technology","confidence":"high"},{"id":"infrawatch_pre-seed_2026-05-01","company_name":"Infrawatch","company_location":"Edinburgh","company_sectors":["Deep Tech","cybersecurity"],"round_type":"Pre-Seed","amount_gbp_millions":null,"investors":["Outward VC","Triple Point Ventures","Portfolio Ventures"],"lead_investor":"Outward VC","announcement_date":"2026-05-01","source_url":"https://theedinburghreporter.co.uk/2026/05/edinburgh-cyber-security-start-up-raises-millions-in-pre-seed-round/","headline":"Edinburgh cyber security start up raises millions in pre-seed round","confidence":"medium"},{"id":"jet-connectivity_unknown_2026-05-01","company_name":"JET Connectivity","company_location":"Unknown","company_sectors":["Deep Tech"],"round_type":"Unknown","amount_gbp_millions":1.2,"investors":["Tricapital","The FSE Group"],"lead_investor":"Tricapital","announcement_date":"2026-05-01","source_url":"https://angelcapital.scot/deals/tricapital-angels-leads-1-2m-investment-into-sovereign-dual-use-5g-solutions/","headline":"TRICAPITAL Angels leads £1.2m investment into sovereign dual use 5G solutions","confidence":"medium"},{"id":"highway-data-systems_seed_2026-04-30","company_name":"Highway Data Systems","company_location":"Glasgow","company_sectors":["Deep Tech","Mobility & Transport","Property & Construction Tech"],"round_type":"Seed","amount_gbp_millions":1.25,"investors":["Maven Capital Partners"],"lead_investor":"Maven Capital Partners","announcement_date":"2026-04-30","source_url":"https://www.uktechnews.info/category/region/scotland/","headline":"Investment Fund for Scotland Maven Equity Finance invests £1.25 million in Highway Data Systems","confidence":"medium"},{"id":"enterobiotix_growth_2026-04-29","company_name":"EnteroBiotix","company_location":"Unknown","company_sectors":["Life Sciences"],"round_type":"Growth","amount_gbp_millions":19.0,"investors":["Thairm Bio","Scottish National Investment Bank","existing and new investors (undisclosed)"],"lead_investor":"Thairm Bio","announcement_date":"2026-04-29","source_url":"https://scottishfinancialreview.com/2026/04/29/enterobiotix-bellshill-biopharma-raises-19m/","headline":"EnteroBiotix, Bellshill biopharma, raises £19m","confidence":"high"},{"id":"cnuic_pre-seed_2026-04-28","company_name":"Cnuic","company_location":"Edinburgh","company_sectors":["Deep Tech"],"round_type":"Pre-Seed","amount_gbp_millions":2.223,"investors":["Tensor Ventures","Blank Space Ventures","Silicon Roundabout Ventures","Phasechange","SANDS","Superlative"],"lead_investor":"Tensor Ventures","announcement_date":"2026-04-28","source_url":"https://tech.eu/2026/04/28/cnuic-secures-eur3m-pre-seed-to-unlock-next-generation-photonic-chip-production/","headline":"Cnuic secures $3m pre-seed to unlock next-generation photonic chip production","confidence":"high"},{"id":"exergy3_seed_2026-04-21","company_name":"Exergy3","company_location":"Edinburgh","company_sectors":["Energy & Cleantech"],"round_type":"Seed","amount_gbp_millions":9.838,"investors":["Axeleo Capital","Bayern Kapital","Kibo Invest","Scottish Enterprise Investment Fund","Zero Carbon Capital","Old College Capital"],"lead_investor":"Axeleo Capital","announcement_date":"2026-04-21","source_url":"https://www.eu-startups.com/2026/04/edinburghs-exergy3-raises-e11-4-million-to-turn-surplus-renewable-power-into-clean-industrial-heat/","headline":"Edinburgh's Exergy3 raises €11.4 million to turn surplus renewable power into clean industrial heat","confidence":"high"},{"id":"vuabl_pre-seed_2026-04-01","company_name":"Vuabl","company_location":"Glasgow","company_sectors":["Property & Construction Tech"],"round_type":"Pre-Seed","amount_gbp_millions":0.222,"investors":["STAC Invest"],"lead_investor":"STAC Invest","announcement_date":"2026-04-01","source_url":"https://businesscloud.co.uk/live-blog/stac-backs-three-scottish-deeptech-companies/","headline":"STAC backs three Scottish deeptech companies with £772k","confidence":"high"},{"id":"airspection_pre-seed_2026-04-01","company_name":"Airspection","company_location":"Glasgow","company_sectors":["Deep Tech","Envirotech / Autonomous drone inspection"],"round_type":"Pre-Seed","amount_gbp_millions":0.3,"investors":["STAC Invest"],"lead_investor":"STAC Invest","announcement_date":"2026-04-01","source_url":"https://businesscloud.co.uk/live-blog/stac-backs-three-scottish-deeptech-companies/","headline":"STAC backs three Scottish deeptech companies with £772k","confidence":"high"}],"ytd_deals":[{"id":"bead-biopharma_unknown_2026-06-23","company_name":"Bead BioPharma","company_location":"Other Scotland","company_sectors":["Life Sciences"],"round_type":"Unknown","amount_gbp_millions":null,"investors":["Archangels"],"lead_investor":"Archangels","announcement_date":"2026-06-23","source_url":"https://angelcapital.scot/news/scottish-biotech-bead-biopharma-emerges-from-stealth-mode-with-novel-cancer-drug-platform/","headline":"Scottish biotech Bead BioPharma emerges from stealth mode with novel cancer drug platform","confidence":"low"},{"id":"honuworx_seed_2026-06-09","company_name":"HonuWorx","company_location":"Other Scotland","company_sectors":["Deep Tech"],"round_type":"Seed","amount_gbp_millions":0.506,"investors":["Tricapital"],"lead_investor":"Tricapital","announcement_date":"2026-06-09","source_url":"https://angelcapital.scot/deals/tricapital-scots-syndicate-leads-3m-plus-deals-and-unveils-key-hire/","headline":"Tricapital: Scots syndicate leads £3m-plus deals and unveils key hire","confidence":"medium"},{"id":"kaly_seed_2026-06-09","company_name":"Kaly","company_location":"Other Scotland","company_sectors":["Agritech & Foodtech","Life Sciences"],"round_type":"Seed","amount_gbp_millions":0.43,"investors":["Tricapital"],"lead_investor":"Tricapital","announcement_date":"2026-06-09","source_url":"https://angelcapital.scot/deals/tricapital-scots-syndicate-leads-3m-plus-deals-and-unveils-key-hire/","headline":"Tricapital: Scots syndicate leads £3m-plus deals and unveils key hire","confidence":"medium"},{"id":"sisaltech_seed_2026-06-09","company_name":"Sisaltech","company_location":"Other Scotland","company_sectors":["Energy & Cleantech","low-carbon insulation, sustainability"],"round_type":"Seed","amount_gbp_millions":0.62,"investors":["Tricapital"],"lead_investor":"Tricapital","announcement_date":"2026-06-09","source_url":"https://angelcapital.scot/deals/tricapital-scots-syndicate-leads-3m-plus-deals-and-unveils-key-hire/","headline":"Tricapital: Scots syndicate leads £3m-plus deals and unveils key hire","confidence":"medium"},{"id":"aveni_growth_2026-06-04","company_name":"Aveni","company_location":"Edinburgh","company_sectors":["AI & Machine Learning","Fintech"],"round_type":"Growth","amount_gbp_millions":12.0,"investors":["PXN Ventures","Puma Growth Partners","Lloyds Banking Group","Nationwide","Scottish Enterprise Investment Fund"],"lead_investor":"PXN Ventures","announcement_date":"2026-06-04","source_url":"https://scottishfinancialreview.com/2026/06/04/aveni-edinburgh-ai-wealth-startup-raises-12m/","headline":"Aveni, Edinburgh AI wealth startup, raises £12m","confidence":"high"},{"id":"wordsmith-ai_series-b_2026-06-03","company_name":"Wordsmith AI","company_location":"Edinburgh","company_sectors":["AI & Machine Learning","SaaS & Enterprise Software"],"round_type":"Series B","amount_gbp_millions":51.87,"investors":["Highland Europe","Index Ventures"],"lead_investor":"Highland Europe","announcement_date":"2026-06-03","source_url":"https://www.eu-startups.com/2026/06/edinburgh-based-wordsmith-raises-e60-2-million-series-b-to-scale-legal-ai-platform-for-in-house-teams/","headline":"Edinburgh-based Wordsmith raises €60.2 million Series B to scale legal AI platform","confidence":"high"},{"id":"go-swag_seed_2026-05-27","company_name":"Go Swag","company_location":"Glasgow","company_sectors":["SaaS & Enterprise Software"],"round_type":"Seed","amount_gbp_millions":3.705,"investors":["Mercia Ventures","Techstart Ventures"],"lead_investor":"Mercia Ventures","announcement_date":"2026-05-27","source_url":"https://www.uktechnews.info/category/region/scotland/","headline":"Go Swag raises $5 million led by Mercia Ventures","confidence":"high"},{"id":"epass_unknown_2026-05-25","company_name":"ePass","company_location":"Other Scotland","company_sectors":["GovTech / Licensing and permitting platform","SaaS & Enterprise Software"],"round_type":"Unknown","amount_gbp_millions":null,"investors":[],"lead_investor":"","announcement_date":"2026-05-25","source_url":"https://scottishbusinessnews.net/govtech-startup-epass-rolls-out-nationwide-platform-after-1m-debut-year/","headline":"GovTech startup ePass rolls out nationwide platform after £1m debut year","confidence":"low"},{"id":"stampfreeai_growth_2026-05-20","company_name":"Stampfree.Ai","company_location":"Edinburgh","company_sectors":["AI & Machine Learning"],"round_type":"Growth","amount_gbp_millions":1.03,"investors":["R42 Group","Crowdcube investors","Republic investors","unnamed existing and new investors"],"lead_investor":"R42 Group","announcement_date":"2026-05-20","source_url":"https://www.digit.fyi/edinburgh-ai-ecommerce-firm-raises-over-1m-in-new-investment/","headline":"Edinburgh AI ecommerce firm raises over £1m in new investment","confidence":"medium"},{"id":"esk_growth_2026-05-11","company_name":"Esk","company_location":"Edinburgh","company_sectors":["Creative & Media","creative industries, film services"],"round_type":"Growth","amount_gbp_millions":2.6,"investors":["Maven Capital Partners","Maven Income and Growth VCTs","Investment Fund for Scotland (IFS Maven Equity Finance)","British Business Bank"],"lead_investor":"Maven Capital Partners","announcement_date":"2026-05-11","source_url":"https://www.mavencp.com/latest-news/maven-leads-2.6-million-funding-round-in-esk","headline":"Maven leads £2.6 million funding round in Esk","confidence":"high"},{"id":"lentitek_seed_2026-05-01","company_name":"Lentitek","company_location":"Edinburgh","company_sectors":["Healthtech","Life Sciences"],"round_type":"Seed","amount_gbp_millions":0.7,"investors":["Equity Gap","Gabriel-IS","Apollo Informal Investment","Scottish Enterprise Investment Fund"],"lead_investor":"Equity Gap","announcement_date":"2026-05-01","source_url":"https://angelcapital.scot/news/lentitek-raises-700k-for-cancer-treatment-technology/","headline":"Lentitek raises £700k for cancer treatment technology","confidence":"high"},{"id":"infrawatch_pre-seed_2026-05-01","company_name":"Infrawatch","company_location":"Edinburgh","company_sectors":["Deep Tech","cybersecurity"],"round_type":"Pre-Seed","amount_gbp_millions":null,"investors":["Outward VC","Triple Point Ventures","Portfolio Ventures"],"lead_investor":"Outward VC","announcement_date":"2026-05-01","source_url":"https://theedinburghreporter.co.uk/2026/05/edinburgh-cyber-security-start-up-raises-millions-in-pre-seed-round/","headline":"Edinburgh cyber security start up raises millions in pre-seed round","confidence":"medium"},{"id":"jet-connectivity_unknown_2026-05-01","company_name":"JET Connectivity","company_location":"Unknown","company_sectors":["Deep Tech"],"round_type":"Unknown","amount_gbp_millions":1.2,"investors":["Tricapital","The FSE Group"],"lead_investor":"Tricapital","announcement_date":"2026-05-01","source_url":"https://angelcapital.scot/deals/tricapital-angels-leads-1-2m-investment-into-sovereign-dual-use-5g-solutions/","headline":"TRICAPITAL Angels leads £1.2m investment into sovereign dual use 5G solutions","confidence":"medium"},{"id":"highway-data-systems_seed_2026-04-30","company_name":"Highway Data Systems","company_location":"Glasgow","company_sectors":["Deep Tech","Mobility & Transport","Property & Construction Tech"],"round_type":"Seed","amount_gbp_millions":1.25,"investors":["Maven Capital Partners"],"lead_investor":"Maven Capital Partners","announcement_date":"2026-04-30","source_url":"https://www.uktechnews.info/category/region/scotland/","headline":"Investment Fund for Scotland Maven Equity Finance invests £1.25 million in Highway Data Systems","confidence":"medium"},{"id":"enterobiotix_growth_2026-04-29","company_name":"EnteroBiotix","company_location":"Unknown","company_sectors":["Life Sciences"],"round_type":"Growth","amount_gbp_millions":19.0,"investors":["Thairm Bio","Scottish National Investment Bank","existing and new investors (undisclosed)"],"lead_investor":"Thairm Bio","announcement_date":"2026-04-29","source_url":"https://scottishfinancialreview.com/2026/04/29/enterobiotix-bellshill-biopharma-raises-19m/","headline":"EnteroBiotix, Bellshill biopharma, raises £19m","confidence":"high"},{"id":"cnuic_pre-seed_2026-04-28","company_name":"Cnuic","company_location":"Edinburgh","company_sectors":["Deep Tech"],"round_type":"Pre-Seed","amount_gbp_millions":2.223,"investors":["Tensor Ventures","Blank Space Ventures","Silicon Roundabout Ventures","Phasechange","SANDS","Superlative"],"lead_investor":"Tensor Ventures","announcement_date":"2026-04-28","source_url":"https://tech.eu/2026/04/28/cnuic-secures-eur3m-pre-seed-to-unlock-next-generation-photonic-chip-production/","headline":"Cnuic secures $3m pre-seed to unlock next-generation photonic chip production","confidence":"high"},{"id":"exergy3_seed_2026-04-21","company_name":"Exergy3","company_location":"Edinburgh","company_sectors":["Energy & Cleantech"],"round_type":"Seed","amount_gbp_millions":9.838,"investors":["Axeleo Capital","Bayern Kapital","Kibo Invest","Scottish Enterprise Investment Fund","Zero Carbon Capital","Old College Capital"],"lead_investor":"Axeleo Capital","announcement_date":"2026-04-21","source_url":"https://www.eu-startups.com/2026/04/edinburghs-exergy3-raises-e11-4-million-to-turn-surplus-renewable-power-into-clean-industrial-heat/","headline":"Edinburgh's Exergy3 raises €11.4 million to turn surplus renewable power into clean industrial heat","confidence":"high"},{"id":"vuabl_pre-seed_2026-04-01","company_name":"Vuabl","company_location":"Glasgow","company_sectors":["Property & Construction Tech"],"round_type":"Pre-Seed","amount_gbp_millions":0.222,"investors":["STAC Invest"],"lead_investor":"STAC Invest","announcement_date":"2026-04-01","source_url":"https://businesscloud.co.uk/live-blog/stac-backs-three-scottish-deeptech-companies/","headline":"STAC backs three Scottish deeptech companies with £772k","confidence":"high"},{"id":"airspection_pre-seed_2026-04-01","company_name":"Airspection","company_location":"Glasgow","company_sectors":["Deep Tech","Envirotech / Autonomous drone inspection"],"round_type":"Pre-Seed","amount_gbp_millions":0.3,"investors":["STAC Invest"],"lead_investor":"STAC Invest","announcement_date":"2026-04-01","source_url":"https://businesscloud.co.uk/live-blog/stac-backs-three-scottish-deeptech-companies/","headline":"STAC backs three Scottish deeptech companies with £772k","confidence":"high"},{"id":"bioliberty_series-a_2026-03-31","company_name":"Bioliberty","company_location":"Edinburgh","company_sectors":["Deep Tech","Healthtech","SaaS & Enterprise Software"],"round_type":"Series A","amount_gbp_millions":6.2,"investors":["Scottish National Investment Bank","Archangels","Eos Advisory","Old College Capital","Hanna Capital SEZC","Conduit Connect"],"lead_investor":"Scottish National Investment Bank","announcement_date":"2026-03-31","source_url":"https://angelcapital.scot/deals/healthtech-firm-bioliberty-to-accelerate-international-growth-with-new-investment/","headline":"Healthtech firm Bioliberty to accelerate international growth with new investment","confidence":"high"},{"id":"earth-blox_series-a_2026-03-31","company_name":"Earth Blox","company_location":"Edinburgh","company_sectors":["Climate tech / Nature risk analytics","Energy & Cleantech","Fintech","SaaS & Enterprise Software"],"round_type":"Series A","amount_gbp_millions":6.0,"investors":["PXN Ventures","Scottish Enterprise Investment Fund","Archangels","European Space Agency"],"lead_investor":"PXN Ventures","announcement_date":"2026-03-31","source_url":"https://angelcapital.scot/deals/earth-blox-secures-6m-to-help-businesses-and-banks-finance-the-transition-to-a-nature-positive-economy/","headline":"Earth Blox secures £6m to help businesses and banks finance the transition to a nature-positive economy","confidence":"high"},{"id":"entourage-ai_pre-seed_2026-03-18","company_name":"Entourage AI","company_location":"Glasgow","company_sectors":["AI & Machine Learning","Healthtech"],"round_type":"Pre-Seed","amount_gbp_millions":3.705,"investors":["Provision","GU Holdings Ltd (University of Glasgow)","David Peterson","Brad Peltz","angel investors"],"lead_investor":"Provision","announcement_date":"2026-03-18","source_url":"https://scottishfinancialreview.com/2026/03/18/entourage-ai-glasgow-uni-health-spinout-in-5m-raise/","headline":"Entourage AI, Glasgow uni health spinout, in $5m raise","confidence":"high"},{"id":"biocaptiva_seed_2026-03-10","company_name":"Biocaptiva","company_location":"Edinburgh","company_sectors":["Life Sciences"],"round_type":"Seed","amount_gbp_millions":1.58,"investors":["Archangels","Old College Capital","British Business Investments","Scottish Enterprise Investment Fund","EverQuest Capital Partners"],"lead_investor":"Archangels","announcement_date":"2026-03-10","source_url":"https://angelcapital.scot/deals/edinburgh-uni-spin-out-at-cutting-edge-of-cancer-research-gets-1-6m-injection/","headline":"Edinburgh Uni spin-out at cutting edge of cancer research gets £1.6m injection","confidence":"high"},{"id":"swurf_pre-seed_2026-03-09","company_name":"Swurf","company_location":"Edinburgh","company_sectors":["Property & Construction Tech","SaaS & Enterprise Software","Worktech / Flexible workspace platform"],"round_type":"Pre-Seed","amount_gbp_millions":0.2,"investors":["Gareth Williams (Skyscanner co-founder)","Anna Lagerqvist Christopherson (Boda Bars)","unnamed HNW investors"],"lead_investor":"","announcement_date":"2026-03-09","source_url":"https://dailybusinessgroup.co.uk/2026/03/gibson-raises-200k-to-expand-swurf-platform/","headline":"SWURF raises £200k to expand platform","confidence":"medium"},{"id":"tilebio_seed_2026-03-03","company_name":"TileBio","company_location":"Glasgow","company_sectors":["Healthtech","AI & Machine Learning"],"round_type":"Seed","amount_gbp_millions":1.6,"investors":["Twin Path Ventures","Scottish Enterprise Investment Fund","GU Holdings Ltd (University of Glasgow)"],"lead_investor":"Twin Path Ventures","announcement_date":"2026-03-03","source_url":"https://glasgowcityofscienceandinnovation.com/glasgow-healthtech-spinout-raises-1-6m-to-transform-cancer-diagnosis-with-ai/","headline":"Glasgow healthtech spinout raises £1.6m to transform cancer diagnosis with AI","confidence":"high"},{"id":"quantcore_seed_2026-03-02","company_name":"Quantcore","company_location":"Glasgow","company_sectors":["Deep Tech"],"round_type":"Seed","amount_gbp_millions":2.5,"investors":["PXN Ventures","Blackfinch Ventures","Scottish Enterprise Investment Fund","Quantum Exponential","STAC Invest"],"lead_investor":"PXN Ventures","announcement_date":"2026-03-02","source_url":"https://angelcapital.scot/news/scottish-quantum-hardware-company-raises-2-5m-to-build-uks-sovereign-manufacturing-capability/","headline":"Scottish quantum hardware company raises £2.5m to build UK's sovereign manufacturing capability","confidence":"high"},{"id":"launchpad_series-a_2026-02-16","company_name":"Launchpad","company_location":"Edinburgh","company_sectors":["AI & Machine Learning","Deep Tech"],"round_type":"Series A","amount_gbp_millions":8.151,"investors":["PXN Ventures","Scottish National Investment Bank","Scottish Enterprise Investment Fund","Lavrock Ventures","Squadra Ventures","Ericsson Ventures","Lockheed Martin Ventures"],"lead_investor":"","announcement_date":"2026-02-16","source_url":"https://angelcapital.scot/news/launchpad-announces-pxn-ventures-as-its-newest-strategic-investor/","headline":"Launchpad announces PXN Ventures as its newest strategic investor","confidence":"high"},{"id":"nami-surgical_growth_2026-01-29","company_name":"Nami Surgical","company_location":"Glasgow","company_sectors":["Healthtech","SaaS & Enterprise Software"],"round_type":"Growth","amount_gbp_millions":1.9,"investors":["Eos Advisory","Maven Capital Partners (Investment Fund for Scotland)","Scottish Enterprise Investment Fund"],"lead_investor":"Eos Advisory","announcement_date":"2026-01-29","source_url":"https://www.scottish-enterprise-mediacentre.com/news/ultrasonic-surgery-specialist-nami-appoints-nikki-palfrey-as-ceo-and-completes-latest-investment-round","headline":"Ultrasonic surgery specialist Nami appoints Nikki Palfrey as CEO and completes latest investment round","confidence":"high"},{"id":"carbogenics_seed_2026-01-19","company_name":"Carbogenics","company_location":"Edinburgh","company_sectors":["Energy & Cleantech"],"round_type":"Seed","amount_gbp_millions":2.223,"investors":["Dangerous Ventures","Green Angel Ventures","Old College Capital","Scottish Enterprise Investment Fund"],"lead_investor":"","announcement_date":"2026-01-19","source_url":"https://adbioresources.org/newsroom/member-press-release-3-million-investment-for-edinburgh-based-specialist-bio-carbon-designer-carbogenics/","headline":"$3 Million Investment for Edinburgh-Based Specialist Bio-Carbon Designer Carbogenics","confidence":"medium"}]};
+
+let currentWindow = "quarter";
+let sortCol = "announcement_date";
+let sortDir = -1;
+let searchQuery = "";
+let filterStage = "";
+let filterSector = "";
+let filterLocation = "";
+let filterConfidence = "";
+
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+function fmtDate(d) {
+  if (!d) return "";
+  const [y, m, day] = d.split("-");
+  return `${parseInt(day)} ${MONTHS[+m - 1]} ${y}`;
+}
+
+function fmtAmount(m) {
+  if (m === null || m === undefined) return null;
+  if (m >= 1000) return "£" + (m / 1000).toFixed(1) + "bn";
+  if (m >= 1) return "£" + m.toFixed(1) + "m";
+  return "£" + Math.round(m * 1000) + "k";
+}
+
+function getDeals() {
+  return currentWindow === "quarter" ? DATA.quarter_deals : DATA.ytd_deals;
+}
+
+function populateFilters() {
+  const all = DATA.ytd_deals;
+  const stages = [...new Set(all.map(d => d.round_type).filter(Boolean))].sort();
+  const sectors = [...new Set(all.flatMap(d => d.company_sectors || []))].sort();
+  const locs = [...new Set(all.map(d => d.company_location).filter(Boolean))].sort();
+
+  const stageEl = document.getElementById("filter-stage");
+  stages.forEach(s => stageEl.append(new Option(s, s)));
+
+  const sectorEl = document.getElementById("filter-sector");
+  sectors.forEach(s => sectorEl.append(new Option(s.length > 30 ? s.slice(0, 28) + "…" : s, s)));
+
+  const locEl = document.getElementById("filter-location");
+  locs.forEach(l => locEl.append(new Option(l, l)));
+}
+
+function applyFilters(deals) {
+  const q = searchQuery.toLowerCase();
+  return deals.filter(d => {
+    if (filterStage && d.round_type !== filterStage) return false;
+    if (filterSector && !(d.company_sectors || []).includes(filterSector)) return false;
+    if (filterLocation && d.company_location !== filterLocation) return false;
+    if (filterConfidence && d.confidence !== filterConfidence) return false;
+    if (q) {
+      const hay = [
+        d.company_name, d.company_location,
+        (d.company_sectors || []).join(" "),
+        (d.investors || []).join(" "),
+        d.headline,
+      ].join(" ").toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+function applySort(deals) {
+  return [...deals].sort((a, b) => {
+    let va = a[sortCol], vb = b[sortCol];
+    if (sortCol === "amount_gbp_millions") {
+      va = va ?? -1; vb = vb ?? -1;
+    } else {
+      va = (Array.isArray(va) ? va.join(",") : va ?? "").toString();
+      vb = (Array.isArray(vb) ? vb.join(",") : vb ?? "").toString();
+    }
+    if (va < vb) return -sortDir;
+    if (va > vb) return sortDir;
+    return 0;
+  });
+}
+
+function updateStats(filtered) {
+  const disclosed = filtered.filter(d => d.amount_gbp_millions != null);
+  const capital = disclosed.reduce((s, d) => s + d.amount_gbp_millions, 0);
+  const investors = new Set(filtered.flatMap(d => d.investors || []));
+
+  document.getElementById("stat-deals").textContent = filtered.length;
+  document.getElementById("stat-capital").textContent = disclosed.length ? fmtAmount(capital) : "—";
+  document.getElementById("stat-disclosed").textContent = disclosed.length + " / " + filtered.length;
+  document.getElementById("stat-investors").textContent = investors.size;
+}
+
+function updateSortHeaders() {
+  document.querySelectorAll("thead th[data-col]").forEach(th => {
+    th.classList.remove("sort-asc", "sort-desc");
+    const icon = th.querySelector(".sort-icon");
+    if (th.dataset.col === sortCol) {
+      th.classList.add(sortDir === 1 ? "sort-asc" : "sort-desc");
+      if (icon) icon.textContent = sortDir === 1 ? "↑" : "↓";
+    } else {
+      if (icon) icon.textContent = "↕";
+    }
+  });
+}
+
+function render() {
+  const deals = getDeals();
+  const filtered = applyFilters(deals);
+  const sorted = applySort(filtered);
+
+  updateStats(filtered);
+  updateSortHeaders();
+
+  const count = document.getElementById("result-count");
+  count.textContent = filtered.length === deals.length
+    ? deals.length + " deal" + (deals.length !== 1 ? "s" : "")
+    : filtered.length + " of " + deals.length + " deals";
+
+  const tbody = document.getElementById("deals-tbody");
+  const noResults = document.getElementById("no-results");
+
+  if (sorted.length === 0) {
+    tbody.innerHTML = "";
+    noResults.style.display = "block";
+    return;
+  }
+  noResults.style.display = "none";
+
+  const confClass = { high: "badge-high", medium: "badge-medium", low: "badge-low" };
+
+  tbody.innerHTML = sorted.map(d => {
+    const amt = fmtAmount(d.amount_gbp_millions);
+    const amtHtml = amt
+      ? `<span class="amount">${amt}</span>`
+      : `<span class="amount-undisclosed">Undisclosed</span>`;
+
+    const sectorHtml = (d.company_sectors || [])
+      .map(s => `<span class="sector-tag">${s}</span>`).join("");
+
+    const others = (d.investors || []).filter(i => i !== d.lead_investor);
+    const investHtml = [
+      d.lead_investor ? `<span class="lead-investor">${d.lead_investor}</span>` : "",
+      others.length ? `<div class="other-investors">${others.join(", ")}</div>` : "",
+    ].filter(Boolean).join("");
+
+    const conf = d.confidence || "medium";
+    const confLabel = conf.charAt(0).toUpperCase() + conf.slice(1);
+    const cc = confClass[conf] || "badge-medium";
+
+    const srcHtml = d.source_url
+      ? `<a href="${d.source_url}" target="_blank" rel="noopener" class="source-link" title="${d.headline}">↗</a>`
+      : "";
+
+    return `<tr>
+      <td class="date">${fmtDate(d.announcement_date)}</td>
+      <td>
+        <div class="company-name">${d.company_name}</div>
+      </td>
+      <td class="location">${d.company_location}</td>
+      <td>${sectorHtml}</td>
+      <td><span class="badge badge-stage">${d.round_type}</span></td>
+      <td>${amtHtml}</td>
+      <td>${investHtml}</td>
+      <td><span class="badge ${cc}">${confLabel}</span></td>
+      <td>${srcHtml}</td>
+    </tr>`;
+  }).join("");
+}
+
+// ── wire up events ──
+document.querySelectorAll(".tab").forEach(tab => {
+  tab.addEventListener("click", () => {
+    currentWindow = tab.dataset.window;
+    document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t === tab));
+    render();
+  });
+});
+
+document.getElementById("search").addEventListener("input", e => {
+  searchQuery = e.target.value;
+  render();
+});
+
+[["filter-stage", v => filterStage = v],
+ ["filter-sector", v => filterSector = v],
+ ["filter-location", v => filterLocation = v],
+ ["filter-confidence", v => filterConfidence = v]].forEach(([id, setter]) => {
+  document.getElementById(id).addEventListener("change", e => {
+    setter(e.target.value);
+    render();
+  });
+});
+
+document.getElementById("btn-reset").addEventListener("click", () => {
+  document.getElementById("search").value = "";
+  ["filter-stage","filter-sector","filter-location","filter-confidence"]
+    .forEach(id => document.getElementById(id).value = "");
+  searchQuery = filterStage = filterSector = filterLocation = filterConfidence = "";
+  render();
+});
+
+document.querySelectorAll("thead th[data-col]").forEach(th => {
+  th.addEventListener("click", () => {
+    const col = th.dataset.col;
+    if (col === sortCol) {
+      sortDir *= -1;
+    } else {
+      sortCol = col;
+      sortDir = (col === "announcement_date" || col === "amount_gbp_millions") ? -1 : 1;
+    }
+    render();
+  });
+});
+
+populateFilters();
+render();
+</script>
+</body>
+</html>
