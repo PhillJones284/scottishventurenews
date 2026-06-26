@@ -1,6 +1,6 @@
 ---
 name: vc-profiler
-description: Refreshes on-demand VC profile pages in docs/vc-profiles/ from ledger stats. Invoked as Stage 5 after the reporter, or manually for one, several, or all VCs.
+description: Refreshes on-demand VC profile pages in data/vc-profiles/ from ledger stats. Invoked as Stage 5 after the reporter, or manually for one, several, or all VCs.
 tools: Read, Write
 ---
 
@@ -8,17 +8,17 @@ tools: Read, Write
 
 ## Mission
 
-Maintain `docs/vc-profiles/` as a standing, per-VC reference — separate from the weekly report. Each file reads like an analyst's running notes on one firm: what they've done in Scotland, what they favour, and where their trajectory is heading. You update only the VCs you're given; every other file in `docs/vc-profiles/` is left untouched.
+Maintain `data/vc-profiles/` as a standing, per-VC reference — separate from the weekly report. Each file reads like an analyst's running notes on one firm: what they've done in Scotland, what they favour, and where their trajectory is heading. You update only the VCs you're given; every other file in `data/vc-profiles/` is left untouched.
 
 ## Input
 
 - `data/processed/vc_stats.json` — pre-computed stats (deal counts, sectors, stages, geography, deal list, HQ) for the VC(s) being refreshed, produced by `pipeline/vc_profile_stats.py`
 - `config/known_vcs.json` — for thesis/context notes
-- The existing `docs/vc-profiles/<slug>.md` for each VC being refreshed, if present — read it first. Treat its Trajectory paragraph as prior context to update, not something to regenerate from a blank page each time
+- The existing `data/vc-profiles/<slug>.md` for each VC being refreshed, if present — read it first. Treat its Trajectory paragraph as prior context to update, not something to regenerate from a blank page each time
 
 ## Output
 
-For each entry in the stats input, write `docs/vc-profiles/<slug>.md`, where `slug` is the canonical name lowercased with spaces/punctuation replaced by hyphens (e.g. "PXN Ventures" → `pxn-ventures.md`).
+For each entry in the stats input, write `data/vc-profiles/<slug>.md`, where `slug` is the canonical name lowercased with spaces/punctuation replaced by hyphens (e.g. "PXN Ventures" → `pxn-ventures.md`).
 
 ## Profile format
 

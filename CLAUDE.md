@@ -115,13 +115,13 @@ Agent tool: `subagent_type: "general-purpose"`, prompt = today's date + body of 
 If the gate fails: stop, tell Phill the reporter did not produce a report.
 
 ### Stage 5 — VC Profiler (Python + Claude agent)
-Refreshes `docs/vc-profiles/` for VCs that were active this run — see [Managing VC profiles](#managing-vc-profiles) for what this is and why it's separate from the weekly report.
+Refreshes `data/vc-profiles/` for VCs that were active this run — see [Managing VC profiles](#managing-vc-profiles) for what this is and why it's separate from the weekly report.
 
 1. Run: `python pipeline/vc_profile_stats.py --active-in data/processed/investments_deduped.json` (writes `data/processed/vc_stats.json`)
 2. If `vc_stats.json` is an empty array, skip the agent step — no known VCs were active this run.
 3. Otherwise, Agent tool: `subagent_type: "general-purpose"`, prompt = today's date + body of `.claude/agents/vc-profiler.md`
 
-**Gate (soft)**: Every VC named in `vc_stats.json` has a `docs/vc-profiles/<slug>.md` with today's date in `last_updated`. If this fails, tell Phill which VCs didn't get refreshed but do not block the run — the report has already been written by this point and profiles are reference data, not the deliverable.
+**Gate (soft)**: Every VC named in `vc_stats.json` has a `data/vc-profiles/<slug>.md` with today's date in `last_updated`. If this fails, tell Phill which VCs didn't get refreshed but do not block the run — the report has already been written by this point and profiles are reference data, not the deliverable.
 
 ### Stage 6 — Deal Table Generator (Python)
 Run: `python pipeline/deal_table_generator.py` (or `python pipeline/deal_table_generator.py --date YYYY-MM-DD`)
@@ -188,8 +188,12 @@ scottish-vc-tracker/
 │   └── reports/                 ← Final Markdown reports
 │       └── charts/              ← Stage 3.6 output — stage + sector PNGs per run, transient
 │
+├── data/
+│   ├── raw/                     ← Scraper output (per-source JSON files)
+│   ├── processed/               ← Parser and deduplicator output
+│   └── vc-profiles/             ← PERSISTENT: one standing reference page per VC, refreshed by Stage 5
+│
 └── docs/                        ← GitHub Pages web root (served at philljones284.github.io/scottish-vc-tracker/)
-    ├── vc-profiles/              ← PERSISTENT: one standing reference page per VC, refreshed by Stage 5
     └── deals/
         └── index.html           ← Stage 6 output: static deal table, overwritten each run
 ```
@@ -211,7 +215,7 @@ scottish-vc-tracker/
 | `data/reports/charts/YYYY-MM-DD_stage.png` | Stage 3.6 output — this quarter's deals by stage; transient, overwritten each run |
 | `data/reports/charts/YYYY-MM-DD_sector.png` | Stage 3.6 output — this quarter's deals by sector; transient, overwritten each run |
 | `data/reports/YYYY-MM-DD_vc-report.md` | Weekly intelligence report — one file per run |
-| `docs/vc-profiles/<slug>.md` | Standing per-VC reference profile — persistent, refreshed selectively |
+| `data/vc-profiles/<slug>.md` | Standing per-VC reference profile — persistent, refreshed selectively |
 | `docs/deals/index.html` | Stage 6 output — static deal table for GitHub Pages; overwritten each run |
 
 ## Key design decisions
@@ -277,7 +281,7 @@ When moving an entry to `known_vcs.json`, ensure:
 
 ## Managing VC profiles
 
-`docs/vc-profiles/` holds a standing, per-VC reference page — one file per firm (`<slug>.md`, where slug is the canonical name lowercased and hyphenated). This is separate from the weekly report's "Deal Spotlight": it accumulates a firm's full Scottish history over time rather than being rebuilt from scratch every week.
+`data/vc-profiles/` holds a standing, per-VC reference page — one file per firm (`<slug>.md`, where slug is the canonical name lowercased and hyphenated). This is separate from the weekly report's "Deal Spotlight": it accumulates a firm's full Scottish history over time rather than being rebuilt from scratch every week.
 
 **Automatic refresh**: Stage 5 of the pipeline refreshes a VC's profile whenever that VC appears in a weekly run (see Stage 5 above). VCs not active in a given run are left untouched — a profile only goes stale in proportion to how inactive that firm actually is.
 
@@ -293,7 +297,7 @@ python pipeline/vc_profile_stats.py --all                              # every k
 ```
 This writes `data/processed/vc_stats.json`. Then invoke the agent: `subagent_type: "general-purpose"`, prompt = today's date + body of `.claude/agents/vc-profiler.md`.
 
-The profiler only rewrites files for VCs present in `vc_stats.json` for that invocation — every other file in `docs/vc-profiles/` is left alone.
+The profiler only rewrites files for VCs present in `vc_stats.json` for that invocation — every other file in `data/vc-profiles/` is left alone.
 
 ## Managing sources
 

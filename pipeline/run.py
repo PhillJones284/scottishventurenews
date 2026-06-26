@@ -52,7 +52,7 @@ logger = logging.getLogger(__name__)
 sys.path.insert(0, str(ROOT))
 from pipeline import fetcher, parser, deduplicator, report_stats, chart_generator, vc_profile_stats, deal_table_generator
 
-DOCS_VC_PROFILES = ROOT / "docs" / "vc-profiles"
+DOCS_VC_PROFILES = ROOT / "data" / "vc-profiles"
 DATA_REPORTS_CHARTS = DATA_REPORTS / "charts"
 
 
