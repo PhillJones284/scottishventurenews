@@ -32,7 +32,7 @@ PROCESSED_DIR = ROOT / "data" / "processed"
 IMGBB_UPLOAD_URL = "https://api.imgbb.com/1/upload"
 BUTTONDOWN_EMAILS_URL = "https://api.buttondown.com/v1/emails"
 
-SITE_BASE = "https://philljones284.github.io/scottish-vc-tracker"
+SITE_BASE = "https://philljones284.github.io/scottishventurenews"
 
 EMAIL_FOOTER = f"""
 ---

@@ -18,7 +18,7 @@ DOCS_DIR    = ROOT / "docs"
 CHARTS_DST  = DOCS_DIR / "charts"
 OUT         = DOCS_DIR / "index.html"
 
-BUTTONDOWN_URL = "https://buttondown.com/scottish-vc-tracker"
+BUTTONDOWN_URL = "https://buttondown.com/scottishventurenews"
 ARCHIVE_URL    = f"{BUTTONDOWN_URL}/archive"
 DEALS_URL      = "deals/"
 INVESTORS_URL  = "investors/"
