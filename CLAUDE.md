@@ -33,6 +33,26 @@ If asked to "run the agent", execute the full pipeline in sequence using the Age
 
 **`pipeline/run.py`** orchestrates the full pipeline (including Stages 3.5 and 3.6) in one command (`python pipeline/run.py [--date YYYY-MM-DD]`) for unattended use. In practice this project runs on Phill's own laptop, not a server or cron job — there is no scenario where a run happens without Phill present, so the synchronous duplicate-review behaviour in [Reviewing merge candidates](#reviewing-merge-candidates) always applies in full; `run.py` existing as a script doesn't change that.
 
+### Pre-launch backfill
+Run this **once**, before the first official weekly run, to populate the ledger with historical deals without polluting Monday's "This Week" section. Trigger phrase: **"run pre-launch backfill"**.
+
+Sequence (Stages 1–3 only — do **not** proceed to Stage 3.5 or beyond):
+
+1. **Stage 1a** — `source .venv/bin/activate && python pipeline/fetcher.py`
+2. **Stage 1b** — scraper agent (same as normal run)
+3. **Stage 2** — `source .venv/bin/activate && python pipeline/parser.py`
+4. **Pre-launch filter** — `source .venv/bin/activate && python pipeline/prelaunch_filter.py`
+   - Removes records where `announcement_date` is within the past 7 days from `investments.json`
+   - Print output shows exactly which deals were removed — confirm with Phill before proceeding
+   - Gate: script exits non-zero on error; if no records remain after filtering, stop and tell Phill
+5. **Stage 3** — `source .venv/bin/activate && python pipeline/deduplicator.py`
+   - Resolve any merge candidates immediately as normal
+   - Gate: `data/processed/investments_deduped.json` must exist
+
+**Stop after Stage 3.** Do not run Stage 3.5 (report_stats.py) — that would create a `report_history.json` entry dated today, which would make Monday's delta look like "deals added since today" rather than being a clean first-run baseline.
+
+The removed records (past 7 days) are still in `data/raw/` — Monday's scraper will re-find them and Stage 3 will pick them up as `new`, giving Monday's "This Week" section a clean week of fresh deals.
+
 ### Stage 1a — Fetcher (Python)
 Run: `python pipeline/fetcher.py` (or `python pipeline/fetcher.py --date YYYY-MM-DD`)
 
@@ -102,11 +122,7 @@ Run: `python pipeline/chart_generator.py` (or `python pipeline/chart_generator.p
 **Gate**: `data/reports/charts/YYYY-MM-DD_stage.png` and `_sector.png` must both exist.
 If the gate fails: stop, tell Phill chart generation failed, and do not let the reporter proceed without the charts (it would either skip them or, worse, invent a description of a chart it can't see).
 
-This stage exists for the same reason Stage 3.5 does: charts are visual arithmetic, and an LLM drawing or describing a chart from numbers is exactly the kind of deterministic task that should be computed, not narrated. `chart_generator.py` reads `report_stats.json` (this run's figures) and renders two PNGs with matplotlib (shared styling lives in `pipeline/chart_style.py`):
-- `_stage.png` — deals by stage, two panels side by side: quarter-to-date (left, from `report_stats.json`'s `stage_mix`) vs. year-to-date (right, from `ytd_stage_mix`). Each panel is an independent diverging-bar breakdown for its own window, the same "each panel ranks its own metric/window independently" approach as the `_sector.png` grid below. Centred/diverging bars on a zero baseline (height = % of that panel's deals, width fills the slot), in the earth-tone palette and label conventions of Phill's `linkedin_cohort_ceiling.py` reference chart. Round types are bucketed onto a 4-category progression — Pre-Seed / Seed / Growth/Series A+ / Unknown (see `STAGE_BUCKET_ORDER` and `ROUND_TYPE_TO_BUCKET` in `chart_style.py`) — so the axis stays consistent week to week even when a bucket is empty (shown as a boxed "0%"). Series A, Series B/C+, and Growth all fold into "Growth/Series A+" since A and B are individually rare. "Grant" is a real funding stage that sits before Pre-Seed when present, but is omitted from a panel's axis entirely in a window with none — no source we follow has ever surfaced one. "Unknown" (the catch-all for anything outside the progression, including Bridge) is offset from the other bars by a visual gap (`UNKNOWN_GAP` in `chart_generator.py`) so it doesn't read as part of the sequence. Bar labels show both the deal count and the percentage (e.g. "7 (37%)").
-- `_sector.png` — deals by sector, a 2x2 grid: capital deployed (top row) vs. deal count (bottom row), quarter-to-date (left column) vs. year-to-date (right column), from `report_stats.json`'s `sector_capital_mix` / `sector_mix` / `ytd_sector_capital_mix` / `ytd_sector_mix`. Each panel is an independent top-5 ranking for its own metric/window — the leading sector by capital needn't be the leading sector by deal count, and that's the point of showing both. Bars use the earth-tone palette (`EARTH_PALETTE`, cycled one colour per bar); capital panels are labelled with a plain £ amount, count panels with a plain deal count. Labels are placed inside the bar in white when they fit, determined by actually measuring the rendered text's pixel width against the bar's (`SECTOR_LABEL_FIT_BUFFER_PX` in `chart_generator.py`), not a fixed threshold — capital labels and count labels take up very different space at the same font size.
-
-The reporter (Stage 4) embeds these two files as-is; see `.claude/agents/reporter.md`. If you ever need to change a chart's look, follow the `matplotlib-render-review` skill's render → Read the PNG → refine workflow rather than judging the styling from code alone.
+Chart implementation and styling is fully encoded in `pipeline/chart_generator.py` and `pipeline/chart_style.py` — read those files if you need to understand or modify chart behaviour. The reporter (Stage 4) embeds the two PNGs as-is. If you ever need to change a chart's look, follow the `matplotlib-render-review` skill's render → Read the PNG → refine workflow rather than judging the styling from code alone.
 
 ### Stage 4 — Reporter
 Agent tool: `subagent_type: "general-purpose"`, prompt = today's date + body of `.claude/agents/reporter.md`

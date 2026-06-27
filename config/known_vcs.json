@@ -407,6 +407,22 @@
       "stage_focus": ["Pre-Seed", "Seed"],
       "scotland_active": true,
       "notes": "Scottish angel syndicate. Participated in Lentitek £700k seed round (Edinburgh, May 2026). Also participated in Aurora Avionics £500k seed (Edinburgh, April 2025). Source: https://angelcapital.scot/news/lentitek-raises-700k-for-cancer-treatment-technology/"
+    },
+    {
+      "canonical_name": "SANDS",
+      "aliases": [],
+      "hq": null,
+      "stage_focus": ["Pre-Seed"],
+      "scotland_active": true,
+      "notes": "Participated in Cnuic $3m pre-seed round (Edinburgh, April 2026). Very limited public profile. Source: https://tech.eu/2026/04/28/cnuic-secures-eur3m-pre-seed-to-unlock-next-generation-photonic-chip-production/"
+    },
+    {
+      "canonical_name": "Superlative",
+      "aliases": [],
+      "hq": null,
+      "stage_focus": ["Pre-Seed"],
+      "scotland_active": true,
+      "notes": "Participated in Cnuic $3m pre-seed round (Edinburgh, April 2026). Very limited public profile. Source: https://tech.eu/2026/04/28/cnuic-secures-eur3m-pre-seed-to-unlock-next-generation-photonic-chip-production/"
     }
   ]
 }
