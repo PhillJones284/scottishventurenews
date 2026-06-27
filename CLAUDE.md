@@ -13,14 +13,7 @@ You achieve this by producing a weekly analyst-quality intelligence report that 
 
 ### Weekly Report (`data/reports/YYYY-MM-DD_vc-report.md`)
 
-A short Markdown briefing, opening with a one-line disclaimer ("This is an automated newsletter, written by Claude, based on news coverage scraped from N websites" — N is `monitored_source_count` from Stage 3.5, a count of `config/sources.json`, never guessed by the reporter), then containing:
-1. **This Week** — 3–5 bullets on what's new or updated this run
-2. **The Numbers** — quarter/year running totals (computed deterministically by Stage 3.5, by `announcement_date`; Stage 3.5 refuses to run at all if a duplicate is still unresolved, so there is never a pending pair left to double-count) with explicit revision deltas for backfilled deals, plus a brief stage/sector/geography narrative
-3. **Deal Spotlight** — 1–2 deep write-ups on the most notable deals this run
-4. **Sources** — links to the news articles behind this run's new-or-updated deals. A standing, continuously updated full source list is planned as a separate reference page to link from here, but doesn't exist yet
-5. **Notes** — low-confidence records, data notes, and caveats (stated once, in plain prose)
-
-Full per-VC historical profiles are *not* rebuilt in the weekly report — see [Managing VC profiles](#managing-vc-profiles) below for the standing reference instead.
+Report format and structure is defined in `.claude/agents/reporter.md`. Full per-VC historical profiles are *not* rebuilt in the weekly report — see [Managing VC profiles](#managing-vc-profiles) below for the standing reference instead.
 
 
 ## Running the agent
@@ -110,10 +103,6 @@ Run: `python pipeline/report_stats.py` (or `python pipeline/report_stats.py --da
 **Gate**: `data/processed/report_stats.json` must exist.
 If the gate fails because of an exception, check whether it's the pending-duplicate hard gate (below) before treating it as a generic failure. Otherwise, stop, tell Phill report stats failed to produce output. Do not let the reporter fall back to computing its own totals from the ledger — that's exactly the failure mode this stage exists to prevent (see below).
 
-This stage exists because LLM agents are unreliable at exactly the kind of deterministic bookkeeping "The Numbers" section needs — in practice, the reporter repeatedly double-counted a pending duplicate when computing totals straight from the ledger itself, even with explicit instructions and `merge_candidates.json` right there to check. `report_stats.py` computes every number that section needs in Python instead: quarter/year deal count and capital, investor rankings, stage/sector/location mix, and the revision delta against the previous issue. It also maintains `data/processed/report_history.json`, a small persistent record of each run's stated totals — so next week's delta is computed from structured history, not by an agent re-reading last week's markdown and hoping it extracts the right numbers. The reporter (Stage 4) must treat `report_stats.json` as the sole source for these figures; see `.claude/agents/reporter.md`.
-
-Alongside `sector_mix` (this quarter's deal count per sector, used in the reporter's narrative paragraph), this stage also computes `sector_capital_mix` (this quarter's capital deployed per sector) and the year-to-date equivalents `ytd_sector_mix` / `ytd_sector_capital_mix`, all four feeding the `_sector.png` chart below. A deal with multiple `company_sectors` contributes its full amount to every sector it's tagged with, so summing any of these capital breakdowns across sectors over-counts the real total — always use `quarter_capital_gbp_millions` / `ytd_capital_gbp_millions` for the actual total, never a sum over the per-sector breakdown.
-
 **Pending-duplicate hard gate**: `report_stats.py` refuses to run — raising an error instead of producing output — if `merge_candidates.json` contains any `status: "pending"` entry. By policy there should never be one at this point: Stage 3's gate above already requires resolving any new pending entry with Phill immediately, before Stage 3.5 ever runs. If this gate fires, it means that step was skipped — stop, resolve the pending pair(s) with Phill now (merge, fix the underlying data, or explicitly mark them as separate deals — same process as [Reviewing merge candidates](#reviewing-merge-candidates)), then re-run `report_stats.py`. Do not add logic to `report_stats.py` that counts around an unresolved pair — that reintroduces the exact failure mode this gate exists to catch.
 
 ### Stage 3.6 — Chart Generator (Python)
@@ -142,43 +131,32 @@ Refreshes `data/vc-profiles/` for VCs that were active this run — see [Managin
 ### Stage 6 — Deal Table Generator (Python)
 Run: `python pipeline/deal_table_generator.py` (or `python pipeline/deal_table_generator.py --date YYYY-MM-DD`)
 
-Reads `data/processed/ledger.json`, filters to the current quarter and YTD, and writes a self-contained static HTML page to `docs/deals/index.html`. All data is embedded in the HTML as a JavaScript variable — no backend or external fetch needed. The page includes live search, filter dropdowns (stage, sector, location, confidence), sortable columns, and a stats bar. Served via GitHub Pages at `/deals/`.
-
 **Gate (soft)**: `docs/deals/index.html` must exist. If it fails, log a warning but do not block — the weekly report is already complete by this point and the deal table is a web supplement, not the primary deliverable.
 
 ### Stage 7 — Investor Page Generator (Python)
 Run: `python pipeline/investor_page_generator.py`
-
-Reads `data/processed/ledger.json`, `config/known_vcs.json`, and `data/vc-profiles/*.md`. Aggregates per-investor stats (deal count, lead count, capital, sectors, stages, date range) and writes a self-contained static HTML page to `docs/investors/index.html`. The page includes two inline canvas bar charts (top 5 investors by deal count and capital), a sortable/searchable investor table, and click-through accordion profile cards showing the narrative from `data/vc-profiles/`. No external dependencies. Served via GitHub Pages at `/investors/`.
 
 **Gate (soft)**: `docs/investors/index.html` must exist. If it fails, log a warning but do not block.
 
 ### Stage 8 — Landing Page Generator (Python)
 Run: `python pipeline/landing_page_generator.py`
 
-Reads the latest `data/reports/YYYY-MM-DD_vc-report.md`, copies the associated chart PNGs to `docs/charts/`, converts the report markdown to HTML, and writes `docs/index.html` — the public-facing landing page served at the GitHub Pages root. The page includes the site title and description, nav cards to `/deals/` and `/investors/`, a Buttondown subscribe CTA with an archive link, and the full latest issue rendered inline. No external dependencies.
-
 **Gate (soft)**: `docs/index.html` must exist. If it fails, log a warning but do not block.
 
 ### Stage 9 — Git commit + push (Python, via subprocess in run.py)
-Not a standalone script. `run.py` runs `git add docs/` → `git commit -m "Weekly report: YYYY-MM-DD"` → `git push origin main` after Stage 8. Only `docs/` is committed — data files (ledger, reports, vc-profiles) are not touched and must be committed manually by Phill after review. The commit hash is written into `data/processed/publish_manifest_YYYY-MM-DD.json` for use by the rollback.
+Not a standalone script. Only `docs/` is committed — data files (ledger, reports, vc-profiles) are not touched and must be committed manually by Phill after review.
 
 **Gate (soft)**: warns on failure but does not block. If Stage 9 fails, GitHub Pages is not updated this run — push manually or investigate with `git status`.
 
 ### Stage 10 — Buttondown draft (Python)
 Run standalone: `python pipeline/newsletter_publish.py [--date YYYY-MM-DD]`
 
-Uploads the two chart PNGs to ImgBB (Buttondown's API doesn't accept file attachments), rewrites local chart paths to ImgBB URLs, and creates a Buttondown draft (`status: "draft"` — nothing goes to subscribers until Phill sends from the dashboard). Writes `data/processed/publish_manifest_YYYY-MM-DD.json` with the draft ID and ImgBB delete URLs so `pipeline/rollback.py` can undo the publish. Requires `IMGBB_API_KEY` and `BUTTONDOWN_API_KEY` in `.env`.
+Requires `IMGBB_API_KEY` and `BUTTONDOWN_API_KEY` in `.env`. Creates a draft — nothing goes to subscribers until Phill sends from the dashboard.
 
 **Gate (soft)**: warns on failure but does not block. If Stage 10 fails, publish manually with `python pipeline/newsletter_publish.py`.
 
 ### Rolling back a run
 Run: `python pipeline/rollback.py [--date YYYY-MM-DD]`
-
-Reads `data/processed/publish_manifest_YYYY-MM-DD.json` and undoes the publish in three steps:
-1. Attempts to delete ImgBB images via their delete URLs (best-effort — prints the URL for manual deletion if the automated request fails)
-2. Calls `DELETE /v1/emails/{id}` on the Buttondown API to remove the draft
-3. `git revert {commit_hash} --no-edit` + `git push origin main` — creates a revert commit rather than force-pushing, so history stays clean and GitHub Pages rolls back safely
 
 **Data files are not touched.** The ledger, report markdown, vc-profiles, merge_candidates, and report_history are all left intact so you can fix the data and re-run without starting the pipeline from scratch.
 
@@ -259,29 +237,6 @@ scottish-vc-tracker/
     └── index.html               ← Stage 8 output: landing page, overwritten each run
 ```
 
-### Data Files
-
-| File | Contents |
-|---|---|
-| `data/raw/YYYY-MM-DD_candidates.json` | Pre-fetched + keyword-filtered article candidates |
-| `data/raw/YYYY-MM-DD_fetch_log.json` | Per-source fetch diagnostics (items found, filtered, errors) |
-| `data/raw/*.json` | Raw scraped data per source (scraper output) |
-| `data/processed/investments.json` | Normalised records for this run |
-| `data/processed/investments_deduped.json` | Deduplicated records with new/updated flags |
-| `data/processed/ledger.json` | Persistent all-time record — do not delete |
-| `data/processed/merge_candidates.json` | Persistent — pending/resolved probable/possible duplicate pairs; do not delete |
-| `data/processed/report_stats.json` | Stage 3.5 output — quarter/year totals, rankings, breakdowns, revision delta; transient, overwritten each run; reporter's sole source for these figures |
-| `data/processed/report_history.json` | Persistent — one entry per run's stated totals, used to compute the next run's revision delta; do not delete |
-| `data/processed/vc_stats.json` | Stage 5 stats for VCs being refreshed — transient, overwritten per run/request |
-| `data/reports/charts/YYYY-MM-DD_stage.png` | Stage 3.6 output — this quarter's deals by stage; transient, overwritten each run |
-| `data/reports/charts/YYYY-MM-DD_sector.png` | Stage 3.6 output — this quarter's deals by sector; transient, overwritten each run |
-| `data/reports/YYYY-MM-DD_vc-report.md` | Weekly intelligence report — one file per run |
-| `data/vc-profiles/<slug>.md` | Standing per-VC reference profile — persistent, refreshed selectively |
-| `docs/deals/index.html` | Stage 6 output — static deal table for GitHub Pages; overwritten each run |
-| `docs/investors/index.html` | Stage 7 output — static investor page for GitHub Pages; overwritten each run |
-| `docs/charts/YYYY-MM-DD_*.png` | Stage 8 copies these from `data/reports/charts/` so the landing page can reference them |
-| `docs/index.html` | Stage 8 output — landing page for GitHub Pages; overwritten each run |
-| `data/processed/publish_manifest_YYYY-MM-DD.json` | Stage 10 output — Buttondown draft ID, ImgBB delete URLs, git commit hash; used by rollback.py |
 
 ## Key design decisions
 - Agents communicate via JSON files in `data/`, not stdout
@@ -295,11 +250,7 @@ scottish-vc-tracker/
 
 ## Dedup confidence policy
 
-The deduplicator (Stage 3) scores any potential duplicate pair — within a single run's records, or a new record against the historical ledger — as `definite`, `probable`, `possible`, or no match. Only `definite` is auto-merged. This used to be looser (`probable` auto-merged too, and `possible` against the ledger was silently treated as no match at all, which is how two JET Connectivity records ended up as separate ledger entries). Now:
-
-- **`definite`** — auto-merged immediately, no review needed (exact ID match, or same company + round + dates within 60 days, or same company + same amount + overlapping investors)
-- **`probable`** — same company + round but a missing date, or same company + overlapping investors within 90 days. Staged in `data/processed/merge_candidates.json`, not merged
-- **`possible`** — same company name but a different round type, or a fuzzy name match (80–89 similarity). Staged in `data/processed/merge_candidates.json`, not merged
+The deduplicator (Stage 3) scores any potential duplicate pair as `definite`, `probable`, `possible`, or no match. Only `definite` is auto-merged. `probable` and `possible` are staged in `data/processed/merge_candidates.json` — never auto-merged, never silently dropped. Match criteria are implemented in `pipeline/deduplicator.py`.
 
 `merge_candidates.json` is **persistent** (like the ledger) — it's an audit trail of what's been found and how it was resolved, not a queue for deferring review. New pending entries should be resolved with Phill immediately, in the same session they're found (see below); the file is just a safety net so nothing is silently lost if that doesn't happen. Each entry has `record_a`, `record_b`, `match_type`, `scope` (`within_run` or `against_ledger`), a `note` explaining why it matched, and `status` (`pending` until resolved).
 
@@ -315,23 +266,9 @@ If the scraper finds an investor not in `config/known_vcs.json`, record the deal
 the name as found. Stage the VC in `config/suggested_vcs.json` for review rather than 
 writing directly to `known_vcs.json`:
 
-### known_vcs.json schema reminder
-When proposing a new entry, it must include all of the following fields:
-
-```json
-{
-  "canonical_name": "used as a key — once set, do not change it",
-  "aliases": "all common shorthand names the scraper might encounter",
-  "hq": "the firm's headquarters location",
-  "stage_focus": "stages the firm typically invests at e.g. Seed, Series A",
-  "scotland_active": "true only if there is evidence of actual Scottish deals",
-  "notes": "any useful context about the firm's investment thesis or Scottish activity"
-}
-```
-
 ### If Phill asks you to add a new VC
 1. Search for the firm's website, investment focus, stage preference, and geographic activity
-2. Propose a new entry following the `known_vcs.json` schema
+2. Propose a new entry — see an existing entry in `config/known_vcs.json` for the required fields
 3. Wait for approval before writing it
 
 ### Reviewing staged VCs
@@ -369,27 +306,10 @@ The profiler only rewrites files for VCs present in `vc_stats.json` for that inv
 ### When the agent encounters an unknown source
 If the scraper finds a useful source not in `config/sources.json`, it should not add it directly. Instead, stage it in `config/suggested_sources.json` with enough context to evaluate it
 
-### sources.json schema reminder
-When proposing a new entry, it must include all of the following fields:
-
-```json
-{
-  "slug": "unique identifier, used in output filenames — lowercase, hyphenated",
-  "name": "human readable name of the publication or site",
-  "type": "news_site | search | database | vc_newsrooms | aggregator",
-  "url": "base url of the source",
-  "rss_url": "full URL of the RSS or Atom feed, or null if none — scraper prefers this over HTML fetching when set",
-  "search_path": "path/query string to append to url, or null if not applicable",
-  "queries": "array of search strings — only valid on type: search sources, used instead of search_path when multiple queries must be run",
-  "best_effort": "true if the source is partially paywalled or JS-rendered — scraper should attempt it but treat failure as non-blocking",
-  "notes": "what kind of deals this source covers well"
-}
-```
-
 ### If asked to add a new source
 Phill will type the following command "add [source name or URL] to sources". Claude Code will:
 1. Fetch the site and assess its relevance to Scottish VC news
-2. Propose a new entry in the `sources.json` schema
+2. Propose a new entry — see an existing entry in `config/sources.json` for the required fields
 3. Wait for approval before writing it
 
 ### Reviewing staged sources
