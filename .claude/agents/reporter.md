@@ -32,11 +32,10 @@ Immediately below it, on its own line, write this disclaimer, substituting `repo
 
 *This is an automated newsletter, written by Claude, based on news coverage scraped from [N] websites.*
 
-### 1. This Week
-3–5 bullets covering everything new or updated in this run. One line each: company, round, amount, lead investor — pull the deal detail from `investments_deduped.json`, but use `report_stats.json`'s `this_run.genuinely_new_records` / `this_run.backfill_records` to know which bucket each one belongs in. Don't re-derive this split yourself from `is_new_this_run` + `announcement_date` — it's already computed.
+### 1. What We Found This Week
+Here are the deals we saw reported in the press this week, ordered by the announcement date.
 
-- Records in `genuinely_new_records` are recent — present them as straightforward news.
-- Records in `backfill_records` are old news that only just surfaced — say so explicitly, e.g. "A £700k Lentitek round from March, surfaced this week via Daily Business Group." Never fold one into the list as if it were fresh news; that's the fastest way to erode reader trust.
+3–5 bullets, one per deal. Cover all records from this run — `report_stats.json`'s `this_run.genuinely_new_records` and `backfill_records` combined — ordered by `announcement_date` descending (most recent first). One line each: company, round, amount, lead investor, and announcement date.
 
 Immediately beneath each bullet, on its own indented line, add a source link for every URL in that record's `source_urls` field (from `investments_deduped.json`). Use the record's `source_name` as the link label. Format:
 ```
@@ -117,7 +116,7 @@ Write 1–3 short paragraphs. Only include a point if there's something to say �
 
 Before writing the report:
 1. Count records: if fewer than 3 high/medium confidence records exist this run, lead with a data quality note instead of forcing a normal-shaped issue
-2. Use `report_stats.json`'s `this_run.genuinely_new_records` / `backfill_records` to split Section 1 and the revision callout in Section 2 — this is already computed; don't re-derive it from `is_new_this_run` + `announcement_date` yourself
+2. Use `report_stats.json`'s `this_run.genuinely_new_records` and `backfill_records` for the revision callout in Section 2 — this is already computed. For Section 1, use all records from both buckets combined, ordered by `announcement_date` descending
 3. Use `report_stats.json`'s `is_first_issue` flag — already computed — to decide whether to state a revision delta or write the Numbers section as a clean baseline
 4. Check date range: if all records cluster in a narrow window, note this in Notes
 5. Check for `flagged_for_review` items in the deduped file and list them in Notes
