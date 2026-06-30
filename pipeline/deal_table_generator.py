@@ -1,8 +1,10 @@
 """Stage 6 — Deal Table Generator.
 
-Reads ledger.json, filters to the current quarter and YTD, and writes a
-self-contained static HTML file to data/reports/deals.html. No backend
-needed: all filtering, sorting, and search runs in vanilla JS in the browser.
+Reads ledger.json, filters to the current quarter and YTD, and writes:
+  docs/deals/deals.json   — data payload (fetched by the browser at runtime)
+  docs/deals/index.html   — static HTML shell (JS fetches deals.json on load)
+
+No backend needed: all filtering, sorting, and search runs in vanilla JS.
 """
 import argparse
 import calendar
@@ -10,9 +12,11 @@ import json
 from datetime import date, datetime, timezone
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-LEDGER = ROOT / "data" / "processed" / "ledger.json"
-OUT = ROOT / "docs" / "deals" / "index.html"
+ROOT     = Path(__file__).resolve().parent.parent
+LEDGER   = ROOT / "data" / "processed" / "ledger.json"
+OUT_DIR  = ROOT / "docs" / "deals"
+OUT_HTML = OUT_DIR / "index.html"
+OUT_JSON = OUT_DIR / "deals.json"
 
 
 def quarter_bounds(d: date) -> tuple[date, date]:
@@ -38,12 +42,11 @@ def _in_window(record: dict, start: date, end: date) -> bool:
 
 
 def _slim(records: list[dict]) -> list[dict]:
-    """Strip fields not needed in the browser to keep the embedded JSON small."""
+    """Strip fields not needed in the browser to keep the JSON small."""
     out = []
     for r in records:
         investors = r.get("investors") or []
         lead = r.get("lead_investor") or ""
-        # ensure lead appears first in the list
         ordered = [lead] + [i for i in investors if i != lead] if lead else investors
         out.append({
             "id": r.get("id", ""),
@@ -90,24 +93,17 @@ def _build_data(run_date: date) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# HTML template
+# HTML shell — no data embedded; JS fetches deals.json at runtime
 # ---------------------------------------------------------------------------
 
-def _render(data: dict) -> str:
-    data_json = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
-    q_label = data["quarter_label"]
-    year = data["year"]
-    generated = data["generated"]
-
-    # JS and CSS use {{ / }} to escape Python f-string braces
-    return f"""<!DOCTYPE html>
+_SHELL = """<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Scottish VC Deals — {q_label} / {year} YTD</title>
+  <title>Scottish Venture News — Deal Table</title>
   <style>
-    :root {{
+    :root {
       --navy:       #1F3B57;
       --slate:      #7C93A8;
       --grey:       #9AA0A6;
@@ -120,32 +116,32 @@ def _render(data: dict) -> str:
       --ink:        #222222;
       --bg:         #F7F7F6;
       --white:      #FFFFFF;
-    }}
-    *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
-    body {{
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 13px;
       color: var(--ink);
       background: var(--bg);
       line-height: 1.45;
-    }}
-    a {{ color: inherit; text-decoration: none; }}
+    }
+    a { color: inherit; text-decoration: none; }
 
-    .container {{ max-width: 1280px; margin: 0 auto; padding: 28px 20px 48px; }}
+    .container { max-width: 1280px; margin: 0 auto; padding: 28px 20px 48px; }
 
     /* ── header ── */
-    header {{ margin-bottom: 24px; }}
-    header h1 {{ font-size: 20px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; }}
-    header p {{ color: var(--slate); font-size: 12px; margin-top: 5px; }}
+    header { margin-bottom: 24px; }
+    header h1 { font-size: 20px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; }
+    header p { color: var(--slate); font-size: 12px; margin-top: 5px; }
 
     /* ── tabs ── */
-    .tabs {{
+    .tabs {
       display: flex;
       gap: 0;
       margin-bottom: 16px;
       border-bottom: 2px solid var(--light-grey);
-    }}
-    .tab {{
+    }
+    .tab {
       padding: 8px 20px;
       cursor: pointer;
       color: var(--slate);
@@ -154,12 +150,12 @@ def _render(data: dict) -> str:
       border-bottom: 2px solid transparent;
       margin-bottom: -2px;
       transition: color 0.1s;
-    }}
-    .tab.active {{ color: var(--navy); border-bottom-color: var(--navy); }}
-    .tab:hover:not(.active) {{ color: var(--ink); }}
+    }
+    .tab.active { color: var(--navy); border-bottom-color: var(--navy); }
+    .tab:hover:not(.active) { color: var(--ink); }
 
     /* ── stats bar ── */
-    .stats-bar {{
+    .stats-bar {
       display: flex;
       flex-wrap: wrap;
       gap: 0;
@@ -168,26 +164,26 @@ def _render(data: dict) -> str:
       border: 1px solid var(--light-grey);
       border-radius: 6px;
       overflow: hidden;
-    }}
-    .stat {{
+    }
+    .stat {
       flex: 1;
       min-width: 110px;
       padding: 12px 18px;
       border-right: 1px solid var(--light-grey);
-    }}
-    .stat:last-child {{ border-right: none; }}
-    .stat-value {{ font-size: 20px; font-weight: 700; color: var(--navy); }}
-    .stat-label {{ font-size: 10px; color: var(--slate); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }}
+    }
+    .stat:last-child { border-right: none; }
+    .stat-value { font-size: 20px; font-weight: 700; color: var(--navy); }
+    .stat-label { font-size: 10px; color: var(--slate); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
 
     /* ── controls ── */
-    .controls {{
+    .controls {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 8px;
       margin-bottom: 12px;
-    }}
-    .controls input[type="text"] {{
+    }
+    .controls input[type="text"] {
       padding: 6px 10px;
       border: 1px solid var(--light-grey);
       border-radius: 4px;
@@ -195,9 +191,9 @@ def _render(data: dict) -> str:
       width: 230px;
       background: var(--white);
       outline: none;
-    }}
-    .controls input[type="text"]:focus {{ border-color: var(--blue); }}
-    .controls select {{
+    }
+    .controls input[type="text"]:focus { border-color: var(--blue); }
+    .controls select {
       padding: 6px 8px;
       border: 1px solid var(--light-grey);
       border-radius: 4px;
@@ -206,9 +202,9 @@ def _render(data: dict) -> str:
       background: var(--white);
       cursor: pointer;
       outline: none;
-    }}
-    .controls select:focus {{ border-color: var(--blue); }}
-    .btn-reset {{
+    }
+    .controls select:focus { border-color: var(--blue); }
+    .btn-reset {
       padding: 6px 12px;
       border: 1px solid var(--light-grey);
       border-radius: 4px;
@@ -216,13 +212,13 @@ def _render(data: dict) -> str:
       color: var(--slate);
       font-size: 12px;
       cursor: pointer;
-    }}
-    .btn-reset:hover {{ color: var(--ink); border-color: var(--grey); }}
-    .result-count {{ color: var(--slate); font-size: 12px; margin-left: auto; }}
+    }
+    .btn-reset:hover { color: var(--ink); border-color: var(--grey); }
+    .result-count { color: var(--slate); font-size: 12px; margin-left: auto; }
 
     /* ── table ── */
-    .table-wrap {{ overflow-x: auto; }}
-    table {{
+    .table-wrap { overflow-x: auto; }
+    table {
       width: 100%;
       border-collapse: collapse;
       background: var(--white);
@@ -230,8 +226,8 @@ def _render(data: dict) -> str:
       border-radius: 6px;
       overflow: hidden;
       min-width: 860px;
-    }}
-    thead th {{
+    }
+    thead th {
       text-align: left;
       padding: 9px 12px;
       font-size: 10px;
@@ -244,22 +240,22 @@ def _render(data: dict) -> str:
       white-space: nowrap;
       cursor: pointer;
       user-select: none;
-    }}
-    thead th:last-child {{ cursor: default; }}
-    thead th:hover:not(:last-child) {{ color: var(--navy); }}
-    .sort-icon {{ color: var(--light-grey); margin-left: 3px; font-style: normal; }}
-    th.sort-asc .sort-icon, th.sort-desc .sort-icon {{ color: var(--navy); }}
-    tbody tr {{ border-bottom: 1px solid var(--light-grey); transition: background 0.08s; }}
-    tbody tr:last-child {{ border-bottom: none; }}
-    tbody tr:hover {{ background: #F4F5F6; }}
-    td {{ padding: 9px 12px; vertical-align: top; }}
+    }
+    thead th:last-child { cursor: default; }
+    thead th:hover:not(:last-child) { color: var(--navy); }
+    .sort-icon { color: var(--light-grey); margin-left: 3px; font-style: normal; }
+    th.sort-asc .sort-icon, th.sort-desc .sort-icon { color: var(--navy); }
+    tbody tr { border-bottom: 1px solid var(--light-grey); transition: background 0.08s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #F4F5F6; }
+    td { padding: 9px 12px; vertical-align: top; }
 
     /* ── cell styles ── */
-    .date {{ color: var(--slate); white-space: nowrap; font-size: 12px; }}
-    .company-name {{ font-weight: 600; color: var(--navy); }}
-    .headline {{ font-size: 11px; color: var(--grey); margin-top: 2px; line-height: 1.35; max-width: 260px; }}
-    .location {{ color: var(--slate); font-size: 12px; }}
-    .sector-tag {{
+    .date { color: var(--slate); white-space: nowrap; font-size: 12px; }
+    .company-name { font-weight: 600; color: var(--navy); }
+    .headline { font-size: 11px; color: var(--grey); margin-top: 2px; line-height: 1.35; max-width: 260px; }
+    .location { color: var(--slate); font-size: 12px; }
+    .sector-tag {
       display: inline-block;
       padding: 1px 6px;
       border-radius: 3px;
@@ -268,8 +264,8 @@ def _render(data: dict) -> str:
       font-size: 10px;
       margin: 1px 2px 1px 0;
       white-space: nowrap;
-    }}
-    .badge {{
+    }
+    .badge {
       display: inline-block;
       padding: 2px 8px;
       border-radius: 10px;
@@ -278,25 +274,35 @@ def _render(data: dict) -> str:
       text-transform: uppercase;
       letter-spacing: 0.04em;
       white-space: nowrap;
-    }}
-    .badge-stage {{ background: #ECF1F7; color: var(--navy); }}
-    .badge-high   {{ background: #E8F4EF; color: #3A7860; }}
-    .badge-medium {{ background: #FEF4E3; color: #8A6828; }}
-    .badge-low    {{ background: #F5ECEC; color: #8A4848; }}
-    .amount {{ font-weight: 600; color: var(--navy); white-space: nowrap; }}
-    .amount-undisclosed {{ color: var(--grey); font-style: italic; white-space: nowrap; }}
-    .lead-investor {{ font-weight: 500; }}
-    .other-investors {{ color: var(--slate); font-size: 11px; margin-top: 2px; }}
-    .source-link {{
+    }
+    .badge-stage { background: #ECF1F7; color: var(--navy); }
+    .badge-high   { background: #E8F4EF; color: #3A7860; }
+    .badge-medium { background: #FEF4E3; color: #8A6828; }
+    .badge-low    { background: #F5ECEC; color: #8A4848; }
+    .amount { font-weight: 600; color: var(--navy); white-space: nowrap; }
+    .amount-undisclosed { color: var(--grey); font-style: italic; white-space: nowrap; }
+    .lead-investor { font-weight: 500; }
+    .other-investors { color: var(--slate); font-size: 11px; margin-top: 2px; }
+    .source-link {
       color: var(--blue);
       font-size: 14px;
       display: inline-block;
       line-height: 1;
-    }}
-    .source-link:hover {{ color: var(--navy); }}
+    }
+    .source-link:hover { color: var(--navy); }
+
+    /* ── loading / error ── */
+    .status-msg {
+      text-align: center;
+      padding: 48px 24px;
+      color: var(--grey);
+      background: var(--white);
+      border: 1px solid var(--light-grey);
+      border-radius: 6px;
+    }
 
     /* ── no results ── */
-    .no-results {{
+    .no-results {
       display: none;
       text-align: center;
       padding: 48px 24px;
@@ -305,17 +311,17 @@ def _render(data: dict) -> str:
       border: 1px solid var(--light-grey);
       border-radius: 6px;
       margin-top: 0;
-    }}
+    }
 
     /* ── footer ── */
-    footer {{
+    footer {
       margin-top: 20px;
       color: var(--grey);
       font-size: 11px;
       text-align: right;
-    }}
-    .back-link {{ font-size: 12px; color: var(--slate); margin-bottom: 20px; display: inline-block; }}
-    .back-link:hover {{ color: var(--navy); text-decoration: none; }}
+    }
+    .back-link { font-size: 12px; color: var(--slate); margin-bottom: 20px; display: inline-block; }
+    .back-link:hover { color: var(--navy); text-decoration: none; }
   </style>
 </head>
 <body>
@@ -325,12 +331,12 @@ def _render(data: dict) -> str:
 
   <header>
     <h1>Scottish VC Deals</h1>
-    <p>Automated pipeline &nbsp;·&nbsp; Generated {generated} &nbsp;·&nbsp; Source: public news coverage</p>
+    <p>Automated pipeline &nbsp;·&nbsp; Generated <span id="generated-date">—</span> &nbsp;·&nbsp; Source: public news coverage</p>
   </header>
 
   <div class="tabs">
-    <div class="tab active" data-window="quarter" id="tab-quarter">{q_label}</div>
-    <div class="tab" data-window="ytd" id="tab-ytd">{year} YTD</div>
+    <div class="tab active" data-window="quarter" id="tab-quarter">—</div>
+    <div class="tab" data-window="ytd" id="tab-ytd">—</div>
   </div>
 
   <div class="stats-bar">
@@ -367,32 +373,35 @@ def _render(data: dict) -> str:
     <span class="result-count" id="result-count"></span>
   </div>
 
-  <div class="table-wrap">
-    <table id="deals-table">
-      <thead>
-        <tr>
-          <th data-col="announcement_date">Date<i class="sort-icon">↕</i></th>
-          <th data-col="company_name">Company<i class="sort-icon">↕</i></th>
-          <th data-col="company_location">Location<i class="sort-icon">↕</i></th>
-          <th>Sector</th>
-          <th data-col="round_type">Stage<i class="sort-icon">↕</i></th>
-          <th data-col="amount_gbp_millions">Amount<i class="sort-icon">↕</i></th>
-          <th data-col="lead_investor">Investors<i class="sort-icon">↕</i></th>
-          <th data-col="confidence">Confidence<i class="sort-icon">↕</i></th>
-          <th>Source</th>
-        </tr>
-      </thead>
-      <tbody id="deals-tbody"></tbody>
-    </table>
-    <div class="no-results" id="no-results">No deals match your filters.</div>
+  <div id="status-wrap" class="status-msg">Loading deals…</div>
+
+  <div id="table-wrap" style="display:none">
+    <div class="table-wrap">
+      <table id="deals-table">
+        <thead>
+          <tr>
+            <th data-col="announcement_date">Date<i class="sort-icon">↕</i></th>
+            <th data-col="company_name">Company<i class="sort-icon">↕</i></th>
+            <th data-col="company_location">Location<i class="sort-icon">↕</i></th>
+            <th>Sector</th>
+            <th data-col="round_type">Stage<i class="sort-icon">↕</i></th>
+            <th data-col="amount_gbp_millions">Amount<i class="sort-icon">↕</i></th>
+            <th data-col="lead_investor">Investors<i class="sort-icon">↕</i></th>
+            <th data-col="confidence">Confidence<i class="sort-icon">↕</i></th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody id="deals-tbody"></tbody>
+      </table>
+      <div class="no-results" id="no-results">No deals match your filters.</div>
+    </div>
   </div>
 
   <footer>Scottish Venture News &nbsp;·&nbsp; Data sourced from public news coverage only &nbsp;·&nbsp; Not investment advice</footer>
 
 </div>
 <script>
-const DATA = {data_json};
-
+let DATA = null;
 let currentWindow = "quarter";
 let sortCol = "announcement_date";
 let sortDir = -1;
@@ -404,24 +413,24 @@ let filterConfidence = "";
 
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
-function fmtDate(d) {{
+function fmtDate(d) {
   if (!d) return "";
   const [y, m, day] = d.split("-");
-  return `${{parseInt(day)}} ${{MONTHS[+m - 1]}} ${{y}}`;
-}}
+  return `${parseInt(day)} ${MONTHS[+m - 1]} ${y}`;
+}
 
-function fmtAmount(m) {{
+function fmtAmount(m) {
   if (m === null || m === undefined) return null;
   if (m >= 1000) return "£" + (m / 1000).toFixed(1) + "bn";
   if (m >= 1) return "£" + m.toFixed(1) + "m";
   return "£" + Math.round(m * 1000) + "k";
-}}
+}
 
-function getDeals() {{
+function getDeals() {
   return currentWindow === "quarter" ? DATA.quarter_deals : DATA.ytd_deals;
-}}
+}
 
-function populateFilters() {{
+function populateFilters() {
   const all = DATA.ytd_deals;
   const stages = [...new Set(all.map(d => d.round_type).filter(Boolean))].sort();
   const sectors = [...new Set(all.flatMap(d => d.company_sectors || []))].sort();
@@ -435,16 +444,16 @@ function populateFilters() {{
 
   const locEl = document.getElementById("filter-location");
   locs.forEach(l => locEl.append(new Option(l, l)));
-}}
+}
 
-function applyFilters(deals) {{
+function applyFilters(deals) {
   const q = searchQuery.toLowerCase();
-  return deals.filter(d => {{
+  return deals.filter(d => {
     if (filterStage && d.round_type !== filterStage) return false;
     if (filterSector && !(d.company_sectors || []).includes(filterSector)) return false;
     if (filterLocation && d.company_location !== filterLocation) return false;
     if (filterConfidence && d.confidence !== filterConfidence) return false;
-    if (q) {{
+    if (q) {
       const hay = [
         d.company_name, d.company_location,
         (d.company_sectors || []).join(" "),
@@ -452,27 +461,27 @@ function applyFilters(deals) {{
         d.headline,
       ].join(" ").toLowerCase();
       if (!hay.includes(q)) return false;
-    }}
+    }
     return true;
-  }});
-}}
+  });
+}
 
-function applySort(deals) {{
-  return [...deals].sort((a, b) => {{
+function applySort(deals) {
+  return [...deals].sort((a, b) => {
     let va = a[sortCol], vb = b[sortCol];
-    if (sortCol === "amount_gbp_millions") {{
+    if (sortCol === "amount_gbp_millions") {
       va = va ?? -1; vb = vb ?? -1;
-    }} else {{
+    } else {
       va = (Array.isArray(va) ? va.join(",") : va ?? "").toString();
       vb = (Array.isArray(vb) ? vb.join(",") : vb ?? "").toString();
-    }}
+    }
     if (va < vb) return -sortDir;
     if (va > vb) return sortDir;
     return 0;
-  }});
-}}
+  });
+}
 
-function updateStats(filtered) {{
+function updateStats(filtered) {
   const disclosed = filtered.filter(d => d.amount_gbp_millions != null);
   const capital = disclosed.reduce((s, d) => s + d.amount_gbp_millions, 0);
   const investors = new Set(filtered.flatMap(d => d.investors || []));
@@ -481,22 +490,22 @@ function updateStats(filtered) {{
   document.getElementById("stat-capital").textContent = disclosed.length ? fmtAmount(capital) : "—";
   document.getElementById("stat-disclosed").textContent = disclosed.length + " / " + filtered.length;
   document.getElementById("stat-investors").textContent = investors.size;
-}}
+}
 
-function updateSortHeaders() {{
-  document.querySelectorAll("thead th[data-col]").forEach(th => {{
+function updateSortHeaders() {
+  document.querySelectorAll("thead th[data-col]").forEach(th => {
     th.classList.remove("sort-asc", "sort-desc");
     const icon = th.querySelector(".sort-icon");
-    if (th.dataset.col === sortCol) {{
+    if (th.dataset.col === sortCol) {
       th.classList.add(sortDir === 1 ? "sort-asc" : "sort-desc");
       if (icon) icon.textContent = sortDir === 1 ? "↑" : "↓";
-    }} else {{
+    } else {
       if (icon) icon.textContent = "↕";
-    }}
-  }});
-}}
+    }
+  });
+}
 
-function render() {{
+function render() {
   const deals = getDeals();
   const filtered = applyFilters(deals);
   const sorted = applySort(filtered);
@@ -512,28 +521,28 @@ function render() {{
   const tbody = document.getElementById("deals-tbody");
   const noResults = document.getElementById("no-results");
 
-  if (sorted.length === 0) {{
+  if (sorted.length === 0) {
     tbody.innerHTML = "";
     noResults.style.display = "block";
     return;
-  }}
+  }
   noResults.style.display = "none";
 
-  const confClass = {{ high: "badge-high", medium: "badge-medium", low: "badge-low" }};
+  const confClass = { high: "badge-high", medium: "badge-medium", low: "badge-low" };
 
-  tbody.innerHTML = sorted.map(d => {{
+  tbody.innerHTML = sorted.map(d => {
     const amt = fmtAmount(d.amount_gbp_millions);
     const amtHtml = amt
-      ? `<span class="amount">${{amt}}</span>`
+      ? `<span class="amount">${amt}</span>`
       : `<span class="amount-undisclosed">Undisclosed</span>`;
 
     const sectorHtml = (d.company_sectors || [])
-      .map(s => `<span class="sector-tag">${{s}}</span>`).join("");
+      .map(s => `<span class="sector-tag">${s}</span>`).join("");
 
     const others = (d.investors || []).filter(i => i !== d.lead_investor);
     const investHtml = [
-      d.lead_investor ? `<span class="lead-investor">${{d.lead_investor}}</span>` : "",
-      others.length ? `<div class="other-investors">${{others.join(", ")}}</div>` : "",
+      d.lead_investor ? `<span class="lead-investor">${d.lead_investor}</span>` : "",
+      others.length ? `<div class="other-investors">${others.join(", ")}</div>` : "",
     ].filter(Boolean).join("");
 
     const conf = d.confidence || "medium";
@@ -541,72 +550,87 @@ function render() {{
     const cc = confClass[conf] || "badge-medium";
 
     const srcHtml = d.source_url
-      ? `<a href="${{d.source_url}}" target="_blank" rel="noopener" class="source-link" title="${{d.headline}}">↗</a>`
+      ? `<a href="${d.source_url}" target="_blank" rel="noopener" class="source-link" title="${d.headline}">↗</a>`
       : "";
 
     return `<tr>
-      <td class="date">${{fmtDate(d.announcement_date)}}</td>
+      <td class="date">${fmtDate(d.announcement_date)}</td>
       <td>
-        <div class="company-name">${{d.company_name}}</div>
+        <div class="company-name">${d.company_name}</div>
       </td>
-      <td class="location">${{d.company_location}}</td>
-      <td>${{sectorHtml}}</td>
-      <td><span class="badge badge-stage">${{d.round_type}}</span></td>
-      <td>${{amtHtml}}</td>
-      <td>${{investHtml}}</td>
-      <td><span class="badge ${{cc}}">${{confLabel}}</span></td>
-      <td>${{srcHtml}}</td>
+      <td class="location">${d.company_location}</td>
+      <td>${sectorHtml}</td>
+      <td><span class="badge badge-stage">${d.round_type}</span></td>
+      <td>${amtHtml}</td>
+      <td>${investHtml}</td>
+      <td><span class="badge ${cc}">${confLabel}</span></td>
+      <td>${srcHtml}</td>
     </tr>`;
-  }}).join("");
-}}
+  }).join("");
+}
 
 // ── wire up events ──
-document.querySelectorAll(".tab").forEach(tab => {{
-  tab.addEventListener("click", () => {{
+document.querySelectorAll(".tab").forEach(tab => {
+  tab.addEventListener("click", () => {
     currentWindow = tab.dataset.window;
     document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t === tab));
     render();
-  }});
-}});
+  });
+});
 
-document.getElementById("search").addEventListener("input", e => {{
+document.getElementById("search").addEventListener("input", e => {
   searchQuery = e.target.value;
   render();
-}});
+});
 
-[["filter-stage", v => filterStage = v],
- ["filter-sector", v => filterSector = v],
- ["filter-location", v => filterLocation = v],
- ["filter-confidence", v => filterConfidence = v]].forEach(([id, setter]) => {{
-  document.getElementById(id).addEventListener("change", e => {{
+[["filter-stage",      v => filterStage      = v],
+ ["filter-sector",     v => filterSector     = v],
+ ["filter-location",   v => filterLocation   = v],
+ ["filter-confidence", v => filterConfidence = v]].forEach(([id, setter]) => {
+  document.getElementById(id).addEventListener("change", e => {
     setter(e.target.value);
     render();
-  }});
-}});
+  });
+});
 
-document.getElementById("btn-reset").addEventListener("click", () => {{
+document.getElementById("btn-reset").addEventListener("click", () => {
   document.getElementById("search").value = "";
   ["filter-stage","filter-sector","filter-location","filter-confidence"]
     .forEach(id => document.getElementById(id).value = "");
   searchQuery = filterStage = filterSector = filterLocation = filterConfidence = "";
   render();
-}});
+});
 
-document.querySelectorAll("thead th[data-col]").forEach(th => {{
-  th.addEventListener("click", () => {{
+document.querySelectorAll("thead th[data-col]").forEach(th => {
+  th.addEventListener("click", () => {
     const col = th.dataset.col;
-    if (col === sortCol) {{
+    if (col === sortCol) {
       sortDir *= -1;
-    }} else {{
+    } else {
       sortCol = col;
       sortDir = (col === "announcement_date" || col === "amount_gbp_millions") ? -1 : 1;
-    }}
+    }
     render();
-  }});
-}});
+  });
+});
 
-populateFilters();
-render();
+// ── bootstrap: fetch data then initialise ──
+fetch("deals.json")
+  .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+  .then(data => {
+    DATA = data;
+    document.title = "Scottish VC Deals — " + data.quarter_label + " / " + data.year + " YTD";
+    document.getElementById("tab-quarter").textContent = data.quarter_label;
+    document.getElementById("tab-ytd").textContent = data.year + " YTD";
+    document.getElementById("generated-date").textContent = data.generated;
+    document.getElementById("status-wrap").style.display = "none";
+    document.getElementById("table-wrap").style.display = "";
+    populateFilters();
+    render();
+  })
+  .catch(err => {
+    document.getElementById("status-wrap").textContent = "Failed to load deal data (" + err.message + ").";
+  });
 </script>
 </body>
 </html>"""
@@ -615,14 +639,16 @@ render();
 def run(date_str: str | None = None) -> None:
     run_date = date.fromisoformat(date_str) if date_str else date.today()
     data = _build_data(run_date)
-    html = _render(data)
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(html, encoding="utf-8")
+
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+
+    OUT_JSON.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    OUT_HTML.write_text(_SHELL, encoding="utf-8")
+
     q = data["quarter_label"]
     year = data["year"]
-    print(f"Written: {OUT}")
-    print(f"  {q}: {len(data['quarter_deals'])} deals")
-    print(f"  {year} YTD: {len(data['ytd_deals'])} deals")
+    print(f"Written: {OUT_JSON}  ({len(data['quarter_deals'])} {q} deals, {len(data['ytd_deals'])} {year} YTD)")
+    print(f"Written: {OUT_HTML}  (shell)")
 
 
 if __name__ == "__main__":

@@ -2,8 +2,9 @@
 """Investor page generator.
 
 Reads ledger.json, known_vcs.json, and data/vc-profiles/*.md.
-Writes docs/investors/index.html — a sortable investor table with
-inline profile cards and top-5 bar charts.
+Writes:
+  docs/investors/investors.json  — data payload (fetched by the browser at runtime)
+  docs/investors/index.html      — static HTML shell (JS fetches investors.json on load)
 """
 
 from __future__ import annotations
@@ -14,12 +15,13 @@ import sys
 from datetime import date
 from pathlib import Path
 
-ROOT = Path(__file__).parent.parent
+ROOT         = Path(__file__).parent.parent
 LEDGER       = ROOT / "data" / "processed" / "ledger.json"
 KNOWN_VCS    = ROOT / "config" / "known_vcs.json"
 PROFILES_DIR = ROOT / "data" / "vc-profiles"
 OUT_DIR      = ROOT / "docs" / "investors"
-OUT_FILE     = OUT_DIR / "index.html"
+OUT_HTML     = OUT_DIR / "index.html"
+OUT_JSON     = OUT_DIR / "investors.json"
 
 # Raw investor strings to drop entirely (descriptors / personal names)
 SKIP_INVESTORS: set[str] = {
@@ -194,9 +196,9 @@ def aggregate(ledger: list[dict], vc_by_canonical: dict, alias_map: dict) -> dic
     return stats
 
 
-# ── page builder ──────────────────────────────────────────────────────────────
+# ── JSON payload builder ──────────────────────────────────────────────────────
 
-def build_page(stats: dict[str, dict], ledger: list[dict], today: str) -> str:
+def build_json(stats: dict[str, dict], ledger: list[dict], today: str) -> dict:
     active = [s for s in stats.values() if s["deal_count"] > 0]
     active.sort(key=lambda s: (-s["deal_count"], s["canonical_name"]))
 
@@ -204,55 +206,51 @@ def build_page(stats: dict[str, dict], ledger: list[dict], today: str) -> str:
     unique_deals  = len(ledger)
     disclosed     = [d for d in ledger if d.get("amount_gbp_millions") is not None]
     total_capital = sum(d["amount_gbp_millions"] for d in disclosed)
-    capital_str   = _fmt_capital(total_capital)
 
     top5_count   = sorted(active, key=lambda s: -s["deal_count"])[:5]
     top5_capital = sorted([s for s in active if s["capital_sum"] > 0],
                           key=lambda s: -s["capital_sum"])[:5]
 
-    chart_deals_data   = [{"name": s["canonical_name"], "value": s["deal_count"]}
-                          for s in top5_count]
-    chart_capital_data = [{"name": s["canonical_name"], "value": round(s["capital_sum"], 2)}
-                          for s in top5_capital]
-
-    vc_json = []
+    vc_list = []
     for s in active:
-        vc_json.append({
-            "canonical_name":    s["canonical_name"],
-            "hq":                s["hq"],
-            "stage_focus":       s["stage_focus"],
-            "deal_count":        s["deal_count"],
-            "lead_count":        s["lead_count"],
-            "capital_sum":       round(s["capital_sum"], 3),
+        vc_list.append({
+            "canonical_name":     s["canonical_name"],
+            "hq":                 s["hq"],
+            "stage_focus":        s["stage_focus"],
+            "deal_count":         s["deal_count"],
+            "lead_count":         s["lead_count"],
+            "capital_sum":        round(s["capital_sum"], 3),
             "capital_deal_count": s["capital_deal_count"],
-            "sectors":           s["sectors"],
-            "stages":            s["stages"],
-            "companies":         s["companies"],
-            "first_active":      s["first_active"],
-            "last_active":       s["last_active"],
-            "profile":           load_profile(s["canonical_name"]),
-            "deals":             s["deals"],
+            "sectors":            s["sectors"],
+            "stages":             s["stages"],
+            "companies":          s["companies"],
+            "first_active":       s["first_active"],
+            "last_active":        s["last_active"],
+            "profile":            load_profile(s["canonical_name"]),
+            "deals":              s["deals"],
         })
 
-    html = HTML_TEMPLATE
-    html = html.replace("__GENERATED__",      today)
-    html = html.replace("__TOTAL_VCS__",      str(total_vcs))
-    html = html.replace("__UNIQUE_DEALS__",   str(unique_deals))
-    html = html.replace("__TOTAL_CAPITAL__",  capital_str)
-    html = html.replace("__VC_DATA__",        json.dumps(vc_json,             ensure_ascii=False))
-    html = html.replace("__CHART_DEALS__",    json.dumps(chart_deals_data,    ensure_ascii=False))
-    html = html.replace("__CHART_CAPITAL__",  json.dumps(chart_capital_data,  ensure_ascii=False))
-    return html
+    return {
+        "generated":     today,
+        "total_vcs":     total_vcs,
+        "unique_deals":  unique_deals,
+        "total_capital": _fmt_capital(total_capital),
+        "vcs": vc_list,
+        "chart_deals":   [{"name": s["canonical_name"], "value": s["deal_count"]}
+                          for s in top5_count],
+        "chart_capital": [{"name": s["canonical_name"], "value": round(s["capital_sum"], 2)}
+                          for s in top5_capital],
+    }
 
 
-# ── HTML template ─────────────────────────────────────────────────────────────
+# ── HTML shell — no data embedded; JS fetches investors.json at runtime ───────
 
-HTML_TEMPLATE = r"""<!DOCTYPE html>
+_SHELL = r"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Scottish VC Investors</title>
+  <title>Scottish Venture News — Investor Directory</title>
   <style>
     :root {
       --navy:       #1F3B57;
@@ -389,6 +387,16 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
     .deal-link    { color: var(--blue); font-size: 13px; margin-left: 4px; }
     .deal-link:hover { color: var(--navy); }
 
+    /* loading / error */
+    .status-msg {
+      text-align: center;
+      padding: 48px 24px;
+      color: var(--grey);
+      background: var(--white);
+      border: 1px solid var(--light-grey);
+      border-radius: 6px;
+    }
+
     /* no results */
     .no-results {
       display: none; text-align: center; padding: 48px 24px; color: var(--grey);
@@ -408,20 +416,20 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 
   <header>
     <h1>Scottish VC Investors</h1>
-    <p>Automated pipeline &nbsp;·&nbsp; Generated __GENERATED__ &nbsp;·&nbsp; Source: public news coverage</p>
+    <p>Automated pipeline &nbsp;·&nbsp; Generated <span id="generated-date">—</span> &nbsp;·&nbsp; Source: public news coverage</p>
   </header>
 
   <div class="stats-bar">
     <div class="stat">
-      <div class="stat-value">__TOTAL_VCS__</div>
+      <div class="stat-value" id="stat-total-vcs">—</div>
       <div class="stat-label">Investors tracked</div>
     </div>
     <div class="stat">
-      <div class="stat-value">__UNIQUE_DEALS__</div>
+      <div class="stat-value" id="stat-unique-deals">—</div>
       <div class="stat-label">Deals (all time)</div>
     </div>
     <div class="stat">
-      <div class="stat-value">__TOTAL_CAPITAL__</div>
+      <div class="stat-value" id="stat-total-capital">—</div>
       <div class="stat-label">Capital deployed</div>
     </div>
     <div class="stat">
@@ -449,31 +457,33 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
     <span class="result-count" id="result-count"></span>
   </div>
 
-  <div class="table-wrap">
-    <table id="inv-table">
-      <thead>
-        <tr>
-          <th data-col="canonical_name">Investor<i class="sort-icon">↕</i></th>
-          <th data-col="hq">HQ<i class="sort-icon">↕</i></th>
-          <th data-col="deal_count">Deals<i class="sort-icon">↕</i></th>
-          <th data-col="capital_sum">Capital<i class="sort-icon">↕</i></th>
-          <th class="no-sort">Stage Focus</th>
-          <th class="no-sort">Top Sectors</th>
-          <th data-col="last_active">Last Active<i class="sort-icon">↕</i></th>
-        </tr>
-      </thead>
-      <tbody id="inv-tbody"></tbody>
-    </table>
-    <div class="no-results" id="no-results">No investors match your filters.</div>
+  <div id="status-wrap" class="status-msg">Loading investors…</div>
+
+  <div id="table-wrap" style="display:none">
+    <div class="table-wrap">
+      <table id="inv-table">
+        <thead>
+          <tr>
+            <th data-col="canonical_name">Investor<i class="sort-icon">↕</i></th>
+            <th data-col="hq">HQ<i class="sort-icon">↕</i></th>
+            <th data-col="deal_count">Deals<i class="sort-icon">↕</i></th>
+            <th data-col="capital_sum">Capital<i class="sort-icon">↕</i></th>
+            <th class="no-sort">Stage Focus</th>
+            <th class="no-sort">Top Sectors</th>
+            <th data-col="last_active">Last Active<i class="sort-icon">↕</i></th>
+          </tr>
+        </thead>
+        <tbody id="inv-tbody"></tbody>
+      </table>
+      <div class="no-results" id="no-results">No investors match your filters.</div>
+    </div>
   </div>
 
   <footer>Scottish Venture News &nbsp;·&nbsp; Data sourced from public news coverage only &nbsp;·&nbsp; Not investment advice</footer>
 
 </div>
 <script>
-const DATA          = __VC_DATA__;
-const CHART_DEALS   = __CHART_DEALS__;
-const CHART_CAPITAL = __CHART_CAPITAL__;
+let DATA = null;
 
 // ── chart drawing ────────────────────────────────────────────────────────────
 const PALETTE = ["#5B7FA0","#6BA58A","#C49A5A","#A07878","#8C9B8A"];
@@ -498,13 +508,11 @@ function drawChart(canvasId, items, fmtVal) {
     const y    = PAD_T + i * (BAR_H + BAR_GAP);
     const barW = (d.value / maxVal) * chartW;
 
-    // bar
     ctx.fillStyle = PALETTE[i % PALETTE.length];
     ctx.beginPath();
     ctx.roundRect(PAD_L, y, barW, BAR_H, 3);
     ctx.fill();
 
-    // label (left)
     ctx.fillStyle = "#222";
     ctx.font = "11px 'Helvetica Neue', Helvetica, Arial, sans-serif";
     ctx.textAlign = "right";
@@ -512,7 +520,6 @@ function drawChart(canvasId, items, fmtVal) {
     const label = d.name.length > 26 ? d.name.slice(0, 24) + "…" : d.name;
     ctx.fillText(label, PAD_L - 8, y + BAR_H / 2);
 
-    // value (right of bar)
     ctx.fillStyle = "#7C93A8";
     ctx.font = "bold 11px 'Helvetica Neue', Helvetica, Arial, sans-serif";
     ctx.textAlign = "left";
@@ -567,7 +574,7 @@ function esc(s) {
 // ── table state ──────────────────────────────────────────────────────────────
 let sortCol = "deal_count", sortDir = -1;
 let searchQuery = "", filterStage = "", filterHq = "";
-let openRow = null;  // currently expanded canonical_name
+let openRow = null;
 
 function applyFilters() {
   const q = searchQuery.toLowerCase();
@@ -662,7 +669,6 @@ function render() {
   }
   noResults.style.display = "none";
 
-  // If open row is no longer in filtered set, close it
   if (openRow && !sorted.find(d => d.canonical_name === openRow)) {
     openRow = null;
   }
@@ -695,7 +701,6 @@ function render() {
     return dataRow + profileRow;
   }).join("");
 
-  // Wire up row clicks
   tbody.querySelectorAll("tr.data-row").forEach(row => {
     row.addEventListener("click", () => {
       const name = row.dataset.name;
@@ -752,37 +757,52 @@ document.querySelectorAll("thead th[data-col]").forEach(th => {
   });
 });
 
-// ── init ─────────────────────────────────────────────────────────────────────
-populateFilters();
-setStats();
-render();
-drawChart("chart-deals",   CHART_DEALS,   v => v + (v === 1 ? " deal" : " deals"));
-drawChart("chart-capital", CHART_CAPITAL, v => {
-  if (v >= 1000) return "£" + (v/1000).toFixed(1) + "bn";
-  if (v >= 1)    return "£" + v.toFixed(1) + "m";
-  return "£" + Math.round(v * 1000) + "k";
-});
+// ── bootstrap: fetch data then initialise ────────────────────────────────────
+fetch("investors.json")
+  .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+  .then(data => {
+    DATA = data.vcs;
+    document.title = "Scottish Venture News — Investor Directory";
+    document.getElementById("generated-date").textContent   = data.generated;
+    document.getElementById("stat-total-vcs").textContent   = data.total_vcs;
+    document.getElementById("stat-unique-deals").textContent = data.unique_deals;
+    document.getElementById("stat-total-capital").textContent = data.total_capital;
+    document.getElementById("status-wrap").style.display    = "none";
+    document.getElementById("table-wrap").style.display     = "";
+    populateFilters();
+    setStats();
+    render();
+    drawChart("chart-deals", data.chart_deals, v => v + (v === 1 ? " deal" : " deals"));
+    drawChart("chart-capital", data.chart_capital, v => {
+      if (v >= 1000) return "£" + (v/1000).toFixed(1) + "bn";
+      if (v >= 1)    return "£" + v.toFixed(1) + "m";
+      return "£" + Math.round(v * 1000) + "k";
+    });
+  })
+  .catch(err => {
+    document.getElementById("status-wrap").textContent = "Failed to load investor data (" + err.message + ").";
+  });
 </script>
 </body>
-</html>
-"""
-
-# The inline __UNIQUE_DEALS__ in the JS is intentional — Python replaces it
-# before writing, so the JS receives a literal integer, not a variable name.
+</html>"""
 
 
 # ── main ──────────────────────────────────────────────────────────────────────
 
 def run() -> None:
-    today = date.today().isoformat()
+    today          = date.today().isoformat()
     ledger         = json.loads(LEDGER.read_text())
     vc_by_canonical, alias_map = load_known_vcs()
     stats          = aggregate(ledger, vc_by_canonical, alias_map)
-    html           = build_page(stats, ledger, today)
+    payload        = build_json(stats, ledger, today)
+
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    OUT_FILE.write_text(html, encoding="utf-8")
-    active_count   = sum(1 for s in stats.values() if s["deal_count"] > 0)
-    print(f"Written: {OUT_FILE}  ({active_count} investors, {len(ledger)} deals)")
+    OUT_JSON.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
+    OUT_HTML.write_text(_SHELL, encoding="utf-8")
+
+    active_count = sum(1 for s in stats.values() if s["deal_count"] > 0)
+    print(f"Written: {OUT_JSON}  ({active_count} investors, {len(ledger)} deals)")
+    print(f"Written: {OUT_HTML}  (shell)")
 
 
 def main() -> None:
