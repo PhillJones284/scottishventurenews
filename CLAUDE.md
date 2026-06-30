@@ -1,4 +1,4 @@
-# Scottish VC Investment Tracker
+# Scottish Venture News
 
 A pipeline that monitors freely available news sources for venture capital investment activity in Scottish scale-up companies, and produces a weekly intelligence report.
 
@@ -254,7 +254,7 @@ scottish-vc-tracker/
 │   ├── processed/               ← Parser and deduplicator output
 │   └── vc-profiles/             ← PERSISTENT: one standing reference page per VC, refreshed by Stage 5
 │
-└── docs/                        ← GitHub Pages web root (served at philljones284.github.io/scottish-vc-tracker/)
+└── docs/                        ← GitHub Pages web root (served at philljones284.github.io/scottish-venture-news/)
     └── deals/
         └── index.html           ← Stage 6 output: static deal table, overwritten each run
     └── investors/
