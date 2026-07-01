@@ -433,6 +433,17 @@
       "notes": "Edinburgh local news site that covers Edinburgh startup funding, sometimes ahead of larger outlets. Produced the primary article on Infrawatch's pre-seed round (May 2026) before it appeared elsewhere. Worth monitoring for early Edinburgh-specific deal coverage."
     },
     {
+      "slug": "bdaily-scotland",
+      "name": "Bdaily — Scotland",
+      "type": "news_site",
+      "url": "https://bdaily.co.uk/region/scotland",
+      "search_path": null,
+      "rss_url": "https://bdaily.co.uk/region/scotland/rss",
+      "queries": [],
+      "best_effort": false,
+      "notes": "UK business news site with a dedicated Scotland region feed. Confirmed relevant deal: VASO Global (Dumfries) raised £5m+ from PXN Ventures, Scottish Enterprise, UKRI, and Eco Group (June 2026), reported at /articles/YYYY/MM/DD/slug. No RSS at /feed (404) but /region/scotland/rss works and returns individual items — the index page itself yields almost no extractable text via trafilatura, so RSS is required for this source, not optional."
+    },
+    {
       "slug": "crunchbase",
       "name": "Crunchbase",
       "type": "firecrawl",

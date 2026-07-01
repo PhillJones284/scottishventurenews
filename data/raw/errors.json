@@ -274,5 +274,17 @@
     "url": "https://www.crunchbase.com/discover/funding_rounds?location=Scotland&date_range=90d",
     "error": "Client error '403 Forbidden' for url 'https://www.crunchbase.com/discover/funding_rounds?location=Scotland&date_range=90d'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
     "timestamp": "2026-06-29T09:35:17.246731+00:00"
+  },
+  {
+    "source": "crunchbase-scotland",
+    "url": "https://www.crunchbase.com/discover/funding_rounds?location=Scotland&date_range=90d",
+    "error": "Client error '403 Forbidden' for url 'https://www.crunchbase.com/discover/funding_rounds?location=Scotland&date_range=90d'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+    "timestamp": "2026-07-01T07:20:10.710477+00:00"
+  },
+  {
+    "source": "daily-business-group",
+    "url": "https://dailybusinessgroup.co.uk/feed/",
+    "error": "RSS fetch failed: Client error '403 Forbidden' for url 'https://dailybusinessgroup.co.uk/feed/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403; fallback failed: Client error '403 Forbidden' for url 'https://dailybusinessgroup.co.uk'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+    "timestamp": "2026-07-01T07:21:38.677894+00:00"
   }
 ]

@@ -75,12 +75,15 @@ Sources needing cookie auth specify `"cookie_env_var": "<VAR_NAME>"` in `sources
 
 **Gate (soft)**: Each `type: "firecrawl"` source should produce `data/raw/YYYY-MM-DD_{slug}.json`. Per-source failures are caught and logged — firecrawl sources are supplementary.
 
-**Coverage check note**: Two source types do not appear in `YYYY-MM-DD_candidates.json` and will never be flagged by the coverage check — this is expected:
+**Coverage check note**: Three source types do not appear in `YYYY-MM-DD_candidates.json` and will never be flagged by the coverage check — this is expected:
 - `type: "firecrawl"` sources — handled by Stage 1c
 - `type: "vc_newsrooms"` sources with no `rss_url` — fetched directly by Stage 1b via WebFetch
+- manual submissions (`data/raw/manual_finds.json`) — drained by Stage 1b into `data/raw/YYYY-MM-DD_manual.json`, see [Adding manual finds](#adding-manual-finds)
 
 ### Stage 1b — Scraper (Claude agent)
 Agent tool: `subagent_type: "general-purpose"`, prompt = today's date + body of `.claude/agents/scraper.md`
+
+Besides the configured sources, Stage 1b also drains any pending entries in `data/raw/manual_finds.json` into `data/raw/YYYY-MM-DD_manual.json` — see [Adding manual finds](#adding-manual-finds).
 
 **Gate**: At least one `data/raw/YYYY-MM-DD_*.json` file (matching today's date) must exist and contain at least one record (i.e. not an empty array `[]`).
 If the gate fails: stop, tell Phill the scraper produced no records, and suggest checking `data/raw/errors.json` for source failures.
@@ -226,7 +229,8 @@ scottish-vc-tracker/
 │   ├── sources_page_generator.py ← Stage 8: Sources reference page HTML (Python)
 │   ├── landing_page_generator.py ← Stage 8: Landing page HTML (Python)
 │   ├── newsletter_publish.py     ← Stage 10: Buttondown draft + ImgBB upload (Python)
-│   └── rollback.py               ← Undo a publish: delete ImgBB images, delete draft, revert GitHub Pages
+│   ├── rollback.py               ← Undo a publish: delete ImgBB images, delete draft, revert GitHub Pages
+│   └── add_manual_find.py        ← Stage articles Phill finds manually, ahead of the next run (see Adding manual finds)
 │
 ├── config/
 │   ├── sources.json             ← News sources and search queries (curated — do not edit directly)
@@ -238,6 +242,7 @@ scottish-vc-tracker/
 │
 ├── data/
 │   ├── raw/                     ← Scraper output (per-source JSON files)
+│   │   └── manual_finds.json    ← PERSISTENT: Phill's manually-added articles, pending/processed (see Adding manual finds)
 │   ├── processed/               ← Parser and deduplicator output
 │   │   ├── investments.json     ← Normalised records (this run)
 │   │   ├── investments_deduped.json
@@ -324,6 +329,20 @@ python pipeline/vc_profile_stats.py --all                              # every k
 This writes `data/processed/vc_stats.json`. Then invoke the agent: `subagent_type: "general-purpose"`, prompt = today's date + body of `.claude/agents/vc-profiler.md`.
 
 The profiler only rewrites files for VCs present in `vc_stats.json` for that invocation — every other file in `data/vc-profiles/` is left alone.
+
+## Adding manual finds
+
+If Phill finds a relevant article himself outside a full pipeline run (e.g. mid-week), he can stage it without invoking any agent:
+
+```bash
+source .venv/bin/activate && python pipeline/add_manual_find.py "<url>" ["optional note"]
+```
+
+This fetches the article immediately (while the link is live) and appends it to the persistent `data/raw/manual_finds.json` queue with `status: "pending"`. Nothing else happens at this point — no extraction, no ledger write.
+
+On the **next full pipeline run**, Stage 1b (the scraper agent) drains all pending entries: it extracts a structured investment record from each using the same schema as any other source, writes them to `data/raw/YYYY-MM-DD_manual.json` (that run's date), and marks each entry `status: "processed"`. From there they flow through Stage 2 onward exactly like any other source — same dedup, same ledger, same report treatment. If a URL's fetch failed at add-time, the scraper agent retries it live via WebFetch on the run; if that also fails, the entry stays `"pending"` for the following run.
+
+`manual_finds.json` is persistent (like `merge_candidates.json`) — entries are never deleted, only marked `processed`, so it doubles as an audit trail of what Phill submitted and when.
 
 ## Managing sources
 

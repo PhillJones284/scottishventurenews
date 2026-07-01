@@ -18,6 +18,21 @@ Investment events that match ALL of the following:
 - The news is **publicly reported** (press release, news article, Companies House data referenced in an article, etc.)
 - The event occurred in the **last 90 days** (or is undated but clearly recent)
 
+## Manual Submissions (run this first, unconditionally)
+
+Check `data/raw/manual_finds.json`. This is a persistent queue that Phill adds to during the week via `pipeline/add_manual_find.py` — each entry is an article he found manually, outside the normal source list. Process it regardless of which mode (below) applies to the rest of the run.
+
+For each entry with `"status": "pending"`:
+1. If `text` is present (already fetched when the entry was added), extract structured investment record(s) from it directly using the Extraction Schema below — no WebFetch needed.
+2. If `text` is `null` (the fetch failed at add-time), WebFetch the entry's `url` and extract from that instead. If it's still unreachable, leave the entry's `status` as `"pending"` (it will be retried next run) and log to `errors.json`.
+3. Fold the entry's `note` field (if present) into the record's `summary` if it adds useful context Phill flagged manually.
+
+Save all extracted records — regardless of how many source entries they came from — to a single `data/raw/YYYY-MM-DD_manual.json` (today's actual run date, not the entry's `added_date`). Use `[]` if no pending entries produced usable records.
+
+For every entry you successfully processed (whether or not it yielded a record — e.g. it turned out not to be a Scottish VC deal), update it in place in `manual_finds.json`: set `"status": "processed"` and add `"processed_date": "YYYY-MM-DD"` (today). Leave unresolved entries (unreachable URL) as `"pending"`. Do not delete entries — this file is a persistent audit trail, like `merge_candidates.json`.
+
+If `manual_finds.json` doesn't exist or has no pending entries, skip this section entirely (no need to write an empty `data/raw/YYYY-MM-DD_manual.json`).
+
 ## Mode Selection
 
 Check whether `data/raw/YYYY-MM-DD_candidates.json` exists and contains at least one record (where YYYY-MM-DD is today's date).
