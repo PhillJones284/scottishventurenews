@@ -102,37 +102,12 @@ _SHELL = """<!DOCTYPE html>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Scottish Venture News — Deal Table</title>
+  <link rel="stylesheet" href="../assets/style.css">
   <style>
-    :root {
-      --navy:       #1F3B57;
-      --slate:      #7C93A8;
-      --grey:       #9AA0A6;
-      --light-grey: #D8DCE0;
-      --blue:       #7B9EB9;
-      --green:      #6BA58A;
-      --gold:       #C49A5A;
-      --maroon:     #A07878;
-      --tan:        #A89B8C;
-      --ink:        #222222;
-      --bg:         #F7F7F6;
-      --white:      #FFFFFF;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 13px;
-      color: var(--ink);
-      background: var(--bg);
-      line-height: 1.45;
-    }
+    body { font-size: 13px; line-height: 1.45; }
     a { color: inherit; text-decoration: none; }
 
     .container { max-width: 1280px; margin: 0 auto; padding: 28px 20px 48px; }
-
-    /* ── header ── */
-    header { margin-bottom: 24px; }
-    header h1 { font-size: 20px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; }
-    header p { color: var(--slate); font-size: 12px; margin-top: 5px; }
 
     /* ── tabs ── */
     .tabs {
@@ -155,25 +130,7 @@ _SHELL = """<!DOCTYPE html>
     .tab:hover:not(.active) { color: var(--ink); }
 
     /* ── stats bar ── */
-    .stats-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0;
-      margin-bottom: 16px;
-      background: var(--white);
-      border: 1px solid var(--light-grey);
-      border-radius: 6px;
-      overflow: hidden;
-    }
-    .stat {
-      flex: 1;
-      min-width: 110px;
-      padding: 12px 18px;
-      border-right: 1px solid var(--light-grey);
-    }
-    .stat:last-child { border-right: none; }
-    .stat-value { font-size: 20px; font-weight: 700; color: var(--navy); }
-    .stat-label { font-size: 10px; color: var(--slate); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+    .stats-bar { margin-bottom: 16px; }
 
     /* ── controls ── */
     .controls {
@@ -217,26 +174,10 @@ _SHELL = """<!DOCTYPE html>
     .result-count { color: var(--slate); font-size: 12px; margin-left: auto; }
 
     /* ── table ── */
-    .table-wrap { overflow-x: auto; }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: var(--white);
-      border: 1px solid var(--light-grey);
-      border-radius: 6px;
-      overflow: hidden;
-      min-width: 860px;
-    }
+    table { min-width: 860px; }
     thead th {
-      text-align: left;
       padding: 9px 12px;
-      font-size: 10px;
-      font-weight: 600;
-      color: var(--slate);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
       background: #F0F1F2;
-      border-bottom: 1px solid var(--light-grey);
       white-space: nowrap;
       cursor: pointer;
       user-select: none;
@@ -245,26 +186,14 @@ _SHELL = """<!DOCTYPE html>
     thead th:hover:not(:last-child) { color: var(--navy); }
     .sort-icon { color: var(--light-grey); margin-left: 3px; font-style: normal; }
     th.sort-asc .sort-icon, th.sort-desc .sort-icon { color: var(--navy); }
-    tbody tr { border-bottom: 1px solid var(--light-grey); transition: background 0.08s; }
-    tbody tr:last-child { border-bottom: none; }
+    tbody tr { transition: background 0.08s; }
     tbody tr:hover { background: #F4F5F6; }
-    td { padding: 9px 12px; vertical-align: top; }
 
     /* ── cell styles ── */
     .date { color: var(--slate); white-space: nowrap; font-size: 12px; }
     .company-name { font-weight: 600; color: var(--navy); }
     .headline { font-size: 11px; color: var(--grey); margin-top: 2px; line-height: 1.35; max-width: 260px; }
     .location { color: var(--slate); font-size: 12px; }
-    .sector-tag {
-      display: inline-block;
-      padding: 1px 6px;
-      border-radius: 3px;
-      background: var(--light-grey);
-      color: var(--slate);
-      font-size: 10px;
-      margin: 1px 2px 1px 0;
-      white-space: nowrap;
-    }
     .badge {
       display: inline-block;
       padding: 2px 8px;
@@ -291,37 +220,8 @@ _SHELL = """<!DOCTYPE html>
     }
     .source-link:hover { color: var(--navy); }
 
-    /* ── loading / error ── */
-    .status-msg {
-      text-align: center;
-      padding: 48px 24px;
-      color: var(--grey);
-      background: var(--white);
-      border: 1px solid var(--light-grey);
-      border-radius: 6px;
-    }
-
-    /* ── no results ── */
-    .no-results {
-      display: none;
-      text-align: center;
-      padding: 48px 24px;
-      color: var(--grey);
-      background: var(--white);
-      border: 1px solid var(--light-grey);
-      border-radius: 6px;
-      margin-top: 0;
-    }
-
     /* ── footer ── */
-    footer {
-      margin-top: 20px;
-      color: var(--grey);
-      font-size: 11px;
-      text-align: right;
-    }
-    .back-link { font-size: 12px; color: var(--slate); margin-bottom: 20px; display: inline-block; }
-    .back-link:hover { color: var(--navy); text-decoration: none; }
+    footer { margin-top: 20px; }
   </style>
 </head>
 <body>

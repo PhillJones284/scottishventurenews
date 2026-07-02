@@ -3,46 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="../favicon.ico">
   <title>Intelligence Sources — Scottish Venture News</title>
+  <link rel="stylesheet" href="../assets/style.css">
   <style>
-    :root {
-      --navy:       oklch(0.380 0.085 112);
-      --slate:      oklch(0.560 0.030 110);
-      --grey:       oklch(0.580 0.018 108);
-      --light-grey: oklch(0.900 0.010 110);
-      --blue:       oklch(0.620 0.155 42);
-      --green:      #6BA58A;
-      --gold:       oklch(0.620 0.155 42);
-      --ink:        oklch(0.195 0.025 108);
-      --bg:         oklch(1.000 0.000 0);
-      --white:      #FFFFFF;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 13px; color: var(--ink); background: var(--bg); line-height: 1.5;
-    }
+    body { font-size: 13px; line-height: 1.5; }
     a { color: var(--navy); text-decoration: none; }
     a:hover { color: var(--blue); text-decoration: underline; }
     .container { max-width: 900px; margin: 0 auto; padding: 28px 20px 48px; }
 
-    .back-link { font-size: 12px; color: var(--slate); margin-bottom: 20px; display: inline-block; }
-    .back-link:hover { color: var(--navy); text-decoration: none; }
-
-    header { margin-bottom: 24px; }
-    header h1 { font-size: 20px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; }
-    header p  { color: var(--slate); font-size: 12px; margin-top: 5px; }
-
-    .stats-bar {
-      display: flex; flex-wrap: wrap; gap: 0;
-      background: var(--white); border: 1px solid var(--light-grey); border-radius: 6px;
-      overflow: hidden; margin-bottom: 28px;
-    }
-    .stat { flex: 1; min-width: 90px; padding: 12px 18px; border-right: 1px solid var(--light-grey); }
-    .stat:last-child { border-right: none; }
-    .stat-value { font-size: 20px; font-weight: 700; color: var(--navy); }
-    .stat-label { font-size: 10px; color: var(--slate); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+    .stats-bar { margin-bottom: 28px; }
+    .stat { min-width: 90px; }
 
     .src-group { margin-bottom: 36px; }
     .group-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
@@ -53,16 +23,7 @@
     }
     .group-desc { font-size: 12px; color: var(--grey); margin-bottom: 10px; }
 
-    .table-wrap { overflow-x: auto; }
-    table { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--light-grey); border-radius: 6px; overflow: hidden; }
-    thead th {
-      text-align: left; padding: 8px 12px; font-size: 10px; font-weight: 600;
-      color: var(--slate); text-transform: uppercase; letter-spacing: 0.06em;
-      background: oklch(0.950 0.012 110); border-bottom: 1px solid var(--light-grey);
-    }
-    tbody tr { border-bottom: 1px solid var(--light-grey); }
-    tbody tr:last-child { border-bottom: none; }
-    td { padding: 9px 12px; vertical-align: top; }
+    thead th { padding: 8px 12px; background: #F0F1F2; }
     .src-name { width: 260px; font-weight: 500; white-space: nowrap; }
     .src-name a { color: var(--navy); }
     .src-name a:hover { color: var(--blue); }
@@ -76,7 +37,7 @@
     .badge-rss { background: #E8F2EB; color: #4a8a6a; }
     .badge-be  { background: #FFF4E0; color: #a07820; }
 
-    footer { margin-top: 24px; color: var(--grey); font-size: 11px; text-align: right; }
+    footer { margin-top: 24px; }
   </style>
 </head>
 <body>
@@ -86,20 +47,20 @@
 
   <header>
     <h1>Intelligence Sources</h1>
-    <p>Every source monitored by the automated pipeline. Regenerated each run. &nbsp;·&nbsp; Last updated 2026-06-29</p>
+    <p>Every source monitored by the automated pipeline. Regenerated each run. &nbsp;·&nbsp; Last updated 2026-07-02</p>
   </header>
 
   <div class="stats-bar">
     <div class="stat"><div class="stat-value">47</div><div class="stat-label">Total</div></div>
-    <div class="stat"><div class="stat-value">13</div><div class="stat-label">News Sites</div></div>
+    <div class="stat"><div class="stat-value">14</div><div class="stat-label">News Sites</div></div>
     <div class="stat"><div class="stat-value">28</div><div class="stat-label">VC Newsrooms</div></div>
-    <div class="stat"><div class="stat-value">2</div><div class="stat-label">Databases</div></div>
+    <div class="stat"><div class="stat-value">1</div><div class="stat-label">Databases</div></div>
     <div class="stat"><div class="stat-value">2</div><div class="stat-label">Search Engines</div></div>
   </div>
 
   <section class="src-group">
     <div class="group-header">
-      <h2>News Sites</h2><span class="group-count">13</span>
+      <h2>News Sites</h2><span class="group-count">14</span>
     </div>
     <p class="group-desc">Scraped automatically each run via RSS feed or direct fetch.</p>
     <div class="table-wrap">
@@ -119,8 +80,8 @@
         <td class="src-notes">Strong Glasgow/West of Scotland coverage</td>
       </tr>
       <tr>
-        <td class="src-name"><a href="https://www.insider.co.uk" target="_blank" rel="noopener">Insider.co.uk</a><span class="badge badge-rss">RSS</span></td>
-        <td class="src-notes">Scottish business focused, very relevant</td>
+        <td class="src-name"><a href="https://www.insider.co.uk" target="_blank" rel="noopener">Insider.co.uk</a></td>
+        <td class="src-notes">Scottish business focused, very relevant. RSS feed is dead (stub channel, lastBuildDate 2022) and /search?q= doesn&#x27;t run a real site search (returns nav only) — removed both, homepage link extraction confirmed working (funding-relevant headlines present directly on /).</td>
       </tr>
       <tr>
         <td class="src-name"><a href="https://sifted.eu" target="_blank" rel="noopener">Sifted — UK/Scotland</a><span class="badge badge-rss">RSS</span></td>
@@ -152,11 +113,15 @@
       </tr>
       <tr>
         <td class="src-name"><a href="https://futurescot.com" target="_blank" rel="noopener">FutureScot</a></td>
-        <td class="src-notes">Scottish technology and business news site. Covered Wordsmith AI Series B (June 2026) with detailed reporting on the round, investors, and growth plans. Regularly covers Scottish startup funding events.</td>
+        <td class="src-notes">Scottish technology and business news site. Covered Wordsmith AI Series B (June 2026) with detailed reporting on the round, investors, and growth plans. Regularly covers Scottish startup funding events. Removed `queries` — that mechanism is DuckDuckGo-specific (result-parsing hardcoded to DDG&#x27;s HTML) and `?q=` isn&#x27;t this site&#x27;s real search syntax, so it was silently doing nothing; homepage link extraction confirmed working directly.</td>
       </tr>
       <tr>
         <td class="src-name"><a href="https://theedinburghreporter.co.uk" target="_blank" rel="noopener">The Edinburgh Reporter</a></td>
-        <td class="src-notes">Edinburgh local news site that covers Edinburgh startup funding, sometimes ahead of larger outlets. Produced the primary article on Infrawatch&#x27;s pre-seed round (May 2026) before it appeared elsewhere. Worth monitoring for early Edinburgh-specific deal coverage.</td>
+        <td class="src-notes">Edinburgh local news site that covers Edinburgh startup funding, sometimes ahead of larger outlets. Produced the primary article on Infrawatch&#x27;s pre-seed round (May 2026) before it appeared elsewhere. Worth monitoring for early Edinburgh-specific deal coverage. Removed `queries` — DuckDuckGo-specific search mechanism was silently doing nothing against this site&#x27;s own domain; homepage link extraction confirmed working directly.</td>
+      </tr>
+      <tr>
+        <td class="src-name"><a href="https://bdaily.co.uk/region/scotland" target="_blank" rel="noopener">Bdaily — Scotland</a><span class="badge badge-rss">RSS</span></td>
+        <td class="src-notes">UK business news site with a dedicated Scotland region feed. Confirmed relevant deal: VASO Global (Dumfries) raised £5m+ from PXN Ventures, Scottish Enterprise, UKRI, and Eco Group (June 2026), reported at /articles/YYYY/MM/DD/slug. No RSS at /feed (404) but /region/scotland/rss works and returns individual items — the index page itself yields almost no extractable text via trafilatura, so RSS is required for this source, not optional.</td>
       </tr>
         </tbody>
       </table>
@@ -193,8 +158,8 @@
         <td class="src-notes">Check for Scottish deal announcements</td>
       </tr>
       <tr>
-        <td class="src-name"><a href="https://www.bgf.co.uk/news" target="_blank" rel="noopener">BGF — News</a><span class="badge badge-rss">RSS</span></td>
-        <td class="src-notes">Growth-stage investor with Edinburgh office. RSS feed exists but was empty at last check — fall back to HTML if feed yields nothing.</td>
+        <td class="src-name"><a href="https://www.bgf.co.uk/newsroom/" target="_blank" rel="noopener">BGF — News</a></td>
+        <td class="src-notes">Growth-stage investor with Edinburgh office. RSS feed is dead (empty channel) — removed. /news was also the wrong URL (an evergreen insights/blog page dated back to 2022) — the real, actively-updated deal announcement feed is at /newsroom/, confirmed with entries dated as recently as this week. 2026-07-01 audit: plain httpx + link extraction works cleanly — moved to Stage 1a.</td>
       </tr>
       <tr>
         <td class="src-name"><a href="https://www.prairiefund.com/news" target="_blank" rel="noopener">Prairie Fund — News</a></td>
@@ -202,7 +167,7 @@
       </tr>
       <tr>
         <td class="src-name"><a href="https://www.mavencp.com/latest-news" target="_blank" rel="noopener">Maven Capital Partners — Latest News</a></td>
-        <td class="src-notes">Maven&#x27;s newsroom covers deal announcements across their funds including Investment Fund for Scotland (IFS Maven Equity Finance). Good source for Scottish Seed/Growth deals.</td>
+        <td class="src-notes">Maven&#x27;s newsroom covers deal announcements across their funds including Investment Fund for Scotland (IFS Maven Equity Finance). Good source for Scottish Seed/Growth deals. 2026-07-01 audit: plain httpx + link extraction works cleanly — moved to Stage 1a.</td>
       </tr>
       <tr>
         <td class="src-name"><a href="https://www.kelvincapital.com/news-blog/" target="_blank" rel="noopener">Kelvin Capital — News</a><span class="badge badge-rss">RSS</span></td>
@@ -218,11 +183,11 @@
       </tr>
       <tr>
         <td class="src-name"><a href="https://parkwalk.vc/news/" target="_blank" rel="noopener">Parkwalk — News</a></td>
-        <td class="src-notes">University spinout specialist active across UK ecosystems including Edinburgh and St Andrews. Covers funding rounds and portfolio milestones.</td>
+        <td class="src-notes">University spinout specialist active across UK ecosystems including Edinburgh and St Andrews. Covers funding rounds and portfolio milestones. 2026-07-01 audit: plain httpx + link extraction works cleanly — moved to Stage 1a.</td>
       </tr>
       <tr>
         <td class="src-name"><a href="https://edinburgh-innovations.ed.ac.uk/news" target="_blank" rel="noopener">Edinburgh Innovations — News</a></td>
-        <td class="src-notes">University of Edinburgh&#x27;s commercialisation arm. Covers spinout funding rounds and investment news via Old College Capital. High relevance for Edinburgh deep tech and life sciences deals.</td>
+        <td class="src-notes">University of Edinburgh&#x27;s commercialisation arm. Covers spinout funding rounds and investment news via Old College Capital. High relevance for Edinburgh deep tech and life sciences deals. 2026-07-01 audit: plain httpx + link extraction works cleanly — moved to Stage 1a.</td>
       </tr>
       <tr>
         <td class="src-name"><a href="https://angelcapital.scot" target="_blank" rel="noopener">Angel Capital Scotland</a><span class="badge badge-rss">RSS</span></td>
@@ -234,19 +199,19 @@
       </tr>
       <tr>
         <td class="src-name"><a href="https://www.scottishedge.com/news" target="_blank" rel="noopener">Scottish EDGE — News</a></td>
-        <td class="src-notes">Scotland&#x27;s biggest funding competition. News page features winner announcements and follow-on funding details for past round winners. Regular archive of competition rounds (2020–2026) with card-based layout. No RSS feed — newsletter signup available.</td>
+        <td class="src-notes">Scotland&#x27;s biggest funding competition. News page features winner announcements and follow-on funding details for past round winners. Regular archive of competition rounds (2020–2026) with card-based layout. No RSS feed — newsletter signup available. 2026-07-01 audit: plain httpx + link extraction works cleanly — moved to Stage 1a.</td>
       </tr>
       <tr>
         <td class="src-name"><a href="https://sosv.com/news/" target="_blank" rel="noopener">SOSV — News</a></td>
-        <td class="src-notes">Deep tech venture capital firm with active Scottish portfolio companies. News page features investment announcements, company milestones, and founder stories. Focus on hard tech, climate, and health tech. Chronological feed format.</td>
+        <td class="src-notes">Deep tech venture capital firm with active Scottish portfolio companies. News page features investment announcements, company milestones, and founder stories. Focus on hard tech, climate, and health tech. Chronological feed format. 2026-07-01 audit: plain httpx + link extraction returns genuine article/event headlines cleanly (no Scottish matches that day, but extraction itself works) — moved to Stage 1a.</td>
       </tr>
       <tr>
         <td class="src-name"><a href="https://www.strath.ac.uk/whystrathclyde/news/" target="_blank" rel="noopener">University of Strathclyde — News</a></td>
-        <td class="src-notes">Glasgow-based university with active spinout investment program. News section covers spinout funding announcements, company valuations, and commercialization milestones. High relevance for Glasgow tech and manufacturing spinouts.</td>
+        <td class="src-notes">Glasgow-based university with active spinout investment program. News section covers spinout funding announcements, company valuations, and commercialization milestones. High relevance for Glasgow tech and manufacturing spinouts. 2026-07-01 audit: plain httpx + link extraction works cleanly — moved to Stage 1a.</td>
       </tr>
       <tr>
         <td class="src-name"><a href="https://www.4biocapital.com/news" target="_blank" rel="noopener">4BIO Capital — News</a></td>
-        <td class="src-notes">Biotech-focused venture capital firm. Newsroom covers life sciences and biotech investment announcements and portfolio company milestones.</td>
+        <td class="src-notes">Biotech-focused venture capital firm. Newsroom covers life sciences and biotech investment announcements and portfolio company milestones. 2026-07-01 audit: plain httpx + link extraction works cleanly — moved to Stage 1a.</td>
       </tr>
       <tr>
         <td class="src-name"><a href="https://foresight.group/" target="_blank" rel="noopener">Foresight Group — News &amp; Insights</a></td>
@@ -258,11 +223,11 @@
       </tr>
       <tr>
         <td class="src-name"><a href="https://sfccapital.com/blog" target="_blank" rel="noopener">SFC Capital — Blog</a></td>
-        <td class="src-notes">SFC Capital manages portfolio of 400+ early-stage businesses across B2B software, fintech, medtech, and green tech. Blog covers investment news and sector insights. 12 Scottish transactions.</td>
+        <td class="src-notes">SFC Capital manages portfolio of 400+ early-stage businesses across B2B software, fintech, medtech, and green tech. Blog covers investment news and sector insights. 12 Scottish transactions. 2026-07-01 audit: plain httpx + link extraction works cleanly — moved to Stage 1a.</td>
       </tr>
       <tr>
         <td class="src-name"><a href="https://www.futureplanetcapital.com/blog" target="_blank" rel="noopener">Future Planet Capital — Blog</a></td>
-        <td class="src-notes">Impact-focused venture capital specializing in university spinouts and growth companies tackling global challenges. Blog covers portfolio company updates and investment announcements. 7 Scottish transactions.</td>
+        <td class="src-notes">Impact-focused venture capital specializing in university spinouts and growth companies tackling global challenges. Blog covers portfolio company updates and investment announcements. 7 Scottish transactions. 2026-07-01 audit: plain httpx + link extraction returns genuine article headlines cleanly (no Scottish matches that day, but extraction itself works) — moved to Stage 1a.</td>
       </tr>
       <tr>
         <td class="src-name"><a href="https://greenangelventures.com/stories/" target="_blank" rel="noopener">Green Angel Ventures — Stories</a></td>
@@ -291,17 +256,13 @@
 
   <section class="src-group">
     <div class="group-header">
-      <h2>Databases</h2><span class="group-count">2</span>
+      <h2>Databases</h2><span class="group-count">1</span>
     </div>
     <p class="group-desc">Investment databases. Partially paywalled — free content extracted only.</p>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Source</th><th>Description</th></tr></thead>
         <tbody>
-      <tr>
-        <td class="src-name"><a href="https://www.crunchbase.com/discover/funding_rounds" target="_blank" rel="noopener">Crunchbase — Scotland recent</a><span class="badge badge-be">best‑effort</span></td>
-        <td class="src-notes">Filter by Scotland, last 90 days. Partially paywalled — extract whatever free content is visible</td>
-      </tr>
       <tr>
         <td class="src-name"><a href="https://www.beauhurst.com" target="_blank" rel="noopener">Beauhurst</a><span class="badge badge-be">best‑effort</span></td>
         <td class="src-notes">UK equity investment tracker. Mostly paywalled — extract whatever free headlines are visible</td>

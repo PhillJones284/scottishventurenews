@@ -102,44 +102,15 @@ def build_page(sources: list[dict], today: str) -> str:
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Intelligence Sources — Scottish Venture News</title>
+  <link rel="stylesheet" href="../assets/style.css">
   <style>
-    :root {{
-      --navy:       #1F3B57;
-      --slate:      #7C93A8;
-      --grey:       #9AA0A6;
-      --light-grey: #D8DCE0;
-      --blue:       #7B9EB9;
-      --green:      #6BA58A;
-      --gold:       #C49A5A;
-      --ink:        #222222;
-      --bg:         #F7F7F6;
-      --white:      #FFFFFF;
-    }}
-    *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
-    body {{
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 13px; color: var(--ink); background: var(--bg); line-height: 1.5;
-    }}
+    body {{ font-size: 13px; line-height: 1.5; }}
     a {{ color: var(--navy); text-decoration: none; }}
     a:hover {{ color: var(--blue); text-decoration: underline; }}
     .container {{ max-width: 900px; margin: 0 auto; padding: 28px 20px 48px; }}
 
-    .back-link {{ font-size: 12px; color: var(--slate); margin-bottom: 20px; display: inline-block; }}
-    .back-link:hover {{ color: var(--navy); text-decoration: none; }}
-
-    header {{ margin-bottom: 24px; }}
-    header h1 {{ font-size: 20px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; }}
-    header p  {{ color: var(--slate); font-size: 12px; margin-top: 5px; }}
-
-    .stats-bar {{
-      display: flex; flex-wrap: wrap; gap: 0;
-      background: var(--white); border: 1px solid var(--light-grey); border-radius: 6px;
-      overflow: hidden; margin-bottom: 28px;
-    }}
-    .stat {{ flex: 1; min-width: 90px; padding: 12px 18px; border-right: 1px solid var(--light-grey); }}
-    .stat:last-child {{ border-right: none; }}
-    .stat-value {{ font-size: 20px; font-weight: 700; color: var(--navy); }}
-    .stat-label {{ font-size: 10px; color: var(--slate); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }}
+    .stats-bar {{ margin-bottom: 28px; }}
+    .stat {{ min-width: 90px; }}
 
     .src-group {{ margin-bottom: 36px; }}
     .group-header {{ display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }}
@@ -150,16 +121,7 @@ def build_page(sources: list[dict], today: str) -> str:
     }}
     .group-desc {{ font-size: 12px; color: var(--grey); margin-bottom: 10px; }}
 
-    .table-wrap {{ overflow-x: auto; }}
-    table {{ width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--light-grey); border-radius: 6px; overflow: hidden; }}
-    thead th {{
-      text-align: left; padding: 8px 12px; font-size: 10px; font-weight: 600;
-      color: var(--slate); text-transform: uppercase; letter-spacing: 0.06em;
-      background: #F0F1F2; border-bottom: 1px solid var(--light-grey);
-    }}
-    tbody tr {{ border-bottom: 1px solid var(--light-grey); }}
-    tbody tr:last-child {{ border-bottom: none; }}
-    td {{ padding: 9px 12px; vertical-align: top; }}
+    thead th {{ padding: 8px 12px; background: #F0F1F2; }}
     .src-name {{ width: 260px; font-weight: 500; white-space: nowrap; }}
     .src-name a {{ color: var(--navy); }}
     .src-name a:hover {{ color: var(--blue); }}
@@ -173,7 +135,7 @@ def build_page(sources: list[dict], today: str) -> str:
     .badge-rss {{ background: #E8F2EB; color: #4a8a6a; }}
     .badge-be  {{ background: #FFF4E0; color: #a07820; }}
 
-    footer {{ margin-top: 24px; color: var(--grey); font-size: 11px; text-align: right; }}
+    footer {{ margin-top: 24px; }}
   </style>
 </head>
 <body>

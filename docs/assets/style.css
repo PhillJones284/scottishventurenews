@@ -1,0 +1,73 @@
+/* Shared styles for docs/*.html (Stages 6-8: deal table, investor directory,
+   sources page, landing page). Only rules that are identical (or near-identical,
+   modulo a spacing override) across those pages live here — page-specific layout
+   (nav cards, tabs, controls, badges, profile cards, report body, etc.) stays
+   inline in each generator's own <style> block. */
+
+:root {
+  --navy:       oklch(0.380 0.085 112);
+  --slate:      oklch(0.560 0.030 110);
+  --grey:       oklch(0.580 0.018 108);
+  --light-grey: oklch(0.900 0.010 110);
+  --blue:       oklch(0.620 0.155 42);
+  --green:      #6BA58A;
+  --gold:       oklch(0.620 0.155 42);
+  --ink:        oklch(0.195 0.025 108);
+  --bg:         oklch(1.000 0.000 0);
+  --white:      #FFFFFF;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+/* ── page header (deal table / investor directory / sources) ── */
+header { margin-bottom: 24px; }
+header h1 { font-size: 20px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; }
+header p { color: var(--slate); font-size: 12px; margin-top: 5px; }
+
+/* ── back link ── */
+.back-link { font-size: 12px; color: var(--slate); margin-bottom: 20px; display: inline-block; }
+.back-link:hover { color: var(--navy); text-decoration: none; }
+
+/* ── stats bar ── */
+.stats-bar {
+  display: flex; flex-wrap: wrap; gap: 0;
+  background: var(--white); border: 1px solid var(--light-grey); border-radius: 6px;
+  overflow: hidden;
+}
+.stat { flex: 1; min-width: 110px; padding: 12px 18px; border-right: 1px solid var(--light-grey); }
+.stat:last-child { border-right: none; }
+.stat-value { font-size: 20px; font-weight: 700; color: var(--navy); }
+.stat-label { font-size: 10px; color: var(--slate); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+/* ── data table shell ── */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--light-grey); border-radius: 6px; overflow: hidden; }
+thead th {
+  text-align: left; font-size: 10px; font-weight: 600;
+  color: var(--slate); text-transform: uppercase; letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--light-grey);
+}
+tbody tr { border-bottom: 1px solid var(--light-grey); }
+tbody tr:last-child { border-bottom: none; }
+td { padding: 9px 12px; vertical-align: top; }
+.sector-tag {
+  display: inline-block; padding: 1px 6px; border-radius: 3px;
+  background: var(--light-grey); color: var(--slate); font-size: 10px;
+  margin: 1px 2px 1px 0; white-space: nowrap;
+}
+
+/* ── status states ── */
+.status-msg, .no-results {
+  text-align: center; padding: 48px 24px; color: var(--grey);
+  background: var(--white); border: 1px solid var(--light-grey); border-radius: 6px;
+}
+.no-results { display: none; }
+
+/* ── footer ── */
+footer { color: var(--grey); font-size: 11px; text-align: right; }
