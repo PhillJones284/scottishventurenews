@@ -1,6 +1,0 @@
-Finding the Crunchbase authcookie in DevTools:
-
-1. Go to the Crunchbase page and open DevTools (Cmd+Option+I)
-2. Network tab → refresh the page → type v4/data in the filter box
-3. Click any request in the list → click the Cookies tab in the right panel
-4. Find authcookie — copy its value (the long eyJ... JWT string, not the authcookie= prefix)
