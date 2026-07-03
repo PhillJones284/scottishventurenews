@@ -6,114 +6,7 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <title>Scottish Venture News</title>
   <link rel="stylesheet" href="assets/style.css">
-  <style>
-    body { font-size: 14px; line-height: 1.6; }
-    a { color: var(--navy); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .container { max-width: 760px; margin: 0 auto; padding: 40px 20px 64px; }
-
-    /* ── header ── */
-    .site-header { margin-bottom: 32px; }
-    .site-header h1 {
-      font-size: 24px; font-weight: 700; color: var(--navy);
-      letter-spacing: -0.02em; margin-bottom: 8px;
-    }
-    .site-header p {
-      color: var(--slate); font-size: 13px; max-width: 600px; line-height: 1.5;
-    }
-
-    /* ── nav cards ── */
-    .nav-cards {
-      display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px;
-    }
-    .nav-card {
-      flex: 1; min-width: 200px;
-      background: var(--white); border: 1px solid var(--light-grey);
-      border-radius: 6px; padding: 16px 18px;
-      display: flex; flex-direction: column; gap: 4px;
-      color: inherit;
-    }
-    .nav-card:hover { border-color: var(--blue); text-decoration: none; }
-    .nav-card-label {
-      font-size: 10px; font-weight: 600; color: var(--slate);
-      text-transform: uppercase; letter-spacing: 0.06em;
-    }
-    .nav-card-title {
-      font-size: 14px; font-weight: 600; color: var(--navy);
-    }
-    .nav-card-desc { font-size: 12px; color: var(--grey); }
-
-    /* ── subscribe bar ── */
-    .subscribe-bar {
-      background: var(--navy); border-radius: 6px;
-      padding: 18px 20px; margin-bottom: 40px;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 12px;
-    }
-    .subscribe-bar p {
-      color: oklch(0.87 0.015 110); font-size: 13px;
-    }
-    .subscribe-bar strong { color: var(--white); }
-    .subscribe-links { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
-    .btn-subscribe {
-      background: var(--gold); color: var(--white);
-      font-size: 13px; font-weight: 600;
-      padding: 8px 16px; border-radius: 4px;
-      white-space: nowrap;
-    }
-    .btn-subscribe:hover { opacity: 0.9; text-decoration: none; }
-    .btn-archive {
-      color: oklch(0.78 0.020 110); font-size: 12px; white-space: nowrap;
-    }
-    .btn-archive:hover { color: var(--white); text-decoration: none; }
-
-    /* ── issue divider ── */
-    .issue-header {
-      display: flex; align-items: baseline; gap: 12px;
-      margin-bottom: 20px;
-    }
-    .issue-label {
-      font-size: 10px; font-weight: 600; color: var(--slate);
-      text-transform: uppercase; letter-spacing: 0.08em;
-    }
-    .issue-title { font-size: 13px; color: var(--grey); }
-
-    /* ── report body ── */
-    .report-body h2 {
-      font-size: 15px; font-weight: 700; color: var(--navy);
-      margin: 28px 0 8px; padding-top: 24px;
-      border-top: 1px solid var(--light-grey);
-    }
-    .report-body h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
-    .report-body h3 {
-      font-size: 13px; font-weight: 700; color: var(--ink);
-      margin: 18px 0 6px;
-    }
-    .report-body p { margin-bottom: 10px; font-size: 14px; }
-    .report-body ul {
-      margin: 6px 0 14px 18px;
-    }
-    .report-body li { margin-bottom: 6px; font-size: 14px; }
-    .report-body em {
-      color: var(--slate); font-style: normal; font-size: 12px;
-    }
-    .report-body p:first-child {
-      font-size: 14px; color: var(--ink); font-style: italic;
-      border-left: 3px solid var(--blue); padding: 2px 10px;
-      margin-bottom: 16px;
-    }
-    .report-body p:first-child em {
-      font-size: inherit; color: inherit; font-style: inherit;
-    }
-    .report-body strong { font-weight: 600; }
-    .report-body a { color: var(--blue); }
-    .report-body .report-img {
-      max-width: 100%; height: auto;
-      border: 1px solid var(--light-grey); border-radius: 4px;
-      margin: 8px 0 16px; display: block;
-    }
-  </style>
+  <link rel="stylesheet" href="assets/landing.css">
 </head>
 <body>
 <div class="container">
@@ -157,87 +50,54 @@
   </div>
 
   <div class="report-body">
-    
-<p><em>This is an automated newsletter, written by Claude, based on news coverage scraped from 47 websites.</em></p>
-
+    <p><em>This is an automated newsletter, written by Claude, based on news coverage scraped from 47 websites.</em></p>
 <h2>1. What We Found This Week</h2>
-
 <ul>
 <li><strong>Aveni</strong> raised £12m in a growth round led by PXN Ventures, with Puma Growth Partners, Lloyds Banking Group, Nationwide, and Scottish Enterprise also participating — announced 4 June 2026.</li>
 </ul>
-
 <p><em>Source: <a href="https://edinburgh-innovations.ed.ac.uk/news/fintech-startup-aveni-announces-12m-raise">Edinburgh Innovations</a>, <a href="https://scottishfinancialreview.com/2026/06/04/aveni-edinburgh-ai-wealth-startup-raises-12m/">Scottish Financial Review</a></em></p>
-
 <ul>
 <li><strong>Ardgowan Distillery</strong> secured £4.2m — investor not named — announced 4 June 2026.</li>
 </ul>
-
 <p><em>Source: <a href="https://www.thespiritsbusiness.com/2026/06/ardgowan-gains-4-2m-investment/">The Spirits Business</a></em></p>
-
 <ul>
 <li><strong>Go Swag</strong> raised $5m (approximately £3.7m) in a seed round led by Mercia Asset Management, with Techstart Ventures also participating — announced 27 May 2026.</li>
 </ul>
-
 <p><em>Source: <a href="https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2">Crunchbase</a></em></p>
-
 <ul>
 <li><strong>Highway Data Systems</strong> received £1.25m from IFS Maven Equity Finance (Investment Fund for Scotland, managed by Maven Capital Partners) — announced 30 April 2026.</li>
 </ul>
-
 <p><em>Source: <a href="https://www.mavencp.com/latest-news/ifs-maven-equity-finance-invests-in-1.25-million-in-highway-data-systems">Maven Capital Partners</a></em></p>
-
 <ul>
 <li><strong>Regeno</strong> closed a seed round of undisclosed size led by SFC Capital, with Scottish Enterprise, One Planet Capital, Gabriel Investment Syndicate, the British Business Bank, and the University of Strathclyde also participating — announced 20 March 2026.</li>
 </ul>
-
 <p><em>Source: <a href="https://www.strath.ac.uk/whystrathclyde/news/2026/strathclyde-supportedstart-upsecuresbackingtodeveloplower-costwindenergy/">University of Strathclyde — News</a></em></p>
-
-
-
 <h2>2. The Numbers</h2>
-
 <p>Q2 2026 stands at <strong>21 deals worth £123.9m</strong>, up 2 deals and £16.4m from last week's issue — the revision is driven by deals announced in May and June that weren't captured last week, with Aveni's £12m raise the largest single contributor. Year to date, 2026 has logged <strong>32 deals worth £157.9m</strong>, up 3 deals and £16.4m; the one additional deal in the YTD count beyond the Q2 revision is Regeno, a wind-energy spinout announced in March that sits in Q1.</p>
-
 <p><img src="charts/2026-06-29_stage.png" alt="Deals by stage — this quarter" class="report-img"></p>
 <p><img src="charts/2026-06-29_sector.png" alt="Deals by sector — this quarter" class="report-img"></p>
-
 <p><strong>Most active investors this quarter — by deal count:</strong></p>
 <ul>
 <li>Tricapital: 4 deals (£2.8m total)</li>
 <li>Scottish Enterprise Investment Fund: 3 deals (£22.7m)</li>
 <li>Maven Capital Partners: 2 deals (£3.9m) — tied with STAC Invest, also 2 deals (£0.5m)</li>
 </ul>
-
 <p><strong>Most active investors this quarter — by capital deployed:</strong></p>
 <ul>
 <li>Index Ventures and Highland Europe, both £51.9m (1 deal each) — both on Wordsmith AI's $70m Series B</li>
 <li>Scottish Enterprise Investment Fund: £22.7m across 3 deals</li>
 </ul>
-
 <p>Seed leads on deal count (7) with Pre-Seed and Growth at 4 each — there are no Series A rounds in Q2 so far, with the only late-stage activity two Series B deals. Deep Tech brings the most deals by sector, but AI & ML and SaaS are where the capital concentrates: Wordsmith AI's £51.9m Series B alone accounts for close to 40% of Q2's total. Energy & Cleantech is the quarter's clearest thematic cluster, appearing in four separate deals spanning thermal storage, nature risk analytics, low-carbon insulation, and wind turbine design. Edinburgh accounts for 7 of the 21 Q2 deals, but nine sit elsewhere in Scotland — university spinouts, angel syndicate investments, and IFS-backed companies that reach well beyond the central belt.</p>
-
-
-
 <h2>3. Deal Spotlight</h2>
-
 <h3>Aveni — Growth — £12m</h3>
 <p><strong>Lead investor</strong>: PXN Ventures · <strong>Co-investors</strong>: Puma Growth Partners, Lloyds Banking Group, Nationwide, Scottish Enterprise · <strong>Sector</strong>: AI & Fintech · <strong>Location</strong>: Edinburgh</p>
-
 <p>University of Edinburgh spinout Aveni builds AI-powered compliance tools for wealth managers and retail banks, with its Unified Assurance Platform analysing financial advice interactions at scale. The £12m will fund two new products — Agent Assure and Agent Approve — designed to assess the conduct risk of AI agents making decisions in financial services workflows. Lloyds Banking Group and Nationwide joined the round both as investors and, as Aveni's primary target market, as prospective customers of the tools it's building.</p>
-
 <p>Source: <a href="https://edinburgh-innovations.ed.ac.uk/news/fintech-startup-aveni-announces-12m-raise">Edinburgh Innovations</a></p>
-
 <h3>Go Swag — Seed — $5m (~£3.7m)</h3>
 <p><strong>Lead investor</strong>: Mercia Asset Management · <strong>Co-investors</strong>: Techstart Ventures · <strong>Sector</strong>: SaaS / Corporate Gifting · <strong>Location</strong>: Glasgow</p>
-
 <p>Glasgow-based Go Swag operates a tech platform for branded merchandise and corporate gifting, counting Meta, Apple, Netflix, and ElevenLabs among more than 1,000 corporate clients. The $5m seed round, led by Mercia with Techstart Ventures participating, brings total funding to $6.2m.</p>
-
 <p>Source: <a href="https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2">Crunchbase</a></p>
-
-
-
 <h2>4. Sources</h2>
-
 <ul>
 <li><strong>Aveni</strong>: <a href="https://edinburgh-innovations.ed.ac.uk/news/fintech-startup-aveni-announces-12m-raise">Edinburgh Innovations</a>, <a href="https://scottishfinancialreview.com/2026/06/04/aveni-edinburgh-ai-wealth-startup-raises-12m/">Scottish Financial Review</a></li>
 <li><strong>Ardgowan Distillery</strong>: <a href="https://www.thespiritsbusiness.com/2026/06/ardgowan-gains-4-2m-investment/">The Spirits Business</a></li>
@@ -245,15 +105,9 @@
 <li><strong>Highway Data Systems</strong>: <a href="https://www.mavencp.com/latest-news/ifs-maven-equity-finance-invests-in-1.25-million-in-highway-data-systems">Maven Capital Partners</a></li>
 <li><strong>Regeno</strong>: <a href="https://www.strath.ac.uk/whystrathclyde/news/2026/strathclyde-supportedstart-upsecuresbackingtodeveloplower-costwindenergy/">University of Strathclyde — News</a></li>
 </ul>
-
-
-
 <h2>5. Notes</h2>
-
 <p>These five deals were announced between March and early June 2026 and appear here because they surfaced in press coverage this week rather than at the time of announcement. The gap is not a sign of a slow period — see The Numbers above for the Q2 run-rate — but reflects when the coverage came through the sources we monitor.</p>
-
 <p>The investors behind Ardgowan Distillery's £4.2m raise are not identified in the available coverage. Regeno's round size is not disclosed.</p>
-
   </div>
 
 </div>

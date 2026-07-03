@@ -1,0 +1,80 @@
+/* Deal table (docs/deals/index.html) — page-specific styles.
+   Shared component styles (stat bar, table shell, controls, sort icons,
+   status/no-results, footer, back-link) live in style.css; only this page's
+   own layout (tabs, cell/badge styling) lives here. */
+
+body { font-size: 13px; line-height: 1.45; }
+a { color: inherit; text-decoration: none; }
+
+.container { max-width: 1280px; margin: 0 auto; padding: 28px 20px 48px; }
+
+/* ── tabs ── */
+.tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 16px;
+  border-bottom: 2px solid var(--light-grey);
+}
+.tab {
+  padding: 8px 20px;
+  cursor: pointer;
+  color: var(--slate);
+  font-size: 13px;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.1s;
+}
+.tab.active { color: var(--navy); border-bottom-color: var(--navy); }
+.tab:hover:not(.active) { color: var(--ink); }
+
+/* ── stats bar ── */
+.stats-bar { margin-bottom: 16px; }
+
+/* ── table ── */
+table { min-width: 860px; }
+thead th {
+  padding: 9px 12px;
+  background: #F0F1F2;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+thead th:last-child { cursor: default; }
+thead th:hover:not(:last-child) { color: var(--navy); }
+tbody tr { transition: background 0.08s; }
+tbody tr:hover { background: #F4F5F6; }
+
+/* ── cell styles ── */
+.date { color: var(--slate); white-space: nowrap; font-size: 12px; }
+.company-name { font-weight: 600; color: var(--navy); }
+.headline { font-size: 11px; color: var(--grey); margin-top: 2px; line-height: 1.35; max-width: 260px; }
+.location { color: var(--slate); font-size: 12px; }
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.badge-stage { background: #ECF1F7; color: var(--navy); }
+.badge-high   { background: #E8F4EF; color: #3A7860; }
+.badge-medium { background: #FEF4E3; color: #8A6828; }
+.badge-low    { background: #F5ECEC; color: #8A4848; }
+.amount { font-weight: 600; color: var(--navy); white-space: nowrap; }
+.amount-undisclosed { color: var(--grey); font-style: italic; white-space: nowrap; }
+.lead-investor { font-weight: 500; }
+.other-investors { color: var(--slate); font-size: 11px; margin-top: 2px; }
+.source-link {
+  color: var(--blue);
+  font-size: 14px;
+  display: inline-block;
+  line-height: 1;
+}
+.source-link:hover { color: var(--navy); }
+
+/* ── footer ── */
+footer { margin-top: 20px; }

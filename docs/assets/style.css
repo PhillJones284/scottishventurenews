@@ -1,8 +1,8 @@
 /* Shared styles for docs/*.html (Stages 6-8: deal table, investor directory,
    sources page, landing page). Only rules that are identical (or near-identical,
    modulo a spacing override) across those pages live here — page-specific layout
-   (nav cards, tabs, controls, badges, profile cards, report body, etc.) stays
-   inline in each generator's own <style> block. */
+   (nav cards, tabs, badges, profile cards, report body, etc.) stays in each
+   page's own docs/assets/<page>.css. */
 
 :root {
   --navy:       oklch(0.380 0.085 112);
@@ -61,6 +61,31 @@ td { padding: 9px 12px; vertical-align: top; }
   background: var(--light-grey); color: var(--slate); font-size: 10px;
   margin: 1px 2px 1px 0; white-space: nowrap;
 }
+
+/* ── controls (search/filter toolbar) ── */
+.controls {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 12px;
+}
+.controls input[type="text"] {
+  padding: 6px 10px; border: 1px solid var(--light-grey); border-radius: 4px;
+  font-size: 13px; width: 230px; background: var(--white); outline: none;
+}
+.controls input[type="text"]:focus { border-color: var(--blue); }
+.controls select {
+  padding: 6px 8px; border: 1px solid var(--light-grey); border-radius: 4px;
+  font-size: 12px; color: var(--ink); background: var(--white); cursor: pointer; outline: none;
+}
+.controls select:focus { border-color: var(--blue); }
+.btn-reset {
+  padding: 6px 12px; border: 1px solid var(--light-grey); border-radius: 4px;
+  background: var(--white); color: var(--slate); font-size: 12px; cursor: pointer;
+}
+.btn-reset:hover { color: var(--ink); border-color: var(--grey); }
+.result-count { color: var(--slate); font-size: 12px; margin-left: auto; }
+
+/* ── sort icons ── */
+.sort-icon { color: var(--light-grey); margin-left: 3px; font-style: normal; }
+th.sort-asc .sort-icon, th.sort-desc .sort-icon { color: var(--navy); }
 
 /* ── status states ── */
 .status-msg, .no-results {

@@ -1,0 +1,77 @@
+/* Investor directory (docs/investors/index.html) — page-specific styles.
+   Shared component styles (stat bar, table shell, controls, sort icons,
+   status/no-results, footer, back-link) live in style.css; only this page's
+   own layout (charts, cell/badge styling, profile card) lives here. */
+
+body { font-size: 13px; line-height: 1.45; }
+a { color: inherit; text-decoration: none; }
+.container { max-width: 1280px; margin: 0 auto; padding: 28px 20px 48px; }
+
+/* stats bar */
+.stats-bar { margin-bottom: 20px; }
+
+/* charts */
+.charts-row {
+  display: flex; gap: 16px; margin-bottom: 20px; flex-wrap: wrap;
+}
+.chart-box {
+  flex: 1; min-width: 300px;
+  background: var(--white); border: 1px solid var(--light-grey); border-radius: 6px;
+  padding: 16px 16px 12px;
+}
+.chart-title {
+  font-size: 10px; font-weight: 600; color: var(--slate);
+  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px;
+}
+canvas { display: block; width: 100%; }
+
+/* table */
+table { min-width: 860px; }
+thead th {
+  padding: 9px 12px;
+  background: #F0F1F2;
+  white-space: nowrap; cursor: pointer; user-select: none;
+}
+thead th.no-sort { cursor: default; }
+thead th:hover:not(.no-sort) { color: var(--navy); }
+tbody tr.data-row { transition: background 0.08s; cursor: pointer; }
+tbody tr.data-row:hover { background: #F4F5F6; }
+tbody tr.data-row.open { background: #EEF2F6; }
+tbody tr.profile-row td { padding: 0; border-bottom: 1px solid var(--light-grey); }
+.vc-name { font-weight: 600; color: var(--navy); }
+.hq-cell { color: var(--slate); font-size: 12px; white-space: nowrap; }
+.num-cell { font-weight: 600; color: var(--navy); }
+.num-sub  { font-size: 11px; color: var(--slate); font-weight: 400; }
+.capital-nil { color: var(--grey); font-style: italic; }
+.stage-tag {
+  display: inline-block; padding: 1px 6px; border-radius: 3px;
+  background: #ECF1F7; color: var(--navy); font-size: 10px; font-weight: 600;
+  margin: 1px 2px 1px 0; white-space: nowrap;
+}
+.date-cell { color: var(--slate); font-size: 12px; white-space: nowrap; }
+
+/* profile card */
+.profile-card {
+  background: #EEF2F6; border-top: 2px solid var(--blue);
+  padding: 20px 24px; display: flex; gap: 32px; flex-wrap: wrap;
+}
+.profile-narrative { flex: 2; min-width: 280px; }
+.profile-narrative h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+.profile-narrative .kv { margin-bottom: 4px; font-size: 12px; }
+.profile-narrative .kv strong { color: var(--navy); }
+.profile-narrative .trajectory { margin-top: 10px; font-size: 12px; color: var(--ink); line-height: 1.55; }
+.profile-no-narrative { font-size: 12px; color: var(--grey); font-style: italic; }
+.profile-deals { flex: 1; min-width: 240px; }
+.profile-deals h5 {
+  font-size: 10px; font-weight: 600; color: var(--slate);
+  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;
+}
+.deal-row { display: flex; gap: 8px; margin-bottom: 6px; align-items: baseline; }
+.deal-company { font-size: 12px; font-weight: 600; color: var(--navy); flex: 1; }
+.deal-meta    { font-size: 11px; color: var(--slate); white-space: nowrap; }
+.deal-lead    { font-size: 10px; color: var(--blue); font-weight: 600; margin-left: 4px; white-space: nowrap; }
+.deal-link    { color: var(--blue); font-size: 13px; margin-left: 4px; }
+.deal-link:hover { color: var(--navy); }
+
+/* footer */
+footer { margin-top: 20px; }

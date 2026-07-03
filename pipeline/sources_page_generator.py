@@ -11,10 +11,13 @@ import json
 from datetime import date
 from pathlib import Path
 
+from webgen.shell import render_shell, render_template
+
 ROOT     = Path(__file__).resolve().parent.parent
 SOURCES  = ROOT / "config" / "sources.json"
 OUT_DIR  = ROOT / "docs" / "sources"
 OUT_FILE = OUT_DIR / "index.html"
+TEMPLATE = ROOT / "pipeline" / "webgen" / "templates" / "sources.html"
 
 TYPE_ORDER = ["news_site", "vc_newsrooms", "database", "search", "browser"]
 TYPE_LABELS = {
@@ -96,70 +99,19 @@ def build_page(sources: list[dict], today: str) -> str:
         _build_group(t, by_type[t]) for t in TYPE_ORDER if by_type.get(t)
     )
 
-    return f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="../favicon.ico">
-  <title>Intelligence Sources — Scottish Venture News</title>
-  <link rel="stylesheet" href="../assets/style.css">
-  <style>
-    body {{ font-size: 13px; line-height: 1.5; }}
-    a {{ color: var(--navy); text-decoration: none; }}
-    a:hover {{ color: var(--blue); text-decoration: underline; }}
-    .container {{ max-width: 900px; margin: 0 auto; padding: 28px 20px 48px; }}
+    body = render_template(
+        TEMPLATE,
+        today=_esc(today),
+        stats_html=stats_html,
+        groups_html=groups_html,
+    )
 
-    .stats-bar {{ margin-bottom: 28px; }}
-    .stat {{ min-width: 90px; }}
-
-    .src-group {{ margin-bottom: 36px; }}
-    .group-header {{ display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }}
-    .group-header h2 {{ font-size: 14px; font-weight: 700; color: var(--navy); }}
-    .group-count {{
-      font-size: 11px; font-weight: 600; color: var(--slate);
-      background: var(--light-grey); border-radius: 10px; padding: 1px 7px;
-    }}
-    .group-desc {{ font-size: 12px; color: var(--grey); margin-bottom: 10px; }}
-
-    thead th {{ padding: 8px 12px; background: #F0F1F2; }}
-    .src-name {{ width: 260px; font-weight: 500; white-space: nowrap; }}
-    .src-name a {{ color: var(--navy); }}
-    .src-name a:hover {{ color: var(--blue); }}
-    .src-notes {{ font-size: 12px; color: var(--slate); line-height: 1.5; }}
-
-    .badge {{
-      display: inline-block; font-size: 9px; font-weight: 700;
-      padding: 1px 5px; border-radius: 3px; vertical-align: middle;
-      margin-left: 5px; letter-spacing: 0.04em; text-transform: uppercase;
-    }}
-    .badge-rss {{ background: #E8F2EB; color: #4a8a6a; }}
-    .badge-be  {{ background: #FFF4E0; color: #a07820; }}
-
-    footer {{ margin-top: 24px; }}
-  </style>
-</head>
-<body>
-<div class="container">
-
-  <a class="back-link" href="../">← Scottish Venture News</a>
-
-  <header>
-    <h1>Intelligence Sources</h1>
-    <p>Every source monitored by the automated pipeline. Regenerated each run. &nbsp;·&nbsp; Last updated {_esc(today)}</p>
-  </header>
-
-  <div class="stats-bar">
-    {stats_html}
-  </div>
-
-{groups_html}
-
-  <footer>Scottish Venture News &nbsp;·&nbsp; Data sourced from public news coverage only &nbsp;·&nbsp; Not investment advice</footer>
-
-</div>
-</body>
-</html>"""
+    return render_shell(
+        title="Intelligence Sources — Scottish Venture News",
+        favicon_href="../favicon.ico",
+        stylesheets=["../assets/style.css", "../assets/sources.css"],
+        body=body,
+    )
 
 
 def run() -> None:
