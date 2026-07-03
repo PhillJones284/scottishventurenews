@@ -29,3 +29,6 @@ data/processed/vc_stats.json
 # If you ever add testing
 .pytest_cache/
 .mypy_cache/
+
+# Miscellaneous
+notesforme/
