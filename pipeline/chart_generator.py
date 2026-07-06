@@ -53,6 +53,10 @@ UNKNOWN_GAP = 0.3
 # "£18.7m" and "9" take up very different space at the same font size.
 SECTOR_LABEL_FIT_BUFFER_PX = 20
 
+# Kept low enough that both charts' largest dimension stays under Buttondown's
+# 1200px deliverability recommendation, even at the widest figsize used here.
+CHART_DPI = 80
+
 ROOT = Path(__file__).parent.parent
 PROCESSED_DIR = ROOT / "data" / "processed"
 STATS_PATH = PROCESSED_DIR / "report_stats.json"
@@ -145,7 +149,7 @@ def _stage_chart(stats, out_path):
     _stage_panel(ax_ytd, stats["ytd_stage_mix"], f"Deals by stage — YTD {run_year}")
 
     fig.tight_layout(w_pad=4)
-    fig.savefig(out_path, dpi=150, bbox_inches="tight")
+    fig.savefig(out_path, dpi=CHART_DPI, bbox_inches="tight")
 
 
 def _sector_panel(ax, canvas, data, value_fmt, title, max_bars):
@@ -229,7 +233,7 @@ def _sector_chart(stats, out_path, max_bars=5):
         _sector_panel(ax, canvas, data, fmt, title, max_bars)
 
     fig.tight_layout(h_pad=3.5, w_pad=4)
-    fig.savefig(out_path, dpi=150, bbox_inches="tight")
+    fig.savefig(out_path, dpi=CHART_DPI, bbox_inches="tight")
 
 
 def run(date_str=None):
