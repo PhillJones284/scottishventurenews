@@ -76,5 +76,76 @@
     "status": "merged",
     "merged_into": "highway-data-systems_seed_2026-04-30",
     "resolved_date": "2026-06-29"
+  },
+  {
+    "match_type": "possible",
+    "scope": "within_run",
+    "record_a": "br-dge_unknown_2026-06-30",
+    "record_b": "br-dge_growth_undated",
+    "note": "Same company name, different round types ('Unknown' vs 'Growth')",
+    "flagged_date": "2026-07-06",
+    "status": "merged",
+    "resolved_date": "2026-07-06"
+  },
+  {
+    "match_type": "probable",
+    "scope": "within_run",
+    "record_a": "wordsmith-ai_series-b_2026-07-01",
+    "record_b": "wordsmith-ai_series-b_undated",
+    "note": "Same company and round type, but the announcement date is missing on at least one record",
+    "flagged_date": "2026-07-06",
+    "status": "merged",
+    "resolved_date": "2026-07-06"
+  },
+  {
+    "match_type": "probable",
+    "scope": "within_run",
+    "record_a": "aveni_growth_2026-07-01",
+    "record_b": "aveni_unknown_2026-06-04",
+    "note": "Same company name, different round types ('Growth' vs 'Unknown')",
+    "flagged_date": "2026-07-06",
+    "status": "merged",
+    "resolved_date": "2026-07-06"
+  },
+  {
+    "match_type": "probable",
+    "scope": "against_ledger",
+    "record_a": "vuabl_growth_2026-04-08",
+    "record_b": "vuabl_pre-seed_2026-04-01",
+    "note": "Same company name, different round types ('Growth' vs 'Pre-Seed')",
+    "flagged_date": "2026-07-06",
+    "status": "merged",
+    "resolved_date": "2026-07-06"
+  },
+  {
+    "match_type": "probable",
+    "scope": "against_ledger",
+    "record_a": "airspection_growth_2026-04-08",
+    "record_b": "airspection_pre-seed_2026-04-01",
+    "note": "Same company name, different round types ('Growth' vs 'Pre-Seed')",
+    "flagged_date": "2026-07-06",
+    "status": "merged",
+    "resolved_date": "2026-07-06"
+  },
+  {
+    "match_type": "probable",
+    "scope": "against_ledger",
+    "record_a": "aveni_series-b_2026-06-04",
+    "record_b": "aveni_unknown_2026-06-04",
+    "note": "Same company name, same date, same amount, different round types ('Series B' vs 'Unknown') \u2014 missed by automated matcher (known round_type gate bug), found during manual review",
+    "flagged_date": "2026-07-06",
+    "status": "merged",
+    "resolved_date": "2026-07-06"
+  },
+  {
+    "match_type": "possible",
+    "scope": "against_ledger",
+    "record_a": "go-swag_unknown_2026-05-27",
+    "record_b": "go-swag_seed_2026-05-27",
+    "note": "Same company, date, and amount as a pair already merged on 2026-06-29 \u2014 Crunchbase's weekly re-scrape regenerated the unnamed-investor version again (round_type gate bug), re-merged",
+    "flagged_date": "2026-07-06",
+    "status": "merged",
+    "merged_into": "go-swag_seed_2026-05-27",
+    "resolved_date": "2026-07-06"
   }
 ]

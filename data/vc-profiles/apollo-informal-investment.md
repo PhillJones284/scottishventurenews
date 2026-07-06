@@ -1,7 +1,7 @@
 ---
 canonical_name: Apollo Informal Investment
-last_updated: 2026-06-29
-last_updated_via: "2026-06-29_vc-report.md"
+last_updated: 2026-07-06
+last_updated_via: "2026-07-06_vc-report.md"
 ---
 
 ### Apollo Informal Investment

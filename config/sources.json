@@ -9,20 +9,20 @@
       "queries": [],
       "rss_url": "https://scottishfinancialreview.com/feed/",
       "best_effort": false,
-      "notes": "Dedicated Scottish financial and business news site. High signal-to-noise for Scottish VC deals — confirmed 6 relevant deals in the May 2026 run. URL structure: /YYYY/MM/DD/slug."
+      "notes": "Dedicated Scottish financial and business news site. High signal-to-noise for Scottish VC deals \u2014 confirmed 6 relevant deals in the May 2026 run. URL structure: /YYYY/MM/DD/slug."
     },
     {
       "slug": "scotsman-business",
-      "name": "The Scotsman — Business",
+      "name": "The Scotsman \u2014 Business",
       "type": "news_site",
       "url": "https://www.scotsman.com/business",
       "search_path": null,
       "rss_url": "https://www.scotsman.com/business/rss",
-      "notes": "Scan business section headlines. Business-section RSS confirmed working at /business/rss — returns ~12 items, all business-relevant."
+      "notes": "Scan business section headlines. Business-section RSS confirmed working at /business/rss \u2014 returns ~12 items, all business-relevant."
     },
     {
       "slug": "herald-business",
-      "name": "The Herald — Business",
+      "name": "The Herald \u2014 Business",
       "type": "news_site",
       "url": "https://www.heraldscotland.com/business",
       "search_path": null,
@@ -35,7 +35,7 @@
       "url": "https://www.insider.co.uk",
       "search_path": null,
       "rss_url": null,
-      "notes": "Scottish business focused, very relevant. RSS feed is dead (stub channel, lastBuildDate 2022) and /search?q= doesn't run a real site search (returns nav only) — removed both, homepage link extraction confirmed working (funding-relevant headlines present directly on /)."
+      "notes": "Scottish business focused, very relevant. RSS feed is dead (stub channel, lastBuildDate 2022) and /search?q= doesn't run a real site search (returns nav only) \u2014 removed both, homepage link extraction confirmed working (funding-relevant headlines present directly on /)."
     },
     {
       "slug": "techhub-scotland",
@@ -48,7 +48,7 @@
     },
     {
       "slug": "duckduckgo-scottish-vc",
-      "name": "DuckDuckGo — Scottish VC search",
+      "name": "DuckDuckGo \u2014 Scottish VC search",
       "type": "search",
       "url": "https://html.duckduckgo.com/html/",
       "queries": [
@@ -63,14 +63,14 @@
     },
     {
       "slug": "techcrunch-scotland",
-      "name": "TechCrunch — Scotland search",
+      "name": "TechCrunch \u2014 Scotland search",
       "type": "search",
       "url": "https://techcrunch.com/search/scotland+funding",
       "notes": "Larger deals that make international press"
     },
     {
       "slug": "sifted-uk",
-      "name": "Sifted — UK/Scotland",
+      "name": "Sifted \u2014 UK/Scotland",
       "type": "news_site",
       "url": "https://sifted.eu",
       "search_path": "/search?q=scotland",
@@ -84,7 +84,7 @@
       "url": "https://www.beauhurst.com",
       "search_path": null,
       "best_effort": true,
-      "notes": "UK equity investment tracker. Mostly paywalled — extract whatever free headlines are visible"
+      "notes": "UK equity investment tracker. Mostly paywalled \u2014 extract whatever free headlines are visible"
     },
     {
       "slug": "tech-funding-news",
@@ -97,23 +97,23 @@
     },
     {
       "slug": "techstart-portfolio",
-      "name": "Techstart Ventures — Portfolio",
+      "name": "Techstart Ventures \u2014 Portfolio",
       "type": "vc_newsrooms",
       "url": "https://www.techstart.vc/portfolio",
       "search_path": null,
-      "notes": "Pre-seed/seed investor very active in Scotland. Portfolio page links to press coverage of follow-on rounds — fetch the page and follow coverage links to extract deal details."
+      "notes": "Pre-seed/seed investor very active in Scotland. Portfolio page links to press coverage of follow-on rounds \u2014 fetch the page and follow coverage links to extract deal details."
     },
     {
       "slug": "octopus-ventures-blog",
-      "name": "Octopus Ventures — Blog",
+      "name": "Octopus Ventures \u2014 Blog",
       "type": "vc_newsrooms",
       "url": "https://octopusventures.com/blog/",
       "search_path": null,
-      "notes": "UK-wide VC with some Scottish portfolio companies. Blog features investment announcement posts explaining why they backed specific companies — scan for Scottish deals."
+      "notes": "UK-wide VC with some Scottish portfolio companies. Blog features investment announcement posts explaining why they backed specific companies \u2014 scan for Scottish deals."
     },
     {
       "slug": "highlight-capital-news",
-      "name": "Highlight Capital — News",
+      "name": "Highlight Capital \u2014 News",
       "type": "vc_newsrooms",
       "url": "https://www.highlightcapital.com/news",
       "search_path": null,
@@ -121,7 +121,7 @@
     },
     {
       "slug": "pxn-ventures-news",
-      "name": "PXN Ventures — News",
+      "name": "PXN Ventures \u2014 News",
       "type": "vc_newsrooms",
       "url": "https://www.pxnventures.co.uk/news",
       "search_path": null,
@@ -130,7 +130,7 @@
     },
     {
       "slug": "olderbull-news",
-      "name": "Older Bull — Portfolio News",
+      "name": "Older Bull \u2014 Portfolio News",
       "type": "vc_newsrooms",
       "url": "https://www.olderbull.com/portfolio-news",
       "search_path": null,
@@ -138,34 +138,26 @@
     },
     {
       "slug": "bgf-news",
-      "name": "BGF — News",
+      "name": "BGF \u2014 News",
       "type": "vc_newsrooms",
       "url": "https://www.bgf.co.uk/newsroom/",
       "search_path": null,
       "rss_url": null,
       "direct_fetch_confirmed": true,
-      "notes": "Growth-stage investor with Edinburgh office. RSS feed is dead (empty channel) — removed. /news was also the wrong URL (an evergreen insights/blog page dated back to 2022) — the real, actively-updated deal announcement feed is at /newsroom/, confirmed with entries dated as recently as this week. 2026-07-01 audit: plain httpx + link extraction works cleanly — moved to Stage 1a."
-    },
-    {
-      "slug": "prairie-fund-news",
-      "name": "Prairie Fund — News",
-      "type": "vc_newsrooms",
-      "url": "https://www.prairiefund.com/news",
-      "search_path": null,
-      "notes": "Check for Scottish deal announcements"
+      "notes": "Growth-stage investor with Edinburgh office. RSS feed is dead (empty channel) \u2014 removed. /news was also the wrong URL (an evergreen insights/blog page dated back to 2022) \u2014 the real, actively-updated deal announcement feed is at /newsroom/, confirmed with entries dated as recently as this week. 2026-07-01 audit: plain httpx + link extraction works cleanly \u2014 moved to Stage 1a."
     },
     {
       "slug": "maven-cap-news",
-      "name": "Maven Capital Partners — Latest News",
+      "name": "Maven Capital Partners \u2014 Latest News",
       "type": "vc_newsrooms",
       "url": "https://www.mavencp.com/latest-news",
       "search_path": null,
       "direct_fetch_confirmed": true,
-      "notes": "Maven's newsroom covers deal announcements across their funds including Investment Fund for Scotland (IFS Maven Equity Finance). Good source for Scottish Seed/Growth deals. 2026-07-01 audit: plain httpx + link extraction works cleanly — moved to Stage 1a."
+      "notes": "Maven's newsroom covers deal announcements across their funds including Investment Fund for Scotland (IFS Maven Equity Finance). Good source for Scottish Seed/Growth deals. 2026-07-01 audit: plain httpx + link extraction works cleanly \u2014 moved to Stage 1a."
     },
     {
       "slug": "kelvin-capital-news",
-      "name": "Kelvin Capital — News",
+      "name": "Kelvin Capital \u2014 News",
       "type": "vc_newsrooms",
       "url": "https://www.kelvincapital.com/news-blog/",
       "search_path": null,
@@ -174,7 +166,7 @@
     },
     {
       "slug": "epidarex-news",
-      "name": "Epidarex Capital — News",
+      "name": "Epidarex Capital \u2014 News",
       "type": "vc_newsrooms",
       "url": "https://epidarex.com/news-2/",
       "search_path": null,
@@ -183,7 +175,7 @@
     },
     {
       "slug": "mercia-news",
-      "name": "Mercia Asset Management — News",
+      "name": "Mercia Asset Management \u2014 News",
       "type": "vc_newsrooms",
       "url": "https://www.mercia.co.uk/news/",
       "search_path": null,
@@ -192,21 +184,21 @@
     },
     {
       "slug": "parkwalk-news",
-      "name": "Parkwalk — News",
+      "name": "Parkwalk \u2014 News",
       "type": "vc_newsrooms",
       "url": "https://parkwalk.vc/news/",
       "search_path": null,
       "direct_fetch_confirmed": true,
-      "notes": "University spinout specialist active across UK ecosystems including Edinburgh and St Andrews. Covers funding rounds and portfolio milestones. 2026-07-01 audit: plain httpx + link extraction works cleanly — moved to Stage 1a."
+      "notes": "University spinout specialist active across UK ecosystems including Edinburgh and St Andrews. Covers funding rounds and portfolio milestones. 2026-07-01 audit: plain httpx + link extraction works cleanly \u2014 moved to Stage 1a."
     },
     {
       "slug": "edinburgh-innovations-news",
-      "name": "Edinburgh Innovations — News",
+      "name": "Edinburgh Innovations \u2014 News",
       "type": "vc_newsrooms",
       "url": "https://edinburgh-innovations.ed.ac.uk/news",
       "search_path": null,
       "direct_fetch_confirmed": true,
-      "notes": "University of Edinburgh's commercialisation arm. Covers spinout funding rounds and investment news via Old College Capital. High relevance for Edinburgh deep tech and life sciences deals. 2026-07-01 audit: plain httpx + link extraction works cleanly — moved to Stage 1a."
+      "notes": "University of Edinburgh's commercialisation arm. Covers spinout funding rounds and investment news via Old College Capital. High relevance for Edinburgh deep tech and life sciences deals. 2026-07-01 audit: plain httpx + link extraction works cleanly \u2014 moved to Stage 1a."
     },
     {
       "slug": "angel-capital-scotland",
@@ -217,11 +209,11 @@
       "queries": [],
       "rss_url": "https://angelcapital.scot/feed/",
       "best_effort": false,
-      "notes": "News feed for the Angel Capital Association of Scotland — covers deals from Equity Gap, Tricapital, and other Scottish angel syndicates. Confirmed source for Lentitek, JET Connectivity, Jump Ship Brewing in May 2026 comparison test."
+      "notes": "News feed for the Angel Capital Association of Scotland \u2014 covers deals from Equity Gap, Tricapital, and other Scottish angel syndicates. Confirmed source for Lentitek, JET Connectivity, Jump Ship Brewing in May 2026 comparison test."
     },
     {
       "slug": "archangels-news",
-      "name": "Archangels — News",
+      "name": "Archangels \u2014 News",
       "type": "vc_newsrooms",
       "url": "https://archangelsonline.com/about-us/news/",
       "search_path": null,
@@ -241,12 +233,14 @@
     },
     {
       "slug": "businesscloud-scotland",
-      "name": "BusinessCloud — Scotland",
+      "name": "BusinessCloud \u2014 Scotland",
       "type": "news_site",
       "url": "https://businesscloud.co.uk",
       "rss_url": "https://businesscloud.co.uk/feed/",
       "search_path": null,
-      "queries": ["Scottish startup funding 2026"],
+      "queries": [
+        "Scottish startup funding 2026"
+      ],
       "best_effort": false,
       "notes": "UK tech/business news site with good Scottish coverage. Supplementary search source for Scottish VC deals."
     },
@@ -259,7 +253,7 @@
       "search_path": null,
       "queries": [],
       "best_effort": false,
-      "notes": "Scottish business news site covering deals and investments. Homepage returns 403 to direct fetches (bot protection) — use the RSS feed instead, confirmed working and fresh."
+      "notes": "Scottish business news site covering deals and investments. Homepage returns 403 to direct fetches (bot protection) \u2014 use the RSS feed instead, confirmed working and fresh."
     },
     {
       "slug": "campfire-scot",
@@ -270,7 +264,7 @@
       "search_path": null,
       "queries": [],
       "best_effort": true,
-      "notes": "Weekly Scottish startup newsletter covering deals, funding rounds, and ecosystem news. Substack feed confirmed working — typically includes full post content, reducing paywall risk."
+      "notes": "Weekly Scottish startup newsletter covering deals, funding rounds, and ecosystem news. Substack feed confirmed working \u2014 typically includes full post content, reducing paywall risk."
     },
     {
       "slug": "scottish-financial-news",
@@ -281,51 +275,51 @@
       "search_path": null,
       "queries": [],
       "best_effort": false,
-      "notes": "Scottish business and finance news site, distinct from scottishfinancialreview.com. Has a dedicated articles section. Confirmed reachable (200 OK) as of 2026-06-23 — an earlier 403 noted by the scraper appears to have been transient."
+      "notes": "Scottish business and finance news site, distinct from scottishfinancialreview.com. Has a dedicated articles section. Confirmed reachable (200 OK) as of 2026-06-23 \u2014 an earlier 403 noted by the scraper appears to have been transient."
     },
     {
       "slug": "scottish-edge-news",
-      "name": "Scottish EDGE — News",
+      "name": "Scottish EDGE \u2014 News",
       "type": "vc_newsrooms",
       "url": "https://www.scottishedge.com/news",
       "search_path": null,
       "rss_url": null,
       "direct_fetch_confirmed": true,
-      "notes": "Scotland's biggest funding competition. News page features winner announcements and follow-on funding details for past round winners. Regular archive of competition rounds (2020–2026) with card-based layout. No RSS feed — newsletter signup available. 2026-07-01 audit: plain httpx + link extraction works cleanly — moved to Stage 1a."
+      "notes": "Scotland's biggest funding competition. News page features winner announcements and follow-on funding details for past round winners. Regular archive of competition rounds (2020\u20132026) with card-based layout. No RSS feed \u2014 newsletter signup available. 2026-07-01 audit: plain httpx + link extraction works cleanly \u2014 moved to Stage 1a."
     },
     {
       "slug": "sosv-news",
-      "name": "SOSV — News",
+      "name": "SOSV \u2014 News",
       "type": "vc_newsrooms",
       "url": "https://sosv.com/news/",
       "search_path": null,
       "rss_url": null,
       "direct_fetch_confirmed": true,
-      "notes": "Deep tech venture capital firm with active Scottish portfolio companies. News page features investment announcements, company milestones, and founder stories. Focus on hard tech, climate, and health tech. Chronological feed format. 2026-07-01 audit: plain httpx + link extraction returns genuine article/event headlines cleanly (no Scottish matches that day, but extraction itself works) — moved to Stage 1a."
+      "notes": "Deep tech venture capital firm with active Scottish portfolio companies. News page features investment announcements, company milestones, and founder stories. Focus on hard tech, climate, and health tech. Chronological feed format. 2026-07-01 audit: plain httpx + link extraction returns genuine article/event headlines cleanly (no Scottish matches that day, but extraction itself works) \u2014 moved to Stage 1a."
     },
     {
       "slug": "strathclyde-news",
-      "name": "University of Strathclyde — News",
+      "name": "University of Strathclyde \u2014 News",
       "type": "vc_newsrooms",
       "url": "https://www.strath.ac.uk/whystrathclyde/news/",
       "search_path": null,
       "rss_url": null,
       "direct_fetch_confirmed": true,
-      "notes": "Glasgow-based university with active spinout investment program. News section covers spinout funding announcements, company valuations, and commercialization milestones. High relevance for Glasgow tech and manufacturing spinouts. 2026-07-01 audit: plain httpx + link extraction works cleanly — moved to Stage 1a."
+      "notes": "Glasgow-based university with active spinout investment program. News section covers spinout funding announcements, company valuations, and commercialization milestones. High relevance for Glasgow tech and manufacturing spinouts. 2026-07-01 audit: plain httpx + link extraction works cleanly \u2014 moved to Stage 1a."
     },
     {
       "slug": "4bio-capital-news",
-      "name": "4BIO Capital — News",
+      "name": "4BIO Capital \u2014 News",
       "type": "vc_newsrooms",
       "url": "https://www.4biocapital.com/news",
       "search_path": null,
       "rss_url": null,
       "direct_fetch_confirmed": true,
-      "notes": "Biotech-focused venture capital firm. Newsroom covers life sciences and biotech investment announcements and portfolio company milestones. 2026-07-01 audit: plain httpx + link extraction works cleanly — moved to Stage 1a."
+      "notes": "Biotech-focused venture capital firm. Newsroom covers life sciences and biotech investment announcements and portfolio company milestones. 2026-07-01 audit: plain httpx + link extraction works cleanly \u2014 moved to Stage 1a."
     },
     {
       "slug": "foresight-group-news",
-      "name": "Foresight Group — News & Insights",
+      "name": "Foresight Group \u2014 News & Insights",
       "type": "vc_newsrooms",
       "url": "https://foresight.group/",
       "search_path": "/news-insights/",
@@ -334,7 +328,7 @@
     },
     {
       "slug": "playfair-capital-news",
-      "name": "Playfair Capital — Content",
+      "name": "Playfair Capital \u2014 Content",
       "type": "vc_newsrooms",
       "url": "https://playfair.vc/",
       "search_path": "/content.php",
@@ -343,27 +337,27 @@
     },
     {
       "slug": "sfc-capital-blog",
-      "name": "SFC Capital — Blog",
+      "name": "SFC Capital \u2014 Blog",
       "type": "vc_newsrooms",
       "url": "https://sfccapital.com/blog",
       "search_path": null,
       "rss_url": null,
       "direct_fetch_confirmed": true,
-      "notes": "SFC Capital manages portfolio of 400+ early-stage businesses across B2B software, fintech, medtech, and green tech. Blog covers investment news and sector insights. 12 Scottish transactions. 2026-07-01 audit: plain httpx + link extraction works cleanly — moved to Stage 1a."
+      "notes": "SFC Capital manages portfolio of 400+ early-stage businesses across B2B software, fintech, medtech, and green tech. Blog covers investment news and sector insights. 12 Scottish transactions. 2026-07-01 audit: plain httpx + link extraction works cleanly \u2014 moved to Stage 1a."
     },
     {
       "slug": "future-planet-capital-blog",
-      "name": "Future Planet Capital — Blog",
+      "name": "Future Planet Capital \u2014 Blog",
       "type": "vc_newsrooms",
       "url": "https://www.futureplanetcapital.com/blog",
       "search_path": null,
       "rss_url": null,
       "direct_fetch_confirmed": true,
-      "notes": "Impact-focused venture capital specializing in university spinouts and growth companies tackling global challenges. Blog covers portfolio company updates and investment announcements. 7 Scottish transactions. 2026-07-01 audit: plain httpx + link extraction returns genuine article headlines cleanly (no Scottish matches that day, but extraction itself works) — moved to Stage 1a."
+      "notes": "Impact-focused venture capital specializing in university spinouts and growth companies tackling global challenges. Blog covers portfolio company updates and investment announcements. 7 Scottish transactions. 2026-07-01 audit: plain httpx + link extraction returns genuine article headlines cleanly (no Scottish matches that day, but extraction itself works) \u2014 moved to Stage 1a."
     },
     {
       "slug": "green-angel-ventures-stories",
-      "name": "Green Angel Ventures — Stories",
+      "name": "Green Angel Ventures \u2014 Stories",
       "type": "vc_newsrooms",
       "url": "https://greenangelventures.com/stories/",
       "search_path": null,
@@ -372,7 +366,7 @@
     },
     {
       "slug": "ada-ventures-insights",
-      "name": "Ada Ventures — Updates & Insights",
+      "name": "Ada Ventures \u2014 Updates & Insights",
       "type": "vc_newsrooms",
       "url": "https://www.adaventures.com/",
       "search_path": null,
@@ -381,7 +375,7 @@
     },
     {
       "slug": "500global-news",
-      "name": "500 Global — Content Hub & Rise Report",
+      "name": "500 Global \u2014 Content Hub & Rise Report",
       "type": "vc_newsrooms",
       "url": "https://500.co/",
       "search_path": null,
@@ -390,7 +384,7 @@
     },
     {
       "slug": "techstars-news",
-      "name": "Techstars — Newsroom & Blog",
+      "name": "Techstars \u2014 Newsroom & Blog",
       "type": "vc_newsrooms",
       "url": "https://techstars.com/",
       "search_path": null,
@@ -399,7 +393,7 @@
     },
     {
       "slug": "stac-news",
-      "name": "STAC — News",
+      "name": "STAC \u2014 News",
       "type": "vc_newsrooms",
       "url": "https://www.stac.ac/news/",
       "search_path": null,
@@ -415,7 +409,7 @@
       "rss_url": null,
       "queries": [],
       "best_effort": false,
-      "notes": "Scottish technology and business news site. Covered Wordsmith AI Series B (June 2026) with detailed reporting on the round, investors, and growth plans. Regularly covers Scottish startup funding events. Removed `queries` — that mechanism is DuckDuckGo-specific (result-parsing hardcoded to DDG's HTML) and `?q=` isn't this site's real search syntax, so it was silently doing nothing; homepage link extraction confirmed working directly."
+      "notes": "Scottish technology and business news site. Covered Wordsmith AI Series B (June 2026) with detailed reporting on the round, investors, and growth plans. Regularly covers Scottish startup funding events. Removed `queries` \u2014 that mechanism is DuckDuckGo-specific (result-parsing hardcoded to DDG's HTML) and `?q=` isn't this site's real search syntax, so it was silently doing nothing; homepage link extraction confirmed working directly."
     },
     {
       "slug": "theedinburghreporter",
@@ -426,18 +420,18 @@
       "rss_url": null,
       "queries": [],
       "best_effort": false,
-      "notes": "Edinburgh local news site that covers Edinburgh startup funding, sometimes ahead of larger outlets. Produced the primary article on Infrawatch's pre-seed round (May 2026) before it appeared elsewhere. Worth monitoring for early Edinburgh-specific deal coverage. Removed `queries` — DuckDuckGo-specific search mechanism was silently doing nothing against this site's own domain; homepage link extraction confirmed working directly."
+      "notes": "Edinburgh local news site that covers Edinburgh startup funding, sometimes ahead of larger outlets. Produced the primary article on Infrawatch's pre-seed round (May 2026) before it appeared elsewhere. Worth monitoring for early Edinburgh-specific deal coverage. Removed `queries` \u2014 DuckDuckGo-specific search mechanism was silently doing nothing against this site's own domain; homepage link extraction confirmed working directly."
     },
     {
       "slug": "bdaily-scotland",
-      "name": "Bdaily — Scotland",
+      "name": "Bdaily \u2014 Scotland",
       "type": "news_site",
       "url": "https://bdaily.co.uk/region/scotland",
       "search_path": null,
       "rss_url": "https://bdaily.co.uk/region/scotland/rss",
       "queries": [],
       "best_effort": false,
-      "notes": "UK business news site with a dedicated Scotland region feed. Confirmed relevant deal: VASO Global (Dumfries) raised £5m+ from PXN Ventures, Scottish Enterprise, UKRI, and Eco Group (June 2026), reported at /articles/YYYY/MM/DD/slug. No RSS at /feed (404) but /region/scotland/rss works and returns individual items — the index page itself yields almost no extractable text via trafilatura, so RSS is required for this source, not optional."
+      "notes": "UK business news site with a dedicated Scotland region feed. Confirmed relevant deal: VASO Global (Dumfries) raised \u00a35m+ from PXN Ventures, Scottish Enterprise, UKRI, and Eco Group (June 2026), reported at /articles/YYYY/MM/DD/slug. No RSS at /feed (404) but /region/scotland/rss works and returns individual items \u2014 the index page itself yields almost no extractable text via trafilatura, so RSS is required for this source, not optional."
     },
     {
       "slug": "crunchbase",
@@ -450,7 +444,7 @@
       "cookie_env_var": "CRUNCHBASE_AUTH_COOKIE",
       "wait_ms": 5000,
       "best_effort": true,
-      "notes": "Scottish funding rounds filtered by HQ city (Edinburgh, Glasgow, Aberdeen, Dundee, Stirling, Perth, Inverness, Livingston, Paisley, Dunfermline). Handled in Stage 1c by pipeline/firecrawl_scraper.py, not by Stage 1a or 1b. Free tier shows top 5 most recent results sorted by announced date. URL is a saved search with all 10 city filters applied. Requires CRUNCHBASE_AUTH_COOKIE in .env — see CLAUDE.md Stage 1c for refresh instructions."
+      "notes": "Scottish funding rounds filtered by HQ city (Edinburgh, Glasgow, Aberdeen, Dundee, Stirling, Perth, Inverness, Livingston, Paisley, Dunfermline). Handled in Stage 1c by pipeline/firecrawl_scraper.py, not by Stage 1a or 1b. Free tier shows top 5 most recent results sorted by announced date. URL is a saved search with all 10 city filters applied. Requires CRUNCHBASE_AUTH_COOKIE in .env \u2014 see CLAUDE.md Stage 1c for refresh instructions."
     }
   ]
 }

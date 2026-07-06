@@ -48,6 +48,45 @@ ROUND_NORMALISATION = {
     "bridge": "Bridge",
     "convertible": "Bridge",
     "extension": "Bridge",
+    # Ordinal phrasing used by accelerators/syndicates (e.g. STAC) that don't
+    # describe deals in standard Seed/Series/Growth VC terms — e.g. "STAC
+    # backs three companies in our second investment round".
+    "first investment round": "1st Round",
+    "first round": "1st Round",
+    "1st investment round": "1st Round",
+    "1st round": "1st Round",
+    "second investment round": "2nd Round",
+    "second round": "2nd Round",
+    "2nd investment round": "2nd Round",
+    "2nd round": "2nd Round",
+    "third investment round": "3rd Round",
+    "third round": "3rd Round",
+    "3rd investment round": "3rd Round",
+    "3rd round": "3rd Round",
+    "fourth investment round": "4th Round",
+    "fourth round": "4th Round",
+    "4th investment round": "4th Round",
+    "4th round": "4th Round",
+    # Non-equity public/institutional funding — distinct from a VC round.
+    # Scoped to records whose *whole* raise is a grant; a record that's
+    # primarily an equity round with a grant as one component among several
+    # (e.g. VASO Global's PXN seed + Scottish Enterprise + UKRI loan + Eco
+    # Group package) should keep its equity round_type — GRANT_PATTERNS below
+    # still flags "possible_grant_not_vc" as an independent cross-check on
+    # the raw text regardless of what round_type ends up being.
+    "grant": "Grant",
+    "grant funding": "Grant",
+    "grant award": "Grant",
+    "government grant": "Grant",
+    "innovation grant": "Grant",
+    "research grant": "Grant",
+    # Explicit "we know a round happened but no source states its stage" —
+    # distinct from "Unknown", which just means the field is empty/unparsed.
+    # Use this when a human has affirmatively reviewed the sources and
+    # confirmed none of them name a stage (see Aveni, 2026-07-06).
+    "not disclosed": "Not Disclosed",
+    "undisclosed": "Not Disclosed",
+    "terms not disclosed": "Not Disclosed",
 }
 
 # Patterns that suggest a grant rather than a VC investment
@@ -87,7 +126,18 @@ def _load_config():
         fx_data = json.load(f)
     with open(CONFIG_DIR / "known_vcs.json") as f:
         vcs_data = json.load(f)
-    return sectors_data["sectors"], fx_data["rates"], vcs_data["known_vcs"]
+    excluded_path = CONFIG_DIR / "excluded_companies.json"
+    if excluded_path.exists():
+        with open(excluded_path) as f:
+            excluded_data = json.load(f)
+    else:
+        excluded_data = {"excluded_companies": []}
+    return (
+        sectors_data["sectors"],
+        fx_data["rates"],
+        vcs_data["known_vcs"],
+        excluded_data["excluded_companies"],
+    )
 
 
 def _build_vc_lookup(known_vcs):
@@ -98,6 +148,17 @@ def _build_vc_lookup(known_vcs):
         for alias in vc.get("aliases", []):
             lookup[alias.lower()] = vc["canonical_name"]
     return lookup
+
+
+def _build_excluded_lookup(excluded_companies):
+    """Return a dict mapping lowercase company_name → exclusion reason.
+
+    Backs config/excluded_companies.json — a curated denylist for companies
+    that a source (e.g. Crunchbase's Scotland-filtered search) mislabels as
+    Scottish. Checked centrally here so any source hitting the same false
+    positive is covered, not just the one that first surfaced it.
+    """
+    return {e["company_name"].lower(): e["reason"] for e in excluded_companies}
 
 
 def _normalise_location(text):
@@ -172,10 +233,20 @@ def _normalise_sector(raw_sector, sectors):
 
 
 def _normalise_round(raw_round):
+    """Return (round_type, round_type_normalised).
+
+    Mirrors _normalise_sector: a blank raw value collapses to "Unknown", but a
+    present-and-unrecognised value is preserved verbatim rather than forced to
+    "Unknown" — round_type_normalised=False surfaces it for review instead of
+    silently discarding (or worse, some downstream step guessing) a stage label
+    the source never actually used.
+    """
     if not raw_round:
-        return "Unknown"
+        return "Unknown", False
     key = raw_round.lower().strip()
-    return ROUND_NORMALISATION.get(key, "Unknown")
+    if key in ROUND_NORMALISATION:
+        return ROUND_NORMALISATION[key], True
+    return raw_round.strip(), False
 
 
 def _parse_amount(raw_str, fx_rates):
@@ -302,7 +373,7 @@ def _score_record(record, sectors):
         score += 10
     if record.get("sector_normalised"):
         score += 10
-    if record.get("round_type") not in (None, "Unknown"):
+    if record.get("round_type_normalised"):
         score += 10
     if record.get("amount_gbp_millions") is not None:
         score += 15
@@ -354,7 +425,7 @@ def _normalise_record(raw, sectors, fx_rates, vc_lookup):
         company_sectors = ["Other"]
         sector_normalised = False
 
-    round_type = _normalise_round(raw.get("round_type") or raw.get("funding_round") or "")
+    round_type, round_type_normalised = _normalise_round(raw.get("round_type") or raw.get("funding_round") or "")
 
     amount_original = raw.get("amount_original") or raw.get("amount_raised") or raw.get("amount") or raw.get("raise_amount")
     amount_gbp, currency_original = _parse_amount(str(amount_original) if amount_original else None, fx_rates)
@@ -382,6 +453,7 @@ def _normalise_record(raw, sectors, fx_rates, vc_lookup):
         "company_sectors": company_sectors,
         "sector_normalised": sector_normalised,
         "round_type": round_type,
+        "round_type_normalised": round_type_normalised,
         "amount_original": str(amount_original) if amount_original else None,
         "amount_gbp_millions": amount_gbp,
         "currency_original": currency_original or "GBP",
@@ -406,8 +478,9 @@ def _normalise_record(raw, sectors, fx_rates, vc_lookup):
 
 
 def run(date: str = None):
-    sectors, fx_rates, known_vcs = _load_config()
+    sectors, fx_rates, known_vcs, excluded_companies = _load_config()
     vc_lookup = _build_vc_lookup(known_vcs)
+    excluded_lookup = _build_excluded_lookup(excluded_companies)
 
     date_prefix = date or datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
@@ -443,17 +516,28 @@ def run(date: str = None):
             parse_errors.append(path.name)
 
     investments = []
+    excluded = []
     for raw in all_records:
         try:
-            investments.append(_normalise_record(raw, sectors, fx_rates, vc_lookup))
+            record = _normalise_record(raw, sectors, fx_rates, vc_lookup)
         except Exception as e:
             logger.warning("Failed to normalise record: %s — %s", raw, e)
+            continue
+
+        reason = excluded_lookup.get((record.get("company_name") or "").lower())
+        if reason:
+            logger.info("Excluding %s from output: %s", record.get("company_name"), reason)
+            excluded.append({"company_name": record.get("company_name"), "reason": reason})
+            continue
+
+        investments.append(record)
 
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "record_count": len(investments),
         "source_files": source_files,
         "parse_errors": parse_errors,
+        "excluded_companies": excluded,
         "investments": investments,
     }
 

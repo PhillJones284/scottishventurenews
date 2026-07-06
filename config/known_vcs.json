@@ -2,97 +2,159 @@
   "known_vcs": [
     {
       "canonical_name": "Techstart Ventures",
-      "aliases": ["Techstart", "TechStart Ventures"],
+      "aliases": [
+        "Techstart",
+        "TechStart Ventures"
+      ],
       "hq": "Belfast / Edinburgh",
-      "stage_focus": ["Pre-Seed", "Seed"],
+      "stage_focus": [
+        "Pre-Seed",
+        "Seed"
+      ],
       "scotland_active": true,
       "notes": "Very active in Scotland, particularly tech/software"
     },
     {
       "canonical_name": "Par Equity",
-      "aliases": ["PAR Equity", "PAR"],
+      "aliases": [
+        "PAR Equity",
+        "PAR"
+      ],
       "hq": "Edinburgh",
-      "stage_focus": ["Seed", "Series A"],
+      "stage_focus": [
+        "Seed",
+        "Series A"
+      ],
       "scotland_active": true,
-      "notes": "Edinburgh-based, strong Scottish focus. Merged with Praetura Ventures in 2025 to form PXN Ventures — see PXN Ventures entry."
+      "notes": "Edinburgh-based, strong Scottish focus. Merged with Praetura Ventures in 2025 to form PXN Ventures \u2014 see PXN Ventures entry."
     },
     {
       "canonical_name": "PXN Ventures",
-      "aliases": ["PXN", "Par Equity (now PXN Ventures)"],
+      "aliases": [
+        "PXN",
+        "Par Equity (now PXN Ventures)"
+      ],
       "hq": "Edinburgh",
-      "stage_focus": ["Seed", "Series A"],
+      "stage_focus": [
+        "Seed",
+        "Series A"
+      ],
       "scotland_active": true,
-      "notes": "Formed from the merger of Par Equity and Praetura Ventures in 2025. Co-led the £2.5m seed round for Quantcore alongside Blackfinch and Scottish Enterprise."
+      "notes": "Formed from the merger of Par Equity and Praetura Ventures in 2025. Co-led the \u00a32.5m seed round for Quantcore alongside Blackfinch and Scottish Enterprise."
     },
     {
       "canonical_name": "Maven Capital Partners",
-      "aliases": ["Maven", "Maven Equity Finance"],
+      "aliases": [
+        "Maven",
+        "Maven Equity Finance"
+      ],
       "hq": "Glasgow / Edinburgh",
-      "stage_focus": ["Seed", "Series A", "Growth"],
+      "stage_focus": [
+        "Seed",
+        "Series A",
+        "Growth"
+      ],
       "scotland_active": true,
       "notes": "Fund manager for the British Business Bank's Investment Fund for Scotland. Highly active across sectors; appeared in Highway Data Systems, Nami Surgical, and Esk deals in May 2026."
     },
     {
       "canonical_name": "Axeleo Capital",
-      "aliases": ["AXC Greentech Industry", "Axeleo"],
+      "aliases": [
+        "AXC Greentech Industry",
+        "Axeleo"
+      ],
       "hq": "Paris, France",
-      "stage_focus": ["Seed", "Series A"],
+      "stage_focus": [
+        "Seed",
+        "Series A"
+      ],
       "scotland_active": true,
-      "notes": "European deeptech and climate VC. Led the £10m seed round for Edinburgh's Exergy3 in April 2026 — largest Scottish deal that run."
+      "notes": "European deeptech and climate VC. Led the \u00a310m seed round for Edinburgh's Exergy3 in April 2026 \u2014 largest Scottish deal that run."
     },
     {
       "canonical_name": "STAC Invest",
-      "aliases": ["STAC"],
+      "aliases": [
+        "STAC"
+      ],
       "hq": "Glasgow",
-      "stage_focus": ["Pre-Seed", "Seed"],
+      "stage_focus": [
+        "Pre-Seed",
+        "Seed"
+      ],
       "scotland_active": true,
-      "notes": "Glasgow-based deeptech accelerator and investor operating from Skypark. Invested in Quantcore, Vuabl, and Airspection as part of a £772k cohort round in early 2026. Aspires to be UK's most active deeptech investor."
+      "notes": "Glasgow-based deeptech accelerator and investor operating from Skypark. Invested in Quantcore, Vuabl, and Airspection as part of a \u00a3772k cohort round in early 2026. Aspires to be UK's most active deeptech investor."
     },
     {
       "canonical_name": "Tensor Ventures",
-      "aliases": ["Tensor"],
+      "aliases": [
+        "Tensor"
+      ],
       "hq": "Unknown",
-      "stage_focus": ["Pre-Seed", "Seed"],
+      "stage_focus": [
+        "Pre-Seed",
+        "Seed"
+      ],
       "scotland_active": true,
-      "notes": "Led the $3m pre-seed round for Edinburgh's Cnuic in April 2026. HQ uncertain — co-founder Martin Drdúl may be Central European."
+      "notes": "Led the $3m pre-seed round for Edinburgh's Cnuic in April 2026. HQ uncertain \u2014 co-founder Martin Drd\u00fal may be Central European."
     },
     {
       "canonical_name": "Eos Advisory",
-      "aliases": ["Eos"],
+      "aliases": [
+        "Eos"
+      ],
       "hq": "Unknown",
-      "stage_focus": ["Growth"],
+      "stage_focus": [
+        "Growth"
+      ],
       "scotland_active": true,
-      "notes": "Led the £1.9m growth round for Stirling-based Nami Surgical in January 2026. Very limited public profile."
+      "notes": "Led the \u00a31.9m growth round for Stirling-based Nami Surgical in January 2026. Very limited public profile."
     },
     {
       "canonical_name": "Bayern Kapital",
       "aliases": [],
       "hq": "Landshut, Germany",
-      "stage_focus": ["Seed", "Series A"],
+      "stage_focus": [
+        "Seed",
+        "Series A"
+      ],
       "scotland_active": true,
-      "notes": "Bavarian state-backed VC. Participated in the £10m seed round for Edinburgh's Exergy3 in April 2026."
+      "notes": "Bavarian state-backed VC. Participated in the \u00a310m seed round for Edinburgh's Exergy3 in April 2026."
     },
     {
       "canonical_name": "Quantum Exponential",
       "aliases": [],
       "hq": "UK",
-      "stage_focus": ["Pre-Seed", "Seed"],
+      "stage_focus": [
+        "Pre-Seed",
+        "Seed"
+      ],
       "scotland_active": true,
-      "notes": "Quantum-focused VC fund. Participated in the £2.5m seed round for Glasgow's Quantcore."
+      "notes": "Quantum-focused VC fund. Participated in the \u00a32.5m seed round for Glasgow's Quantcore."
     },
     {
       "canonical_name": "EverQuest Capital Partners",
-      "aliases": ["EverQuest Capital"],
+      "aliases": [
+        "EverQuest Capital"
+      ],
       "hq": "Unknown",
-      "stage_focus": ["Seed"],
+      "stage_focus": [
+        "Seed"
+      ],
       "scotland_active": true,
-      "notes": "Participated in the £1.58m seed round for Edinburgh's BIOCAPTIVA in March 2026. Limited public profile."
+      "notes": "Participated in the \u00a31.58m seed round for Edinburgh's BIOCAPTIVA in March 2026. Limited public profile."
     },
     {
       "canonical_name": "Scottish Enterprise Investment Fund",
-      "aliases": ["SEICF", "Scottish Enterprise", "SE Investment Fund"],
+      "aliases": [
+        "SEICF",
+        "Scottish Enterprise",
+        "SE Investment Fund"
+      ],
       "hq": "Glasgow",
-      "stage_focus": ["Pre-Seed", "Seed"],
+      "stage_focus": [
+        "Pre-Seed",
+        "Seed"
+      ],
       "scotland_active": true,
       "notes": "Quasi-public, co-invests with VCs"
     },
@@ -100,55 +162,90 @@
       "canonical_name": "Zero Carbon Capital",
       "aliases": [],
       "hq": "United Kingdom",
-      "stage_focus": ["Seed"],
+      "stage_focus": [
+        "Seed"
+      ],
       "scotland_active": true,
-      "notes": "UK-based climate/cleantech VC. Co-invested in Exergy3 £10m seed round (Edinburgh, April 2026)."
+      "notes": "UK-based climate/cleantech VC. Co-invested in Exergy3 \u00a310m seed round (Edinburgh, April 2026)."
     },
     {
       "canonical_name": "Kibo Invest",
-      "aliases": ["Kibo"],
+      "aliases": [
+        "Kibo"
+      ],
       "hq": "Singapore",
-      "stage_focus": ["Seed"],
+      "stage_focus": [
+        "Seed"
+      ],
       "scotland_active": true,
-      "notes": "Singapore-based private investment office. Impact/ESG lean — tagline 'Investing with purpose'. Co-invested in Exergy3 £10m seed round (Edinburgh, April 2026) alongside Axeleo Capital and Bayern Kapital."
+      "notes": "Singapore-based private investment office. Impact/ESG lean \u2014 tagline 'Investing with purpose'. Co-invested in Exergy3 \u00a310m seed round (Edinburgh, April 2026) alongside Axeleo Capital and Bayern Kapital."
     },
     {
       "canonical_name": "British Business Investments",
-      "aliases": ["BBI", "British Business Bank Investments"],
+      "aliases": [
+        "BBI",
+        "British Business Bank Investments"
+      ],
       "hq": "Sheffield",
-      "stage_focus": ["Seed", "Series A", "Growth"],
+      "stage_focus": [
+        "Seed",
+        "Series A",
+        "Growth"
+      ],
       "scotland_active": true,
-      "notes": "Commercial subsidiary of the British Business Bank. Makes direct and fund investments to support UK smaller businesses. Co-invested in BIOCAPTIVA £1.58m seed round (Edinburgh, March 2026) alongside Archangels."
+      "notes": "Commercial subsidiary of the British Business Bank. Makes direct and fund investments to support UK smaller businesses. Co-invested in BIOCAPTIVA \u00a31.58m seed round (Edinburgh, March 2026) alongside Archangels."
     },
     {
       "canonical_name": "GU Holdings",
-      "aliases": ["GU Holdings Ltd", "University of Glasgow Ventures"],
+      "aliases": [
+        "GU Holdings Ltd",
+        "University of Glasgow Ventures"
+      ],
       "hq": "Glasgow",
-      "stage_focus": ["Pre-Seed", "Seed"],
+      "stage_focus": [
+        "Pre-Seed",
+        "Seed"
+      ],
       "scotland_active": true,
       "notes": "University of Glasgow's investment arm. Backs Glasgow spinouts at pre-seed and seed stage. Co-invested in Entourage AI $5m pre-seed (March 2026)."
     },
     {
       "canonical_name": "Conduit Connect",
-      "aliases": ["The Conduit Connect", "Conduit EIS Impact Fund"],
+      "aliases": [
+        "The Conduit Connect",
+        "Conduit EIS Impact Fund"
+      ],
       "hq": "London",
-      "stage_focus": ["Pre-Seed", "Seed", "Series A"],
+      "stage_focus": [
+        "Pre-Seed",
+        "Seed",
+        "Series A"
+      ],
       "scotland_active": true,
-      "notes": "Female-founded London impact VC, FCA-regulated. Runs the Conduit EIS Impact Fund (est. 2021). Focus on sustainable industry, integrated health, and financial resilience. UK-only. Connected to the Conduit Club (4,000+ member network). Invested in Bioliberty £10.5m Series A (March 2026)."
+      "notes": "Female-founded London impact VC, FCA-regulated. Runs the Conduit EIS Impact Fund (est. 2021). Focus on sustainable industry, integrated health, and financial resilience. UK-only. Connected to the Conduit Club (4,000+ member network). Invested in Bioliberty \u00a310.5m Series A (March 2026)."
     },
     {
       "canonical_name": "Hanna Capital SEZC",
-      "aliases": ["Hanna Capital"],
+      "aliases": [
+        "Hanna Capital"
+      ],
       "hq": "London",
-      "stage_focus": ["Series A"],
+      "stage_focus": [
+        "Series A"
+      ],
       "scotland_active": true,
-      "notes": "London-based fund (Cayman Islands structure). Existing investor in Bioliberty £10.5m Series A (March 2026). Very limited public profile — likely a family office or single-LP vehicle."
+      "notes": "London-based fund (Cayman Islands structure). Existing investor in Bioliberty \u00a310.5m Series A (March 2026). Very limited public profile \u2014 likely a family office or single-LP vehicle."
     },
     {
       "canonical_name": "Green Angel Ventures",
-      "aliases": ["Green Angel Syndicate"],
+      "aliases": [
+        "Green Angel Syndicate"
+      ],
       "hq": "London",
-      "stage_focus": ["Pre-Seed", "Seed"],
+      "stage_focus": [
+        "Pre-Seed",
+        "Seed"
+      ],
       "scotland_active": true,
       "notes": "London-based angel syndicate focused on green/climate investments. Co-led Carbogenics $3m seed round (Edinburgh, January 2026). Backs early-stage cleantech, carbon, and energy transition companies across the UK."
     },
@@ -156,7 +253,9 @@
       "canonical_name": "Dangerous Ventures",
       "aliases": [],
       "hq": "United States",
-      "stage_focus": ["Seed"],
+      "stage_focus": [
+        "Seed"
+      ],
       "scotland_active": true,
       "notes": "US-based climate/cleantech VC. Co-led Carbogenics $3m seed round (Edinburgh, January 2026). Focus on carbon removal and nature-based solutions."
     },
@@ -164,127 +263,215 @@
       "canonical_name": "Provision",
       "aliases": [],
       "hq": "United Kingdom",
-      "stage_focus": ["Pre-Seed"],
+      "stage_focus": [
+        "Pre-Seed"
+      ],
       "scotland_active": true,
-      "notes": "Led Entourage AI $5m pre-seed (Glasgow, March 2026). Likely UK-based but maintains a very low public profile — no website or other deals found. Healthtech/longevity focus inferred."
+      "notes": "Led Entourage AI $5m pre-seed (Glasgow, March 2026). Likely UK-based but maintains a very low public profile \u2014 no website or other deals found. Healthtech/longevity focus inferred."
     },
     {
       "canonical_name": "Thairm Bio",
-      "aliases": ["Thairm"],
+      "aliases": [
+        "Thairm"
+      ],
       "hq": "Edinburgh",
-      "stage_focus": ["Growth"],
+      "stage_focus": [
+        "Growth"
+      ],
       "scotland_active": true,
-      "notes": "Biopharmaceutical-focused investor. Led EnteroBiotix £19m growth round (April 2026). Very limited public profile — may be a single-LP vehicle or family office."
+      "notes": "Biopharmaceutical-focused investor. Led EnteroBiotix \u00a319m growth round (April 2026). Very limited public profile \u2014 may be a single-LP vehicle or family office."
     },
     {
       "canonical_name": "Scottish National Investment Bank",
-      "aliases": ["SNIB", "The Scottish National Investment Bank"],
+      "aliases": [
+        "SNIB",
+        "The Scottish National Investment Bank"
+      ],
       "hq": "Edinburgh",
-      "stage_focus": ["Series A", "Growth"],
+      "stage_focus": [
+        "Series A",
+        "Growth"
+      ],
       "scotland_active": true,
-      "notes": "Scotland's government-backed development bank, established 2020 with a £2bn mandate. Co-invests alongside private capital at Series A and above. Broad sector mandate — net zero, place, wellbeing."
+      "notes": "Scotland's government-backed development bank, established 2020 with a \u00a32bn mandate. Co-invests alongside private capital at Series A and above. Broad sector mandate \u2014 net zero, place, wellbeing."
     },
     {
       "canonical_name": "BGF",
-      "aliases": ["Business Growth Fund"],
+      "aliases": [
+        "Business Growth Fund"
+      ],
       "hq": "London",
-      "stage_focus": ["Growth", "Series B", "Series C+"],
+      "stage_focus": [
+        "Growth",
+        "Series B",
+        "Series C+"
+      ],
       "scotland_active": true,
       "notes": "Has Edinburgh office, growth-stage focus"
     },
     {
       "canonical_name": "Octopus Ventures",
-      "aliases": ["Octopus", "Octopus Capital"],
+      "aliases": [
+        "Octopus",
+        "Octopus Capital"
+      ],
       "hq": "London",
-      "stage_focus": ["Seed", "Series A", "Series B"],
+      "stage_focus": [
+        "Seed",
+        "Series A",
+        "Series B"
+      ],
       "scotland_active": true,
       "notes": "Active across UK, some Scottish portfolio"
     },
     {
       "canonical_name": "Blackfinch Ventures",
-      "aliases": ["Blackfinch"],
+      "aliases": [
+        "Blackfinch"
+      ],
       "hq": "Gloucester",
-      "stage_focus": ["Seed", "Series A"],
+      "stage_focus": [
+        "Seed",
+        "Series A"
+      ],
       "scotland_active": true,
       "notes": "EIS/SEIS focused, some Scottish deals"
     },
     {
       "canonical_name": "Archangels",
-      "aliases": ["Archangel Informal Investment", "Archangels Syndicate"],
+      "aliases": [
+        "Archangel Informal Investment",
+        "Archangels Syndicate"
+      ],
       "hq": "Edinburgh",
-      "stage_focus": ["Pre-Seed", "Seed"],
+      "stage_focus": [
+        "Pre-Seed",
+        "Seed"
+      ],
       "scotland_active": true,
-      "notes": "Scotland's oldest and largest angel syndicate. Website: archangelsonline.com. Leveraged £41m of investment in Scottish scaleups in 2025. Strong focus on life sciences, medtech, and software."
+      "notes": "Scotland's oldest and largest angel syndicate. Website: archangelsonline.com. Leveraged \u00a341m of investment in Scottish scaleups in 2025. Strong focus on life sciences, medtech, and software."
     },
     {
       "canonical_name": "Old College Capital",
-      "aliases": ["OCC", "Old College", "Edinburgh Innovations"],
+      "aliases": [
+        "OCC",
+        "Old College",
+        "Edinburgh Innovations"
+      ],
       "hq": "Edinburgh",
-      "stage_focus": ["Pre-Seed", "Seed"],
+      "stage_focus": [
+        "Pre-Seed",
+        "Seed"
+      ],
       "scotland_active": true,
       "notes": "University of Edinburgh's venture fund, operating as part of Edinburgh Innovations (the university's commercialisation arm). Focuses on Edinburgh spinouts across deep tech, life sciences, and energy."
     },
     {
       "canonical_name": "Mercia Asset Management",
-      "aliases": ["Mercia", "Mercia Fund Managers"],
+      "aliases": [
+        "Mercia",
+        "Mercia Fund Managers"
+      ],
       "hq": "Birmingham",
-      "stage_focus": ["Seed", "Series A", "Series B"],
+      "stage_focus": [
+        "Seed",
+        "Series A",
+        "Series B"
+      ],
       "scotland_active": true,
       "notes": "Has MEIF and other funds active in Scotland"
     },
     {
       "canonical_name": "Kelvin Capital",
-      "aliases": ["Kelvin"],
+      "aliases": [
+        "Kelvin"
+      ],
       "hq": "Glasgow",
-      "stage_focus": ["Seed", "Series A"],
+      "stage_focus": [
+        "Seed",
+        "Series A"
+      ],
       "scotland_active": true,
       "notes": "Glasgow-based, West of Scotland focus"
     },
     {
       "canonical_name": "SIS Ventures",
-      "aliases": ["Social Investment Scotland", "SIS"],
+      "aliases": [
+        "Social Investment Scotland",
+        "SIS"
+      ],
       "hq": "Edinburgh",
-      "stage_focus": ["Seed", "Series A"],
+      "stage_focus": [
+        "Seed",
+        "Series A"
+      ],
       "scotland_active": true,
       "notes": "Impact/social enterprise focus"
     },
     {
       "canonical_name": "Epidarex Capital",
-      "aliases": ["Epidarex"],
+      "aliases": [
+        "Epidarex"
+      ],
       "hq": "Edinburgh",
-      "stage_focus": ["Seed", "Series A", "Series B"],
+      "stage_focus": [
+        "Seed",
+        "Series A",
+        "Series B"
+      ],
       "scotland_active": true,
       "notes": "Life sciences specialist"
     },
     {
       "canonical_name": "Parkwalk Advisors",
-      "aliases": ["Parkwalk"],
+      "aliases": [
+        "Parkwalk"
+      ],
       "hq": "London",
-      "stage_focus": ["Seed", "Series A"],
+      "stage_focus": [
+        "Seed",
+        "Series A"
+      ],
       "scotland_active": true,
       "notes": "University spinout specialist, active with Scottish universities"
     },
     {
       "canonical_name": "Pentech Ventures",
-      "aliases": ["Pentech"],
+      "aliases": [
+        "Pentech"
+      ],
       "hq": "Edinburgh",
-      "stage_focus": ["Seed", "Series A"],
+      "stage_focus": [
+        "Seed",
+        "Series A"
+      ],
       "scotland_active": true,
       "notes": "Edinburgh-based early-stage tech"
     },
     {
       "canonical_name": "Northern Gritstone",
-      "aliases": ["Gritstone"],
+      "aliases": [
+        "Gritstone"
+      ],
       "hq": "Leeds",
-      "stage_focus": ["Seed", "Series A", "Series B"],
+      "stage_focus": [
+        "Seed",
+        "Series A",
+        "Series B"
+      ],
       "scotland_active": false,
       "notes": "Northern England focus, occasionally overlaps"
     },
     {
       "canonical_name": "Amadeus Capital Partners",
-      "aliases": ["Amadeus"],
+      "aliases": [
+        "Amadeus"
+      ],
       "hq": "Cambridge",
-      "stage_focus": ["Series A", "Series B"],
+      "stage_focus": [
+        "Series A",
+        "Series B"
+      ],
       "scotland_active": false,
       "notes": "Deep tech, has backed some Scottish spinouts"
     },
@@ -292,55 +479,89 @@
       "canonical_name": "Phasechange",
       "aliases": [],
       "hq": null,
-      "stage_focus": ["Pre-Seed"],
+      "stage_focus": [
+        "Pre-Seed"
+      ],
       "scotland_active": true,
       "notes": "Participated in Cnuic $3m pre-seed round (Edinburgh, April 2026). Very limited public profile. Source: https://tech.eu/2026/04/28/cnuic-secures-eur3m-pre-seed-to-unlock-next-generation-photonic-chip-production/"
     },
     {
       "canonical_name": "Twin Path Ventures",
-      "aliases": ["Twin Path"],
+      "aliases": [
+        "Twin Path"
+      ],
       "hq": "United Kingdom",
-      "stage_focus": ["Pre-Seed"],
+      "stage_focus": [
+        "Pre-Seed"
+      ],
       "scotland_active": true,
-      "notes": "UK's only dedicated pre-seed investor in AI-first startups; typically invests £100k–£750k. Led TileBio £1.6m seed round (Glasgow, March 2026). British Business Investments committed £10m to the fund in February 2025. Source: https://glasgowcityofscienceandinnovation.com/glasgow-healthtech-spinout-raises-1-6m-to-transform-cancer-diagnosis-with-ai/"
+      "notes": "UK's only dedicated pre-seed investor in AI-first startups; typically invests \u00a3100k\u2013\u00a3750k. Led TileBio \u00a31.6m seed round (Glasgow, March 2026). British Business Investments committed \u00a310m to the fund in February 2025. Source: https://glasgowcityofscienceandinnovation.com/glasgow-healthtech-spinout-raises-1-6m-to-transform-cancer-diagnosis-with-ai/"
     },
     {
       "canonical_name": "R42 Group",
-      "aliases": ["R42"],
+      "aliases": [
+        "R42"
+      ],
       "hq": "Stanford, California, USA",
-      "stage_focus": ["Pre-Seed", "Seed"],
+      "stage_focus": [
+        "Pre-Seed",
+        "Seed"
+      ],
       "scotland_active": true,
-      "notes": "Venture fund and institute focused on AI, deep science, 5G, biotech, and fintech. Long-term investor in Edinburgh-based stampfree.ai — participated in every fundraising round including the May 2026 £1.03m raise. Source: https://www.digit.fyi/edinburgh-ai-ecommerce-firm-raises-over-1m-in-new-investment/"
+      "notes": "Venture fund and institute focused on AI, deep science, 5G, biotech, and fintech. Long-term investor in Edinburgh-based stampfree.ai \u2014 participated in every fundraising round including the May 2026 \u00a31.03m raise. Source: https://www.digit.fyi/edinburgh-ai-ecommerce-firm-raises-over-1m-in-new-investment/"
     },
     {
       "canonical_name": "Blank Space Ventures",
-      "aliases": ["BlankSpace Ventures"],
+      "aliases": [
+        "BlankSpace Ventures"
+      ],
       "hq": "Silicon Valley, USA",
-      "stage_focus": ["Pre-Seed", "Seed"],
+      "stage_focus": [
+        "Pre-Seed",
+        "Seed"
+      ],
       "scotland_active": true,
       "notes": "Silicon Valley-based VC. Co-led Cnuic $3m pre-seed round (Edinburgh, April 2026) alongside Tensor Ventures. Source: https://tech.eu/2026/04/28/cnuic-secures-eur3m-pre-seed-to-unlock-next-generation-photonic-chip-production/"
     },
     {
       "canonical_name": "Silicon Roundabout Ventures",
-      "aliases": ["Silicon Roundabout"],
+      "aliases": [
+        "Silicon Roundabout"
+      ],
       "hq": "United Kingdom",
-      "stage_focus": ["Pre-Seed", "Seed"],
+      "stage_focus": [
+        "Pre-Seed",
+        "Seed"
+      ],
       "scotland_active": true,
       "notes": "UK-based deep-tech VC. Participated in Cnuic $3m pre-seed round (Edinburgh, April 2026). Source: https://tech.eu/2026/04/28/cnuic-secures-eur3m-pre-seed-to-unlock-next-generation-photonic-chip-production/"
     },
     {
       "canonical_name": "Portfolio Ventures",
-      "aliases": ["Portfolio Ventures Ltd"],
+      "aliases": [
+        "Portfolio Ventures Ltd"
+      ],
       "hq": "London, England, United Kingdom",
-      "stage_focus": ["Pre-Seed", "Seed", "Series A"],
+      "stage_focus": [
+        "Pre-Seed",
+        "Seed",
+        "Series A"
+      ],
       "scotland_active": true,
-      "notes": "UK generalist VC founded 2014, ~64 investments via 1 fund, 3 exits. Participated in Edinburgh-based Infrawatch's pre-seed round (May 2026) — only confirmed Scottish deal identified to date. Source: https://theedinburghreporter.co.uk/2026/05/edinburgh-cyber-security-start-up-raises-millions-in-pre-seed-round/ ; firm profile: https://www.crunchbase.com/organization/portfolio-ventures"
+      "notes": "UK generalist VC founded 2014, ~64 investments via 1 fund, 3 exits. Participated in Edinburgh-based Infrawatch's pre-seed round (May 2026) \u2014 only confirmed Scottish deal identified to date. Source: https://theedinburghreporter.co.uk/2026/05/edinburgh-cyber-security-start-up-raises-millions-in-pre-seed-round/ ; firm profile: https://www.crunchbase.com/organization/portfolio-ventures"
     },
     {
       "canonical_name": "Index Ventures",
-      "aliases": ["Index"],
+      "aliases": [
+        "Index"
+      ],
       "hq": "London / San Francisco",
-      "stage_focus": ["Seed", "Series A", "Series B", "Growth"],
+      "stage_focus": [
+        "Seed",
+        "Series A",
+        "Series B",
+        "Growth"
+      ],
       "scotland_active": true,
       "notes": "Major international VC. Co-led Wordsmith AI $70m Series B (Edinburgh, June 2026). One of Europe's most prominent growth-stage funds. Source: https://dailybusinessgroup.co.uk/2026/06/wordsmith-ai-raises-52-million-amid-rapid-growth/"
     },
@@ -348,71 +569,108 @@
       "canonical_name": "Outward VC",
       "aliases": [],
       "hq": null,
-      "stage_focus": ["Pre-Seed"],
+      "stage_focus": [
+        "Pre-Seed"
+      ],
       "scotland_active": true,
       "notes": "Led the pre-seed round for Edinburgh-based Infrawatch, a cybersecurity platform company, announced May 2026. Principal at Outward VC named as Andi Kazeroonian. Very limited public profile. Source: https://theedinburghreporter.co.uk/2026/05/edinburgh-cyber-security-start-up-raises-millions-in-pre-seed-round/"
     },
     {
       "canonical_name": "Triple Point Ventures",
-      "aliases": ["Triple Point"],
+      "aliases": [
+        "Triple Point"
+      ],
       "hq": "United Kingdom",
-      "stage_focus": ["Pre-Seed", "Seed"],
+      "stage_focus": [
+        "Pre-Seed",
+        "Seed"
+      ],
       "scotland_active": true,
       "notes": "UK-based VC. Participated in Edinburgh-based Infrawatch pre-seed round (May 2026). Investor Sam Stone quoted in press release. Source: https://theedinburghreporter.co.uk/2026/05/edinburgh-cyber-security-start-up-raises-millions-in-pre-seed-round/"
     },
     {
       "canonical_name": "Tricapital",
-      "aliases": ["Tricapital Angels", "Tweed Renaissance Investors Capital"],
+      "aliases": [
+        "Tricapital Angels",
+        "Tweed Renaissance Investors Capital"
+      ],
       "hq": "Scottish Borders, Scotland",
-      "stage_focus": ["Seed"],
+      "stage_focus": [
+        "Seed"
+      ],
       "scotland_active": true,
-      "notes": "Scottish Borders-based angel investment syndicate founded in 2004. Members invest personal capital matched by Scottish Enterprise. Led £506k HonuWorx, £430k Kaly and £620k Sisaltech seed investments announced May 2026. Has deployed £6.8m across Scottish early-stage businesses in ~2.5 years, levering £40m+ total investment. Source: https://www.scotsman.com/business/tricapital-scots-syndicate-leads-ps3m-plus-deals-and-unveils-key-hire-8640052"
+      "notes": "Scottish Borders-based angel investment syndicate founded in 2004. Members invest personal capital matched by Scottish Enterprise. Led \u00a3506k HonuWorx, \u00a3430k Kaly and \u00a3620k Sisaltech seed investments announced May 2026. Has deployed \u00a36.8m across Scottish early-stage businesses in ~2.5 years, levering \u00a340m+ total investment. Source: https://www.scotsman.com/business/tricapital-scots-syndicate-leads-ps3m-plus-deals-and-unveils-key-hire-8640052"
     },
     {
       "canonical_name": "Highland Europe",
-      "aliases": ["Highland Europe Growth"],
+      "aliases": [
+        "Highland Europe Growth"
+      ],
       "hq": "London, United Kingdom",
-      "stage_focus": ["Series B", "Growth"],
+      "stage_focus": [
+        "Series B",
+        "Growth"
+      ],
       "scotland_active": true,
       "notes": "London-based growth VC focused on European tech scaleups. Led Wordsmith AI $70m Series B (Edinburgh, June 2026), one of the largest Scottish tech deals in recent years. Portfolio includes n8n, Nabla, Camunda, Wolt, WeTransfer, ContentSquare. Source: https://dailybusinessgroup.co.uk/2026/06/wordsmith-ai-raises-52-million-amid-rapid-growth/"
     },
     {
       "canonical_name": "Puma Growth Partners",
-      "aliases": ["Puma Investments", "Puma VCT"],
+      "aliases": [
+        "Puma Investments",
+        "Puma VCT"
+      ],
       "hq": "Edinburgh / London",
-      "stage_focus": ["Growth", "Series A", "Series B"],
+      "stage_focus": [
+        "Growth",
+        "Series A",
+        "Series B"
+      ],
       "scotland_active": true,
-      "notes": "Has a Scotland office. Existing investor that re-participated in Aveni £12m growth round (Edinburgh, June 2026). Invests from Scottish office per press release. Ben Leslie listed as Investment Director at Puma Growth Partners. Source: https://scottishfinancialreview.com/2026/06/04/aveni-edinburgh-ai-wealth-startup-raises-12m/"
+      "notes": "Has a Scotland office. Existing investor that re-participated in Aveni \u00a312m growth round (Edinburgh, June 2026). Invests from Scottish office per press release. Ben Leslie listed as Investment Director at Puma Growth Partners. Source: https://scottishfinancialreview.com/2026/06/04/aveni-edinburgh-ai-wealth-startup-raises-12m/"
     },
     {
       "canonical_name": "Equity Gap",
       "aliases": [],
       "hq": "Edinburgh",
-      "stage_focus": ["Pre-Seed", "Seed"],
+      "stage_focus": [
+        "Pre-Seed",
+        "Seed"
+      ],
       "scotland_active": true,
-      "notes": "Edinburgh-based angel investment network. Led the £700k seed round for Edinburgh-based Lentitek (May 2026). Also co-invests with Scottish Enterprise. Source: https://angelcapital.scot/news/lentitek-raises-700k-for-cancer-treatment-technology/"
+      "notes": "Edinburgh-based angel investment network. Led the \u00a3700k seed round for Edinburgh-based Lentitek (May 2026). Also co-invests with Scottish Enterprise. Source: https://angelcapital.scot/news/lentitek-raises-700k-for-cancer-treatment-technology/"
     },
     {
       "canonical_name": "Lavrock Ventures",
       "aliases": [],
       "hq": null,
-      "stage_focus": ["Series A"],
+      "stage_focus": [
+        "Series A"
+      ],
       "scotland_active": true,
       "notes": "Participated in the $11m Series A for Edinburgh-based Launchpad (October 2025, announced February 2026). Specialist robotics/deep tech VC. Source: https://www.pxnventures.co.uk/launchpad-welcomes-strategic-investor-pxn-ventures/"
     },
     {
       "canonical_name": "Gabriel-IS",
-      "aliases": ["Gabriel Informal Syndicate", "Gabriel"],
+      "aliases": [
+        "Gabriel Informal Syndicate",
+        "Gabriel"
+      ],
       "hq": "Scotland",
-      "stage_focus": ["Pre-Seed", "Seed"],
+      "stage_focus": [
+        "Pre-Seed",
+        "Seed"
+      ],
       "scotland_active": true,
-      "notes": "Scottish angel syndicate. Participated in Lentitek £700k seed round (Edinburgh, May 2026). Also participated in Aurora Avionics £500k seed (Edinburgh, April 2025). Source: https://angelcapital.scot/news/lentitek-raises-700k-for-cancer-treatment-technology/"
+      "notes": "Scottish angel syndicate. Participated in Lentitek \u00a3700k seed round (Edinburgh, May 2026). Also participated in Aurora Avionics \u00a3500k seed (Edinburgh, April 2025). Source: https://angelcapital.scot/news/lentitek-raises-700k-for-cancer-treatment-technology/"
     },
     {
       "canonical_name": "SANDS",
       "aliases": [],
       "hq": null,
-      "stage_focus": ["Pre-Seed"],
+      "stage_focus": [
+        "Pre-Seed"
+      ],
       "scotland_active": true,
       "notes": "Participated in Cnuic $3m pre-seed round (Edinburgh, April 2026). Very limited public profile. Source: https://tech.eu/2026/04/28/cnuic-secures-eur3m-pre-seed-to-unlock-next-generation-photonic-chip-production/"
     },
@@ -420,31 +678,46 @@
       "canonical_name": "Superlative",
       "aliases": [],
       "hq": null,
-      "stage_focus": ["Pre-Seed"],
+      "stage_focus": [
+        "Pre-Seed"
+      ],
       "scotland_active": true,
       "notes": "Participated in Cnuic $3m pre-seed round (Edinburgh, April 2026). Very limited public profile. Source: https://tech.eu/2026/04/28/cnuic-secures-eur3m-pre-seed-to-unlock-next-generation-photonic-chip-production/"
     },
     {
       "canonical_name": "Apollo Informal Investment",
-      "aliases": ["Apollo Informal"],
+      "aliases": [
+        "Apollo Informal"
+      ],
       "hq": "Scotland",
-      "stage_focus": ["Seed"],
+      "stage_focus": [
+        "Seed"
+      ],
       "scotland_active": true,
-      "notes": "Scottish informal investor operating in the angel syndicate space. Participated in Lentitek £700k seed round (Edinburgh, May 2026) alongside lead Equity Gap, Gabriel-IS, and Scottish Enterprise. Source: https://angelcapital.scot/news/lentitek-raises-700k-for-cancer-treatment-technology/"
+      "notes": "Scottish informal investor operating in the angel syndicate space. Participated in Lentitek \u00a3700k seed round (Edinburgh, May 2026) alongside lead Equity Gap, Gabriel-IS, and Scottish Enterprise. Source: https://angelcapital.scot/news/lentitek-raises-700k-for-cancer-treatment-technology/"
     },
     {
       "canonical_name": "The FSE Group",
-      "aliases": ["FSE Group"],
+      "aliases": [
+        "FSE Group"
+      ],
       "hq": null,
-      "stage_focus": ["Seed"],
+      "stage_focus": [
+        "Seed"
+      ],
       "scotland_active": true,
-      "notes": "Primarily a Northern England investor (NPIF ecosystem). Co-invested in JET Connectivity £1.2m Pre-Series A (Scotland, May 2026) alongside lead Tricapital Angels — first confirmed Scottish deal. Source: https://angelcapital.scot/deals/tricapital-angels-leads-1-2m-investment-into-sovereign-dual-use-5g-solutions/"
+      "notes": "Primarily a Northern England investor (NPIF ecosystem). Co-invested in JET Connectivity \u00a31.2m Pre-Series A (Scotland, May 2026) alongside lead Tricapital Angels \u2014 first confirmed Scottish deal. Source: https://angelcapital.scot/deals/tricapital-angels-leads-1-2m-investment-into-sovereign-dual-use-5g-solutions/"
     },
     {
       "canonical_name": "SFC Capital",
-      "aliases": ["SFC Capital Ltd"],
+      "aliases": [
+        "SFC Capital Ltd"
+      ],
       "hq": "London",
-      "stage_focus": ["Pre-Seed", "Seed"],
+      "stage_focus": [
+        "Pre-Seed",
+        "Seed"
+      ],
       "scotland_active": true,
       "notes": "UK-wide SEIS/EIS fund manager with 400+ portfolio companies across B2B software, fintech, medtech, and green tech. Led the seed round for Regeno (Glasgow wind turbine spinout, March 2026). Source: https://www.strath.ac.uk/whystrathclyde/news/2026/strathclyde-supportedstart-upsecuresbackingtodeveloplower-costwindenergy/"
     },
@@ -452,9 +725,34 @@
       "canonical_name": "One Planet Capital",
       "aliases": [],
       "hq": null,
-      "stage_focus": ["Seed"],
+      "stage_focus": [
+        "Seed"
+      ],
       "scotland_active": true,
       "notes": "Impact/cleantech-focused investor. Co-invested in Regeno seed round (Glasgow wind turbine spinout, March 2026) alongside SFC Capital, Scottish Enterprise, Gabriel-IS, and British Business Investments. Very limited public profile. Source: https://www.strath.ac.uk/whystrathclyde/news/2026/strathclyde-supportedstart-upsecuresbackingtodeveloplower-costwindenergy/"
+    },
+    {
+      "canonical_name": "Bettor Capital",
+      "aliases": [],
+      "hq": "United States",
+      "stage_focus": [
+        "Growth"
+      ],
+      "scotland_active": true,
+      "notes": "US-based gaming-industry specialist investor. Led the \u00a310m growth round for Edinburgh payments fintech BR-DGE (June 2026), alongside continued backer Greyfriars."
+    },
+    {
+      "canonical_name": "Greyfriars",
+      "aliases": [
+        "Greyfriars Investments",
+        "Greyfriars Investments Limited"
+      ],
+      "hq": "Edinburgh",
+      "stage_focus": [
+        "Growth"
+      ],
+      "scotland_active": true,
+      "notes": "Edinburgh-based investment management company (56 George Street). Long-term backer of BR-DGE, continuing its support in the June 2026 \u00a310m growth round alongside new investor Bettor Capital."
     }
   ]
 }

@@ -1,0 +1,9 @@
+{
+  "excluded_companies": [
+    {
+      "company_name": "Fortus",
+      "reason": "Crunchbase mislabels as Scotland; actually based in Yorkshire",
+      "added_date": "2026-07-06"
+    }
+  ]
+}

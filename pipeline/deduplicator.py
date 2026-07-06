@@ -88,6 +88,15 @@ def _match_type(a, b):
         if same_amount and investors_match:
             return "definite"
 
+    # Definite: name + same amount + dates within 60 days, regardless of round_type.
+    # Sources are frequently inconsistent about stage labels for the same deal
+    # (e.g. "Series B" vs "Growth" vs unstated) — an exact amount match plus a
+    # tight date window is stronger evidence of a single deal than an exact
+    # round_type string match, which round_type alone is too unreliable to gate on.
+    if name_score >= DEFINITE_NAME_THRESHOLD and same_amount:
+        if days is not None and days <= 60:
+            return "definite"
+
     # Probable: name + round, but missing date(s)
     if name_score >= DEFINITE_NAME_THRESHOLD and same_round:
         if days is None:
