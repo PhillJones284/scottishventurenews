@@ -1,32 +1,12 @@
 /* Deal table (docs/deals/index.html) — page-specific styles.
    Shared component styles (stat bar, table shell, controls, sort icons,
    status/no-results, footer, back-link) live in style.css; only this page's
-   own layout (tabs, cell/badge styling) lives here. */
+   own layout (cell/badge styling) lives here. */
 
 body { font-size: 13px; line-height: 1.45; }
 a { color: inherit; text-decoration: none; }
 
 .container { max-width: 1280px; margin: 0 auto; padding: 28px 20px 48px; }
-
-/* ── tabs ── */
-.tabs {
-  display: flex;
-  gap: 0;
-  margin-bottom: 16px;
-  border-bottom: 2px solid var(--light-grey);
-}
-.tab {
-  padding: 8px 20px;
-  cursor: pointer;
-  color: var(--slate);
-  font-size: 13px;
-  font-weight: 500;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -2px;
-  transition: color 0.1s;
-}
-.tab.active { color: var(--navy); border-bottom-color: var(--navy); }
-.tab:hover:not(.active) { color: var(--ink); }
 
 /* ── stats bar ── */
 .stats-bar { margin-bottom: 16px; }

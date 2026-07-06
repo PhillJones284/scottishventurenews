@@ -1,5 +1,4 @@
 let DATA = null;
-let currentWindow = "quarter";
 let sortCol = "announcement_date";
 let sortDir = -1;
 let searchQuery = "";
@@ -9,7 +8,7 @@ let filterLocation = "";
 let filterConfidence = "";
 
 function getDeals() {
-  return currentWindow === "quarter" ? DATA.quarter_deals : DATA.ytd_deals;
+  return DATA.ytd_deals;
 }
 
 function populateFilters() {
@@ -139,14 +138,6 @@ function render() {
 }
 
 // ── wire up events ──
-document.querySelectorAll(".tab").forEach(tab => {
-  tab.addEventListener("click", () => {
-    currentWindow = tab.dataset.window;
-    document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t === tab));
-    render();
-  });
-});
-
 document.getElementById("search").addEventListener("input", e => {
   searchQuery = e.target.value;
   render();
@@ -188,9 +179,7 @@ fetch("deals.json")
   .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
   .then(data => {
     DATA = data;
-    document.title = "Scottish VC Deals — " + data.quarter_label + " / " + data.year + " YTD";
-    document.getElementById("tab-quarter").textContent = data.quarter_label;
-    document.getElementById("tab-ytd").textContent = data.year + " YTD";
+    document.title = "Scottish VC Deals — " + data.year + " YTD";
     document.getElementById("generated-date").textContent = data.generated;
     document.getElementById("status-wrap").style.display = "none";
     document.getElementById("table-wrap").style.display = "";
