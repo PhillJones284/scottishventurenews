@@ -100,6 +100,16 @@ a:hover { text-decoration: underline; }
 .report-body p:first-child em {
   font-size: inherit; color: inherit; font-style: inherit;
 }
+.report-body .deal-block { margin-bottom: 14px; }
+.report-body .deal-block p { margin-bottom: 2px; }
+.report-body .deal-block .deal-source { margin-bottom: 0; }
+/* undo .report-body p:first-child (the intro-line styling), which would
+   otherwise also match each deal-block's first <p> — first-child is
+   relative to the deal-block div, not the whole report body */
+.report-body .deal-block p:first-child {
+  font-size: 14px; color: var(--ink); font-style: normal;
+  border-left: none; padding: 0; margin-bottom: 2px;
+}
 .report-body strong { font-weight: 600; }
 .report-body a { color: var(--blue); }
 .report-body .report-img {

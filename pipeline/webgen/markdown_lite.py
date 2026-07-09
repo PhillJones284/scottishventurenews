@@ -7,6 +7,11 @@ from __future__ import annotations
 
 import re
 
+# Section whose "- **Deal** ... \n  *Source: ...*" bullets render as plain,
+# unbulleted deal blocks on the landing page instead of <ul><li> — the report
+# markdown itself (and the newsletter, which renders it separately) is untouched.
+_DEAL_BLOCK_SECTION = "what we found this week"
+
 
 def to_html(text: str) -> tuple[str, str]:
     """Convert report markdown to HTML.
@@ -18,6 +23,8 @@ def to_html(text: str) -> tuple[str, str]:
     lines = text.split("\n")
     parts: list[str] = []
     in_ul = False
+    in_deal_block = False
+    current_section = ""
     issue_title: str = ""
 
     def flush_ul() -> None:
@@ -25,6 +32,15 @@ def to_html(text: str) -> tuple[str, str]:
         if in_ul:
             parts.append("</ul>")
             in_ul = False
+
+    def close_deal_block() -> None:
+        nonlocal in_deal_block
+        if in_deal_block:
+            parts.append("</div>")
+            in_deal_block = False
+
+    def in_deals_section() -> bool:
+        return _DEAL_BLOCK_SECTION in current_section.lower()
 
     def inline(s: str) -> str:
         # images before links so the alt text isn't double-processed
@@ -43,25 +59,42 @@ def to_html(text: str) -> tuple[str, str]:
     for line in lines:
         if line.startswith("# "):
             flush_ul()
+            close_deal_block()
             issue_title = line[2:].strip()
             # Don't emit H1 — we display it as the issue-date label
         elif line.startswith("### "):
             flush_ul()
+            close_deal_block()
             parts.append(f"<h3>{inline(line[4:].strip())}</h3>")
         elif line.startswith("## "):
             flush_ul()
-            parts.append(f"<h2>{inline(line[3:].strip())}</h2>")
+            close_deal_block()
+            current_section = line[3:].strip()
+            parts.append(f"<h2>{inline(current_section)}</h2>")
         elif line.startswith("- "):
-            if not in_ul:
-                parts.append("<ul>")
-                in_ul = True
-            parts.append(f"<li>{inline(line[2:].strip())}</li>")
+            if in_deals_section():
+                close_deal_block()
+                parts.append('<div class="deal-block">')
+                in_deal_block = True
+                parts.append(f"<p>{inline(line[2:].strip())}</p>")
+            else:
+                if not in_ul:
+                    parts.append("<ul>")
+                    in_ul = True
+                parts.append(f"<li>{inline(line[2:].strip())}</li>")
         elif line.strip() in ("", "---"):
             flush_ul()
+            close_deal_block()
             parts.append("")
         else:
             flush_ul()
-            parts.append(f"<p>{inline(line.strip())}</p>")
+            stripped = line.strip()
+            if in_deal_block and stripped.startswith("*Source:"):
+                parts.append(f'<p class="deal-source">{inline(stripped)}</p>')
+            else:
+                close_deal_block()
+                parts.append(f"<p>{inline(stripped)}</p>")
 
     flush_ul()
+    close_deal_block()
     return issue_title, "\n".join(p for p in parts if p)
