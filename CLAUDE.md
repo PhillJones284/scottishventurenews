@@ -263,7 +263,8 @@ scottish-vc-tracker/
 ├── data/
 │   ├── raw/                     ← Scraper output (per-source JSON files)
 │   ├── processed/               ← Parser and deduplicator output
-│   └── vc-profiles/             ← PERSISTENT: one standing reference page per VC, refreshed by Stage 5
+│   ├── vc-profiles/             ← PERSISTENT: one standing reference page per VC, refreshed by Stage 5
+│   └── editorial/               ← PERSISTENT: pending.md (transient queue) + YYYY-MM-DD.md archives (see Adding an editorial)
 │
 └── docs/                        ← GitHub Pages web root (served at philljones284.github.io/scottish-venture-news/)
     └── deals/
@@ -349,6 +350,22 @@ This fetches the article immediately (while the link is live) and appends it to 
 On the **next full pipeline run**, Stage 1b (the scraper agent) drains all pending entries: it extracts a structured investment record from each using the same schema as any other source, writes them to `data/raw/YYYY-MM-DD_manual.json` (that run's date), and marks each entry `status: "processed"`. From there they flow through Stage 2 onward exactly like any other source — same dedup, same ledger, same report treatment. If a URL's fetch failed at add-time, the scraper agent retries it live via WebFetch on the run; if that also fails, the entry stays `"pending"` for the following run.
 
 `manual_finds.json` is persistent (like `merge_candidates.json`) — entries are never deleted, only marked `processed`, so it doubles as an audit trail of what Phill submitted and when.
+
+## Adding an editorial
+
+An editorial is optional, personal commentary from Phill — his own writing, not something Claude generates or paraphrases. Most weeks won't have one. When Phill has one, he saves it as plain text/Markdown to:
+
+```
+data/editorial/pending.md
+```
+
+There's no helper script — Phill just writes the file directly (or asks Claude to save text he pastes into the conversation). It sits there, pending, until it's consumed by one of two paths:
+
+**Before Stage 4 runs**: the reporter agent checks for `data/editorial/pending.md` at the start of every run (see `.claude/agents/reporter.md`). If present, it inserts the content verbatim as a `## Editor's Note` section immediately after the header disclaimer, before "What We Found This Week" — then archives it to `data/editorial/YYYY-MM-DD.md` (today's date) and clears `pending.md`.
+
+**After Stage 4 has already produced a report** (e.g. Phill decides on an editorial after seeing the draft, or after a report has already shipped and he wants the web copy updated to match what he sent by email): ask Claude directly to add it. Claude inserts the same `## Editor's Note` section at the same position directly into `data/reports/YYYY-MM-DD_vc-report.md`, archives `pending.md` to `data/editorial/YYYY-MM-DD.md` the same way, then re-runs Stage 8 (`landing_page_generator.py`) so `docs/index.html` picks up the change. This does not touch Stage 6/7 (deal table, investor page) since they don't render report prose.
+
+`data/editorial/YYYY-MM-DD.md` archives are persistent (like `manual_finds.json`) — never deleted, so they double as a record of which issues had an editorial and what it said. `pending.md` itself is transient — it only exists between being saved and being consumed.
 
 ## Managing sources
 

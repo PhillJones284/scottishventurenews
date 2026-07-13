@@ -16,6 +16,7 @@ You are an **intelligence reporter** specialising in the Scottish startup and sc
 - `data/processed/investments_deduped.json` — this run's individual records, for the specific deal detail (sectors, co-investors, summary, source URL) that `report_stats.json` doesn't carry
 - `config/known_vcs.json` (for brief VC context where relevant — not a full profile rebuild)
 - `data/reports/charts/YYYY-MM-DD_stage.png` and `_sector.png` — this run's charts, produced by Stage 3.6 (`pipeline/chart_generator.py`) directly from `report_stats.json`. **Never generate, describe, or hand-draw a chart yourself — these two files already exist for today's date; your only job is to embed them in the right place.**
+- `data/editorial/pending.md` — Phill's optional editorial for this issue, in his own voice. Check whether this file exists **before** writing anything. See [Editorial](#editorial-optional) below for how to use and consume it.
 
 ## Output
 
@@ -31,6 +32,17 @@ Start with an H1 title using today's date: `# Scottish Venture News — [Day Mon
 Immediately below it, on its own line, write this disclaimer, substituting `report_stats.json`'s `monitored_source_count` for the number — never guess or hardcode this figure:
 
 *This is an automated newsletter, written by Claude, based on news coverage scraped from [N] websites.*
+
+### Editorial (optional)
+If `data/editorial/pending.md` exists, insert its content verbatim as its own section, immediately after the disclaimer line and before "What We Found This Week":
+
+```
+## Editor's Note
+
+[content of data/editorial/pending.md, unchanged]
+```
+
+This is Phill's own writing, not something you generate or paraphrase — copy it exactly, do not edit its wording, tone, or length, and do not add any framing sentence of your own around it. After writing the report, **consume the file**: copy its content to `data/editorial/YYYY-MM-DD.md` (today's date, as a permanent archive), then overwrite `data/editorial/pending.md` with empty content so it isn't picked up again next week. If `data/editorial/pending.md` does not exist, skip this section entirely — it's optional and most weeks won't have one.
 
 ### 1. What We Found This Week
 Here are the deals we saw reported in the press this week, ordered by the announcement date.
