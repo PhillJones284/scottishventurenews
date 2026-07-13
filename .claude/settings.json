@@ -11,7 +11,8 @@
       "Write(/Users/philljones/projects/scottish-vc-tracker/docs/**)",
       "Edit(/Users/philljones/projects/scottish-vc-tracker/docs/**)",
       "Write(/Users/philljones/.claude/projects/-Users-philljones-projects-scottish-vc-tracker/memory/**)",
-      "Bash"
+      "Bash",
+      "Agent"
     ]
   }
 }

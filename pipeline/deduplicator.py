@@ -132,13 +132,21 @@ def _union_sectors(a, b):
     return sorted(_to_set(a) | _to_set(b)) or ["Other"]
 
 
+def _is_empty(v):
+    """Treat None, empty string, and empty list as 'no data' for merge gap-filling."""
+    return v is None or v == "" or v == []
+
+
 def _merge(base, other, merge_confidence):
-    """Merge `other` into `base`, filling nulls and combining sources."""
+    """Merge `other` into `base`: fill gaps in either direction so the result is the
+    most complete record possible. A non-empty value already in `base` is never
+    overwritten by a value from `other` — on conflicting non-empty values, the caller
+    passes the higher-data_quality_score record as `base` so that one wins."""
     merged = dict(base)
     for key, val in other.items():
         if key in ("source_url", "source_urls", "company_sectors"):
             continue
-        if merged.get(key) is None and val is not None:
+        if _is_empty(merged.get(key)) and not _is_empty(val):
             merged[key] = val
 
     merged["company_sectors"] = _union_sectors(base, other)
@@ -327,27 +335,29 @@ def run(date: str = None):
         ledger_match, match_type = _match_against_ledger(record, ledger_entries)
 
         if match_type == "definite":
-            # Update existing ledger entry
+            # Merge into the existing ledger entry — fill gaps in either direction
+            # (see _merge()) rather than blindly taking the newer extraction's fields,
+            # which previously let a thin/unsourced re-extraction (e.g. a Crunchbase
+            # stub with no named investor) silently overwrite a well-sourced record.
+            # The higher-data_quality_score record wins on genuine field conflicts,
+            # matching the convention already used in _deduplicate_within_run.
             first_seen = ledger_match.get("first_seen", run_date)
-            unioned_sectors = _union_sectors(ledger_match, record)
-            ledger_match.update(record)
-            ledger_match["first_seen"] = first_seen
-            ledger_match["last_seen"] = run_date
-            ledger_match["company_sectors"] = unioned_sectors
-            ledger_match.pop("company_sector", None)
+            if record.get("data_quality_score", 0) > ledger_match.get("data_quality_score", 0):
+                merged = _merge(record, ledger_match, "definite")
+            else:
+                merged = _merge(ledger_match, record, "definite")
+            merged["first_seen"] = first_seen
+            merged["last_seen"] = run_date
+            merged["is_new_this_run"] = False
+            merged.pop("company_sector", None)
 
-            # Merge source URLs in ledger
-            existing_urls = set(ledger_match.get("source_urls", []))
-            existing_urls.update(record.get("source_urls", []))
-            if record.get("source_url"):
-                existing_urls.add(record["source_url"])
-            ledger_match["source_urls"] = sorted(existing_urls)
-            ledger_match["source_count"] = len(ledger_match["source_urls"])
+            # Mutate in place so ledger_entries (written back to ledger.json below)
+            # reflects the merge — ledger_match is the same object held in that list.
+            ledger_match.clear()
+            ledger_match.update(merged)
 
-            record["first_seen"] = first_seen
-            record["last_seen"] = run_date
-            record["is_new_this_run"] = False
             updated_existing += 1
+            output_investments.append(ledger_match)
         else:
             # No match, or only probable/possible — never auto-merge below "definite".
             # Add as its own ledger entry; a probable/possible match gets staged for review
@@ -368,7 +378,7 @@ def run(date: str = None):
                     "against_ledger",
                 )
 
-        output_investments.append(record)
+            output_investments.append(record)
 
     with open(merge_candidates_path, "w") as f:
         json.dump(merge_candidates, f, indent=2)

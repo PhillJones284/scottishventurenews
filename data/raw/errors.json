@@ -308,13 +308,31 @@
   {
     "source": "olderbull-news",
     "url": "https://www.olderbull.com/portfolio-news",
-    "error": "No content returned — page appears empty or unreachable",
+    "error": "No content returned \u2014 page appears empty or unreachable",
     "timestamp": "2026-07-06T09:15:00+00:00"
   },
   {
     "source": "prairie-fund-news",
     "url": "https://www.prairiefund.com/news",
-    "error": "Domain expired/parked — redirects to GoDaddy \"for sale\" page (forsale.godaddy.com), site appears defunct",
+    "error": "Domain expired/parked \u2014 redirects to GoDaddy \"for sale\" page (forsale.godaddy.com), site appears defunct",
     "timestamp": "2026-07-06T09:15:00+00:00"
+  },
+  {
+    "source": "daily-business-group",
+    "url": "https://dailybusinessgroup.co.uk",
+    "error": "Client error '403 Forbidden' for url 'https://dailybusinessgroup.co.uk'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+    "timestamp": "2026-07-13T07:59:44.558922+00:00"
+  },
+  {
+    "source": "highlight-capital-news",
+    "url": "https://www.highlightcapital.com/news",
+    "error": "connect ECONNREFUSED 203.107.45.167:443 - site unreachable via WebFetch",
+    "timestamp": "2026-07-13T08:19:12.935215+00:00"
+  },
+  {
+    "source": "olderbull-news",
+    "url": "https://www.olderbull.com/portfolio-news",
+    "error": "WebFetch returned no page content (empty response) on repeated attempts",
+    "timestamp": "2026-07-13T08:19:12.935215+00:00"
   }
 ]

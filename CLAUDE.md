@@ -425,6 +425,5 @@ This ensures `python` and `pip` both resolve to `.venv`, not the global install.
 - When proposing a change, explain what you're changing and why
 - If you spot something worth improving that's outside the current task, note it but don't act on it
 - Do not run the agent pipeline unless explicitly asked to
-- You do not handle version control. All git functions will be handled manually by humans
 - Python version is controlled via pyenv (.python-version)
 

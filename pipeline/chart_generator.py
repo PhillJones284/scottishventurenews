@@ -8,6 +8,12 @@ to `data/reports/charts/`:
   - `YYYY-MM-DD_sector.png` — deals by sector, 2x2: capital deployed vs. deal
     count, quarter-to-date vs. year-to-date
 
+The left-hand ("QTD") panels actually read from `chart_period_*` rather than
+the raw current-quarter fields — when the current quarter has no deals yet,
+`report_stats.py` falls back to the most recent quarter that does, so these
+panels never render empty just because a quarter is early. See
+`chart_period_is_fallback` / `_period_title_prefix` below.
+
 Charts are generated deterministically from the same numbers the reporter
 narrates, for the same reason `report_stats.py` exists: an LLM should narrate
 figures, not compute or hand-draw them.
@@ -133,11 +139,22 @@ def _stage_panel(ax, stage_mix, title_prefix):
     ax.grid(False)
 
 
+def _period_title_prefix(stats):
+    """'QTD Q3 2026' when the left-hand panel is genuinely quarter-to-date,
+    or just 'Q2 2026' when it's fallen back to the last quarter that had any
+    deals (a completed quarter isn't "to date") — see `chart_period_is_fallback`
+    in report_stats.py."""
+    label = stats["chart_period_label"]
+    return label if stats.get("chart_period_is_fallback") else f"QTD {label}"
+
+
 def _stage_chart(stats, out_path):
-    """Two independent panels side by side — QTD (left) vs. YTD (right) —
-    each an independent diverging-bar breakdown for its own window, the same
-    "each panel ranks its own metric/window independently" approach as the
-    sector chart's 2x2 grid.
+    """Two independent panels side by side — left vs. YTD (right) — each an
+    independent diverging-bar breakdown for its own window, the same "each
+    panel ranks its own metric/window independently" approach as the sector
+    chart's 2x2 grid. The left panel is quarter-to-date, unless the current
+    quarter has no deals yet, in which case it falls back to the most recent
+    quarter that does (see `chart_period_*` in report_stats.py).
     """
     fig = Figure(figsize=(13, 4.6))
     FigureCanvasAgg(fig)
@@ -145,7 +162,7 @@ def _stage_chart(stats, out_path):
     ax_ytd = fig.add_subplot(1, 2, 2)
 
     run_year = stats["run_date"][:4]
-    _stage_panel(ax_qtd, stats["stage_mix"], f"Deals by stage — QTD {stats['quarter_label']}")
+    _stage_panel(ax_qtd, stats["chart_period_stage_mix"], f"Deals by stage — {_period_title_prefix(stats)}")
     _stage_panel(ax_ytd, stats["ytd_stage_mix"], f"Deals by stage — YTD {run_year}")
 
     fig.tight_layout(w_pad=4)
@@ -217,16 +234,16 @@ def _sector_chart(stats, out_path, max_bars=5):
     count and a longer capital figure.
     """
     run_year = stats["run_date"][:4]
-    quarter_label = stats["quarter_label"]
+    period_prefix = _period_title_prefix(stats)
 
     fig = Figure(figsize=(12, 8.5))
     canvas = FigureCanvasAgg(fig)
     axes = [[fig.add_subplot(2, 2, r * 2 + c + 1) for c in range(2)] for r in range(2)]
 
     panels = [
-        (axes[0][0], stats["sector_capital_mix"], lambda v: f"£{v:.1f}m", f"Capital deployed — QTD {quarter_label}"),
+        (axes[0][0], stats["chart_period_sector_capital_mix"], lambda v: f"£{v:.1f}m", f"Capital deployed — {period_prefix}"),
         (axes[0][1], stats["ytd_sector_capital_mix"], lambda v: f"£{v:.1f}m", f"Capital deployed — YTD {run_year}"),
-        (axes[1][0], stats["sector_mix"], lambda v: f"{int(v)}", f"Deal count — QTD {quarter_label}"),
+        (axes[1][0], stats["chart_period_sector_mix"], lambda v: f"{int(v)}", f"Deal count — {period_prefix}"),
         (axes[1][1], stats["ytd_sector_mix"], lambda v: f"{int(v)}", f"Deal count — YTD {run_year}"),
     ]
     for ax, data, fmt, title in panels:

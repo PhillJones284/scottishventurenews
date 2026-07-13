@@ -48,6 +48,74 @@ def _quarter_bounds(d: date):
     return q, start.isoformat(), end.isoformat()
 
 
+def _quarter_bounds_for(year: int, q: int):
+    """Same as `_quarter_bounds` but for an arbitrary (year, quarter) pair,
+    not derived from a date — used to walk backwards over past quarters."""
+    start_month = 3 * (q - 1) + 1
+    end_month = start_month + 2
+    start = date(year, start_month, 1)
+    end = date(year, end_month, calendar.monthrange(year, end_month)[1])
+    return start.isoformat(), end.isoformat()
+
+
+def _chart_period(ledger, year, quarter_num, q_label, q_count, q_capital, stage_mix, sector_mix, sector_capital_mix):
+    """Pick the quarter the charts should actually visualise.
+
+    The QTD panels are meant to show a real breakdown, not an empty one. If
+    the current quarter already has deals, it IS the chart period — this
+    just mirrors the numbers already computed for it. If the current quarter
+    has zero deals (e.g. it just started), walk backwards one quarter at a
+    time, up to two years, for the most recent quarter that actually has a
+    deal, and use that instead. This is chart-only — `quarter_label` /
+    `stage_mix` / etc. above stay true to the *actual* current quarter, since
+    the report's prose ("Q3 2026 has yet to record its first deal") depends
+    on that being accurate. Only `chart_period_*` reflects the fallback.
+    """
+    if q_count > 0:
+        return {
+            "chart_period_label": q_label,
+            "chart_period_stage_mix": stage_mix,
+            "chart_period_sector_mix": sector_mix,
+            "chart_period_sector_capital_mix": sector_capital_mix,
+            "chart_period_deal_count": q_count,
+            "chart_period_capital_gbp_millions": q_capital,
+            "chart_period_is_fallback": False,
+        }
+
+    y, q = year, quarter_num
+    for _ in range(8):  # look back up to two years
+        q -= 1
+        if q < 1:
+            q, y = 4, y - 1
+        start, end = _quarter_bounds_for(y, q)
+        records = [r for r in ledger if r.get("announcement_date") and start <= r["announcement_date"] <= end]
+        count, capital = _sum_and_count(records)
+        if count > 0:
+            fb_stage_mix, _ = _breakdowns(records)
+            fb_sector_mix, fb_sector_capital_mix = _sector_count_and_capital(records)
+            return {
+                "chart_period_label": f"Q{q} {y}",
+                "chart_period_stage_mix": fb_stage_mix,
+                "chart_period_sector_mix": fb_sector_mix,
+                "chart_period_sector_capital_mix": fb_sector_capital_mix,
+                "chart_period_deal_count": count,
+                "chart_period_capital_gbp_millions": capital,
+                "chart_period_is_fallback": True,
+            }
+
+    # Nothing in the last two years either (e.g. the very first issue) —
+    # mirror the current (empty) quarter rather than fabricate a period.
+    return {
+        "chart_period_label": q_label,
+        "chart_period_stage_mix": stage_mix,
+        "chart_period_sector_mix": sector_mix,
+        "chart_period_sector_capital_mix": sector_capital_mix,
+        "chart_period_deal_count": q_count,
+        "chart_period_capital_gbp_millions": q_capital,
+        "chart_period_is_fallback": False,
+    }
+
+
 def _assert_no_pending(ledger, merge_candidates):
     """Hard gate: refuse to compute anything while a pending duplicate exists.
 
@@ -215,6 +283,11 @@ def run(date_str=None):
             "ytd_capital_delta_gbp_millions": round(ytd_capital - prior["ytd_capital_gbp_millions"], 3),
         }
 
+    chart_period = _chart_period(
+        ledger, run_date.year, quarter_num, q_label, q_count, q_capital,
+        stage_mix, sector_mix, sector_capital_mix,
+    )
+
     stats = {
         "run_date": run_date_str,
         "quarter_label": q_label,
@@ -235,6 +308,7 @@ def run(date_str=None):
         "location_mix": location_mix,
         "this_run": _this_run_split(run_date),
         "monitored_source_count": _monitored_source_count(),
+        **chart_period,
     }
 
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
