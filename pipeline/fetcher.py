@@ -2,6 +2,7 @@
 
 import argparse
 import html as html_lib
+import io
 import json
 import logging
 import re
@@ -13,6 +14,7 @@ from urllib.parse import quote_plus, unquote, urljoin
 
 import httpx
 import trafilatura
+from markitdown import MarkItDown
 
 logger = logging.getLogger(__name__)
 
@@ -36,10 +38,28 @@ GROUP_B = [
 ATOM_NS = "http://www.w3.org/2005/Atom"
 CONTENT_NS = "http://purl.org/rss/1.0/modules/content/"
 
+_MARKITDOWN = MarkItDown()
+
 
 def _passes_filter(text: str) -> bool:
     lower = text.lower()
     return any(t in lower for t in GROUP_A) and any(t in lower for t in GROUP_B)
+
+
+def _is_pdf(resp: httpx.Response) -> bool:
+    content_type = resp.headers.get("content-type", "")
+    return "application/pdf" in content_type.lower() or str(resp.url).lower().split("?")[0].endswith(".pdf")
+
+
+def _extract_text(resp: httpx.Response) -> str | None:
+    """Extract article text from a fetched response — PDF via markitdown, else HTML via trafilatura."""
+    if _is_pdf(resp):
+        try:
+            result = _MARKITDOWN.convert_stream(io.BytesIO(resp.content), file_extension=".pdf")
+            return result.text_content or None
+        except Exception:
+            return None
+    return trafilatura.extract(resp.text)
 
 
 def _parse_feed(xml_text: str) -> list:
@@ -125,18 +145,37 @@ def _fetch_rss(client: httpx.Client, source: dict, candidates: list, log: dict) 
 
     rss_ok = False
     items = []
-    try:
-        resp = client.get(rss_url)
-        log["http_status"] = resp.status_code
-        resp.raise_for_status()
-        items = _parse_feed(resp.text)
-        rss_ok = True
-    except Exception as e:
-        log["error"] = f"RSS fetch failed: {e}"
+    rss_error = None
+    for attempt in range(2):
+        try:
+            resp = client.get(rss_url)
+            log["http_status"] = resp.status_code
+            resp.raise_for_status()
+            items = _parse_feed(resp.text)
+            rss_ok = True
+            break
+        except Exception as e:
+            rss_error = f"RSS fetch failed: {e}"
+            if attempt == 0:
+                # Transient bot-protection blips (e.g. dailybusinessgroup.co.uk
+                # 2026-07-13) have been observed to clear within hours — a short
+                # single retry is cheap and catches the sub-minute cases.
+                time.sleep(4)
 
     if not rss_ok or not items:
-        # Fall back to a direct page fetch with link extraction (see _fetch_page)
+        if rss_ok and not items:
+            rss_error = "RSS fetch succeeded but no items parsed"
+        # Fall back to a direct page fetch with link extraction (see _fetch_page).
+        # _fetch_page overwrites url_fetched/http_status/error on its own attempt —
+        # preserve the original RSS failure reason rather than losing it.
         _fetch_page(client, source["url"], source, candidates, log)
+        if rss_error:
+            fallback_error = log.get("error")
+            log["error"] = (
+                f"{rss_error}; fallback page fetch also failed: {fallback_error}"
+                if fallback_error
+                else f"{rss_error} (fell back to page fetch, which succeeded)"
+            )
         return
 
     log["items_found"] = len(items)
@@ -156,7 +195,7 @@ def _fetch_rss(client: httpx.Client, source: dict, candidates: list, log: dict) 
             try:
                 article_resp = client.get(link)
                 article_resp.raise_for_status()
-                article_text = trafilatura.extract(article_resp.text)
+                article_text = _extract_text(article_resp)
             except Exception:
                 pass
 
@@ -251,7 +290,7 @@ def _fetch_page(client: httpx.Client, url: str, source: dict, candidates: list, 
             try:
                 article_resp = client.get(link["url"])
                 article_resp.raise_for_status()
-                article_text = trafilatura.extract(article_resp.text)
+                article_text = _extract_text(article_resp)
             except Exception:
                 pass
 
@@ -278,7 +317,7 @@ def _fetch_page(client: httpx.Client, url: str, source: dict, candidates: list, 
 
     # No usable links found (e.g. url is itself a single article) — fall back to
     # whole-page extraction.
-    text = trafilatura.extract(resp.text)
+    text = _extract_text(resp)
     if not text:
         log["text_extract_failures"] = 1
         return
@@ -357,7 +396,7 @@ def _fetch_queries(client: httpx.Client, source: dict, candidates: list, log: di
             # Fall back to blob approach if parsing found nothing
             if not results:
                 total_found += 1
-                text = trafilatura.extract(resp.text)
+                text = _extract_text(resp)
                 if not text:
                     total_failures += 1
                 elif _passes_filter(text[:2000]):
@@ -393,7 +432,7 @@ def _fetch_queries(client: httpx.Client, source: dict, candidates: list, log: di
                 try:
                     article_resp = client.get(result_url)
                     article_resp.raise_for_status()
-                    article_text = trafilatura.extract(article_resp.text)
+                    article_text = _extract_text(article_resp)
                 except Exception:
                     pass
 
@@ -439,6 +478,10 @@ def _process_source(client: httpx.Client, source: dict, candidates: list) -> dic
     ):
         log = _make_log_entry(source["slug"])
         log["skipped"] = "vc_newsrooms without RSS — handled by Stage 1b scraper"
+        return log
+    if source.get("route_to_scraper"):
+        log = _make_log_entry(source["slug"])
+        log["skipped"] = "route_to_scraper — handled by Stage 1b scraper"
         return log
     log = _make_log_entry(source["slug"])
     try:

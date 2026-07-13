@@ -6,3 +6,4 @@ httpx
 matplotlib
 python-dotenv
 firecrawl-py
+markitdown[pdf]

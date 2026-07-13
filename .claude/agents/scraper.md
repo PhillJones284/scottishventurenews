@@ -54,6 +54,17 @@ Load `config/sources.json` and find all sources with `type: "vc_newsrooms"`, no 
 
 If a source is unreachable, log to `errors.json` and continue.
 
+**Step 2b — Fetch route_to_scraper sources directly**
+
+Also find all sources with `route_to_scraper: true` (any `type` — this flag marks sources whose content Stage 1a's Python keyword filter structurally cannot evaluate, e.g. an RSS feed with title-only items and no usable server-side search). The Python fetcher skips these too. For each:
+
+1. If `rss_url` is set, fetch and parse the feed (title, link, pubDate — description is often absent for these sources). Use your own judgement on each headline to decide if it's plausibly a Scottish investment story — do not require an exact keyword/place-name match in the title, since headlines alone often omit both. For every headline that's plausible or ambiguous, fetch the full article at its link and judge from the full text.
+2. If there's no `rss_url` (or it's unreachable), fall back to fetching `url` (plus `search_path` if set).
+3. Extract structured records using the schema below
+4. Save to `data/raw/YYYY-MM-DD_<source-slug>.json`
+
+If a source is unreachable, log to `errors.json` and continue.
+
 ### Fallback mode (candidates file missing or empty)
 
 The Python fetcher did not run or produced no results. Proceed with direct web fetching:

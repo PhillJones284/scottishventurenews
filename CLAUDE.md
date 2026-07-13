@@ -57,6 +57,10 @@ If the gate fails: do **not** stop — proceed to Stage 1b anyway (the scraper a
 
 **Skipped source types**: Stage 1a skips `type: "firecrawl"` sources (handled by Stage 1c) and `type: "vc_newsrooms"` sources with no `rss_url` and no `direct_fetch_confirmed: true` (handled by Stage 1b via WebFetch — plain httpx is frequently blocked by bot protection, or the page is JS-rendered and only returns nav junk, on these VC firm websites). `direct_fetch_confirmed: true` marks a `vc_newsrooms` source individually verified to extract cleanly via plain httpx — see the 2026-07-01 vc_newsrooms audit; those sources are fetched directly by Stage 1a instead. These appear in the fetch log with a `"skipped"` entry rather than an error.
 
+Stage 1a also skips any source (regardless of `type`) with `"route_to_scraper": true` — this flags a source whose content Stage 1a's Python keyword filter structurally cannot evaluate (e.g. an RSS feed with title-only items and no description/content, combined with a server-side search that's JS-rendered and returns nothing via plain HTTP). These are handled by Stage 1b, which can apply judgement to bare headlines instead of a rigid keyword match. First used for `sifted-uk`, `techcrunch-scotland`, and `future-planet-capital-blog` (2026-07-13) — see `.claude/agents/scraper.md` Step 2b.
+
+**PDF extraction**: When a fetched URL is a PDF (by `Content-Type: application/pdf` or a `.pdf` URL), Stage 1a extracts text via `markitdown` instead of `trafilatura` (which only handles HTML) — see `_extract_text()`/`_is_pdf()` in `pipeline/fetcher.py`. Added 2026-07-13 after PDF reports (e.g. an EY Scotland Attractiveness Survey linked from a DuckDuckGo result) were silently failing extraction and falling back to short search-snippet text.
+
 ### Stage 1c — Firecrawl Scraper (Python)
 Run: `python pipeline/firecrawl_scraper.py` (or called automatically by `pipeline/run.py`).
 
@@ -75,9 +79,10 @@ Sources needing cookie auth specify `"cookie_env_var": "<VAR_NAME>"` in `sources
 
 **Gate (soft)**: Each `type: "firecrawl"` source should produce `data/raw/YYYY-MM-DD_{slug}.json`. Per-source failures are caught and logged — firecrawl sources are supplementary.
 
-**Coverage check note**: Three source types do not appear in `YYYY-MM-DD_candidates.json` and will never be flagged by the coverage check — this is expected:
+**Coverage check note**: Four categories do not appear in `YYYY-MM-DD_candidates.json` and will never be flagged by the coverage check — this is expected:
 - `type: "firecrawl"` sources — handled by Stage 1c
 - `type: "vc_newsrooms"` sources with no `rss_url` — fetched directly by Stage 1b via WebFetch
+- sources with `"route_to_scraper": true` (any `type`) — fetched directly by Stage 1b via WebFetch, see above
 - manual submissions (`data/raw/manual_finds.json`) — drained by Stage 1b into `data/raw/YYYY-MM-DD_manual.json`, see [Adding manual finds](#adding-manual-finds)
 
 ### Stage 1b — Scraper (Claude agent)
@@ -202,7 +207,7 @@ scottish-vc-tracker/
 │
 ├── .gitignore                   ← Used by git. Do not touch
 ├── .python-version              ← pyenv pins Python version
-├── pyproject.toml               ← project + dependencies
+├── setup.sh                     ← creates .venv, installs pipeline/requirements.txt
 ├── .venv/                       ← virtual environment (NOT committed - )
 │
 ├── .claude/
@@ -230,7 +235,8 @@ scottish-vc-tracker/
 │   ├── landing_page_generator.py ← Stage 8: Landing page HTML (Python)
 │   ├── newsletter_publish.py     ← Stage 10: Buttondown draft + ImgBB upload (Python)
 │   ├── rollback.py               ← Undo a publish: delete ImgBB images, delete draft, revert GitHub Pages
-│   └── add_manual_find.py        ← Stage articles Phill finds manually, ahead of the next run (see Adding manual finds)
+│   ├── add_manual_find.py        ← Stage articles Phill finds manually, ahead of the next run (see Adding manual finds)
+│   └── requirements.txt          ← Python dependencies, installed via setup.sh
 │
 ├── config/
 │   ├── sources.json             ← News sources and search queries (curated — do not edit directly)
