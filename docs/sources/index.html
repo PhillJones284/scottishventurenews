@@ -15,14 +15,13 @@
 
   <header>
     <h1>Intelligence Sources</h1>
-    <p>Every source monitored by the automated pipeline. Regenerated each run. &nbsp;·&nbsp; Last updated 2026-07-13</p>
+    <p>Every source monitored by the automated pipeline. Regenerated each run. &nbsp;·&nbsp; Last updated 2026-07-20</p>
   </header>
 
   <div class="stats-bar">
-    <div class="stat"><div class="stat-value">46</div><div class="stat-label">Total</div></div>
+    <div class="stat"><div class="stat-value">44</div><div class="stat-label">Total</div></div>
     <div class="stat"><div class="stat-value">14</div><div class="stat-label">News Sites</div></div>
-    <div class="stat"><div class="stat-value">27</div><div class="stat-label">VC Newsrooms</div></div>
-    <div class="stat"><div class="stat-value">1</div><div class="stat-label">Databases</div></div>
+    <div class="stat"><div class="stat-value">26</div><div class="stat-label">VC Newsrooms</div></div>
     <div class="stat"><div class="stat-value">2</div><div class="stat-label">Search Engines</div></div>
   </div>
 
@@ -53,7 +52,7 @@
       </tr>
       <tr>
         <td class="src-name"><a href="https://sifted.eu" target="_blank" rel="noopener">Sifted — UK/Scotland</a><span class="badge badge-rss">RSS</span></td>
-        <td class="src-notes">European startup media, covers UK deals well</td>
+        <td class="src-notes">European startup media, covers UK deals well. RSS feed is title-only (no description/content:encoded) and the ?s= search param is silently ignored by the feed endpoint, so Stage 1a&#x27;s keyword prefilter can never pass anything on title text alone — confirmed 0 ledger hits ever (2026-07-13). search_path was also dead: /search is client-side JS-rendered, returns an empty shell via both httpx and WebFetch. Routed to Stage 1b via route_to_scraper so the agent can judge headlines directly and follow promising links, instead of a rigid keyword substring match against title-only text.</td>
       </tr>
       <tr>
         <td class="src-name"><a href="https://techfundingnews.com" target="_blank" rel="noopener">Tech Funding News</a><span class="badge badge-rss">RSS</span></td>
@@ -98,7 +97,7 @@
 
   <section class="src-group">
     <div class="group-header">
-      <h2>VC Newsrooms</h2><span class="group-count">27</span>
+      <h2>VC Newsrooms</h2><span class="group-count">26</span>
     </div>
     <p class="group-desc">VC firm news pages scraped for deal announcements.</p>
     <div class="table-wrap">
@@ -120,10 +119,6 @@
       <tr>
         <td class="src-name"><a href="https://www.pxnventures.co.uk/news" target="_blank" rel="noopener">PXN Ventures — News</a><span class="badge badge-rss">RSS</span></td>
         <td class="src-notes">Edinburgh-based successor to Par Equity (merged with Praetura Ventures in 2025). Strong Scottish focus.</td>
-      </tr>
-      <tr>
-        <td class="src-name"><a href="https://www.olderbull.com/portfolio-news" target="_blank" rel="noopener">Older Bull — Portfolio News</a></td>
-        <td class="src-notes">Check for Scottish deal announcements</td>
       </tr>
       <tr>
         <td class="src-name"><a href="https://www.bgf.co.uk/newsroom/" target="_blank" rel="noopener">BGF — News</a></td>
@@ -191,7 +186,7 @@
       </tr>
       <tr>
         <td class="src-name"><a href="https://www.futureplanetcapital.com/blog" target="_blank" rel="noopener">Future Planet Capital — Blog</a></td>
-        <td class="src-notes">Impact-focused venture capital specializing in university spinouts and growth companies tackling global challenges. Blog covers portfolio company updates and investment announcements. 7 Scottish transactions. 2026-07-01 audit: plain httpx + link extraction returns genuine article headlines cleanly (no Scottish matches that day, but extraction itself works) — moved to Stage 1a.</td>
+        <td class="src-notes">Impact-focused venture capital specializing in university spinouts and growth companies tackling global challenges. Blog covers portfolio company updates and investment announcements. 7 Scottish transactions. 2026-07-01 audit confirmed plain httpx + link extraction returns genuine article headlines cleanly, so it was moved to Stage 1a via direct_fetch_confirmed — but it has produced zero ledger hits since. 2026-07-13: found the real cause — Stage 1a&#x27;s title-only keyword filter requires a place-name/money term in the headline itself (e.g. &quot;Future Planet Capital Makes Strategic Investment in Nutri-San&quot; matches a funding term but not a place/amount term), which most genuine portfolio-update headlines don&#x27;t include. Reverted direct_fetch_confirmed and routed to Stage 1b instead so the agent can judge full articles directly.</td>
       </tr>
       <tr>
         <td class="src-name"><a href="https://greenangelventures.com/stories/" target="_blank" rel="noopener">Green Angel Ventures — Stories</a></td>
@@ -220,24 +215,6 @@
 
   <section class="src-group">
     <div class="group-header">
-      <h2>Databases</h2><span class="group-count">1</span>
-    </div>
-    <p class="group-desc">Investment databases. Partially paywalled — free content extracted only.</p>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Source</th><th>Description</th></tr></thead>
-        <tbody>
-      <tr>
-        <td class="src-name"><a href="https://www.beauhurst.com" target="_blank" rel="noopener">Beauhurst</a><span class="badge badge-be">best‑effort</span></td>
-        <td class="src-notes">UK equity investment tracker. Mostly paywalled — extract whatever free headlines are visible</td>
-      </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section class="src-group">
-    <div class="group-header">
       <h2>Search Engines</h2><span class="group-count">2</span>
     </div>
     <p class="group-desc">Web search queries run against public search engines.</p>
@@ -251,7 +228,7 @@
       </tr>
       <tr>
         <td class="src-name"><a href="https://techcrunch.com/search/scotland+funding" target="_blank" rel="noopener">TechCrunch — Scotland search</a></td>
-        <td class="src-notes">Larger deals that make international press</td>
+        <td class="src-notes">Larger deals that make international press. The /search/... URL doesn&#x27;t run a real server-side search — confirmed 2026-07-13 it returns the same generic homepage-style content as techcrunch.com/?s=scotland and techcrunch.com with no query (near-identical link sets, no scoping). Stage 1a&#x27;s title-only keyword filter also missed a genuinely Scottish headline that day (&quot;Orbex&#x27;s new funding may accelerate its Prime microlauncher into orbit&quot; — Orbex is Forres-based — matched a funding term but no money/place term). Routed to Stage 1b via route_to_scraper so the agent can judge full articles directly.</td>
       </tr>
         </tbody>
       </table>
