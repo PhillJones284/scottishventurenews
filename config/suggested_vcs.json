@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "canonical_name": "Bethnal Green Ventures",
+    "aliases": ["BGV"],
+    "hq": "London",
+    "stage_focus": "early stage / tech for good (pre-seed, grant match-funding)",
+    "scotland_active": true,
+    "notes": "Flagged from https://sifted.eu/articles/incubator-scotland-next-generation-of-tech-brnd/ (2026-07-20 run) — matched a Smart Scotland grant for Edinburgh AI biotech startup Amytis. Europe's leading early-stage 'tech for good' VC; worth confirming broader Scottish activity before promoting to known_vcs.json."
+  },
+  {
+    "canonical_name": "LDC",
+    "aliases": ["LDC (Lloyds Development Capital)"],
+    "hq": null,
+    "stage_focus": "Private Equity",
+    "scotland_active": true,
+    "notes": "Manually added by Phill 2026-07-20 as lead investor on Nu-Style Products' Private Equity round (22 June 2026, amount undisclosed) — no source article yet, only deal terms confirmed verbally. Worth confirming firm background/HQ before promoting to known_vcs.json."
+  }
+]

@@ -334,5 +334,11 @@
     "url": "https://www.olderbull.com/portfolio-news",
     "error": "WebFetch returned no page content (empty response) on repeated attempts",
     "timestamp": "2026-07-13T08:19:12.935215+00:00"
+  },
+  {
+    "source": "highlight-capital-news",
+    "url": "https://www.highlightcapital.com/news",
+    "error": "connect ECONNREFUSED 203.107.45.167:443 - site unreachable via WebFetch (recurring failure, see prior entries)",
+    "timestamp": "2026-07-20T07:33:19+00:00"
   }
 ]

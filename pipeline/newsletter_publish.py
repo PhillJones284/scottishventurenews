@@ -1,20 +1,27 @@
 """Publishes the weekly report as a draft on Buttondown.
 
-Reads `data/reports/YYYY-MM-DD_vc-report.md`, uploads its two embedded chart
-PNGs to ImgBB (Buttondown's API doesn't accept file attachments), rewrites the
-local chart paths to the returned ImgBB URLs, then creates a draft on Buttondown
-for manual review and send.
+Reads `data/reports/YYYY-MM-DD_vc-report.md`, rewrites its two embedded chart
+image links to point at the copies already published to GitHub Pages (Stage 8
+copies them into `docs/charts/`, and Stage 9 pushes `docs/` before this stage
+runs — Buttondown's API doesn't accept file attachments, so the charts need a
+public URL to embed), then creates a draft on Buttondown for manual review and
+send.
+
+Charts were previously hosted via an ImgBB upload, but ImgBB began gating
+hotlinked images in emails behind a paid Pro plan (discovered 2026-07-20 when
+the 13 July issue's charts silently degraded to an "upgrade to Pro" placeholder
+in the public archive) — GitHub Pages already hosts the identical files for
+free, so linking there directly removes that failure mode entirely.
 
 Writes `data/processed/publish_manifest_YYYY-MM-DD.json` with the Buttondown
-draft ID and ImgBB delete URLs so `pipeline/rollback.py` can undo the publish.
+draft ID so `pipeline/rollback.py` can undo the publish.
 
-Requires IMGBB_API_KEY and BUTTONDOWN_API_KEY in a .env file at the project root.
+Requires BUTTONDOWN_API_KEY in a .env file at the project root.
 
 Usage:
     python pipeline/newsletter_publish.py [--date YYYY-MM-DD]
 """
 import argparse
-import base64
 import json
 import os
 import re
@@ -28,8 +35,8 @@ from dotenv import load_dotenv
 ROOT = Path(__file__).parent.parent
 REPORTS_DIR = ROOT / "data" / "reports"
 PROCESSED_DIR = ROOT / "data" / "processed"
+DOCS_CHARTS_DIR = ROOT / "docs" / "charts"
 
-IMGBB_UPLOAD_URL = "https://api.imgbb.com/1/upload"
 BUTTONDOWN_EMAILS_URL = "https://api.buttondown.com/v1/emails"
 
 SITE_BASE = "https://philljones284.github.io/scottishventurenews"
@@ -44,40 +51,36 @@ EMAIL_FOOTER = f"""
 - [Intelligence Sources]({SITE_BASE}/sources/) — every news source, VC newsroom, and database monitored by the pipeline
 """
 
+SUBSCRIBE_BLOCK = """
+## If you were forwarded this email, why not subscribe?
+
+{{ subscribe_form }}
+"""
+
 IMAGE_LINK_RE = re.compile(r"!\[([^\]]*)\]\((charts/[^)]+\.png)\)")
 
 
-def _upload_chart_to_imgbb(image_path: Path, api_key: str) -> dict:
-    """Upload a chart PNG to ImgBB. Returns {url, delete_url}."""
-    image_b64 = base64.b64encode(image_path.read_bytes()).decode("ascii")
-    response = httpx.post(
-        IMGBB_UPLOAD_URL,
-        data={"key": api_key, "image": image_b64},
-        timeout=30,
-    )
-    response.raise_for_status()
-    payload = response.json()
-    if not payload.get("success"):
-        raise RuntimeError(f"ImgBB upload failed for {image_path.name}: {payload}")
-    return {
-        "filename": image_path.name,
-        "url": payload["data"]["url"],
-        "delete_url": payload["data"].get("delete_url", ""),
-    }
+def _rewrite_chart_links(report_text: str) -> tuple[str, list[dict]]:
+    """Replace local chart paths with their published GitHub Pages URLs.
 
-
-def _rewrite_chart_links(report_text: str, report_dir: Path, imgbb_key: str) -> tuple[str, list[dict]]:
-    """Replace local chart paths with ImgBB URLs. Returns (rewritten_text, images_metadata)."""
+    Returns (rewritten_text, images_metadata) — images_metadata is kept in the
+    manifest for informational purposes only (there's no upload to undo on
+    rollback, unlike the old ImgBB step).
+    """
     images: list[dict] = []
 
     def replace(match):
         alt_text, relative_path = match.group(1), match.group(2)
-        image_path = report_dir / relative_path
-        if not image_path.exists():
-            raise FileNotFoundError(f"Chart not found on disk: {image_path}")
-        meta = _upload_chart_to_imgbb(image_path, imgbb_key)
-        images.append(meta)
-        return f"![{alt_text}]({meta['url']})"
+        filename = Path(relative_path).name
+        docs_path = DOCS_CHARTS_DIR / filename
+        if not docs_path.exists():
+            raise FileNotFoundError(
+                f"Chart not found at {docs_path} — Stage 8/9 must run (and push docs/) "
+                f"before Stage 10 links to it"
+            )
+        url = f"{SITE_BASE}/charts/{filename}"
+        images.append({"filename": filename, "url": url})
+        return f"![{alt_text}]({url})"
 
     rewritten = IMAGE_LINK_RE.sub(replace, report_text)
     return rewritten, images
@@ -110,9 +113,6 @@ def run(date_str: str | None = None) -> dict:
     """Publish the report as a Buttondown draft. Returns the manifest dict."""
     load_dotenv()
 
-    imgbb_key = os.environ.get("IMGBB_API_KEY")
-    if not imgbb_key:
-        raise RuntimeError("IMGBB_API_KEY must be set in .env")
     buttondown_key = os.environ.get("BUTTONDOWN_API_KEY")
     if not buttondown_key:
         raise RuntimeError("BUTTONDOWN_API_KEY must be set in .env")
@@ -127,14 +127,19 @@ def run(date_str: str | None = None) -> dict:
     # Strip the leading H1 — Buttondown renders the newsletter name + date as its
     # own header, so keeping the H1 in the body produces a triple title.
     body_text = re.sub(r"^#[^#][^\n]*\n+", "", report_text, count=1)
-    body, images = _rewrite_chart_links(body_text + EMAIL_FOOTER, report_path.parent, imgbb_key)
+    body_text, n_inserted = re.subn(
+        r"\n## The Numbers\n", SUBSCRIBE_BLOCK + "\n## The Numbers\n", body_text, count=1
+    )
+    if n_inserted == 0:
+        raise ValueError("Could not find '## The Numbers' heading to insert the subscribe block before")
+    body, images = _rewrite_chart_links(body_text + EMAIL_FOOTER)
 
     draft = _publish_to_buttondown(subject, body, buttondown_key)
 
     manifest = {
         "date": run_date,
         "buttondown_draft_id": draft.get("id"),
-        "imgbb_images": images,
+        "chart_images": images,
         "git_commit_hash": None,  # filled in by run.py after git commit
     }
     manifest_path = PROCESSED_DIR / f"publish_manifest_{run_date}.json"

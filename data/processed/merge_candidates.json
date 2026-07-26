@@ -147,5 +147,38 @@
     "status": "merged",
     "merged_into": "go-swag_seed_2026-05-27",
     "resolved_date": "2026-07-06"
+  },
+  {
+    "match_type": "possible",
+    "scope": "within_run",
+    "record_a": "wordsmith-ai_series-b_2026-06-03",
+    "record_b": "wordsmith_series-b_2026-06-03",
+    "note": "Similar company names ('Wordsmith AI' vs 'Wordsmith')",
+    "flagged_date": "2026-07-20",
+    "status": "merged",
+    "resolved_date": "2026-07-20",
+    "resolution_note": "record_a no longer exists as a standalone record (already absorbed into wordsmith-ai_series-b_2026-06-04 via a separate definite auto-merge this run). Resolved together with the against_ledger pair below as one consolidation into wordsmith-ai_series-b_2026-06-04."
+  },
+  {
+    "match_type": "possible",
+    "scope": "against_ledger",
+    "record_a": "ardgowan-distillery_private-equity_2026-06-04",
+    "record_b": "ardgowan-distillery_unknown_2026-06-04",
+    "note": "Same company name, different round types ('Private Equity' vs 'Unknown')",
+    "flagged_date": "2026-07-20",
+    "status": "merged",
+    "resolved_date": "2026-07-20",
+    "resolution_note": "Confirmed same company/date by Phill. Kept existing \u00a34.2m amount and 'Unknown' round_type (thespiritsbusiness.com) as authoritative; Crunchbase's \u00a318.2m figure did not reconcile and was not adopted. Crunchbase URL added as a secondary source on ardgowan-distillery_unknown_2026-06-04."
+  },
+  {
+    "match_type": "possible",
+    "scope": "against_ledger",
+    "record_a": "wordsmith_series-b_2026-06-03",
+    "record_b": "wordsmith-ai_series-b_2026-06-04",
+    "note": "Similar company names ('Wordsmith' vs 'Wordsmith AI')",
+    "flagged_date": "2026-07-20",
+    "status": "merged",
+    "resolved_date": "2026-07-20",
+    "resolution_note": "Merged into wordsmith-ai_series-b_2026-06-04: adopted amount/currency/summary/headline/source from the eu-startups extraction (more precise, direct primary source), cleared stale 'investor_unnamed' issue flag, unioned source_urls (5 total, eu-startups already present)."
   }
 ]

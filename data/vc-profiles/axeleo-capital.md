@@ -1,7 +1,7 @@
 ---
 canonical_name: Axeleo Capital
-last_updated: 2026-07-06
-last_updated_via: "2026-07-06_vc-report.md"
+last_updated: 2026-07-20
+last_updated_via: "2026-07-20_vc-report.md"
 ---
 
 ### Axeleo Capital
@@ -9,4 +9,4 @@ last_updated_via: "2026-07-06_vc-report.md"
 **Sectors favoured**: Deep Tech, Energy & Cleantech
 **Stages**: Seed
 **HQ**: Paris, France
-**Trajectory**: Limited data point — a single Scottish deal recorded, so no trend can yet be projected. Paris-based Axeleo Capital led the £10m Exergy3 seed round (Edinburgh, April 2026) through its Article 9-classified Green Tech Industry fund, meaning sustainability is a mandatory objective for its LPs. This remains the firm's only confirmed Scottish deal and is among the largest seed rounds in the ledger, representing a notable entry of European institutional cleantech capital into the Scottish market. Worth monitoring for a follow-on or further Scottish activity.
+**Trajectory**: Limited data point — a single Scottish deal recorded, so no trend can yet be projected. Paris-based Axeleo Capital led the £10m Exergy3 seed round (Edinburgh, April 2026) through its Article 9-classified Green Tech Industry fund, meaning sustainability is a mandatory objective for its LPs. This remains the firm's only confirmed Scottish deal and is among the largest seed rounds in the ledger. No further Scottish activity has been observed since; worth continuing to monitor for a follow-on.

@@ -1,15 +1,13 @@
-Last Thursday I attended the Signals briefing event at CodeBase. Signals is a new investment programme from Techstart Ventures, aimed at helping pre-seed companies become more investment-ready.
+When assessing your startup, what VCs fundamentally care about is whether they will get a return on their investment. For that to happen, you have to be successful.
 
-As Robert Gelb, representing Techstart, explained, the idea comes from a change in what investors are looking for. A few years ago, a strong idea and a good team might have been enough. Increasingly, investors want more developed products and evidence of market traction.
+VC firms aren't charities, and they're not academic funders. They're businesses with a distinct set of incentives. The partner you're talking to isn't just a person with access to money, looking to give it away as a reward to somebody with a clever idea. They're usually funded by institutional investors, like pension funds, and face real consequences if they don't make returns.
 
-Techstart are addressing that by giving entrepreneurs ongoing peer accountability, regular co-working, and challenge from investors and experienced operators. They also use a warrantied SAFE note, keeping things simple and avoiding the need for an early valuation.
+Success rates aren't particularly high. In the UK, 70% of VC funds (2002–2020 vintages) haven't yet distributed more cash to investors than was paid in, and only 5% have distributed more than 3x their capital back.* Adding further pressure, it's common for VC partners to invest their own money. Considering the level of skin in the game helps explain the VC worldview and perspective.
 
-I think Techstart are a great company and I really like the Signals idea, but the interesting discussion came afterwards in the Q&A.
+Many of the pressures on VCs and entrepreneurs are similar, just at a different scale. Think about choosing a co-founder, or making your first hire. Skills, background, credentials are all important, but the real test is how you get on face to face. The questions most people ask themselves are: 'Do I trust this person with this thing that's really important to me?', 'Are they committed?', 'Will they push through when the going gets tough, or fold?'
 
-A conversation developed around the different routes founders can take to fund a high-growth business, and the implications of those choices. At one point I said that not all money is fungible - which sounds ridiculous, given that fungibility is part of the definition of money - but bear with me.
+So when a VC is looking at a startup, they care about the problem, the product, the total addressable market, and all of that stuff you've put in your pitch decks. They care more about the people who are going to drive the company forward and make it grow. That's you, as founder, and it's the rest of the team too, especially anyone holding equity. They're going to ask themselves if you're the person that's going to turn this problem into a high-growth business. They're going to ask why you started the company, and what makes you the person who's going to succeed where others have failed. In short, they're asking themselves if they trust you with the money they're responsible for.
 
-For a founder, raising venture capital is usually the start of a 7–10 year relationship. Your investors will be co-owners and business partners, so choosing them carefully matters. Who you choose to partner with says something about your business, and future investors will pay close attention to who is already on the cap table.
+Last week I made the point that entrepreneurs need to be careful when choosing an investor because it's a long-term partnership with real consequences. That cuts both ways.
 
-It’s not about good money or bad money. It’s about finding the right investors for your business. That might be about their sector expertise, the terms they offer, their ability to support you, or simply whether you trust each other and can work together.
-
-Venture money isn’t really fungible because it comes with more than capital. It comes with a partnership. Choose your partners carefully.
+/* Morrison, Ben, George Buckle, and British Business Bank Economics Team. UK Venture Capital Financial Returns 2025. Annual report. British Business Bank, 2025.

@@ -4,13 +4,10 @@
       "Read(/Users/philljones/projects/scottish-vc-tracker/**)",
       "WebFetch",
       "WebSearch",
-      "Write(/Users/philljones/projects/scottish-vc-tracker/data/**)",
       "Edit(/Users/philljones/projects/scottish-vc-tracker/data/**)",
-      "Write(/Users/philljones/projects/scottish-vc-tracker/config/**)",
       "Edit(/Users/philljones/projects/scottish-vc-tracker/config/**)",
-      "Write(/Users/philljones/projects/scottish-vc-tracker/docs/**)",
       "Edit(/Users/philljones/projects/scottish-vc-tracker/docs/**)",
-      "Write(/Users/philljones/.claude/projects/-Users-philljones-projects-scottish-vc-tracker/memory/**)",
+      "Edit(/Users/philljones/.claude/projects/-Users-philljones-projects-scottish-vc-tracker/memory/**)",
       "Bash",
       "Agent"
     ]

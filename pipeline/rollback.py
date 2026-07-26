@@ -1,9 +1,10 @@
 """Roll back a pipeline publish.
 
 Reads the publish manifest written by Stage 10, then:
-  1. Attempts to delete the ImgBB images via their delete URLs
-  2. Deletes the Buttondown draft via the API
-  3. Reverts the docs/ git commit and pushes to GitHub (restoring the previous page)
+  1. Deletes the Buttondown draft via the API
+  2. Reverts the docs/ git commit and pushes to GitHub (restoring the previous
+     page — this also reverts the chart PNGs the newsletter linked to, since
+     they're published as part of the same docs/ commit)
 
 The data files (ledger, reports, vc-profiles) are not touched — they remain
 intact so you can fix and re-run without starting the pipeline from scratch.
@@ -25,33 +26,6 @@ from dotenv import load_dotenv
 ROOT = Path(__file__).parent.parent
 PROCESSED_DIR = ROOT / "data" / "processed"
 BUTTONDOWN_EMAILS_URL = "https://api.buttondown.com/v1/emails"
-
-
-def _delete_imgbb_images(images: list[dict]) -> None:
-    """Best-effort deletion of ImgBB images via their delete URLs.
-
-    ImgBB's public API does not document a programmatic delete endpoint, so we
-    GET each delete_url and treat any 2xx as success. If it fails, we print the
-    URL for manual deletion — this is non-fatal since the images are not
-    subscriber-facing and will expire if ImgBB's retention policy applies.
-    """
-    for img in images:
-        delete_url = img.get("delete_url", "")
-        filename = img.get("filename", "unknown")
-        if not delete_url:
-            print(f"  [ImgBB] No delete URL for {filename} — skip.")
-            continue
-        try:
-            resp = httpx.get(delete_url, follow_redirects=True, timeout=15)
-            if resp.status_code < 400:
-                print(f"  [ImgBB] Deleted {filename} (HTTP {resp.status_code}).")
-            else:
-                print(
-                    f"  [ImgBB] Could not auto-delete {filename} (HTTP {resp.status_code}). "
-                    f"Delete manually: {delete_url}"
-                )
-        except Exception as exc:
-            print(f"  [ImgBB] Request failed for {filename}: {exc}. Delete manually: {delete_url}")
 
 
 def _delete_buttondown_draft(draft_id: str, api_key: str) -> None:
@@ -103,14 +77,10 @@ def main():
     manifest = json.loads(manifest_path.read_text())
     print(f"Rolling back publish for {run_date}...\n")
 
-    # 1. ImgBB images
-    print("Step 1: Removing ImgBB images...")
-    _delete_imgbb_images(manifest.get("imgbb_images", []))
-
-    # 2. Buttondown draft
+    # 1. Buttondown draft
     draft_id = manifest.get("buttondown_draft_id")
     if draft_id:
-        print("\nStep 2: Deleting Buttondown draft...")
+        print("Step 1: Deleting Buttondown draft...")
         buttondown_key = os.environ.get("BUTTONDOWN_API_KEY")
         if not buttondown_key:
             print("  [Buttondown] BUTTONDOWN_API_KEY not set — skipping. Delete draft manually in the dashboard.")
@@ -121,19 +91,19 @@ def main():
                 print(f"  [Buttondown] Failed: {exc}")
                 print(f"  Delete manually in the Buttondown dashboard (draft id: {draft_id}).")
     else:
-        print("\nStep 2: No Buttondown draft ID in manifest — skipping.")
+        print("Step 1: No Buttondown draft ID in manifest — skipping.")
 
-    # 3. Git revert
+    # 2. Git revert
     commit_hash = manifest.get("git_commit_hash")
     if commit_hash:
-        print("\nStep 3: Reverting GitHub Pages commit...")
+        print("\nStep 2: Reverting GitHub Pages commit...")
         try:
             _git_revert(commit_hash)
         except Exception as exc:
             print(f"  [Git] Failed: {exc}")
             print(f"  Revert manually: git revert {commit_hash} --no-edit && git push origin main")
     else:
-        print("\nStep 3: No git commit hash in manifest — GitHub Pages not reverted.")
+        print("\nStep 2: No git commit hash in manifest — GitHub Pages not reverted.")
         print("  If a commit was made separately, revert it manually.")
 
     print("\nRollback complete. Data files (ledger, reports, vc-profiles) are untouched.")
