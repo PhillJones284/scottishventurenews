@@ -73,8 +73,45 @@ def _parse_crunchbase(markdown: str, source_url: str) -> list[dict]:
     return deals
 
 
+def _parse_techstart_portfolio(markdown: str, source_url: str) -> list[dict]:
+    # techstart.vc/portfolio is a Framer site with no server-rendered content —
+    # Firecrawl's rendered markdown is the only way to see the page at all.
+    # Unlike Crunchbase, the "Recent follow-on rounds" teasers have no date and
+    # inconsistent round/investor wording, so we can't build a final deal record
+    # here. Instead we extract the teaser's link to the actual press coverage
+    # (tech.eu, TechCrunch, Sifted, ...) as a link candidate — Stage 1b follows
+    # each one and extracts the real record from the linked article.
+    section_match = re.search(r"# Recent follow-on rounds(.*?)\n# ", markdown, re.DOTALL)
+    if not section_match:
+        return []
+    section = section_match.group(1)
+
+    candidates = []
+    seen_urls = set()
+    for match in re.finditer(r"-\s*(.+?)\n+\[Read on ([^\]]+)\]\(([^)]+)\)", section, re.DOTALL):
+        teaser, publication, url = (s.strip() for s in match.groups())
+        if url in seen_urls:
+            continue
+        seen_urls.add(url)
+        # Best-effort company name hint from the teaser sentence — Stage 1b
+        # re-confirms the name from the actual article regardless.
+        name_match = re.match(r"^(.+?)\s+(?:raises?|rasies?|secures?)\s", teaser, re.IGNORECASE)
+        candidates.append({
+            "source_slug": "techstart-portfolio",
+            "source_name": publication,
+            "url": url,
+            "title": teaser,
+            "published": None,
+            "text": None,
+            "company_hint": name_match.group(1).strip() if name_match else None,
+            "needs_extraction": True,
+        })
+    return candidates
+
+
 _PARSERS = {
     "crunchbase": _parse_crunchbase,
+    "techstart-portfolio": _parse_techstart_portfolio,
 }
 
 
@@ -145,9 +182,16 @@ def run(date: str | None = None) -> dict[str, int]:
                 actions=[{"type": "wait", "milliseconds": wait_ms}],
             )
             deals = _PARSERS[slug](result.markdown, url)
-            out_path = DATA_RAW / f"{date}_{slug}.json"
+            output_mode = source.get("output_mode", "deals")
+            if output_mode == "link_candidates":
+                # Not final deal records (e.g. no announcement_date) — filename
+                # includes "_candidates" so Stage 2's parser skips it; Stage 1b
+                # follows each link and writes the real records separately.
+                out_path = DATA_RAW / f"{date}_{slug}_candidates.json"
+            else:
+                out_path = DATA_RAW / f"{date}_{slug}.json"
             out_path.write_text(json.dumps(deals, indent=2))
-            logger.info("Stage 1c (%s): wrote %d deals → %s", slug, len(deals), out_path.name)
+            logger.info("Stage 1c (%s): wrote %d %s → %s", slug, len(deals), output_mode, out_path.name)
             results[slug] = len(deals)
         except Exception as e:
             logger.warning("Stage 1c (%s): failed — %s", slug, e)

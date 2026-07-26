@@ -64,11 +64,13 @@ Stage 1a also skips any source (regardless of `type`) with `"route_to_scraper": 
 ### Stage 1c — Firecrawl Scraper (Python)
 Run: `python pipeline/firecrawl_scraper.py` (or called automatically by `pipeline/run.py`).
 
-Handles all sources with `type: "firecrawl"` in `config/sources.json`. Currently: `crunchbase`.
+Handles all sources with `type: "firecrawl"` in `config/sources.json`. Currently: `crunchbase`, `techstart-portfolio`.
 
 Each source must have a parse function registered in `pipeline/firecrawl_scraper.py`. If a source has no parse function, Stage 1c raises immediately for that source — add `_parse_{slug}()` and register it in `_PARSERS` before adding a new firecrawl source to `sources.json`.
 
 Sources needing cookie auth specify `"cookie_env_var": "<VAR_NAME>"` in `sources.json`. The value is read from `.env` at runtime. If the env var is missing, the scrape proceeds without auth (deal amounts may show as "—").
+
+**`output_mode: "link_candidates"`**: Some firecrawl-rendered pages only expose teaser headlines with no date (so no final deal record can be built directly) but link to the real press coverage. A source flagged `"output_mode": "link_candidates"` in `sources.json` writes `data/raw/YYYY-MM-DD_{slug}_candidates.json` instead of `YYYY-MM-DD_{slug}.json` — the `_candidates` suffix makes Stage 2's parser skip it. Stage 1b then follows each link and extracts the real record (see `.claude/agents/scraper.md` Step 2c). First used for `techstart-portfolio` (2026-07-26) — techstart.vc/portfolio is a Framer site with no server-rendered content, so plain httpx/WebFetch returned an empty JS shell every run; Firecrawl's rendered markdown exposes a "Recent follow-on rounds" section with links to tech.eu/TechCrunch/Sifted coverage instead.
 
 **Cookie expiry (Crunchbase)**: `CRUNCHBASE_AUTH_COOKIE` expires periodically. When it does, deal amounts return "—" instead of values. To refresh:
 1. Go to crunchbase.com in Chrome (must be logged in)
@@ -77,7 +79,7 @@ Sources needing cookie auth specify `"cookie_env_var": "<VAR_NAME>"` in `sources
 4. Click any request → Cookies tab → copy the `authcookie` value (the long `eyJ...` string)
 5. Update `CRUNCHBASE_AUTH_COOKIE` in `.env`
 
-**Gate (soft)**: Each `type: "firecrawl"` source should produce `data/raw/YYYY-MM-DD_{slug}.json`. Per-source failures are caught and logged — firecrawl sources are supplementary.
+**Gate (soft)**: Each `type: "firecrawl"` source should produce `data/raw/YYYY-MM-DD_{slug}.json` (or `_{slug}_candidates.json` for `output_mode: "link_candidates"` sources — see below). Per-source failures are caught and logged — firecrawl sources are supplementary.
 
 **Coverage check note**: Four categories do not appear in `YYYY-MM-DD_candidates.json` and will never be flagged by the coverage check — this is expected:
 - `type: "firecrawl"` sources — handled by Stage 1c

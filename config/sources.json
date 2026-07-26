@@ -26,7 +26,8 @@
       "type": "news_site",
       "url": "https://www.heraldscotland.com/business",
       "search_path": null,
-      "notes": "Strong Glasgow/West of Scotland coverage"
+      "rss_url": "https://www.heraldscotland.com/business_hq/rss/",
+      "notes": "Strong Glasgow/West of Scotland coverage. Previously fetched via homepage link-scraping, which almost never matched the keyword filter (found via /maintain audit 2026-07-26 \u2014 candidates_added was 0 in 7 of the last 9 runs). Switched to the confirmed-working RSS feed instead (50 items, real titles/descriptions)."
     },
     {
       "slug": "insider-co-uk",
@@ -91,10 +92,16 @@
     {
       "slug": "techstart-portfolio",
       "name": "Techstart Ventures \u2014 Portfolio",
-      "type": "vc_newsrooms",
+      "type": "firecrawl",
       "url": "https://www.techstart.vc/portfolio",
       "search_path": null,
-      "notes": "Pre-seed/seed investor very active in Scotland. Portfolio page links to press coverage of follow-on rounds \u2014 fetch the page and follow coverage links to extract deal details."
+      "rss_url": null,
+      "queries": null,
+      "cookie_env_var": null,
+      "wait_ms": 5000,
+      "best_effort": true,
+      "output_mode": "link_candidates",
+      "notes": "Pre-seed/seed investor very active in Scotland. Page is a Framer site \u2014 plain httpx/WebFetch return an empty JS shell (confirmed empty every run May\u2013Jul 2026), so this moved from vc_newsrooms/Stage 1b to firecrawl/Stage 1c. Firecrawl's rendered markdown includes a \"Recent follow-on rounds\" section with teaser headlines linking to press coverage (tech.eu, TechCrunch, Sifted). pipeline/firecrawl_scraper.py's _parse_techstart_portfolio() extracts those links as candidates (no announcement_date in the teaser text, so it can't build final deal records) \u2014 Stage 1b then follows each link and extracts the full record via WebFetch, per .claude/agents/scraper.md."
     },
     {
       "slug": "octopus-ventures-blog",
@@ -103,14 +110,6 @@
       "url": "https://octopusventures.com/blog/",
       "search_path": null,
       "notes": "UK-wide VC with some Scottish portfolio companies. Blog features investment announcement posts explaining why they backed specific companies \u2014 scan for Scottish deals."
-    },
-    {
-      "slug": "highlight-capital-news",
-      "name": "Highlight Capital \u2014 News",
-      "type": "vc_newsrooms",
-      "url": "https://www.highlightcapital.com/news",
-      "search_path": null,
-      "notes": "Check for Scottish deal announcements"
     },
     {
       "slug": "pxn-ventures-news",
