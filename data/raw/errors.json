@@ -340,5 +340,17 @@
     "url": "https://www.highlightcapital.com/news",
     "error": "connect ECONNREFUSED 203.107.45.167:443 - site unreachable via WebFetch (recurring failure, see prior entries)",
     "timestamp": "2026-07-20T07:33:19+00:00"
+  },
+  {
+    "source": "tech-funding-news",
+    "url": "https://techfundingnews.com",
+    "error": "RSS fetch failed: The read operation timed out (fell back to page fetch, which succeeded)",
+    "timestamp": "2026-07-26T13:13:36.547868+00:00"
+  },
+  {
+    "source": "sifted-uk",
+    "url": "https://sifted.eu/feed/?post_type=article",
+    "error": "HTTP 403 Forbidden on RSS feed; fallback fetch of https://sifted.eu succeeded but returned no Scotland-related articles",
+    "timestamp": "2026-07-26T15:07:17.637376+00:00"
   }
 ]

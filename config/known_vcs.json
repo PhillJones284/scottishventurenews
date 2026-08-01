@@ -787,6 +787,14 @@
       ],
       "scotland_active": true,
       "notes": "Manually added by Phill 2026-07-20 as lead investor on Nu-Style Products' Private Equity round (22 June 2026, amount undisclosed) — no source article yet, only deal terms confirmed verbally. HQ and firm background not yet verified."
+    },
+    {
+      "canonical_name": "Chiltern Capital",
+      "aliases": [],
+      "hq": "London",
+      "stage_focus": null,
+      "scotland_active": true,
+      "notes": "Flagged from https://www.heraldscotland.com/news/26403951.glasgow-firm-xburo-reveals-uk-hopes-investment-deal/?ref=rss (2026-07-23) — backed Glasgow/Edinburgh engineering consultancy Xburo UK with an undisclosed growth investment. Portfolio described as spanning UK, Europe and North America; this appears to be its first identified Scottish deal."
     }
   ]
 }

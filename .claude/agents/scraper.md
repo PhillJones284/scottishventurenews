@@ -67,9 +67,9 @@ If a source is unreachable, log to `errors.json` and continue.
 
 **Step 2c — Follow up on firecrawl-discovered link candidates**
 
-Check for any `data/raw/YYYY-MM-DD_*_candidates.json` files besides the main `YYYY-MM-DD_candidates.json` (note the underscore before "candidates" — that's what distinguishes them). Stage 1c (the firecrawl scraper) writes one of these for any `type: "firecrawl"` source configured with `"output_mode": "link_candidates"` in `config/sources.json` — currently `techstart-portfolio`. These sources' pages only expose teaser headlines with no date (so Stage 1c can't build a final record itself) but do link to the actual press coverage.
+Check for any `data/raw/YYYY-MM-DD_*_candidates.json` files besides the main `YYYY-MM-DD_candidates.json` (note the underscore before "candidates" — that's what distinguishes them). Stage 1c (the firecrawl scraper) writes one of these for any `type: "firecrawl"` source configured with `"output_mode": "link_candidates"` in `config/sources.json` — currently `techstart-portfolio` and `sifted-uk`. These sources' pages only expose teaser headlines with no date (so Stage 1c can't build a final record itself) but do link to the actual press coverage.
 
-Each entry has `source_slug`, `source_name` (the linked publication, e.g. "tech.eu"), `url` (the article), `title` (the teaser headline), and `company_hint` (best-effort company name parsed from the teaser — confirm the real name from the article rather than trusting this blindly). For each entry:
+Each entry has `source_slug`, `source_name` (the linked publication, e.g. "tech.eu" or "Sifted"), `url` (the article), `title` (the teaser headline), and `company_hint` (best-effort company name parsed from the teaser — confirm the real name from the article rather than trusting this blindly; may be `null`, e.g. for `sifted-uk`, where the parser doesn't attempt this and leaves confirming the company to this step). For each entry:
 
 1. WebFetch the `url`
 2. Extract a structured record using the schema below, same as any other source (confirm this is a genuine Scottish VC deal within the last 90 days — teasers can surface older follow-on rounds that are now stale, skip those)

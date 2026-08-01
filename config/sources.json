@@ -1,6 +1,17 @@
 {
   "sources": [
     {
+      "slug": "scottish-enterprise-mediacentre",
+      "name": "Scottish Enterprise Newsroom",
+      "type": "news_site",
+      "url": "https://www.scottish-enterprise-mediacentre.com/news",
+      "search_path": null,
+      "rss_url": "https://www.scottish-enterprise-mediacentre.com/feed/rss",
+      "queries": [],
+      "best_effort": false,
+      "notes": "Official newsroom of Scottish Enterprise, Scotland's economic development agency. Publishes press releases on grants/funding to Scottish companies, FDI wins, and startup investment news — includes VC-relevant deals where Scottish Enterprise co-invests alongside private VCs (e.g. QUICKBLOCK, Regenerus Laboratories, ReVentas — all July 2026). Also carries non-VC content (grants, FDI announcements, general economic policy) that won't pass the investment keyword filter, which is expected. RSS feed at /feed/rss confirmed valid, 10 items, dated. Added 2026-08-01 after Phill manually found the QUICKBLOCK piece and it turned out not to be covered by any existing source."
+    },
+    {
       "slug": "scottish-financial-review",
       "name": "Scottish Financial Review",
       "type": "news_site",
@@ -73,12 +84,16 @@
     {
       "slug": "sifted-uk",
       "name": "Sifted \u2014 UK/Scotland",
-      "type": "news_site",
-      "url": "https://sifted.eu",
+      "type": "firecrawl",
+      "url": "https://sifted.eu/sector/venture-capital/",
       "search_path": null,
-      "rss_url": "https://sifted.eu/feed/?post_type=article",
-      "route_to_scraper": true,
-      "notes": "European startup media, covers UK deals well. RSS feed is title-only (no description/content:encoded) and the ?s= search param is silently ignored by the feed endpoint, so Stage 1a's keyword prefilter can never pass anything on title text alone \u2014 confirmed 0 ledger hits ever (2026-07-13). search_path was also dead: /search is client-side JS-rendered, returns an empty shell via both httpx and WebFetch. Routed to Stage 1b via route_to_scraper so the agent can judge headlines directly and follow promising links, instead of a rigid keyword substring match against title-only text."
+      "rss_url": null,
+      "queries": null,
+      "cookie_env_var": null,
+      "wait_ms": 5000,
+      "best_effort": true,
+      "output_mode": "link_candidates",
+      "notes": "European startup media, covers UK deals well. RSS feed was title-only (no description/content:encoded) and the ?s= search param was silently ignored by the feed endpoint, so Stage 1a's keyword prefilter could never pass anything on title text alone \u2014 confirmed 0 ledger hits ever (2026-07-13). Moved to route_to_scraper/Stage 1b on 2026-07-13 so the agent could judge headlines directly (worked once \u2014 found an Amytis/Bethnal Green Ventures deal on 2026-07-20), but on 2026-07-26/27 Stage 1b's WebFetch on the RSS URL got a 403 (bot protection) and the plain-homepage fallback found nothing Scotland-related \u2014 a recurring pattern of sifted.eu blocking non-browser HTTP clients. Moved to firecrawl/Stage 1c on 2026-08-01 (same pattern as techstart-portfolio): Firecrawl renders the page like a real browser, sidestepping the block. /search?q=scotland renders an empty shell even via Firecrawl (client-side search widget with no server-rendered results) and /articles 404s, but /sector/venture-capital/ renders cleanly \u2014 48 VC-focused article teasers spanning ~7 weeks, already surfacing Scotland-relevant pieces (e.g. an incubator-in-Scotland feature) in initial testing. pipeline/firecrawl_scraper.py's _parse_sifted_uk() extracts each teaser's headline+link as a candidate (no reliable per-item date to build a final record from the listing alone) \u2014 Stage 1b then follows each link and extracts the full record via WebFetch, per .claude/agents/scraper.md."
     },
     {
       "slug": "tech-funding-news",

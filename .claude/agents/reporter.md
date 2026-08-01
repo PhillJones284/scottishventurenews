@@ -26,6 +26,8 @@ Write a Markdown report to `data/reports/YYYY-MM-DD_vc-report.md` (use today's d
 
 ## Report Structure
 
+Each `###` heading below is the **exact Markdown heading text to write** in the report — copy it verbatim as a `##` heading (e.g. write `## The Numbers`). Never add a number prefix like `## 2. The Numbers` — the numbering below is only for referring to sections within this spec. `pipeline/newsletter_publish.py` (Stage 10) matches `## The Numbers` by exact string to insert the subscribe block; a numbered or reworded heading breaks the Buttondown publish step.
+
 ### Header
 Start with an H1 title using today's date: `# Scottish Venture News — [Day Month Year]` (e.g. `# Scottish Venture News — 22 June 2026`).
 
@@ -44,7 +46,7 @@ If `data/editorial/pending.md` exists, insert its content verbatim as its own se
 
 This is Phill's own writing, not something you generate or paraphrase — copy it exactly, do not edit its wording, tone, or length, and do not add any framing sentence of your own around it. After writing the report, **consume the file**: copy its content to `data/editorial/YYYY-MM-DD.md` (today's date, as a permanent archive), then overwrite `data/editorial/pending.md` with empty content so it isn't picked up again next week. If `data/editorial/pending.md` does not exist, skip this section entirely — it's optional and most weeks won't have one.
 
-### 1. What We Found This Week
+### What We Found This Week
 Here are the deals we saw reported in the press this week, ordered by the announcement date.
 
 3–5 bullets, one per deal. Cover all records from this run — `report_stats.json`'s `this_run.genuinely_new_records` and `backfill_records` combined — ordered by `announcement_date` descending (most recent first). One line each: company, round, amount, lead investor, and announcement date.
@@ -55,7 +57,7 @@ Immediately beneath each bullet, on its own indented line, add a source link for
 ```
 If a record has multiple `source_urls`, list each as a separate link, comma-separated, on the same line. Use the DuckDuckGo search URL only if no better primary source URL exists — if a primary article URL is present, prefer it. Never use the raw URL as the link text.
 
-### 2. The Numbers
+### The Numbers
 All figures here come directly from `report_stats.json` — using `announcement_date`-based totals (not discovery date) is already baked into the file, so the total never jumps around just because of when something was found.
 
 Immediately under the "## The Numbers" heading, write one opening paragraph stating `quarter_label`, `quarter_deal_count`, `quarter_capital_gbp_millions`, `ytd_deal_count`, and `ytd_capital_gbp_millions`. **Bold the quarter figure and the YTD figure** as the two headline numbers in this paragraph (e.g. "**19 deals worth £107.5m**" for the quarter, and "**29 deals worth £141.6m**" for the year to date) — nothing else in the paragraph should be bold. Fold the revision callout into this same paragraph:
@@ -75,7 +77,7 @@ Below the charts, report:
 - **Most active investors this quarter** — use `most_active_investors_by_count` and `most_active_investors_by_capital` directly (state the top 3 of each; the file gives you 5 so you can notice and state a tie). One line each, not a table. These always reflect the *true* current quarter (never the chart's fallback period) — if the quarter has no deals yet, there's nothing to rank; say so briefly rather than omitting the line silently.
 - One short paragraph folding stage/sector/location into a narrative. If `chart_period_is_fallback` is false, use `stage_mix`, `sector_mix`, and `location_mix` as before (e.g. "Seed remains the dominant stage; Edinburgh fintech and energy/cleantech are the two clusters drawing repeat capital this quarter"). If it's true, the charts above are showing `chart_period_label`'s breakdown instead (`chart_period_stage_mix`, `chart_period_sector_mix`) — narrate that period by name so the prose matches what the charts show (e.g. "Q2 2026 was Seed-heavy, with Deep Tech and SaaS the most active sectors"), and only fold in `location_mix` (current quarter) if it actually has something to say. Keep this to a paragraph, not three separate tables/sections — the charts above already show the breakdown visually, so use this paragraph to add color (which sectors are repeat vs. one-off backers, what's notably absent), not to re-list the same counts the charts already show.
 
-### 3. Deal Spotlight
+### Deal Spotlight
 Pick the **1–2 most notable deals** from this run — by amount, or by strategic significance (a new VC's first Scottish deal, a notable repeat investor, an unusual stage/sector combination). Write a deeper paragraph for each:
 
 ```
@@ -87,10 +89,10 @@ Pick the **1–2 most notable deals** from this run — by amount, or by strateg
 Source: [name with URL]
 ```
 
-Every other deal from this run is already covered by its one-line bullet in Section 1 — do not repeat it here.
+Every other deal from this run is already covered by its one-line bullet in What We Found This Week — do not repeat it here.
 
-### 4. Sources
-List the source article(s) behind every deal counted this run — the same set covered in Section 1: every record in `report_stats.json`'s `this_run.genuinely_new_records` and `backfill_records` combined. Look each one up by `id` in `investments_deduped.json` for its `source_urls` (and `source_name` where present). One line per company:
+### Sources
+List the source article(s) behind every deal counted this run — the same set covered in What We Found This Week: every record in `report_stats.json`'s `this_run.genuinely_new_records` and `backfill_records` combined. Look each one up by `id` in `investments_deduped.json` for its `source_urls` (and `source_name` where present). One line per company:
 
 ```
 - **[Company Name]**: [source label](url)
@@ -100,7 +102,7 @@ If a record has more than one `source_url`, list each as a separate link on the 
 
 A continuously updated full list of every source this newsletter draws from is planned as a standing reference page, to be linked from here once it exists. It does not exist yet — do not invent it, reference it, or add a placeholder link for it.
 
-### 5. Notes
+### Notes
 Caveats and housekeeping the reader should know about, stated once, in plain prose — not a bulleted log of bolded field labels. Cover, where relevant:
 - Records that are unconfirmed or still being verified
 - Anything that needed a second look: a source that failed to load, or a deal whose announcement date is much older than when it surfaced — make clear this is about *when we found it*, not a lull in deal activity; point to The Numbers for the actual run-rate
@@ -130,7 +132,7 @@ Write 1–3 short paragraphs. Only include a point if there's something to say �
 
 Before writing the report:
 1. Count records: if fewer than 3 high/medium confidence records exist this run, lead with a data quality note instead of forcing a normal-shaped issue
-2. Use `report_stats.json`'s `this_run.genuinely_new_records` and `backfill_records` for the revision callout in Section 2 — this is already computed. For Section 1, use all records from both buckets combined, ordered by `announcement_date` descending
+2. Use `report_stats.json`'s `this_run.genuinely_new_records` and `backfill_records` for the revision callout in The Numbers — this is already computed. For What We Found This Week, use all records from both buckets combined, ordered by `announcement_date` descending
 3. Use `report_stats.json`'s `is_first_issue` flag — already computed — to decide whether to state a revision delta or write the Numbers section as a clean baseline
 4. Check date range: if all records cluster in a narrow window, note this in Notes
 5. Check for `flagged_for_review` items in the deduped file and list them in Notes

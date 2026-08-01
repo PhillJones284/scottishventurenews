@@ -109,9 +109,44 @@ def _parse_techstart_portfolio(markdown: str, source_url: str) -> list[dict]:
     return candidates
 
 
+def _parse_sifted_uk(markdown: str, source_url: str) -> list[dict]:
+    # sifted.eu blocks plain httpx/WebFetch (403 on the RSS feed, empty shell
+    # on /search) — Firecrawl renders it like a real browser. The rendered
+    # markdown of /sector/venture-capital/ is a flat list of article teasers,
+    # each starting with a markdown list item "- [Headline](article_url)"
+    # immediately followed by category/date/description/author metadata for
+    # that same article before the next "- [" list item begins. Like
+    # techstart-portfolio, there's no reliable per-item date in a form we can
+    # parse deal fields from here, so this is a link-candidates source:
+    # Stage 1b follows each link and extracts (or discards) the real record.
+    candidates = []
+    seen_urls = set()
+    for match in re.finditer(
+        r"^-\s*\[([^\]]+)\]\((https://sifted\.eu/articles/[^)]+)\)",
+        markdown,
+        re.MULTILINE,
+    ):
+        title, url = (s.strip() for s in match.groups())
+        if url in seen_urls:
+            continue
+        seen_urls.add(url)
+        candidates.append({
+            "source_slug": "sifted-uk",
+            "source_name": "Sifted",
+            "url": url,
+            "title": title,
+            "published": None,
+            "text": None,
+            "company_hint": None,
+            "needs_extraction": True,
+        })
+    return candidates
+
+
 _PARSERS = {
     "crunchbase": _parse_crunchbase,
     "techstart-portfolio": _parse_techstart_portfolio,
+    "sifted-uk": _parse_sifted_uk,
 }
 
 

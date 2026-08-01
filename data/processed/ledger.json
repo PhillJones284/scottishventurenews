@@ -1263,7 +1263,7 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-07-06",
-    "last_seen": "2026-07-20",
+    "last_seen": "2026-07-27",
     "is_new_this_run": false,
     "round_type_normalised": false
   },
@@ -1503,11 +1503,11 @@
       "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2"
     ],
     "source_count": 1,
-    "merge_confidence": null,
+    "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-07-20",
-    "last_seen": "2026-07-20",
-    "is_new_this_run": true
+    "last_seen": "2026-07-27",
+    "is_new_this_run": false
   },
   {
     "id": "amytis_grant-match-funding-(pre-seed-adjacent)_undated",
@@ -1547,6 +1547,42 @@
     "duplicate_of": null,
     "first_seen": "2026-07-20",
     "last_seen": "2026-07-20",
+    "is_new_this_run": true
+  },
+  {
+    "id": "xburo-uk_growth_2026-07-23",
+    "company_name": "Xburo UK",
+    "company_location": "Glasgow",
+    "company_sectors": [
+      "Engineering consultancy"
+    ],
+    "sector_normalised": false,
+    "round_type": "Growth",
+    "round_type_normalised": true,
+    "amount_original": "undisclosed",
+    "amount_gbp_millions": null,
+    "currency_original": "GBP",
+    "investors": [
+      "Chiltern Capital"
+    ],
+    "lead_investor": "Chiltern Capital",
+    "announcement_date": "2026-07-23",
+    "source_url": "https://www.heraldscotland.com/news/26403951.glasgow-firm-xburo-reveals-uk-hopes-investment-deal/?ref=rss",
+    "source_name": "The Herald",
+    "headline": "Scottish company hails investment deal is 'clear statement of intent'",
+    "summary": "Glasgow-based mechanical, electrical and public health (MEPH) engineering consultancy Xburo UK has secured backing from London private investment firm Chiltern Capital to fund its expansion across the UK. The investment amount was not disclosed; Xburo, founded in 2018, operates from offices in Glasgow and Edinburgh and serves more than 60 clients.",
+    "confidence": "medium",
+    "data_quality_score": 75,
+    "issues": [],
+    "raw_snippet": "Xburo UK declared the deal with London-based Chiltern Capital marks a \u201csignificant milestone\u201d for the company, which has ambitions to become a leading national specialist in MEPH (mechanical, electrical and public health) asset engineering, design, and technical advisory. The value of the investment was not disclosed.",
+    "source_urls": [
+      "https://www.heraldscotland.com/news/26403951.glasgow-firm-xburo-reveals-uk-hopes-investment-deal/?ref=rss"
+    ],
+    "source_count": 1,
+    "merge_confidence": null,
+    "duplicate_of": null,
+    "first_seen": "2026-07-27",
+    "last_seen": "2026-07-27",
     "is_new_this_run": true
   }
 ]

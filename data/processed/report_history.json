@@ -38,5 +38,13 @@
     "q_capital_gbp_millions": 0,
     "ytd_deal_count": 34,
     "ytd_capital_gbp_millions": 159.645
+  },
+  {
+    "run_date": "2026-07-27",
+    "q_label": "Q3 2026",
+    "q_deal_count": 1,
+    "q_capital_gbp_millions": 0,
+    "ytd_deal_count": 35,
+    "ytd_capital_gbp_millions": 159.645
   }
 ]
