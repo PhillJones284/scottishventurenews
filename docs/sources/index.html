@@ -15,11 +15,11 @@
 
   <header>
     <h1>Intelligence Sources</h1>
-    <p>Every source monitored by the automated pipeline. Regenerated each run. &nbsp;·&nbsp; Last updated 2026-07-26</p>
+    <p>Every source monitored by the automated pipeline. Regenerated each run. &nbsp;·&nbsp; Last updated 2026-08-03</p>
   </header>
 
   <div class="stats-bar">
-    <div class="stat"><div class="stat-value">43</div><div class="stat-label">Total</div></div>
+    <div class="stat"><div class="stat-value">44</div><div class="stat-label">Total</div></div>
     <div class="stat"><div class="stat-value">14</div><div class="stat-label">News Sites</div></div>
     <div class="stat"><div class="stat-value">24</div><div class="stat-label">VC Newsrooms</div></div>
     <div class="stat"><div class="stat-value">2</div><div class="stat-label">Search Engines</div></div>
@@ -35,6 +35,10 @@
         <thead><tr><th>Source</th><th>Description</th></tr></thead>
         <tbody>
       <tr>
+        <td class="src-name"><a href="https://www.scottish-enterprise-mediacentre.com/news" target="_blank" rel="noopener">Scottish Enterprise Newsroom</a><span class="badge badge-rss">RSS</span></td>
+        <td class="src-notes">Official newsroom of Scottish Enterprise, Scotland&#x27;s economic development agency. Publishes press releases on grants/funding to Scottish companies, FDI wins, and startup investment news — includes VC-relevant deals where Scottish Enterprise co-invests alongside private VCs (e.g. QUICKBLOCK, Regenerus Laboratories, ReVentas — all July 2026). Also carries non-VC content (grants, FDI announcements, general economic policy) that won&#x27;t pass the investment keyword filter, which is expected. RSS feed at /feed/rss confirmed valid, 10 items, dated. Added 2026-08-01 after Phill manually found the QUICKBLOCK piece and it turned out not to be covered by any existing source.</td>
+      </tr>
+      <tr>
         <td class="src-name"><a href="https://scottishfinancialreview.com" target="_blank" rel="noopener">Scottish Financial Review</a><span class="badge badge-rss">RSS</span></td>
         <td class="src-notes">Dedicated Scottish financial and business news site. High signal-to-noise for Scottish VC deals — confirmed 6 relevant deals in the May 2026 run. URL structure: /YYYY/MM/DD/slug.</td>
       </tr>
@@ -49,10 +53,6 @@
       <tr>
         <td class="src-name"><a href="https://www.insider.co.uk" target="_blank" rel="noopener">Insider.co.uk</a></td>
         <td class="src-notes">Scottish business focused, very relevant. RSS feed is dead (stub channel, lastBuildDate 2022) and /search?q= doesn&#x27;t run a real site search (returns nav only) — removed both, homepage link extraction confirmed working (funding-relevant headlines present directly on /).</td>
-      </tr>
-      <tr>
-        <td class="src-name"><a href="https://sifted.eu" target="_blank" rel="noopener">Sifted — UK/Scotland</a><span class="badge badge-rss">RSS</span></td>
-        <td class="src-notes">European startup media, covers UK deals well. RSS feed is title-only (no description/content:encoded) and the ?s= search param is silently ignored by the feed endpoint, so Stage 1a&#x27;s keyword prefilter can never pass anything on title text alone — confirmed 0 ledger hits ever (2026-07-13). search_path was also dead: /search is client-side JS-rendered, returns an empty shell via both httpx and WebFetch. Routed to Stage 1b via route_to_scraper so the agent can judge headlines directly and follow promising links, instead of a rigid keyword substring match against title-only text.</td>
       </tr>
       <tr>
         <td class="src-name"><a href="https://techfundingnews.com" target="_blank" rel="noopener">Tech Funding News</a><span class="badge badge-rss">RSS</span></td>
