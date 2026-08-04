@@ -2,6 +2,15 @@
   {
     "match_type": "possible",
     "scope": "against_ledger",
+    "record_a": "xburo-uk_growth_2026-07-23",
+    "record_b": "xburo_growth_2026-07-23",
+    "note": "Same round type (Growth), same announcement date (2026-07-23), same investor (Chiltern Capital), same city (Glasgow), same amount (undisclosed) — one deal reported by two different sources (The Herald and Scottish Business News) a week apart. Name similarity ('Xburo UK' vs 'Xburo') scored 76.9 on the dedup matcher's token_sort_ratio, just under the POSSIBLE_NAME_THRESHOLD of 80, so this pair was never automatically flagged — not even staged as a possible match. Identified manually by Phill + Claude on 2026-08-04 after Phill noticed the duplicate in the 2026-08-03 report, and merged immediately on review. Kept 'Xburo UK' as canonical name and the earlier first_seen (2026-07-27). Root cause fixed in pipeline/deduplicator.py by stripping a trailing/leading 'UK' token before name comparison, the same way legal suffixes are already stripped.",
+    "flagged_date": "2026-08-04",
+    "status": "merged"
+  },
+  {
+    "match_type": "possible",
+    "scope": "against_ledger",
     "record_a": "esk_growth_2026-05-11",
     "record_b": "esk-film-services_growth_undated",
     "note": "Same investor (Maven Capital Partners), same amount (\u00a32.6m), same round type (Growth), same city (Edinburgh), same source domain (mavencp.com) \u2014 the second record was scraped from Maven's generic news-listing page while the first is the specific article it links to. Name similarity ('Esk' vs 'Esk Film Services') fell below the dedup matcher's auto-detection threshold, so this pair was never automatically flagged. Identified manually by Phill + Claude on 2026-06-24 during a pipeline-simulation review and merged immediately on review rather than left pending.",
@@ -180,5 +189,26 @@
     "status": "merged",
     "resolved_date": "2026-07-20",
     "resolution_note": "Merged into wordsmith-ai_series-b_2026-06-04: adopted amount/currency/summary/headline/source from the eu-startups extraction (more precise, direct primary source), cleared stale 'investor_unnamed' issue flag, unioned source_urls (5 total, eu-startups already present)."
+  },
+  {
+    "match_type": "possible",
+    "scope": "against_ledger",
+    "record_a": "wordsmith-ai_series-b_2026-06-03",
+    "record_b": "wordsmith-ai_series-b_2026-06-04",
+    "note": "Similar company names ('Wordsmith AI' vs 'Wordsmith')",
+    "flagged_date": "2026-08-03",
+    "status": "merged",
+    "resolved_date": "2026-08-03"
+  },
+  {
+    "match_type": "definite",
+    "scope": "against_ledger",
+    "record_a": "ardgowan-distillery_private-equity_2026-06-04",
+    "record_b": "ardgowan-distillery_unknown_2026-06-04",
+    "note": "Same company name, same announcement date (2026-06-04), Crunchbase-sourced amount recurred this run despite being dismissed previously",
+    "flagged_date": "2026-08-03",
+    "status": "dismissed",
+    "resolved_date": "2026-08-03",
+    "resolution_note": "Same \u00a318.2m Crunchbase figure already investigated and rejected on 2026-07-20 in favour of the \u00a34.2m thespiritsbusiness.com figure on ardgowan-distillery_unknown_2026-06-04 (see that resolution). Crunchbase re-surfaced the same bad figure as a new record this run; removed from the ledger entirely rather than re-merged, since the dedup matcher should have caught this as the same previously-dismissed pair but did not \u2014 worth a look at why the match didn't fire this time."
   }
 ]

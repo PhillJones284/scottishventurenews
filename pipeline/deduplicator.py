@@ -18,6 +18,15 @@ LEGAL_SUFFIXES = re.compile(
     re.IGNORECASE,
 )
 
+# Geographic qualifiers that sources inconsistently append/omit (e.g. "Xburo UK"
+# vs "Xburo") — stripped the same way legal suffixes are, since on short company
+# names a single extra token like this drags token_sort_ratio below the possible
+# threshold and the pair goes unflagged entirely rather than just unmerged.
+GEO_QUALIFIERS = re.compile(
+    r"\b(uk|united kingdom)\b",
+    re.IGNORECASE,
+)
+
 # Thresholds chosen to balance precision vs recall:
 # 90 for definite match avoids false merges on similarly-named companies (e.g. "Acme AI" vs "Acme Analytics").
 # 80 for possible match catches abbreviated names without auto-merging them.
@@ -29,6 +38,7 @@ def _normalise_for_compare(name):
     if not name:
         return ""
     s = LEGAL_SUFFIXES.sub("", name).strip().lower()
+    s = GEO_QUALIFIERS.sub("", s).strip()
     s = re.sub(r"[^a-z0-9\s]", "", s)
     return re.sub(r"\s+", " ", s).strip()
 

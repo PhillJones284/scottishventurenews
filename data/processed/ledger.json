@@ -582,7 +582,7 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-05-27",
-    "last_seen": "2026-07-20",
+    "last_seen": "2026-08-03",
     "is_new_this_run": false,
     "round_type_normalised": true
   },
@@ -623,7 +623,7 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-05-27",
-    "last_seen": "2026-07-20",
+    "last_seen": "2026-08-03",
     "is_new_this_run": false,
     "round_type_normalised": true
   },
@@ -664,7 +664,7 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-05-27",
-    "last_seen": "2026-07-20",
+    "last_seen": "2026-08-03",
     "is_new_this_run": false,
     "round_type_normalised": true
   },
@@ -1183,48 +1183,47 @@
   {
     "id": "vaso-global_seed_2026-06-30",
     "company_name": "VASO Global",
-    "company_location": "Unknown",
+    "company_location": "Other Scotland",
     "company_sectors": [
       "Energy & Cleantech",
       "Property & Construction Tech"
     ],
     "sector_normalised": true,
     "round_type": "Seed",
-    "amount_original": "\u00a31.4m",
-    "amount_gbp_millions": 1.4,
+    "round_type_normalised": true,
+    "amount_original": "\u00a35m (including \u00a31.4m equity)",
+    "amount_gbp_millions": 5.0,
     "currency_original": "GBP",
     "investors": [
       "PXN Ventures",
       "Scottish Enterprise Investment Fund",
-      "UK Research and Innovation (UKRI)",
       "Eco Group"
     ],
     "lead_investor": "PXN Ventures",
     "announcement_date": "2026-06-30",
-    "source_url": "https://bdaily.co.uk/articles/2026/06/30/vaso-secures-funding-to-accelerate-growth",
-    "source_name": "Bdaily",
-    "headline": "VASO secures funding to 'accelerate' growth",
-    "summary": "Dumfries-based construction technology business VASO Global has raised a \u00a35m+ funding package to accelerate manufacture of low-carbon homes built from recycled glass. The package includes a \u00a31.4m seed investment from PXN Ventures, \u00a3621,000 from Scottish Enterprise, a \u00a32m Innovate UK Loan (UKRI), and \u00a3800,000 from Eco Group, to expand its modular housing technology and support up to 70 jobs at a new 60,000sq ft Dumfries facility.",
+    "source_url": "https://www.scottish-enterprise-mediacentre.com/news/gbp-5m-funding-boost-for-innovative-construction-business-tackling-uk-housing-crisis",
+    "source_name": "Scottish Enterprise Newsroom",
+    "headline": "\u00a35m funding boost for innovative construction business tackling UK housing crisis",
+    "summary": "VASO Global, a Dumfries-based construction technology company that converts waste glass into structural composite panels for low-carbon modular homes, secured more than \u00a35m in funding. The package included a \u00a31.4m seed investment from PXN Ventures, \u00a3621k from Scottish Enterprise, an \u00a3800k contribution from Eco Group, and a \u00a32m Innovate UK loan. The funds will support a new 60,000 sq ft manufacturing facility in Dumfries and create up to 70 jobs over five years.",
     "confidence": "high",
-    "data_quality_score": 85,
+    "data_quality_score": 100,
     "issues": [
-      "location_unknown",
-      "possible_grant_not_vc",
-      "company_not_clearly_scottish"
+      "possible_grant_not_vc"
     ],
-    "raw_snippet": "The funding package includes a \u00a31.4 million seed investment from PXN Ventures, \u00a3621,000 from Scottish Enterprise, a \u00a32 million loan from Innovate UK Loans Limited, part of UKRI, and \u00a3800,000 from Eco Group.",
+    "raw_snippet": "VASO Global has secured \u00a31.4m seed investment from PXN Ventures along with \u00a3621k from Scottish Enterprise. The company has also secured a \u00a32m loan approved by Innovate UK Loans Limited, a division of UK Research and Innovation (UKRI), and \u00a3800k from ECO GROUP which will be the delivery partner for the initial VASO Global build projects.",
     "source_urls": [
+      "https://angelcapital.scot/deals/vaso-raises-5-million-to-expand-eco-building-system/",
       "https://bdaily.co.uk/articles/2026/06/30/vaso-secures-funding-to-accelerate-growth",
       "https://www.digit.fyi/digit-deal-roundup-june-2026/",
-      "https://www.pxnventures.co.uk/5m-funding-boost-for-innovative-construction-business-vaso-global/"
+      "https://www.pxnventures.co.uk/5m-funding-boost-for-innovative-construction-business-vaso-global/",
+      "https://www.scottish-enterprise-mediacentre.com/news/gbp-5m-funding-boost-for-innovative-construction-business-tackling-uk-housing-crisis"
     ],
-    "source_count": 3,
+    "source_count": 5,
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-07-06",
-    "last_seen": "2026-07-20",
-    "is_new_this_run": false,
-    "round_type_normalised": true
+    "last_seen": "2026-08-03",
+    "is_new_this_run": false
   },
   {
     "id": "br-dge_growth_2026-06-30",
@@ -1236,6 +1235,7 @@
     ],
     "sector_normalised": true,
     "round_type": "Growth",
+    "round_type_normalised": true,
     "amount_original": "\u00a310m",
     "amount_gbp_millions": 10.0,
     "currency_original": "GBP",
@@ -1245,16 +1245,16 @@
     ],
     "lead_investor": "Bettor Capital",
     "announcement_date": "2026-06-30",
-    "source_url": "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
-    "source_name": "Crunchbase + Startupmag (via DuckDuckGo aggregator)",
+    "source_url": "https://www.startupmag.co.uk/funding/brdge-2026-growth-funding/",
+    "source_name": "Startupmag",
     "headline": "BR-DGE raises \u00a310m from Bettor Capital and Greyfriars",
-    "summary": "Edinburgh fintech BR-DGE, a payments orchestration platform for enterprise merchants in gaming and online retail, raised \u00a310m in a growth round from new investor Bettor Capital (a US gaming-focused specialist) with continued backing from long-term advisor Greyfriars. Funds will support international expansion and platform development; the round coincided with the appointment of Perry Blacher as chairman.",
+    "summary": "BR-DGE, an Edinburgh fintech startup providing payments orchestration for merchants, raised \u00a310m in a growth funding round to accelerate international expansion, with new growth investor Bettor Capital joining alongside long-term investment advisor Greyfriars. Platform volumes have grown 15x in under two years, with customers including The Hut Group and Betfred.",
     "confidence": "high",
-    "data_quality_score": 85,
+    "data_quality_score": 95,
     "issues": [
       "investor_unnamed"
     ],
-    "raw_snippet": "Bettor Capital, a US-based specialist investor focused on the gaming industry, joined the round; Greyfriars continues to act as long-term investment advisor to the company.",
+    "raw_snippet": "BR-DGE, an Edinburgh fintech startup, has raised \u00a310m in a growth funding round to accelerate international expansion and deepen its payments orchestration product. The capital will be used to develop platform capabilities, support go-to-market activity and push into new markets and products as the company moves beyond gaming into adjacent enterprise sectors.",
     "source_urls": [
       "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
       "https://www.startupmag.co.uk/funding/brdge-2026-growth-funding/"
@@ -1263,9 +1263,8 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-07-06",
-    "last_seen": "2026-07-27",
-    "is_new_this_run": false,
-    "round_type_normalised": false
+    "last_seen": "2026-08-03",
+    "is_new_this_run": false
   },
   {
     "id": "wordsmith-ai_series-b_2026-06-04",
@@ -1306,7 +1305,7 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-06-08",
-    "last_seen": "2026-07-20",
+    "last_seen": "2026-08-03",
     "is_new_this_run": false,
     "round_type_normalised": true
   },
@@ -1354,7 +1353,7 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-06-08",
-    "last_seen": "2026-07-20",
+    "last_seen": "2026-08-03",
     "is_new_this_run": false,
     "round_type_normalised": true
   },
@@ -1576,13 +1575,56 @@
     "issues": [],
     "raw_snippet": "Xburo UK declared the deal with London-based Chiltern Capital marks a \u201csignificant milestone\u201d for the company, which has ambitions to become a leading national specialist in MEPH (mechanical, electrical and public health) asset engineering, design, and technical advisory. The value of the investment was not disclosed.",
     "source_urls": [
+      "https://scottishbusinessnews.net/business-advisers-hailed-as-engineering-firm-secures-investment-for-major-expansion/",
       "https://www.heraldscotland.com/news/26403951.glasgow-firm-xburo-reveals-uk-hopes-investment-deal/?ref=rss"
     ],
-    "source_count": 1,
-    "merge_confidence": null,
+    "source_count": 2,
+    "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-07-27",
-    "last_seen": "2026-07-27",
+    "last_seen": "2026-08-03",
+    "is_new_this_run": false
+  },
+  {
+    "id": "quickblock_unknown_2026-07-23",
+    "company_name": "Quickblock",
+    "company_location": "Other Scotland",
+    "company_sectors": [
+      "Other",
+      "Space & Defence"
+    ],
+    "sector_normalised": true,
+    "round_type": "Unknown",
+    "round_type_normalised": false,
+    "amount_original": "\u00a3940,000 (combined equity and grant funding)",
+    "amount_gbp_millions": 0.94,
+    "currency_original": "GBP",
+    "investors": [
+      "Equity Gap",
+      "University of Strathclyde (Strathclyde Inspire)",
+      "Scottish Enterprise Investment Fund"
+    ],
+    "lead_investor": "Equity Gap",
+    "announcement_date": "2026-07-23",
+    "source_url": "https://www.scottish-enterprise-mediacentre.com/news/quickblock-secures-gbp-940-000-to-scale-defence-infrastructure-solutions-across-europe",
+    "source_name": "Scottish Enterprise Newsroom",
+    "headline": "QUICKBLOCK secures \u00a3940,000 to scale defence infrastructure solutions across Europe",
+    "summary": "QUICKBLOCK, a Stirling-based maker of rapidly deployable modular infrastructure for defence, security and humanitarian applications, secured a \u00a3940,000 funding round comprising new equity investment and innovation grant funding. The equity portion was led by Equity Gap alongside the University of Strathclyde (via Strathclyde Inspire) and Scottish Enterprise, with additional grant funding from Scottish Enterprise and Innovate UK for R&D. The funds will support European expansion, commercial capability and production capacity amid rising NATO defence spending.",
+    "confidence": "medium",
+    "data_quality_score": 90,
+    "issues": [
+      "possible_grant_not_vc"
+    ],
+    "raw_snippet": "QUICKBLOCK, the UK-based developer of rapidly deployable modular infrastructure solutions for defence, security and humanitarian applications, today announced the successful completion of a \u00a3940,000 funding round comprising new equity investment and innovation grant funding. The equity investment was led by Equity Gap, The University of Strathclyde and Scottish Enterprise, with additional grant funding provided by Scottish Enterprise and Innovate UK specifically for R&D activity for the development of rapid deployment shelter solutions.",
+    "source_urls": [
+      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
+      "https://www.scottish-enterprise-mediacentre.com/news/quickblock-secures-gbp-940-000-to-scale-defence-infrastructure-solutions-across-europe"
+    ],
+    "source_count": 2,
+    "merge_confidence": "definite",
+    "duplicate_of": null,
+    "first_seen": "2026-08-03",
+    "last_seen": "2026-08-03",
     "is_new_this_run": true
   }
 ]

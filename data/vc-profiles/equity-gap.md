@@ -1,12 +1,12 @@
 ---
 canonical_name: Equity Gap
-last_updated: 2026-07-20
-last_updated_via: "2026-07-20_vc-report.md"
+last_updated: 2026-08-03
+last_updated_via: "2026-08-03_vc-report.md"
 ---
 
 ### Equity Gap
-**Historical deals in ledger**: 1 (Lentitek)
-**Sectors favoured**: Healthtech, Life Sciences
-**Stages**: Seed
+**Historical deals in ledger**: 2 (Quickblock, Lentitek)
+**Sectors favoured**: Space & Defence, Healthtech, Life Sciences, Other
+**Stages**: Seed, Unknown
 **HQ**: Edinburgh
-**Trajectory**: Limited data point — a single Scottish deal recorded, so no trend can yet be projected. Equity Gap is an Edinburgh-based angel investment network that led the £0.7m Lentitek seed round (May 2026), also co-investing with Scottish Enterprise. Its lead role is consistent with its established position in the Edinburgh early-stage ecosystem, though no further deals have been recorded since.
+**Trajectory**: This firm's first profile (July 2026) recorded a single deal (Lentitek); it has since added a second — the Quickblock deal (23 July 2026, round type unconfirmed, £0.94m), co-invested alongside Scottish Enterprise. Both deals fall within the trailing six months versus none in the prior period, so activity is increasing off a low base. Two Scottish deals so far in 2026, totalling £1.64m. Equity Gap is an Edinburgh-based angel investment network; its lead role on Lentitek's £0.7m seed round (May 2026) and continued presence on Quickblock is consistent with its established position in the Edinburgh early-stage ecosystem.

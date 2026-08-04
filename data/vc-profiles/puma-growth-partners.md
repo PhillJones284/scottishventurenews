@@ -1,7 +1,7 @@
 ---
 canonical_name: Puma Growth Partners
-last_updated: 2026-07-20
-last_updated_via: "2026-07-20_vc-report.md"
+last_updated: 2026-08-03
+last_updated_via: "2026-08-03_vc-report.md"
 ---
 
 ### Puma Growth Partners
