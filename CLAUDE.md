@@ -130,9 +130,11 @@ If the gate fails: stop, tell Phill the parser produced no records, and show the
 Run: `python pipeline/deduplicator.py` (or `python pipeline/deduplicator.py --date YYYY-MM-DD`)
 
 **Gate**: `data/processed/investments_deduped.json` must exist.
-If the gate fails: stop, tell Phill the deduplicator did not produce output.
+If the gate fails because of an exception, check whether it's the missing-`merged_into` hard gate (below) before treating it as a generic failure. Otherwise, stop, tell Phill the deduplicator did not produce output.
 
 This stage also writes/updates `data/processed/merge_candidates.json` — see [Dedup confidence policy](#dedup-confidence-policy) below. If this run added any new pending entries, **stop here and resolve them with Phill immediately** (same process as [Reviewing merge candidates](#reviewing-merge-candidates) below) before proceeding to Stage 3.5. Do not just mention the count and continue — the reporter should never be the first place a new duplicate surfaces.
+
+**Missing-`merged_into` hard gate**: `deduplicator.py` refuses to write `investments_deduped.json` or `ledger.json` — raising an error instead — if `merge_candidates.json` contains any `status: "merged"` entry with no `merged_into` set. By policy every `"merged"` resolution must name the id of the record that survived (see [Reviewing merge candidates](#reviewing-merge-candidates)) — without it, the resolution isn't binding and the pair can silently resurface as a fresh duplicate if the same source article gets re-scraped. If this gate fires, resolve it by setting `merged_into` directly in `merge_candidates.json` for each listed pair (the id of the record that survived that merge — check the ledger for which id is still present), then re-run `deduplicator.py`. Do not add logic to `deduplicator.py` that tolerates a missing `merged_into` — that reintroduces the exact failure mode this gate exists to catch (8 entries accumulated silently under the old warning-only version before being caught on 2026-08-17).
 
 ### Stage 3.5 — Report Stats (Python)
 Run: `python pipeline/report_stats.py` (or `python pipeline/report_stats.py --date YYYY-MM-DD`)

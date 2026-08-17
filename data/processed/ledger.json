@@ -1228,7 +1228,7 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-07-06",
-    "last_seen": "2026-08-12",
+    "last_seen": "2026-08-17",
     "is_new_this_run": false
   },
   {
@@ -1592,7 +1592,7 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-08-03",
-    "last_seen": "2026-08-12",
+    "last_seen": "2026-08-17",
     "is_new_this_run": false
   },
   {
@@ -1625,11 +1625,11 @@
       "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2"
     ],
     "source_count": 1,
-    "merge_confidence": null,
+    "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-08-12",
-    "last_seen": "2026-08-12",
-    "is_new_this_run": true
+    "last_seen": "2026-08-17",
+    "is_new_this_run": false
   },
   {
     "id": "social-investment-scotland_debt-financing_2026-07-30",
@@ -1661,11 +1661,11 @@
       "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2"
     ],
     "source_count": 1,
-    "merge_confidence": null,
+    "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-08-12",
-    "last_seen": "2026-08-12",
-    "is_new_this_run": true
+    "last_seen": "2026-08-17",
+    "is_new_this_run": false
   },
   {
     "id": "regenerus-laboratories_growth_2026-07-14",
@@ -1743,6 +1743,80 @@
     "duplicate_of": null,
     "first_seen": "2026-08-12",
     "last_seen": "2026-08-12",
+    "is_new_this_run": true
+  },
+  {
+    "id": "wordsmith-ai_series-b_2026-08-05",
+    "company_name": "Wordsmith AI",
+    "company_location": "Other Scotland",
+    "company_sectors": [
+      "Other"
+    ],
+    "sector_normalised": false,
+    "round_type": "Series B",
+    "round_type_normalised": true,
+    "amount_original": "\u00a310,400,000",
+    "amount_gbp_millions": 10.4,
+    "currency_original": "GBP",
+    "investors": [],
+    "lead_investor": null,
+    "announcement_date": "2026-08-05",
+    "source_url": "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
+    "source_name": "Crunchbase",
+    "headline": "",
+    "summary": "",
+    "confidence": "high",
+    "data_quality_score": 65,
+    "issues": [
+      "investor_unnamed"
+    ],
+    "raw_snippet": "",
+    "source_urls": [
+      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2"
+    ],
+    "source_count": 1,
+    "merge_confidence": null,
+    "duplicate_of": null,
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "is_new_this_run": true
+  },
+  {
+    "id": "kenoteq_growth_2026-08-13",
+    "company_name": "Kenoteq",
+    "company_location": "Edinburgh",
+    "company_sectors": [
+      "Property & Construction Tech"
+    ],
+    "sector_normalised": true,
+    "round_type": "Growth",
+    "round_type_normalised": true,
+    "amount_original": "\u00a3900,000 (first tranche of an ongoing \u00a32m round)",
+    "amount_gbp_millions": 0.9,
+    "currency_original": "GBP",
+    "investors": [
+      "Kelvin Capital",
+      "Scottish Enterprise Co-Investment Fund",
+      "existing investors (unnamed)"
+    ],
+    "lead_investor": "Kelvin Capital",
+    "announcement_date": "2026-08-13",
+    "source_url": "https://www.scotsman.com/business/scottish-firm-behind-green-building-bricks-secures-ps900k-growth-backing-8918340",
+    "source_name": "The Scotsman",
+    "headline": "Scottish firm behind 'green' building bricks secures \u00a3900k growth backing",
+    "summary": "Edinburgh-based sustainable construction firm Kenoteq has secured almost \u00a3900,000 in fresh backing as the first tranche of an ongoing funding round targeting \u00a32m in total. The round is led by Kelvin Capital alongside the Scottish Enterprise Co-Investment Fund and existing investors, and will fund increased production of Kenoteq's K-Briq recycled brick product. Also reported by The Herald (heraldscotland.com) on 2026-08-17 with matching details.",
+    "confidence": "high",
+    "data_quality_score": 95,
+    "issues": [],
+    "raw_snippet": "The investment into Edinburgh-based Kenoteq has been led by Kelvin Capital alongside the Scottish Enterprise Co-Investment Fund and several existing investors who have chosen to increase their backing of the business. The investment round remains open as the company continues discussions with prospective investors. Kenoteq is targeting a total raise of \u00a32 million.",
+    "source_urls": [
+      "https://www.scotsman.com/business/scottish-firm-behind-green-building-bricks-secures-ps900k-growth-backing-8918340"
+    ],
+    "source_count": 1,
+    "merge_confidence": null,
+    "duplicate_of": null,
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
     "is_new_this_run": true
   }
 ]

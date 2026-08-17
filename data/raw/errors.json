@@ -2,37 +2,37 @@
   {
     "source": "business-scotland",
     "url": "https://businessscotland.co.uk/search?q=investment+funding",
-    "error": "ECONNREFUSED \u2014 site unreachable",
+    "error": "ECONNREFUSED — site unreachable",
     "timestamp": "2026-05-25T00:00:00Z"
   },
   {
     "source": "scotsman-business",
     "url": "https://www.scotsman.com/business",
-    "error": "HTTP 403 Forbidden \u2014 access blocked",
+    "error": "HTTP 403 Forbidden — access blocked",
     "timestamp": "2026-05-25T00:00:00Z"
   },
   {
     "source": "herald-business",
     "url": "https://www.heraldscotland.com/business",
-    "error": "Fetch blocked \u2014 heraldscotland.com not accessible",
+    "error": "Fetch blocked — heraldscotland.com not accessible",
     "timestamp": "2026-05-25T00:00:00Z"
   },
   {
     "source": "insider-co-uk",
     "url": "https://www.insider.co.uk/search?q=funding+investment+venture",
-    "error": "Rendered only navigation/header content \u2014 no article data returned (best_effort)",
+    "error": "Rendered only navigation/header content — no article data returned (best_effort)",
     "timestamp": "2026-05-25T00:00:00Z"
   },
   {
     "source": "crunchbase-scotland",
     "url": "https://www.crunchbase.com/discover/funding_rounds?location=Scotland&date_range=90d",
-    "error": "Paywalled \u2014 no usable content returned (best_effort)",
+    "error": "Paywalled — no usable content returned (best_effort)",
     "timestamp": "2026-05-25T00:00:00Z"
   },
   {
     "source": "beauhurst",
     "url": "https://www.beauhurst.com",
-    "error": "Paywalled \u2014 no usable content returned (best_effort)",
+    "error": "Paywalled — no usable content returned (best_effort)",
     "timestamp": "2026-05-25T00:00:00Z"
   },
   {
@@ -50,49 +50,49 @@
   {
     "source": "par-equity-news",
     "url": "https://par-equity.com/news",
-    "error": "ECONNREFUSED \u2014 site unreachable (Par Equity merged with Praetura to form PXN Ventures; original URL may be defunct)",
+    "error": "ECONNREFUSED — site unreachable (Par Equity merged with Praetura to form PXN Ventures; original URL may be defunct)",
     "timestamp": "2026-05-25T00:00:00Z"
   },
   {
     "source": "seiicef-news",
     "url": "https://www.seiicef.scot/news",
-    "error": "ECONNREFUSED \u2014 site unreachable",
+    "error": "ECONNREFUSED — site unreachable",
     "timestamp": "2026-05-25T00:00:00Z"
   },
   {
     "source": "business-scotland",
     "url": "https://businessscotland.co.uk/search?q=investment+funding",
-    "error": "ECONNREFUSED \u2014 site unreachable",
+    "error": "ECONNREFUSED — site unreachable",
     "timestamp": "2026-05-26T00:00:00Z"
   },
   {
     "source": "scotsman-business",
     "url": "https://www.scotsman.com/business",
-    "error": "HTTP 403 Forbidden \u2014 access blocked",
+    "error": "HTTP 403 Forbidden — access blocked",
     "timestamp": "2026-05-26T00:00:00Z"
   },
   {
     "source": "herald-business",
     "url": "https://www.heraldscotland.com/business",
-    "error": "Fetch blocked \u2014 heraldscotland.com not accessible",
+    "error": "Fetch blocked — heraldscotland.com not accessible",
     "timestamp": "2026-05-26T00:00:00Z"
   },
   {
     "source": "insider-co-uk",
     "url": "https://www.insider.co.uk/search?q=funding+investment+venture",
-    "error": "Rendered only navigation/header content \u2014 no article data returned (best_effort)",
+    "error": "Rendered only navigation/header content — no article data returned (best_effort)",
     "timestamp": "2026-05-26T00:00:00Z"
   },
   {
     "source": "crunchbase-scotland",
     "url": "https://www.crunchbase.com/discover/funding_rounds?location=Scotland&date_range=90d",
-    "error": "HTTP 403 Forbidden \u2014 paywalled (best_effort)",
+    "error": "HTTP 403 Forbidden — paywalled (best_effort)",
     "timestamp": "2026-05-26T00:00:00Z"
   },
   {
     "source": "beauhurst",
     "url": "https://www.beauhurst.com",
-    "error": "No usable funding content on homepage \u2014 paywalled (best_effort)",
+    "error": "No usable funding content on homepage — paywalled (best_effort)",
     "timestamp": "2026-05-26T00:00:00Z"
   },
   {
@@ -104,19 +104,19 @@
   {
     "source": "olderbull-news",
     "url": "https://www.olderbull.com/portfolio-news",
-    "error": "ECONNREFUSED \u2014 site unreachable",
+    "error": "ECONNREFUSED — site unreachable",
     "timestamp": "2026-05-26T00:00:00Z"
   },
   {
     "source": "prairie-fund-news",
     "url": "https://www.prairiefund.com/news",
-    "error": "No content returned \u2014 site may be offline or JS-rendered",
+    "error": "No content returned — site may be offline or JS-rendered",
     "timestamp": "2026-05-26T00:00:00Z"
   },
   {
     "source": "seiicef-news",
     "url": "https://www.seiicef.scot/news",
-    "error": "ECONNREFUSED \u2014 site unreachable",
+    "error": "ECONNREFUSED — site unreachable",
     "timestamp": "2026-05-26T00:00:00Z"
   },
   {
@@ -308,13 +308,13 @@
   {
     "source": "olderbull-news",
     "url": "https://www.olderbull.com/portfolio-news",
-    "error": "No content returned \u2014 page appears empty or unreachable",
+    "error": "No content returned — page appears empty or unreachable",
     "timestamp": "2026-07-06T09:15:00+00:00"
   },
   {
     "source": "prairie-fund-news",
     "url": "https://www.prairiefund.com/news",
-    "error": "Domain expired/parked \u2014 redirects to GoDaddy \"for sale\" page (forsale.godaddy.com), site appears defunct",
+    "error": "Domain expired/parked — redirects to GoDaddy \"for sale\" page (forsale.godaddy.com), site appears defunct",
     "timestamp": "2026-07-06T09:15:00+00:00"
   },
   {
@@ -356,7 +356,31 @@
   {
     "source": "sifted-uk",
     "url": "https://sifted.eu/articles/incubator-scotland-next-generation-of-tech-brnd/",
-    "error": "HTTP 403 Forbidden \u2014 sifted.eu blocking non-browser client (link-candidate follow-up from Stage 1c firecrawl output; article appears to be an editorial feature on a Scottish incubator, not a funding announcement, based on headline)",
+    "error": "HTTP 403 Forbidden — sifted.eu blocking non-browser client (link-candidate follow-up from Stage 1c firecrawl output; article appears to be an editorial feature on a Scottish incubator, not a funding announcement, based on headline)",
     "timestamp": "2026-08-12T00:00:00Z"
+  },
+  {
+    "source": "epidarex-news",
+    "url": "https://epidarex.com/news-2/",
+    "error": "RSS fetch succeeded but no items parsed (fell back to page fetch, which succeeded)",
+    "timestamp": "2026-08-17T09:04:26.556579+00:00"
+  },
+  {
+    "source": "daily-business-group",
+    "url": "https://dailybusinessgroup.co.uk",
+    "error": "RSS fetch failed: Client error '403 Forbidden' for url 'https://dailybusinessgroup.co.uk/feed/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403; fallback page fetch also failed: Client error '403 Forbidden' for url 'https://dailybusinessgroup.co.uk'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+    "timestamp": "2026-08-17T09:04:41.291446+00:00"
+  },
+  {
+    "source": "theedinburghreporter",
+    "url": "https://theedinburghreporter.co.uk",
+    "error": "Client error '403 Forbidden' for url 'https://theedinburghreporter.co.uk'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+    "timestamp": "2026-08-17T09:05:22.179785+00:00"
+  },
+  {
+    "source": "green-angel-ventures-stories",
+    "url": "https://greenangelventures.com/stories/",
+    "error": "ECONNRESET on repeated WebFetch attempts (3x) — site unreachable via Stage 1b direct fetch this run",
+    "timestamp": "2026-08-17T00:00:00Z"
   }
 ]

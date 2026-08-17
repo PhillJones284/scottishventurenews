@@ -1,7 +1,7 @@
 ---
 canonical_name: Scottish Enterprise Investment Fund
-last_updated: 2026-08-12
-last_updated_via: "2026-08-12 data pipeline run"
+last_updated: 2026-08-17
+last_updated_via: "2026-08-17 data pipeline run"
 ---
 
 ### Scottish Enterprise Investment Fund

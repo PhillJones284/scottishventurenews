@@ -1,7 +1,7 @@
 ---
 canonical_name: Equity Gap
-last_updated: 2026-08-12
-last_updated_via: "2026-08-12 data pipeline run"
+last_updated: 2026-08-17
+last_updated_via: "2026-08-17 data pipeline run"
 ---
 
 ### Equity Gap

@@ -1,4 +1,13 @@
-"""Stage 3: Deduplicate investment records and maintain the persistent ledger."""
+"""Stage 3: Deduplicate investment records and maintain the persistent ledger.
+
+By policy, every merge_candidates.json entry with status "merged" must carry
+a merged_into pointing at the surviving record's id — otherwise a resolved
+merge isn't binding and can silently resurface as a fresh duplicate (see
+resolved_merges below). This script refuses to finish writing output while
+any "merged" entry is missing it (see _assert_no_missing_merged_into); the
+fix is to set merged_into directly in merge_candidates.json, not to patch
+this script to tolerate the gap.
+"""
 
 import json
 import logging
@@ -287,6 +296,36 @@ def _match_against_ledger(record, ledger_entries):
     return best_entry, best_type
 
 
+def _assert_no_missing_merged_into(merge_candidates):
+    """Hard gate: refuse to finish while a 'merged' entry has no merged_into.
+
+    Without merged_into, a resolved merge can't be binding (see the comment on
+    resolved_merges above) — if the pair resurfaces on a later run (e.g. a
+    source article gets re-scraped), it silently re-adds as a fresh standalone
+    duplicate instead of auto-merging into the recorded survivor. That's
+    exactly the 2026-08-12 Wordsmith AI/Esk bug this field exists to prevent,
+    so a merge resolved without it is a policy violation, not just a loose
+    end — this used to be a warning (easy to miss in run output) and let 8
+    entries accumulate silently until an unrelated conversation surfaced them
+    on 2026-08-17. The fix is to set merged_into directly in
+    merge_candidates.json (the id of the record that survived) and re-run —
+    not to relax this check or add logic that works around a missing value.
+    """
+    missing = [
+        f"{c['record_a']} | {c['record_b']}"
+        for c in merge_candidates
+        if c.get("status") == "merged" and not c.get("merged_into")
+    ]
+    if not missing:
+        return
+    raise RuntimeError(
+        f"{len(missing)} 'merged' merge_candidates entries have no merged_into, so they "
+        f"won't be binding if the pair resurfaces — set merged_into on each (the id of the "
+        f"record that survived the merge) directly in merge_candidates.json, then re-run: "
+        f"{missing}"
+    )
+
+
 def run(date: str = None):
     run_date = date or datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
@@ -449,18 +488,7 @@ def run(date: str = None):
 
     pending_candidates = [c for c in merge_candidates if c["status"] == "pending"]
 
-    missing_merged_into = [
-        f"{c['record_a']} | {c['record_b']}"
-        for c in merge_candidates
-        if c.get("status") == "merged" and not c.get("merged_into")
-    ]
-    if missing_merged_into:
-        logger.warning(
-            "%d 'merged' merge_candidates entries have no merged_into and won't be "
-            "binding if the pair resurfaces: %s",
-            len(missing_merged_into),
-            missing_merged_into,
-        )
+    _assert_no_missing_merged_into(merge_candidates)
 
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),

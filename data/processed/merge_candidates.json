@@ -38,7 +38,9 @@
     "record_b": "earth-blox_series-a_2026-03-31",
     "note": "Same company name, different round types ('Growth' vs 'Series A')",
     "flagged_date": "2026-06-27",
-    "status": "merged"
+    "status": "merged",
+    "merged_into": "earth-blox_growth_2026-03-31",
+    "merged_into_backfilled": "2026-08-17: reconstructed from ledger last_seen/merge_confidence evidence during merge_candidates.json cleanup; not set at original resolution time"
   },
   {
     "match_type": "probable",
@@ -101,7 +103,9 @@
     "note": "Same company name, different round types ('Unknown' vs 'Growth')",
     "flagged_date": "2026-07-06",
     "status": "merged",
-    "resolved_date": "2026-07-06"
+    "resolved_date": "2026-07-06",
+    "merged_into": "br-dge_growth_2026-06-30",
+    "merged_into_backfilled": "2026-08-17: reconstructed from ledger last_seen/merge_confidence evidence during merge_candidates.json cleanup; not set at original resolution time"
   },
   {
     "match_type": "probable",
@@ -111,7 +115,9 @@
     "note": "Same company and round type, but the announcement date is missing on at least one record",
     "flagged_date": "2026-07-06",
     "status": "merged",
-    "resolved_date": "2026-07-06"
+    "resolved_date": "2026-07-06",
+    "merged_into": "wordsmith-ai_series-b_2026-06-04",
+    "merged_into_backfilled": "2026-08-17: reconstructed from ledger last_seen/merge_confidence evidence during merge_candidates.json cleanup; not set at original resolution time"
   },
   {
     "match_type": "probable",
@@ -121,7 +127,9 @@
     "note": "Same company name, different round types ('Growth' vs 'Unknown')",
     "flagged_date": "2026-07-06",
     "status": "merged",
-    "resolved_date": "2026-07-06"
+    "resolved_date": "2026-07-06",
+    "merged_into": "aveni_growth_2026-06-04",
+    "merged_into_backfilled": "2026-08-17: reconstructed from ledger last_seen/merge_confidence evidence during merge_candidates.json cleanup; not set at original resolution time"
   },
   {
     "match_type": "probable",
@@ -131,7 +139,9 @@
     "note": "Same company name, different round types ('Growth' vs 'Pre-Seed')",
     "flagged_date": "2026-07-06",
     "status": "merged",
-    "resolved_date": "2026-07-06"
+    "resolved_date": "2026-07-06",
+    "merged_into": "vuabl_2nd-round_2026-04-01",
+    "merged_into_backfilled": "2026-08-17: reconstructed from ledger last_seen/merge_confidence evidence during merge_candidates.json cleanup; not set at original resolution time"
   },
   {
     "match_type": "probable",
@@ -141,7 +151,9 @@
     "note": "Same company name, different round types ('Growth' vs 'Pre-Seed')",
     "flagged_date": "2026-07-06",
     "status": "merged",
-    "resolved_date": "2026-07-06"
+    "resolved_date": "2026-07-06",
+    "merged_into": "airspection_2nd-round_2026-04-01",
+    "merged_into_backfilled": "2026-08-17: reconstructed from ledger last_seen/merge_confidence evidence during merge_candidates.json cleanup; not set at original resolution time"
   },
   {
     "match_type": "probable",
@@ -151,7 +163,9 @@
     "note": "Same company name, same date, same amount, different round types ('Series B' vs 'Unknown') \u2014 missed by automated matcher (known round_type gate bug), found during manual review",
     "flagged_date": "2026-07-06",
     "status": "merged",
-    "resolved_date": "2026-07-06"
+    "resolved_date": "2026-07-06",
+    "merged_into": "aveni_growth_2026-06-04",
+    "merged_into_backfilled": "2026-08-17: reconstructed from ledger last_seen/merge_confidence evidence during merge_candidates.json cleanup; not set at original resolution time"
   },
   {
     "match_type": "possible",
@@ -173,7 +187,9 @@
     "flagged_date": "2026-07-20",
     "status": "merged",
     "resolved_date": "2026-07-20",
-    "resolution_note": "record_a no longer exists as a standalone record (already absorbed into wordsmith-ai_series-b_2026-06-04 via a separate definite auto-merge this run). Resolved together with the against_ledger pair below as one consolidation into wordsmith-ai_series-b_2026-06-04."
+    "resolution_note": "record_a no longer exists as a standalone record (already absorbed into wordsmith-ai_series-b_2026-06-04 via a separate definite auto-merge this run). Resolved together with the against_ledger pair below as one consolidation into wordsmith-ai_series-b_2026-06-04.",
+    "merged_into": "wordsmith-ai_series-b_2026-06-04",
+    "merged_into_backfilled": "2026-08-17: reconstructed from ledger last_seen/merge_confidence evidence during merge_candidates.json cleanup; not set at original resolution time"
   },
   {
     "match_type": "possible",

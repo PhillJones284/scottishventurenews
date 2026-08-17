@@ -1,7 +1,7 @@
 ---
 canonical_name: University of Strathclyde (Strathclyde Inspire)
-last_updated: 2026-08-12
-last_updated_via: "manual refresh"
+last_updated: 2026-08-17
+last_updated_via: "2026-08-17 data pipeline run"
 ---
 
 ### University of Strathclyde (Strathclyde Inspire)
