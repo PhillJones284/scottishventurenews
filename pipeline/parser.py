@@ -8,6 +8,8 @@ from pathlib import Path
 
 from dateutil import parser as dateparser
 
+from vc_names import load_alias_map, resolve_name
+
 logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).parent.parent
@@ -138,16 +140,6 @@ def _load_config():
         vcs_data["known_vcs"],
         excluded_data["excluded_companies"],
     )
-
-
-def _build_vc_lookup(known_vcs):
-    """Return a dict mapping lowercase alias/canonical → canonical_name."""
-    lookup = {}
-    for vc in known_vcs:
-        lookup[vc["canonical_name"].lower()] = vc["canonical_name"]
-        for alias in vc.get("aliases", []):
-            lookup[alias.lower()] = vc["canonical_name"]
-    return lookup
 
 
 def _build_excluded_lookup(excluded_companies):
@@ -296,7 +288,7 @@ def _normalise_investors(lead, others, vc_lookup):
     seen = set()
     result = []
     for name in raw:
-        canonical = vc_lookup.get(name.lower().strip(), name.strip())
+        canonical = resolve_name(name, vc_lookup)
         if canonical.lower() not in seen:
             seen.add(canonical.lower())
             result.append(canonical)
@@ -434,9 +426,7 @@ def _normalise_record(raw, sectors, fx_rates, vc_lookup):
     others = raw.get("other_investors") or raw.get("investors") or []
     investors = _normalise_investors(lead, others, vc_lookup)
     # Normalise lead investor name too
-    lead_investor = vc_lookup.get((lead or "").lower().strip()) or lead or None
-    if lead_investor:
-        lead_investor = vc_lookup.get(lead_investor.lower(), lead_investor)
+    lead_investor = resolve_name(lead, vc_lookup) if lead else None
 
     source_url = raw.get("source_url") or raw.get("url") or ""
     headline = raw.get("headline") or raw.get("title") or ""
@@ -479,7 +469,7 @@ def _normalise_record(raw, sectors, fx_rates, vc_lookup):
 
 def run(date: str = None):
     sectors, fx_rates, known_vcs, excluded_companies = _load_config()
-    vc_lookup = _build_vc_lookup(known_vcs)
+    vc_lookup = load_alias_map()
     excluded_lookup = _build_excluded_lookup(excluded_companies)
 
     date_prefix = date or datetime.now(timezone.utc).strftime("%Y-%m-%d")

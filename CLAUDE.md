@@ -1,33 +1,36 @@
 # Scottish Venture News
 
-A pipeline that monitors freely available news sources for venture capital investment activity in Scottish scale-up companies, and produces a weekly intelligence report.
+A pipeline that monitors freely available news sources for venture capital investment activity in Scottish scale-up companies, and produces a monthly intelligence report. A separate data pipeline (fetch, parse, dedup, VC profiles, static site pages) is run regularly — typically weekly — in between issues, so the newsletter is always assembled from an already-current ledger rather than a cold start.
 
 ## Purpose
 
 Your job is to answer: Which VC firms are actively investing in Scottish companies, at what stages, in which sectors, and with what cadence?
 
-You achieve this by producing a weekly analyst-quality intelligence report that can inform:
+You achieve this by producing a monthly analyst-quality intelligence report that can inform:
 - Fundraising strategy (who should we approach?)
 - Competitive intelligence (who is funding our competitors?)
 - Ecosystem understanding (what sectors are hot in Scotland right now?)
 
-### Weekly Report (`data/reports/YYYY-MM-DD_vc-report.md`)
+### Monthly Report (`data/reports/YYYY-MM-DD_vc-report.md`)
 
-Report format and structure is defined in `.claude/agents/reporter.md`. Full per-VC historical profiles are *not* rebuilt in the weekly report — see [Managing VC profiles](#managing-vc-profiles) below for the standing reference instead.
+Report format and structure is defined in `.claude/agents/reporter.md`. Full per-VC historical profiles are *not* rebuilt in the monthly report — see [Managing VC profiles](#managing-vc-profiles) below for the standing reference instead.
 
 
 ## Running the agent
-If asked to "run the agent", execute the full pipeline in sequence using the Agent tool, with a gate check after each stage. Stop and report failure if any gate fails — do not proceed to the next stage (except Stage 1a, which has a soft gate — see below).
+The pipeline is split into two independently-triggered stage sets. Both use the Agent tool with a gate check after each stage — stop and report failure if any gate fails, do not proceed to the next stage (except Stage 1a, which has a soft gate — see below).
 
-**Stage 1** has three sub-steps: **Stage 1a** (Fetcher, Python), **Stage 1c** (Firecrawl Scraper, Python), and **Stage 1b** (Scraper, Claude agent). **Stage 3.5** (Report Stats) and **Stage 3.6** (Chart Generator) are pure Python steps that run between the deduplicator and the reporter — see below for why. **Stage 4** (reporter) is a Claude agent. **Stage 5** (VC profiler) has a Python stats step and a Claude agent step, same shape as Stage 1. **Stage 6** (Deal Table Generator) is a pure Python step that runs after Stage 5. **Stage 7** (Investor Page Generator) is a pure Python step that runs after Stage 6. **Stage 8** (Landing Page Generator) is a pure Python step that runs after Stage 7. **Stage 9** (git commit + push) and **Stage 10** (Buttondown draft) are the final two steps, both soft.
-**Stages 2, 3, 3.5, 3.6, 6, 7, and 8** are Python — run them with the relevant `python pipeline/<script>.py` command via the Bash tool. Stages 2, 3, 3.5, and 3.6 accept an optional `--date YYYY-MM-DD` argument; omit it to default to today. Stages 6, 7, and 8 take no arguments (Stage 8 runs two scripts — see Stage 8 section).
+- **"run the data pipeline"** — Stages 1 through 3, then 5 through 8 (excluding the Landing Page Generator half of Stage 8 — see below). Fetches, parses, dedupes, refreshes VC profiles, and rebuilds the deal table / investor / sources pages. Run this regularly (typically weekly) to keep the ledger and public site current. Does **not** touch report stats, charts, the reporter, or Buttondown.
+- **"write the newsletter"** — Stages 3.5, 3.6, 4, the Landing Page Generator half of Stage 8, then 9 and 10. Assembles and drafts the monthly issue from whatever the data pipeline has already accumulated since the last issue. Run this once a month, on the first Monday. It assumes Stage 3's synchronous merge-candidate review is already clean going in — `report_stats.py` hard-gates on any pending duplicate regardless, as a backstop.
+
+**Stage 1** has three sub-steps: **Stage 1a** (Fetcher, Python), **Stage 1c** (Firecrawl Scraper, Python), and **Stage 1b** (Scraper, Claude agent). **Stage 3.5** (Report Stats) and **Stage 3.6** (Chart Generator) are pure Python steps that run between the deduplicator and the reporter — see below for why. **Stage 4** (reporter) is a Claude agent. **Stage 5** (VC profiler) has a Python stats step and a Claude agent step, same shape as Stage 1. **Stage 6** (Deal Table Generator) is a pure Python step that runs after Stage 5. **Stage 7** (Investor Page Generator) is a pure Python step that runs after Stage 6. **Stage 8** has two independent halves: the Sources Page Generator (data pipeline, runs after Stage 7) and the Landing Page Generator (newsletter task, runs after Stage 4 — it needs that issue's report and charts to exist). **Stage 9** (git commit + push) runs at the end of both stage sets with a different commit message each time; **Stage 10** (Buttondown draft) is newsletter-only. Both are soft gates.
+**Stages 2, 3, 3.5, 3.6, 6, 7, and 8** are Python — run them with the relevant `python pipeline/<script>.py` command via the Bash tool. Stages 2, 3, 3.5, and 3.6 accept an optional `--date YYYY-MM-DD` argument; omit it to default to today. Stages 6, 7, and 8 take no arguments.
 
 **How to invoke agent stages:** Use the Agent tool with `subagent_type: "general-purpose"`. Read the body of the relevant `.claude/agents/<stage>.md` file (everything after the second `---` frontmatter delimiter) and use it as the prompt, prepending `Today's date is YYYY-MM-DD.` with today's actual date substituted.
 
-**`pipeline/run.py`** orchestrates the full pipeline (including Stages 3.5 and 3.6) in one command (`python pipeline/run.py [--date YYYY-MM-DD]`) for unattended use. In practice this project runs on Phill's own laptop, not a server or cron job — there is no scenario where a run happens without Phill present, so the synchronous duplicate-review behaviour in [Reviewing merge candidates](#reviewing-merge-candidates) always applies in full; `run.py` existing as a script doesn't change that.
+**`pipeline/run.py`** orchestrates each stage set in one command: `python pipeline/run.py --stage-set weekly [--date YYYY-MM-DD]` or `python pipeline/run.py --stage-set newsletter [--date YYYY-MM-DD]`, for unattended use. In practice this project runs on Phill's own laptop, not a server or cron job — there is no scenario where a run happens without Phill present, so the synchronous duplicate-review behaviour in [Reviewing merge candidates](#reviewing-merge-candidates) always applies in full; `run.py` existing as a script doesn't change that.
 
 ### Pre-launch backfill
-Run this **once**, before the first official weekly run, to populate the ledger with historical deals without polluting Monday's "This Week" section. Trigger phrase: **"run pre-launch backfill"**.
+Run this **once**, before the first official data pipeline run, to populate the ledger with historical deals without polluting the first newsletter issue's "What We Found This Month" section. Trigger phrase: **"run pre-launch backfill"**.
 
 Sequence (Stages 1–3 only — do **not** proceed to Stage 3.5 or beyond):
 
@@ -42,9 +45,9 @@ Sequence (Stages 1–3 only — do **not** proceed to Stage 3.5 or beyond):
    - Resolve any merge candidates immediately as normal
    - Gate: `data/processed/investments_deduped.json` must exist
 
-**Stop after Stage 3.** Do not run Stage 3.5 (report_stats.py) — that would create a `report_history.json` entry dated today, which would make Monday's delta look like "deals added since today" rather than being a clean first-run baseline.
+**Stop after Stage 3.** Do not run Stage 3.5 (report_stats.py) — that would create a `report_history.json` entry dated today, which would make the first newsletter's delta look like "deals added since today" rather than being a clean first-run baseline.
 
-The removed records (past 7 days) are still in `data/raw/` — Monday's scraper will re-find them and Stage 3 will pick them up as `new`, giving Monday's "This Week" section a clean week of fresh deals.
+The removed records (past 7 days) are still in `data/raw/` — the next data pipeline run's scraper will re-find them and Stage 3 will pick them up as `new`, giving the first newsletter issue's "What We Found This Month" section a clean set of fresh deals.
 
 ### Stage 1a — Fetcher (Python)
 Run: `python pipeline/fetcher.py` (or `python pipeline/fetcher.py --date YYYY-MM-DD`)
@@ -154,33 +157,34 @@ Agent tool: `subagent_type: "general-purpose"`, prompt = today's date + body of 
 If the gate fails: stop, tell Phill the reporter did not produce a report.
 
 ### Stage 5 — VC Profiler (Python + Claude agent)
-Refreshes `data/vc-profiles/` for VCs that were active this run — see [Managing VC profiles](#managing-vc-profiles) for what this is and why it's separate from the weekly report.
+Part of the data pipeline, runs after Stage 3. Refreshes `data/vc-profiles/` for VCs that were active this run — see [Managing VC profiles](#managing-vc-profiles) for what this is and why it's separate from the monthly report.
 
 1. Run: `python pipeline/vc_profile_stats.py --active-in data/processed/investments_deduped.json` (writes `data/processed/vc_stats.json`)
 2. If `vc_stats.json` is an empty array, skip the agent step — no known VCs were active this run.
 3. Otherwise, Agent tool: `subagent_type: "general-purpose"`, prompt = today's date + body of `.claude/agents/vc-profiler.md`
 
-**Gate (soft)**: Every VC named in `vc_stats.json` has a `data/vc-profiles/<slug>.md` with today's date in `last_updated`. If this fails, tell Phill which VCs didn't get refreshed but do not block the run — the report has already been written by this point and profiles are reference data, not the deliverable.
+**Gate (soft)**: Every VC named in `vc_stats.json` has a `data/vc-profiles/<slug>.md` with today's date in `last_updated`. If this fails, tell Phill which VCs didn't get refreshed but do not block the run — profiles are reference data, not the deliverable.
 
 ### Stage 6 — Deal Table Generator (Python)
-Run: `python pipeline/deal_table_generator.py` (or `python pipeline/deal_table_generator.py --date YYYY-MM-DD`)
+Part of the data pipeline, runs after Stage 5. Run: `python pipeline/deal_table_generator.py` (or `python pipeline/deal_table_generator.py --date YYYY-MM-DD`)
 
-**Gate (soft)**: `docs/deals/index.html` must exist. If it fails, log a warning but do not block — the weekly report is already complete by this point and the deal table is a web supplement, not the primary deliverable.
+**Gate (soft)**: `docs/deals/index.html` must exist. If it fails, log a warning but do not block — the deal table is a web supplement, not the primary deliverable.
 
 ### Stage 7 — Investor Page Generator (Python)
-Run: `python pipeline/investor_page_generator.py`
+Part of the data pipeline, runs after Stage 6. Run: `python pipeline/investor_page_generator.py`
 
 **Gate (soft)**: `docs/investors/index.html` must exist. If it fails, log a warning but do not block.
 
-### Stage 8 — Sources Page + Landing Page Generator (Python)
-Run: `python pipeline/sources_page_generator.py` then `python pipeline/landing_page_generator.py`
+### Stage 8 — Sources Page Generator + Landing Page Generator (Python)
+Two independent scripts on two different cadences — they only share a stage number because both write top-level `docs/` pages.
 
-`sources_page_generator.py` reads `config/sources.json` and writes `docs/sources/index.html`. It takes no arguments and can also be run standalone whenever `sources.json` changes.
-
-**Gate (soft)**: `docs/index.html` must exist. If it fails, log a warning but do not block.
+- **Sources Page Generator** — part of the data pipeline, runs after Stage 7. Run: `python pipeline/sources_page_generator.py`. Reads `config/sources.json` and writes `docs/sources/index.html`. Takes no arguments and can also be run standalone whenever `sources.json` changes.
+  **Gate (soft)**: `docs/sources/index.html` must exist. If it fails, log a warning but do not block.
+- **Landing Page Generator** — part of the newsletter task, runs after Stage 4 (it renders that issue's report markdown and charts, so it cannot run before they exist). Run: `python pipeline/landing_page_generator.py`.
+  **Gate (soft)**: `docs/index.html` must exist. If it fails, log a warning but do not block.
 
 ### Stage 9 — Git commit + push (Python, via subprocess in run.py)
-Not a standalone script. Only `docs/` is committed — data files (ledger, reports, vc-profiles) are not touched and must be committed manually by Phill after review.
+Not a standalone script. Only `docs/` is committed — data files (ledger, reports, vc-profiles) are not touched and must be committed manually by Phill after review. Runs at the end of both stage sets, with a different commit message each time: `"Data update: {date}"` for the data pipeline, `"Newsletter: {date}"` for the newsletter task.
 
 **Gate (soft)**: warns on failure but does not block. If Stage 9 fails, GitHub Pages is not updated this run — push manually or investigate with `git status`.
 
@@ -302,6 +306,10 @@ The deduplicator (Stage 3) scores any potential duplicate pair as `definite`, `p
 ### Reviewing merge candidates
 Whenever a new entry lands in `data/processed/merge_candidates.json` — during a pipeline run, a manual investigation, or anything else — resolve it with Phill immediately, in that same session, rather than silently staging it and moving on. Phill should never have to remember to ask for a review; surfacing it proactively is Claude's job, every time. Go through new (and any other still-`pending`) entries one by one: show both records side by side, explain the `match_type` and `note`, and ask whether to merge them (do it the same way as any manual ledger merge — newer extraction's fields win, `first_seen` keeps the earliest date, `last_seen` keeps the latest, `source_urls` union, `confidence` reassessed from the combined evidence, `merge_confidence: "definite"`) or dismiss the pair (set `status: "dismissed"`, leave both ledger records as-is). Never leave a pair silently unresolved across multiple reviews — always end with `pending`, `merged`, or `dismissed`.
 
+**Always set `merged_into` on a `"merged"` resolution**, naming the id of the record that survived. This is required, not optional — it's what makes the resolution binding (see below) rather than just an audit note. `pipeline/deduplicator.py` logs a warning listing any `"merged"` entries still missing it.
+
+**Resolved merges are binding.** If a pair was previously resolved `"merged"` (with `merged_into` set) and the same pair is rediscovered on a later run — most often because the same source article gets re-scraped and reproduces the same deterministic id — the deduplicator auto-merges it into the recorded survivor rather than re-flagging it (which `staged_pairs` already suppressed) or, worse, silently adding it back to the ledger as a fresh standalone duplicate. That silent-re-add was a real bug (fixed 2026-08-12) that let the same duplicate resurface repeatedly — e.g. Wordsmith AI's June Series B and Esk's Growth round both duplicated this way. A `"dismissed"` resolution is binding in the same sense already (a wrongly-dismissed pair also never gets re-flagged); this makes `"merged"` behave consistently with that existing precedent. If a past merge decision turns out to have been wrong, fixing it requires editing `merge_candidates.json` directly (change `merged_into` or the `status`) — the binding behavior only reads from that file, so correcting the record there is how you override it.
+
 ## Managing known VCs
 
 ### If Phill asks you to add a new VC
@@ -321,9 +329,9 @@ When moving an entry to `known_vcs.json`, ensure:
 
 ## Managing VC profiles
 
-`data/vc-profiles/` holds a standing, per-VC reference page — one file per firm (`<slug>.md`, where slug is the canonical name lowercased and hyphenated). This is separate from the weekly report's "Deal Spotlight": it accumulates a firm's full Scottish history over time rather than being rebuilt from scratch every week.
+`data/vc-profiles/` holds a standing, per-VC reference page — one file per firm (`<slug>.md`, where slug is the canonical name lowercased and hyphenated). This is separate from the monthly report's "Deal Spotlight": it accumulates a firm's full Scottish history over time rather than being rebuilt from scratch every issue.
 
-**Automatic refresh**: Stage 5 of the pipeline refreshes a VC's profile whenever that VC appears in a weekly run (see Stage 5 above). VCs not active in a given run are left untouched — a profile only goes stale in proportion to how inactive that firm actually is.
+**Automatic refresh**: Stage 5 of the data pipeline refreshes a VC's profile whenever that VC appears in a run (see Stage 5 above). VCs not active in a given run are left untouched — a profile only goes stale in proportion to how inactive that firm actually is.
 
 **Manual refresh**: Phill can ask for this directly:
 - "refresh profile for `<VC name>`" — refreshes just that VC

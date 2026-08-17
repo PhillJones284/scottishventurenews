@@ -46,7 +46,11 @@
       "canonical_name": "Maven Capital Partners",
       "aliases": [
         "Maven",
-        "Maven Equity Finance"
+        "Maven Equity Finance",
+        "Maven Capital Partners (Investment Fund for Scotland)",
+        "Maven Income and Growth VCTs",
+        "Investment Fund for Scotland (IFS Maven Equity Finance)",
+        "IFS Maven Equity Finance"
       ],
       "hq": "Glasgow / Edinburgh",
       "stage_focus": [
@@ -111,7 +115,9 @@
     },
     {
       "canonical_name": "Bayern Kapital",
-      "aliases": [],
+      "aliases": [
+        "Bayern Capital"
+      ],
       "hq": "Landshut, Germany",
       "stage_focus": [
         "Seed",
@@ -199,7 +205,8 @@
       "canonical_name": "GU Holdings",
       "aliases": [
         "GU Holdings Ltd",
-        "University of Glasgow Ventures"
+        "University of Glasgow Ventures",
+        "GU Holdings Ltd (University of Glasgow)"
       ],
       "hq": "Glasgow",
       "stage_focus": [
@@ -795,6 +802,20 @@
       "stage_focus": null,
       "scotland_active": true,
       "notes": "Flagged from https://www.heraldscotland.com/news/26403951.glasgow-firm-xburo-reveals-uk-hopes-investment-deal/?ref=rss (2026-07-23) — backed Glasgow/Edinburgh engineering consultancy Xburo UK with an undisclosed growth investment. Portfolio described as spanning UK, Europe and North America; this appears to be its first identified Scottish deal."
+    },
+    {
+      "canonical_name": "University of Strathclyde (Strathclyde Inspire)",
+      "aliases": [
+        "Strathclyde Inspire",
+        "University of Strathclyde"
+      ],
+      "hq": "Glasgow, Scotland",
+      "stage_focus": [
+        "Pre-Seed",
+        "Seed"
+      ],
+      "scotland_active": true,
+      "notes": "University of Strathclyde's investment arm, focused on early-stage university spinouts. Flagged from https://www.scottish-enterprise-mediacentre.com/news/quickblock-secures-gbp-940-000-to-scale-defence-infrastructure-solutions-across-europe (2026-07-23) — co-led QUICKBLOCK's £940k equity round alongside Equity Gap and Scottish Enterprise; Anne Henderson, Head of Investment at Strathclyde Inspire, quoted as having backed QUICKBLOCK since early stage."
     }
   ]
 }

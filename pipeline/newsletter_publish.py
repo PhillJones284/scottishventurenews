@@ -1,4 +1,4 @@
-"""Publishes the weekly report as a draft on Buttondown.
+"""Publishes the monthly report as a draft on Buttondown.
 
 Reads `data/reports/YYYY-MM-DD_vc-report.md`, rewrites its two embedded chart
 image links to point at the copies already published to GitHub Pages (Stage 8

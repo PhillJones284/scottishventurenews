@@ -1,7 +1,7 @@
 ---
 canonical_name: Outward VC
-last_updated: 2026-07-20
-last_updated_via: "2026-07-20_vc-report.md"
+last_updated: 2026-08-12
+last_updated_via: "2026-08-12 data pipeline run"
 ---
 
 ### Outward VC

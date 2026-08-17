@@ -4,9 +4,10 @@
     "scope": "against_ledger",
     "record_a": "xburo-uk_growth_2026-07-23",
     "record_b": "xburo_growth_2026-07-23",
-    "note": "Same round type (Growth), same announcement date (2026-07-23), same investor (Chiltern Capital), same city (Glasgow), same amount (undisclosed) — one deal reported by two different sources (The Herald and Scottish Business News) a week apart. Name similarity ('Xburo UK' vs 'Xburo') scored 76.9 on the dedup matcher's token_sort_ratio, just under the POSSIBLE_NAME_THRESHOLD of 80, so this pair was never automatically flagged — not even staged as a possible match. Identified manually by Phill + Claude on 2026-08-04 after Phill noticed the duplicate in the 2026-08-03 report, and merged immediately on review. Kept 'Xburo UK' as canonical name and the earlier first_seen (2026-07-27). Root cause fixed in pipeline/deduplicator.py by stripping a trailing/leading 'UK' token before name comparison, the same way legal suffixes are already stripped.",
+    "note": "Same round type (Growth), same announcement date (2026-07-23), same investor (Chiltern Capital), same city (Glasgow), same amount (undisclosed) \u2014 one deal reported by two different sources (The Herald and Scottish Business News) a week apart. Name similarity ('Xburo UK' vs 'Xburo') scored 76.9 on the dedup matcher's token_sort_ratio, just under the POSSIBLE_NAME_THRESHOLD of 80, so this pair was never automatically flagged \u2014 not even staged as a possible match. Identified manually by Phill + Claude on 2026-08-04 after Phill noticed the duplicate in the 2026-08-03 report, and merged immediately on review. Kept 'Xburo UK' as canonical name and the earlier first_seen (2026-07-27). Root cause fixed in pipeline/deduplicator.py by stripping a trailing/leading 'UK' token before name comparison, the same way legal suffixes are already stripped.",
     "flagged_date": "2026-08-04",
-    "status": "merged"
+    "status": "merged",
+    "merged_into": "xburo-uk_growth_2026-07-23"
   },
   {
     "match_type": "possible",
@@ -15,7 +16,10 @@
     "record_b": "esk-film-services_growth_undated",
     "note": "Same investor (Maven Capital Partners), same amount (\u00a32.6m), same round type (Growth), same city (Edinburgh), same source domain (mavencp.com) \u2014 the second record was scraped from Maven's generic news-listing page while the first is the specific article it links to. Name similarity ('Esk' vs 'Esk Film Services') fell below the dedup matcher's auto-detection threshold, so this pair was never automatically flagged. Identified manually by Phill + Claude on 2026-06-24 during a pipeline-simulation review and merged immediately on review rather than left pending.",
     "flagged_date": "2026-06-24",
-    "status": "merged"
+    "status": "merged",
+    "merged_into": "esk_growth_2026-05-11",
+    "resolved_date": "2026-08-12",
+    "resolution_note": "This entry originally lacked merged_into, so the 2026-06-24 merge decision was not binding: esk-film-services_growth_undated resurfaced in the ledger via a re-scrape on 2026-06-27 (three days later) and sat there undetected until found on 2026-08-12 while backfilling merged_into across this file as part of making resolved merges binding (see pipeline/deduplicator.py). Re-merged into esk_growth_2026-05-11 (kept as canonical \u2014 higher data_quality_score, has a real announcement_date), unioning source_urls (ellty.com and mavencp.com/latest-news added) and company_sectors ('creative industries' added). merged_into now set, so this pair is protected against resurfacing going forward."
   },
   {
     "match_type": "possible",
@@ -24,7 +28,8 @@
     "record_b": "swurf_seed_undated",
     "note": "Same company (Swurf), same amount (\u00a3200k), same investors (Gareth Williams, Anna Lagerqvist Christopherson) named slightly differently across two articles, same underlying March 2026 raise \u2014 but logged under two different round-type labels ('Pre-Seed' vs 'Seed'), so the dedup matcher's name-plus-round-type check classified this as only a 'possible' match rather than 'definite', and it was never auto-merged. Identified manually by Phill + Claude on 2026-06-24 during a pipeline-simulation review and merged immediately on review rather than left pending.",
     "flagged_date": "2026-06-24",
-    "status": "merged"
+    "status": "merged",
+    "merged_into": "swurf_pre-seed_2026-03-09"
   },
   {
     "match_type": "probable",
@@ -42,7 +47,8 @@
     "record_b": "aveni_growth_2026-06-04",
     "note": "Same company name, different round types ('Series B' vs 'Growth')",
     "flagged_date": "2026-06-27",
-    "status": "merged"
+    "status": "merged",
+    "merged_into": "aveni_growth_2026-06-04"
   },
   {
     "match_type": "probable",
@@ -51,7 +57,8 @@
     "record_b": "highway-data-systems_seed_2026-04-30",
     "note": "Same company name, different round types ('Growth' vs 'Seed')",
     "flagged_date": "2026-06-27",
-    "status": "merged"
+    "status": "merged",
+    "merged_into": "highway-data-systems_seed_2026-04-30"
   },
   {
     "match_type": "possible",
@@ -177,7 +184,8 @@
     "flagged_date": "2026-07-20",
     "status": "merged",
     "resolved_date": "2026-07-20",
-    "resolution_note": "Confirmed same company/date by Phill. Kept existing \u00a34.2m amount and 'Unknown' round_type (thespiritsbusiness.com) as authoritative; Crunchbase's \u00a318.2m figure did not reconcile and was not adopted. Crunchbase URL added as a secondary source on ardgowan-distillery_unknown_2026-06-04."
+    "resolution_note": "Confirmed same company/date by Phill. Kept existing \u00a34.2m amount and 'Unknown' round_type (thespiritsbusiness.com) as authoritative; Crunchbase's \u00a318.2m figure did not reconcile and was not adopted. Crunchbase URL added as a secondary source on ardgowan-distillery_unknown_2026-06-04.",
+    "merged_into": "ardgowan-distillery_unknown_2026-06-04"
   },
   {
     "match_type": "possible",
@@ -188,7 +196,8 @@
     "flagged_date": "2026-07-20",
     "status": "merged",
     "resolved_date": "2026-07-20",
-    "resolution_note": "Merged into wordsmith-ai_series-b_2026-06-04: adopted amount/currency/summary/headline/source from the eu-startups extraction (more precise, direct primary source), cleared stale 'investor_unnamed' issue flag, unioned source_urls (5 total, eu-startups already present)."
+    "resolution_note": "Merged into wordsmith-ai_series-b_2026-06-04: adopted amount/currency/summary/headline/source from the eu-startups extraction (more precise, direct primary source), cleared stale 'investor_unnamed' issue flag, unioned source_urls (5 total, eu-startups already present).",
+    "merged_into": "wordsmith-ai_series-b_2026-06-04"
   },
   {
     "match_type": "possible",
@@ -198,7 +207,9 @@
     "note": "Similar company names ('Wordsmith AI' vs 'Wordsmith')",
     "flagged_date": "2026-08-03",
     "status": "merged",
-    "resolved_date": "2026-08-03"
+    "resolved_date": "2026-08-03",
+    "resolution_note": "Merged into wordsmith-ai_series-b_2026-06-04 (kept as canonical). Resurfaced 2026-08-12: the same futurescot.com article was re-scraped in a later run, re-producing a record under the identical deterministic id 'wordsmith-ai_series-b_2026-06-03'. Because this exact record_a/record_b pair was already present in this file, the deduplicator's staged_pairs guard correctly suppressed a second merge-candidate entry \u2014 but nothing in pipeline/deduplicator.py stops the record itself from being re-added to the ledger as a new standalone entry when that happens, so the duplicate resurfaced silently in data/processed/ledger.json rather than as a flagged candidate. Found and re-merged manually by Phill + Claude on 2026-08-12 (no new source_urls added \u2014 the futurescot.com URL was already present on the canonical record from the original 2026-08-03 merge). Root cause (a resolved merge can resurface on re-scrape because there's no persistent record of 'this id was already merged away') is unfixed in code \u2014 worth addressing in pipeline/deduplicator.py alongside the id_remap staging-order fix from 2026-08-12.",
+    "merged_into": "wordsmith-ai_series-b_2026-06-04"
   },
   {
     "match_type": "definite",
@@ -210,5 +221,61 @@
     "status": "dismissed",
     "resolved_date": "2026-08-03",
     "resolution_note": "Same \u00a318.2m Crunchbase figure already investigated and rejected on 2026-07-20 in favour of the \u00a34.2m thespiritsbusiness.com figure on ardgowan-distillery_unknown_2026-06-04 (see that resolution). Crunchbase re-surfaced the same bad figure as a new record this run; removed from the ledger entirely rather than re-merged, since the dedup matcher should have caught this as the same previously-dismissed pair but did not \u2014 worth a look at why the match didn't fire this time."
+  },
+  {
+    "match_type": "possible",
+    "scope": "within_run",
+    "record_a": "wordsmith-ai_series-b_2026-08-05",
+    "record_b": "wordsmith_series-b_2026-06-03",
+    "note": "Similar company names ('Wordsmith AI' vs 'Wordsmith') \u2014 deferred by Phill on 2026-08-12 (remote, away from laptop): thin Crunchbase record with no investor/amount, needs manual investigation before resolving. Left pending intentionally.",
+    "flagged_date": "2026-08-12",
+    "status": "dismissed",
+    "resolved_date": "2026-08-12",
+    "resolution_note": "Superseded: Phill confirmed on 2026-08-12 the Crunchbase record (wordsmith-ai_series-b_2026-08-05) is a duplicate of the Series B extension (wordsmith-ai_series-b-extension_2026-08-06), not the original June round \u2014 see the merged pair for that resolution. This comparison against the original round no longer applies."
+  },
+  {
+    "match_type": "possible",
+    "scope": "within_run",
+    "record_a": "wordsmith-ai_series-b_2026-08-05",
+    "record_b": "wordsmith-ai_series-b-extension_2026-08-06",
+    "note": "Same company name, different round types ('Series B' vs 'Series B extension') \u2014 deferred by Phill on 2026-08-12 (remote, away from laptop): thin Crunchbase record with no investor/amount, needs manual investigation before resolving. Left pending intentionally.",
+    "flagged_date": "2026-08-12",
+    "status": "merged",
+    "merged_into": "wordsmith-ai_series-b-extension_2026-08-06",
+    "resolved_date": "2026-08-12",
+    "resolution_note": "Confirmed by Phill on 2026-08-12 after checking the Crunchbase page directly: the thin Crunchbase record (no investor, \u00a310.4m \u2014 close to the extension's \u00a310.374m/$14m) is Crunchbase's entry for the Aug 6 Series B extension, not the original June round. Merged into wordsmith-ai_series-b-extension_2026-08-06 (kept as primary per Phill), adding the Crunchbase source_url. Amount/investor fields kept from the extension's press-sourced record."
+  },
+  {
+    "match_type": "possible",
+    "scope": "within_run",
+    "record_a": "wordsmith_series-b_2026-06-03",
+    "record_b": "wordsmith-ai_series-b-extension_2026-08-06",
+    "note": "Similar company names ('Wordsmith' vs 'Wordsmith AI')",
+    "flagged_date": "2026-08-12",
+    "status": "dismissed",
+    "resolved_date": "2026-08-12",
+    "resolution_note": "Confirmed by Phill on 2026-08-12: the Aug 6 record is a genuine Series B extension (new lead investor Intact Private Capital, FT Ventures joins, $14m) distinct from the original June Series B (Highland Europe, \u00a352m). Kept as two separate ledger entries. Phill flagged the extension as a strong Deal Spotlight candidate for the next newsletter issue."
+  },
+  {
+    "match_type": "probable",
+    "scope": "within_run",
+    "record_a": "wordsmith-ai_series-b_2026-06-03",
+    "record_b": "wordsmith-ai_series-b-extension_2026-08-06",
+    "note": "Same company name, different round types ('Series B' vs 'Series B extension')",
+    "flagged_date": "2026-08-12",
+    "status": "dismissed",
+    "resolved_date": "2026-08-12",
+    "resolution_note": "Confirmed by Phill on 2026-08-12: the Aug 6 record is a genuine Series B extension (new lead investor Intact Private Capital, FT Ventures joins, $14m) distinct from the original June Series B (Highland Europe, \u00a352m). Kept as two separate ledger entries. Phill flagged the extension as a strong Deal Spotlight candidate for the next newsletter issue."
+  },
+  {
+    "match_type": "possible",
+    "scope": "against_ledger",
+    "record_a": "wordsmith-ai_series-b_2026-08-05",
+    "record_b": "wordsmith-ai_series-b_2026-06-04",
+    "note": "Similar company names ('Wordsmith AI' vs 'Wordsmith') \u2014 deferred by Phill on 2026-08-12 (remote, away from laptop): thin Crunchbase record with no investor/amount, needs manual investigation before resolving. Left pending intentionally.",
+    "flagged_date": "2026-08-12",
+    "status": "dismissed",
+    "resolved_date": "2026-08-12",
+    "resolution_note": "Superseded: Phill confirmed on 2026-08-12 the Crunchbase record (wordsmith-ai_series-b_2026-08-05) is a duplicate of the Series B extension (wordsmith-ai_series-b-extension_2026-08-06), not the original June round \u2014 see the merged pair for that resolution. This comparison against the original round no longer applies."
   }
 ]

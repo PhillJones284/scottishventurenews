@@ -1,7 +1,7 @@
 ---
 canonical_name: Greyfriars
-last_updated: 2026-08-03
-last_updated_via: "2026-08-03_vc-report.md"
+last_updated: 2026-08-12
+last_updated_via: "2026-08-12 data pipeline run"
 ---
 
 ### Greyfriars

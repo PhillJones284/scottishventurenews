@@ -250,11 +250,13 @@
     "lead_investor": "Maven Capital Partners",
     "announcement_date": "2026-05-11",
     "source_urls": [
-      "https://www.mavencp.com/latest-news/maven-leads-2.6-million-funding-round-in-esk"
+      "https://www.mavencp.com/latest-news/maven-leads-2.6-million-funding-round-in-esk",
+      "https://www.ellty.com/investors/scotland-investors",
+      "https://www.mavencp.com/latest-news"
     ],
     "confidence": "medium",
     "data_quality_score": 100,
-    "source_count": 1,
+    "source_count": 3,
     "first_seen": "2026-05-25",
     "last_seen": "2026-06-29",
     "sector_normalised": true,
@@ -266,11 +268,10 @@
     "summary": "Esk, a global entertainment technology company specialising in high-end live experiences, secured \u00a32.6 million from Maven Income and Growth VCTs and IFS Maven Equity Finance. Esk licenses iconic IP from major rightsholders (Netflix, Paramount, BAFTA) and transforms it into live entertainment formats, and has developed a proprietary media control system for audio-visual playback in venues. The IFS Maven Equity Finance involvement indicates Scottish operations.",
     "issues": [],
     "raw_snippet": "Esk, global entertainment technology company specializing in delivering high-end live experiences. Licenses iconic intellectual property from major rightsholders (Netflix, Paramount, BAFTA) and transforms it into live entertainment formats. Funding Amount: \u00a32.6 million from Maven Income and Growth VCTs and IFS Maven Equity Finance (managed by Maven, delivered by British Business Bank). Announcement Date: May 11, 2026.",
-    "merge_confidence": null,
+    "merge_confidence": "definite",
     "duplicate_of": null,
     "company_sectors": [
-      "Creative & Media",
-      "creative industries, film services"
+      "Creative & Media"
     ]
   },
   {
@@ -582,12 +583,12 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-05-27",
-    "last_seen": "2026-08-03",
+    "last_seen": "2026-08-12",
     "is_new_this_run": false,
     "round_type_normalised": true
   },
   {
-    "id": "kaly_seed_2026-06-09",
+    "id": "kaly_growth_2026-06-09",
     "company_name": "Kaly",
     "company_location": "Other Scotland",
     "company_sectors": [
@@ -595,22 +596,24 @@
       "Life Sciences",
       "sustainable seaweed, agtech"
     ],
-    "sector_normalised": false,
-    "round_type": "Seed",
+    "sector_normalised": true,
+    "round_type": "Growth",
+    "round_type_normalised": true,
     "amount_original": "\u00a3430,000",
     "amount_gbp_millions": 0.43,
     "currency_original": "GBP",
     "investors": [
-      "Tricapital"
+      "Tricapital",
+      "Scottish Enterprise Investment Fund"
     ],
     "lead_investor": "Tricapital",
     "announcement_date": "2026-06-09",
     "source_url": "https://angelcapital.scot/deals/tricapital-scots-syndicate-leads-3m-plus-deals-and-unveils-key-hire/",
     "source_name": "Angel Capital Scotland",
     "headline": "Tricapital: Scots syndicate leads \u00a33m-plus deals and unveils key hire",
-    "summary": "Scottish angel syndicate Tricapital backed sustainable seaweed business Kaly with \u00a3430,000 as part of a series of investments totalling more than \u00a33 million.",
-    "confidence": "medium",
-    "data_quality_score": 85,
+    "summary": "Sustainable seaweed business Kaly received \u00a3430,000 of backing as part of a series of investments totalling more than \u00a33m led by Scottish angel syndicate Tricapital.",
+    "confidence": "low",
+    "data_quality_score": 95,
     "issues": [
       "location_unknown",
       "company_not_clearly_scottish"
@@ -623,9 +626,8 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-05-27",
-    "last_seen": "2026-08-03",
-    "is_new_this_run": false,
-    "round_type_normalised": true
+    "last_seen": "2026-08-12",
+    "is_new_this_run": false
   },
   {
     "id": "sisaltech_seed_2026-06-09",
@@ -633,6 +635,7 @@
     "company_location": "Other Scotland",
     "company_sectors": [
       "Energy & Cleantech",
+      "low-carbon insulation / materials",
       "low-carbon insulation manufacturing",
       "low-carbon insulation, sustainability"
     ],
@@ -664,7 +667,7 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-05-27",
-    "last_seen": "2026-08-03",
+    "last_seen": "2026-08-12",
     "is_new_this_run": false,
     "round_type_normalised": true
   },
@@ -789,7 +792,7 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-06-08",
-    "last_seen": "2026-07-20",
+    "last_seen": "2026-08-12",
     "is_new_this_run": false
   },
   {
@@ -982,44 +985,6 @@
     "first_seen": "2026-05-27",
     "last_seen": "2026-07-06",
     "is_new_this_run": false
-  },
-  {
-    "id": "esk-film-services_growth_undated",
-    "company_name": "Esk Film Services",
-    "company_location": "Edinburgh",
-    "company_sectors": [
-      "creative industries"
-    ],
-    "sector_normalised": false,
-    "round_type": "Growth",
-    "amount_original": "\u00a32.6m",
-    "amount_gbp_millions": 2.6,
-    "currency_original": "GBP",
-    "investors": [
-      "Maven Capital Partners"
-    ],
-    "lead_investor": "Maven Capital Partners",
-    "announcement_date": null,
-    "source_url": "https://www.mavencp.com/latest-news",
-    "source_name": "Maven Capital Partners \u2014 Latest News",
-    "headline": "Maven invests \u00a32.6 million in Esk",
-    "summary": "Edinburgh-based Esk Film Services received a \u00a32.6m investment from Maven Capital Partners, believed to be via the IFS Maven Equity Finance fund (Investment Fund for Scotland). The deal appeared as a recent headline on Maven's news page. No announcement date is available; confirmed as a 2026 investment from Maven's Scottish portfolio. The company provides film services to the creative industries sector.",
-    "confidence": "medium",
-    "data_quality_score": 80,
-    "issues": [
-      "date_missing"
-    ],
-    "raw_snippet": "Maven invests \u00a32.6 million in Esk [news headline on https://www.mavencp.com/latest-news, retrieved 2026-06-27]. Company confirmed as Edinburgh-based Esk Film Services in third-party investor directory.",
-    "source_urls": [
-      "https://www.ellty.com/investors/scotland-investors",
-      "https://www.mavencp.com/latest-news"
-    ],
-    "source_count": 2,
-    "merge_confidence": "definite",
-    "duplicate_of": null,
-    "first_seen": "2026-06-27",
-    "last_seen": "2026-06-27",
-    "is_new_this_run": true
   },
   {
     "id": "earth-blox_growth_2026-03-31",
@@ -1222,7 +1187,7 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-07-06",
-    "last_seen": "2026-08-03",
+    "last_seen": "2026-08-12",
     "is_new_this_run": false
   },
   {
@@ -1263,7 +1228,7 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-07-06",
-    "last_seen": "2026-08-03",
+    "last_seen": "2026-08-12",
     "is_new_this_run": false
   },
   {
@@ -1305,12 +1270,12 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-06-08",
-    "last_seen": "2026-08-03",
+    "last_seen": "2026-08-12",
     "is_new_this_run": false,
     "round_type_normalised": true
   },
   {
-    "id": "aveni_not-disclosed_2026-06-04",
+    "id": "aveni_growth_2026-06-04",
     "company_name": "Aveni",
     "company_location": "Edinburgh",
     "company_sectors": [
@@ -1319,7 +1284,8 @@
       "Other"
     ],
     "sector_normalised": true,
-    "round_type": "Not Disclosed",
+    "round_type": "Growth",
+    "round_type_normalised": true,
     "amount_original": "\u00a312m",
     "amount_gbp_millions": 12.0,
     "currency_original": "GBP",
@@ -1333,15 +1299,15 @@
     "lead_investor": "PXN Ventures",
     "announcement_date": "2026-06-04",
     "source_url": "https://edinburgh-innovations.ed.ac.uk/news/fintech-startup-aveni-announces-12m-raise",
-    "source_name": "Crunchbase + DIGIT.fyi + Edinburgh Innovations",
-    "headline": "Edinburgh Fintech Aveni Raises \u00a312m for AI Assurance Platform",
-    "summary": "Edinburgh-based Aveni, a UK AI fintech specialist for wealth management and banking compliance, raised \u00a312 million led by PXN Ventures with support from existing investors Puma Growth Partners, Lloyds Banking Group, Nationwide and Scottish Enterprise. The funding backs its Unified Assurance Platform and new products assessing AI agent conduct risk in financial services.",
+    "source_name": "Edinburgh Innovations",
+    "headline": "Fintech startup Aveni announces \u00a312m raise",
+    "summary": "University of Edinburgh spinout Aveni raised \u00a312m led by PXN Ventures with support from Puma Growth Partners, Lloyds Banking Group, Nationwide and Scottish Enterprise.",
     "confidence": "high",
-    "data_quality_score": 95,
+    "data_quality_score": 100,
     "issues": [
       "investor_unnamed"
     ],
-    "raw_snippet": "Edinburgh-based Aveni has raised \u00a312 million in a funding round led by PXN Ventures to accelerate the development of its Unified Assurance Platform... The round was supported by existing investors Puma Growth Partners, Lloyds Banking Group, Nationwide and Scottish Enterprise.",
+    "raw_snippet": "The round was led by PXN Ventures and supported by existing investors Puma Growth Partners, Lloyds Banking Group, Nationwide and Scottish Enterprise.",
     "source_urls": [
       "https://edinburgh-innovations.ed.ac.uk/news/fintech-startup-aveni-announces-12m-raise",
       "https://scottishfinancialreview.com/2026/06/04/aveni-edinburgh-ai-wealth-startup-raises-12m/",
@@ -1353,9 +1319,8 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-06-08",
-    "last_seen": "2026-08-03",
-    "is_new_this_run": false,
-    "round_type_normalised": true
+    "last_seen": "2026-08-12",
+    "is_new_this_run": false
   },
   {
     "id": "vuabl_2nd-round_2026-04-01",
@@ -1586,45 +1551,198 @@
     "is_new_this_run": false
   },
   {
-    "id": "quickblock_unknown_2026-07-23",
+    "id": "quickblock_growth_2026-08-10",
     "company_name": "Quickblock",
     "company_location": "Other Scotland",
     "company_sectors": [
+      "Deep Tech",
       "Other",
       "Space & Defence"
     ],
     "sector_normalised": true,
-    "round_type": "Unknown",
-    "round_type_normalised": false,
-    "amount_original": "\u00a3940,000 (combined equity and grant funding)",
+    "round_type": "Growth",
+    "round_type_normalised": true,
+    "amount_original": "\u00a3940,000 (combined equity + grant)",
     "amount_gbp_millions": 0.94,
     "currency_original": "GBP",
     "investors": [
       "Equity Gap",
-      "University of Strathclyde (Strathclyde Inspire)",
-      "Scottish Enterprise Investment Fund"
+      "University of Strathclyde",
+      "Scottish Enterprise Investment Fund",
+      "Innovate UK (grant)"
     ],
     "lead_investor": "Equity Gap",
-    "announcement_date": "2026-07-23",
-    "source_url": "https://www.scottish-enterprise-mediacentre.com/news/quickblock-secures-gbp-940-000-to-scale-defence-infrastructure-solutions-across-europe",
-    "source_name": "Scottish Enterprise Newsroom",
-    "headline": "QUICKBLOCK secures \u00a3940,000 to scale defence infrastructure solutions across Europe",
-    "summary": "QUICKBLOCK, a Stirling-based maker of rapidly deployable modular infrastructure for defence, security and humanitarian applications, secured a \u00a3940,000 funding round comprising new equity investment and innovation grant funding. The equity portion was led by Equity Gap alongside the University of Strathclyde (via Strathclyde Inspire) and Scottish Enterprise, with additional grant funding from Scottish Enterprise and Innovate UK for R&D. The funds will support European expansion, commercial capability and production capacity amid rising NATO defence spending.",
+    "announcement_date": "2026-08-10",
+    "source_url": "https://angelcapital.scot/news/quickblock-raises-940k-to-expand-defence-infrastructure-across-europe/",
+    "source_name": "Angel Capital Scotland",
+    "headline": "QUICKBLOCK raises $940k to expand defence infrastructure across Europe",
+    "summary": "QUICKBLOCK secured a \u00a3940,000 round comprising equity investment led by Equity Gap, University of Strathclyde and Scottish Enterprise, plus grant funding from Scottish Enterprise and Innovate UK.",
     "confidence": "medium",
-    "data_quality_score": 90,
+    "data_quality_score": 100,
     "issues": [
       "possible_grant_not_vc"
     ],
-    "raw_snippet": "QUICKBLOCK, the UK-based developer of rapidly deployable modular infrastructure solutions for defence, security and humanitarian applications, today announced the successful completion of a \u00a3940,000 funding round comprising new equity investment and innovation grant funding. The equity investment was led by Equity Gap, The University of Strathclyde and Scottish Enterprise, with additional grant funding provided by Scottish Enterprise and Innovate UK specifically for R&D activity for the development of rapid deployment shelter solutions.",
+    "raw_snippet": "The equity investment was led by Equity Gap, The University of Strathclyde and Scottish Enterprise, with additional grant funding provided by Scottish Enterprise and Innovate UK.",
     "source_urls": [
+      "https://angelcapital.scot/news/quickblock-raises-940k-to-expand-defence-infrastructure-across-europe/",
       "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
       "https://www.scottish-enterprise-mediacentre.com/news/quickblock-secures-gbp-940-000-to-scale-defence-infrastructure-solutions-across-europe"
+    ],
+    "source_count": 3,
+    "merge_confidence": "definite",
+    "duplicate_of": null,
+    "first_seen": "2026-08-03",
+    "last_seen": "2026-08-12",
+    "is_new_this_run": false
+  },
+  {
+    "id": "fidra-energy_debt-financing_2026-07-17",
+    "company_name": "Fidra Energy",
+    "company_location": "Other Scotland",
+    "company_sectors": [
+      "Other"
+    ],
+    "sector_normalised": false,
+    "round_type": "Debt Financing",
+    "round_type_normalised": false,
+    "amount_original": "\u00a3231,000,000",
+    "amount_gbp_millions": 231.0,
+    "currency_original": "GBP",
+    "investors": [],
+    "lead_investor": null,
+    "announcement_date": "2026-07-17",
+    "source_url": "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
+    "source_name": "Crunchbase",
+    "headline": "",
+    "summary": "",
+    "confidence": "high",
+    "data_quality_score": 55,
+    "issues": [
+      "investor_unnamed"
+    ],
+    "raw_snippet": "",
+    "source_urls": [
+      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2"
+    ],
+    "source_count": 1,
+    "merge_confidence": null,
+    "duplicate_of": null,
+    "first_seen": "2026-08-12",
+    "last_seen": "2026-08-12",
+    "is_new_this_run": true
+  },
+  {
+    "id": "social-investment-scotland_debt-financing_2026-07-30",
+    "company_name": "Social Investment Scotland",
+    "company_location": "Other Scotland",
+    "company_sectors": [
+      "Other"
+    ],
+    "sector_normalised": false,
+    "round_type": "Debt Financing",
+    "round_type_normalised": false,
+    "amount_original": "\u00a33,500,000",
+    "amount_gbp_millions": 3.5,
+    "currency_original": "GBP",
+    "investors": [],
+    "lead_investor": null,
+    "announcement_date": "2026-07-30",
+    "source_url": "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
+    "source_name": "Crunchbase",
+    "headline": "",
+    "summary": "",
+    "confidence": "high",
+    "data_quality_score": 55,
+    "issues": [
+      "investor_unnamed"
+    ],
+    "raw_snippet": "",
+    "source_urls": [
+      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2"
+    ],
+    "source_count": 1,
+    "merge_confidence": null,
+    "duplicate_of": null,
+    "first_seen": "2026-08-12",
+    "last_seen": "2026-08-12",
+    "is_new_this_run": true
+  },
+  {
+    "id": "regenerus-laboratories_growth_2026-07-14",
+    "company_name": "Regenerus Laboratories",
+    "company_location": "Edinburgh",
+    "company_sectors": [
+      "Healthtech"
+    ],
+    "sector_normalised": true,
+    "round_type": "Growth",
+    "round_type_normalised": true,
+    "amount_original": "\u00a35m equity (part of \u00a38m combined package including \u00a33m Scottish Enterprise grant)",
+    "amount_gbp_millions": 5.0,
+    "currency_original": "GBP",
+    "investors": [
+      "Foresight Group"
+    ],
+    "lead_investor": "Foresight Group",
+    "announcement_date": "2026-07-14",
+    "source_url": "https://www.scottish-enterprise-mediacentre.com/news/regenerus-laboratories-secures-a-combined-gbp-8m-investment-to-expand-advance-diagnostic-testing-platform-internationally",
+    "source_name": "Scottish Enterprise Newsroom",
+    "headline": "Regenerus Laboratories secures a combined \u00a38m investment to expand advance diagnostic testing platform internationally",
+    "summary": "Edinburgh-based diagnostic health testing company Regenerus Laboratories raised \u00a35m in equity from Foresight Group, alongside a separate \u00a33m Scottish Enterprise R&D grant, to expand its diagnostics platform internationally.",
+    "confidence": "high",
+    "data_quality_score": 100,
+    "issues": [
+      "possible_grant_not_vc"
+    ],
+    "raw_snippet": "The round was led by Foresight Group, a leading regional private equity and real assets investment manager, which has invested \u00a35m in equity to grow the business. Alongside this, a further \u00a33m grant was awarded from Scottish Enterprise...",
+    "source_urls": [
+      "https://www.scottish-enterprise-mediacentre.com/news/regenerus-laboratories-secures-a-combined-gbp-8m-investment-to-expand-advance-diagnostic-testing-platform-internationally"
+    ],
+    "source_count": 1,
+    "merge_confidence": null,
+    "duplicate_of": null,
+    "first_seen": "2026-08-12",
+    "last_seen": "2026-08-12",
+    "is_new_this_run": true
+  },
+  {
+    "id": "wordsmith-ai_series-b-extension_2026-08-06",
+    "company_name": "Wordsmith AI",
+    "company_location": "Edinburgh",
+    "company_sectors": [
+      "AI & Machine Learning"
+    ],
+    "sector_normalised": true,
+    "round_type": "Series B extension",
+    "round_type_normalised": false,
+    "amount_original": "$14m",
+    "amount_gbp_millions": 10.374,
+    "currency_original": "USD",
+    "investors": [
+      "Intact Private Capital",
+      "Highland Europe",
+      "Index Ventures",
+      "FT Ventures"
+    ],
+    "lead_investor": "Intact Private Capital",
+    "announcement_date": "2026-08-06",
+    "source_url": "https://scottishfinancialreview.com/2026/08/06/ft-ventures-invests-as-wordsmith-ai-raises-14m/",
+    "source_name": "Scottish Financial Review",
+    "headline": "FT Ventures invests as Wordsmith AI raises $14m",
+    "summary": "Edinburgh and New York-based legal AI platform Wordsmith AI raised a $14m extension to its Series B, led by new investor Intact Private Capital, with FT Ventures also becoming a shareholder alongside existing investors Highland Europe and Index Ventures.",
+    "confidence": "high",
+    "data_quality_score": 85,
+    "issues": [],
+    "raw_snippet": "Wordsmith AI, the Edinburgh and New York-based AI-powered in-house legal assistant platform, has announced a $14 million extension to its Series B, led by new investment from Intact Private Capital alongside existing investors Highland Europe and Index Ventures. FT Ventures has also become a shareholder in Wordsmith.",
+    "source_urls": [
+      "https://scottishfinancialreview.com/2026/08/06/ft-ventures-invests-as-wordsmith-ai-raises-14m/",
+      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2"
     ],
     "source_count": 2,
     "merge_confidence": "definite",
     "duplicate_of": null,
-    "first_seen": "2026-08-03",
-    "last_seen": "2026-08-03",
+    "first_seen": "2026-08-12",
+    "last_seen": "2026-08-12",
     "is_new_this_run": true
   }
 ]

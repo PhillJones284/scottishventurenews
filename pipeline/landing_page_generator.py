@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Stage 8 — Landing Page Generator.
 
-Reads the latest weekly report from data/reports/, copies its chart PNGs to
+Reads the latest report from data/reports/, copies its chart PNGs to
 docs/charts/, converts the report markdown to HTML, and writes docs/index.html.
 No external dependencies beyond the standard library.
 """

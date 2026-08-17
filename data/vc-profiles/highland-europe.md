@@ -1,12 +1,12 @@
 ---
 canonical_name: Highland Europe
-last_updated: 2026-07-20
-last_updated_via: "2026-07-20_vc-report.md"
+last_updated: 2026-08-12
+last_updated_via: "manual refresh"
 ---
 
 ### Highland Europe
-**Historical deals in ledger**: 1 (Wordsmith AI)
-**Sectors favoured**: AI & Machine Learning, SaaS & Enterprise Software
-**Stages**: Series B
+**Historical deals in ledger**: 2 (Wordsmith AI, Wordsmith)
+**Sectors favoured**: AI & Machine Learning, SaaS & Enterprise Software, Other
+**Stages**: Series B, Series B extension
 **HQ**: London, United Kingdom
-**Trajectory**: Limited data point — a single Scottish deal recorded, so no trend can yet be projected. Highland Europe is a London-based growth VC focused on European tech scaleups; its portfolio includes n8n, Nabla, Camunda, Wolt, WeTransfer, and ContentSquare. It led Wordsmith AI's £52m Series B, dated 4 June 2026 — one of the largest Scottish tech deals in recent years. Highland does not routinely invest in Scotland, and its participation signals that Edinburgh's AI ecosystem has reached a maturity level attracting Tier 1 European growth investors. No new Scottish activity since this deal.
+**Trajectory**: Highland Europe's ledger correctly shows two Scottish deals: its £52m lead on Wordsmith AI's Series B (June 2026), and Wordsmith AI's £10.374m Series B extension (6 August 2026), where Highland Europe participated as an existing investor while Intact Private Capital led. Note for the record: an earlier refresh today (12 August 2026) briefly showed three deals due to a ledger duplicate — a resurfaced/re-scraped copy of the June Series B — which has since been found and merged out; the real trajectory is a grow from one deal (the original Series B) to two (adding the August extension), not one to three. Both deals fall within the trailing six months, up from zero in the prior six-month period. Two Scottish deals recorded so far in 2026, totalling £62.37m combined. Highland Europe is a London-based growth VC focused on European tech scaleups, with a portfolio including n8n, Nabla, Camunda, Wolt, WeTransfer, and ContentSquare; its continued involvement in Wordsmith AI's growth suggests Edinburgh's AI ecosystem is attracting sustained, not one-off, attention from Tier 1 European growth investors.

@@ -1,6 +1,6 @@
 ---
 name: vc-profiler
-description: Refreshes on-demand VC profile pages in data/vc-profiles/ from ledger stats. Invoked as Stage 5 after the reporter, or manually for one, several, or all VCs.
+description: Refreshes on-demand VC profile pages in data/vc-profiles/ from ledger stats. Invoked as Stage 5 of the data pipeline, after the deduplicator, or manually for one, several, or all VCs.
 tools: Read, Write
 ---
 
@@ -8,7 +8,7 @@ tools: Read, Write
 
 ## Mission
 
-Maintain `data/vc-profiles/` as a standing, per-VC reference — separate from the weekly report. Each file reads like an analyst's running notes on one firm: what they've done in Scotland, what they favour, and where their trajectory is heading. You update only the VCs you're given; every other file in `data/vc-profiles/` is left untouched.
+Maintain `data/vc-profiles/` as a standing, per-VC reference — separate from the monthly report. Each file reads like an analyst's running notes on one firm: what they've done in Scotland, what they favour, and where their trajectory is heading. You update only the VCs you're given; every other file in `data/vc-profiles/` is left untouched.
 
 ## Input
 
@@ -26,7 +26,7 @@ For each entry in the stats input, write `data/vc-profiles/<slug>.md`, where `sl
 ---
 canonical_name: <canonical_name>
 last_updated: <today's date>
-last_updated_via: "<today's date>_vc-report.md"   (or "manual refresh" if not triggered by a weekly run)
+last_updated_via: "<today's date> data pipeline run"   (or "manual refresh" if not triggered by a pipeline run)
 ---
 
 ### <canonical_name>

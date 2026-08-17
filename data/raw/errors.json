@@ -352,5 +352,11 @@
     "url": "https://sifted.eu/feed/?post_type=article",
     "error": "HTTP 403 Forbidden on RSS feed; fallback fetch of https://sifted.eu succeeded but returned no Scotland-related articles",
     "timestamp": "2026-07-26T15:07:17.637376+00:00"
+  },
+  {
+    "source": "sifted-uk",
+    "url": "https://sifted.eu/articles/incubator-scotland-next-generation-of-tech-brnd/",
+    "error": "HTTP 403 Forbidden \u2014 sifted.eu blocking non-browser client (link-candidate follow-up from Stage 1c firecrawl output; article appears to be an editorial feature on a Scottish incubator, not a funding announcement, based on headline)",
+    "timestamp": "2026-08-12T00:00:00Z"
   }
 ]

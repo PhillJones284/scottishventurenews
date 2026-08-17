@@ -181,18 +181,35 @@ def _gate_profiler(run_date, expected_names):
     return True, None
 
 
-def main():
-    if not os.environ.get("ANTHROPIC_API_KEY"):
-        print("ERROR: ANTHROPIC_API_KEY environment variable is not set.", file=sys.stderr)
-        print("Set it before running the pipeline: export ANTHROPIC_API_KEY=sk-...", file=sys.stderr)
-        sys.exit(1)
+def _git_commit_push(message):
+    """Stage 9 — commit and push docs/. Shared by both stage sets since each
+    can leave docs/ changed (weekly: deal table/investor/sources pages;
+    newsletter: landing page). Soft gate — warns and returns None on failure
+    rather than blocking, since GitHub Pages just goes stale until the next
+    successful push."""
+    git_commit_hash = None
+    try:
+        subprocess.run(["git", "add", "docs/"], check=True, cwd=str(ROOT))
+        subprocess.run(["git", "commit", "-m", message], check=True, cwd=str(ROOT))
+        rev = subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            check=True, capture_output=True, text=True, cwd=str(ROOT),
+        )
+        git_commit_hash = rev.stdout.strip()
+        subprocess.run(["git", "push", "origin", "main"], check=True, cwd=str(ROOT))
+        logger.info("Stage 9 complete. Committed %s, pushed to origin/main.", git_commit_hash[:8])
+    except Exception as e:
+        logger.warning("Stage 9 (git commit/push) failed: %s — GitHub Pages not updated this run.", e)
+    return git_commit_hash
 
-    ap = argparse.ArgumentParser(description="Scottish VC Tracker pipeline orchestrator")
-    ap.add_argument("--date", default=None, help="Run date in YYYY-MM-DD format (default: today)")
-    args = ap.parse_args()
 
-    run_date = args.date or datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    logger.info("Pipeline starting. Run date: %s", run_date)
+def run_weekly(run_date):
+    """Data pipeline: fetch/scrape -> parse -> dedup -> VC profiles -> deal
+    table / investor / sources pages -> git push. Keeps the ledger and public
+    site current between newsletter issues. Triggered manually, typically
+    weekly — does not touch report_stats, charts, the reporter, or Buttondown.
+    """
+    logger.info("Weekly data pipeline starting. Run date: %s", run_date)
 
     # Stage 1a — Fetcher (Python)
     logger.info("=== Stage 1a: Fetcher ===")
@@ -291,6 +308,68 @@ def main():
                 [(c["record_a"], c["record_b"]) for c in new_pending],
             )
 
+    # Stage 5 — VC Profiler (Python stats + Claude agent)
+    logger.info("=== Stage 5: VC Profiler ===")
+    deduped_path = DATA_PROCESSED / "investments_deduped.json"
+    results, unknown_names = vc_profile_stats.run(deduped_path=str(deduped_path))
+    if unknown_names:
+        logger.info("Investors active this run but not in known_vcs.json (no profile generated): %s", unknown_names)
+    if results:
+        _run_claude_agent("vc-profiler", run_date)
+        ok, err = _gate_profiler(run_date, [r["canonical_name"] for r in results])
+        if not ok:
+            logger.warning("Stage 5 gate (soft): %s — profiles are reference data, not blocking the run.", err)
+        else:
+            logger.info("Stage 5 gate passed.")
+    else:
+        logger.info("No known VCs active this run — nothing to refresh.")
+
+    # Stage 6 — Deal Table Generator (Python)
+    logger.info("=== Stage 6: Deal Table Generator ===")
+    try:
+        deal_table_generator.run(date_str=run_date)
+    except Exception as e:
+        logger.warning("Stage 6 (Deal Table Generator) failed: %s — non-blocking, report still complete.", e)
+    else:
+        logger.info("Stage 6 complete. Static deal table: docs/deals/index.html")
+
+    # Stage 7 — Investor Page Generator (Python)
+    logger.info("=== Stage 7: Investor Page Generator ===")
+    try:
+        investor_page_generator.run()
+    except Exception as e:
+        logger.warning("Stage 7 (Investor Page Generator) failed: %s — non-blocking, report still complete.", e)
+    else:
+        logger.info("Stage 7 complete. Investor page: docs/investors/index.html")
+
+    # Stage 8 — Sources Page Generator (Python)
+    # (Landing Page Generator is not run here — it renders the *latest report's*
+    # charts and markdown, which don't exist yet until the newsletter runs.)
+    logger.info("=== Stage 8: Sources Page Generator ===")
+    try:
+        sources_page_generator.run()
+    except Exception as e:
+        logger.warning("Stage 8 (Sources Page Generator) failed: %s — non-blocking.", e)
+    else:
+        logger.info("Stage 8 (sources) complete. Sources page: docs/sources/index.html")
+
+    # Stage 9 — Git commit + push docs/ to GitHub Pages
+    logger.info("=== Stage 9: Git commit + push ===")
+    _git_commit_push(f"Data update: {run_date}")
+
+    print(f"Weekly data pipeline complete. Ledger and site updated for {run_date}.")
+
+
+def run_newsletter(run_date):
+    """Newsletter assembly: report stats -> charts -> reporter -> landing
+    page -> git push -> Buttondown draft. Run standalone, monthly (first
+    Monday), against whatever the weekly data pipeline has already
+    accumulated in the ledger since the last issue. Assumes Stage 3's
+    synchronous merge-candidate review is already clean — report_stats.py
+    hard-gates on any pending duplicate, same as before.
+    """
+    logger.info("Newsletter pipeline starting. Run date: %s", run_date)
+
     # Stage 3.5 — Report Stats (Python)
     logger.info("=== Stage 3.5: Report Stats ===")
     try:
@@ -327,49 +406,7 @@ def main():
         sys.exit(1)
     logger.info("Stage 4 gate passed.")
 
-    # Stage 5 — VC Profiler (Python stats + Claude agent)
-    logger.info("=== Stage 5: VC Profiler ===")
-    deduped_path = DATA_PROCESSED / "investments_deduped.json"
-    results, unknown_names = vc_profile_stats.run(deduped_path=str(deduped_path))
-    if unknown_names:
-        logger.info("Investors active this run but not in known_vcs.json (no profile generated): %s", unknown_names)
-    if results:
-        _run_claude_agent("vc-profiler", run_date)
-        ok, err = _gate_profiler(run_date, [r["canonical_name"] for r in results])
-        if not ok:
-            logger.warning("Stage 5 gate (soft): %s — profiles are reference data, not blocking the run.", err)
-        else:
-            logger.info("Stage 5 gate passed.")
-    else:
-        logger.info("No known VCs active this run — nothing to refresh.")
-
-    # Stage 6 — Deal Table Generator (Python)
-    logger.info("=== Stage 6: Deal Table Generator ===")
-    try:
-        deal_table_generator.run(date_str=run_date)
-    except Exception as e:
-        logger.warning("Stage 6 (Deal Table Generator) failed: %s — non-blocking, report still complete.", e)
-    else:
-        logger.info("Stage 6 complete. Static deal table: docs/deals/index.html")
-
-    # Stage 7 — Investor Page Generator (Python)
-    logger.info("=== Stage 7: Investor Page Generator ===")
-    try:
-        investor_page_generator.run()
-    except Exception as e:
-        logger.warning("Stage 7 (Investor Page Generator) failed: %s — non-blocking, report still complete.", e)
-    else:
-        logger.info("Stage 7 complete. Investor page: docs/investors/index.html")
-
-    # Stage 8 — Sources Page + Landing Page Generator (Python)
-    logger.info("=== Stage 8: Sources Page Generator ===")
-    try:
-        sources_page_generator.run()
-    except Exception as e:
-        logger.warning("Stage 8 (Sources Page Generator) failed: %s — non-blocking.", e)
-    else:
-        logger.info("Stage 8 (sources) complete. Sources page: docs/sources/index.html")
-
+    # Stage 8 — Landing Page Generator (Python)
     logger.info("=== Stage 8: Landing Page Generator ===")
     try:
         landing_page_generator.run()
@@ -380,22 +417,7 @@ def main():
 
     # Stage 9 — Git commit + push docs/ to GitHub Pages
     logger.info("=== Stage 9: Git commit + push ===")
-    git_commit_hash = None
-    try:
-        subprocess.run(["git", "add", "docs/"], check=True, cwd=str(ROOT))
-        subprocess.run(
-            ["git", "commit", "-m", f"Weekly report: {run_date}"],
-            check=True, cwd=str(ROOT),
-        )
-        rev = subprocess.run(
-            ["git", "rev-parse", "HEAD"],
-            check=True, capture_output=True, text=True, cwd=str(ROOT),
-        )
-        git_commit_hash = rev.stdout.strip()
-        subprocess.run(["git", "push", "origin", "main"], check=True, cwd=str(ROOT))
-        logger.info("Stage 9 complete. Committed %s, pushed to origin/main.", git_commit_hash[:8])
-    except Exception as e:
-        logger.warning("Stage 9 (git commit/push) failed: %s — GitHub Pages not updated this run.", e)
+    git_commit_hash = _git_commit_push(f"Newsletter: {run_date}")
 
     # Stage 10 — Buttondown draft
     logger.info("=== Stage 10: Buttondown draft ===")
@@ -411,7 +433,30 @@ def main():
     except Exception as e:
         logger.warning("Stage 10 (Buttondown draft) failed: %s — publish manually with pipeline/newsletter_publish.py.", e)
 
-    print(f"Pipeline complete. Report: data/reports/{run_date}_vc-report.md")
+    print(f"Newsletter pipeline complete. Report: data/reports/{run_date}_vc-report.md")
+
+
+def main():
+    if not os.environ.get("ANTHROPIC_API_KEY"):
+        print("ERROR: ANTHROPIC_API_KEY environment variable is not set.", file=sys.stderr)
+        print("Set it before running the pipeline: export ANTHROPIC_API_KEY=sk-...", file=sys.stderr)
+        sys.exit(1)
+
+    ap = argparse.ArgumentParser(description="Scottish VC Tracker pipeline orchestrator")
+    ap.add_argument(
+        "--stage-set", required=True, choices=["weekly", "newsletter"],
+        help="'weekly' runs the data pipeline (fetch through site pages); "
+             "'newsletter' runs report stats through the Buttondown draft.",
+    )
+    ap.add_argument("--date", default=None, help="Run date in YYYY-MM-DD format (default: today)")
+    args = ap.parse_args()
+
+    run_date = args.date or datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+    if args.stage_set == "weekly":
+        run_weekly(run_date)
+    else:
+        run_newsletter(run_date)
 
 
 if __name__ == "__main__":

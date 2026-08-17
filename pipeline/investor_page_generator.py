@@ -15,6 +15,7 @@ from datetime import date
 from pathlib import Path
 
 from webgen.shell import render_shell
+from vc_names import SKIP_INVESTORS, load_known_vcs, resolve_name
 
 ROOT         = Path(__file__).resolve().parent.parent
 LEDGER       = ROOT / "data" / "processed" / "ledger.json"
@@ -25,67 +26,11 @@ OUT_HTML     = OUT_DIR / "index.html"
 OUT_JSON     = OUT_DIR / "investors.json"
 TEMPLATE     = ROOT / "pipeline" / "webgen" / "templates" / "investors.html"
 
-# Raw investor strings to drop entirely (descriptors / personal names)
-SKIP_INVESTORS: set[str] = {
-    "crowdcube investors",
-    "republic investors",
-    "angel investors",
-    "unnamed hnw investors",
-    "unnamed existing and new investors",
-    "existing and new investors (undisclosed)",
-    "anna lagerqvist christopherson (boda bars)",
-    "brad peltz",
-    "david peterson",
-    "gareth williams (skyscanner co-founder)",
-}
-
-# Sub-fund / long-form variants → canonical name they should fold into
-MERGE_TO: dict[str, str] = {
-    "maven capital partners (investment fund for scotland)": "Maven Capital Partners",
-    "maven income and growth vcts":                          "Maven Capital Partners",
-    "investment fund for scotland (ifs maven equity finance)": "Maven Capital Partners",
-    "gu holdings ltd (university of glasgow)":               "GU Holdings",
-    "british business bank":                                 "British Business Investments",
-}
-
 
 # ── helpers ──────────────────────────────────────────────────────────────────
 
-def _norm(s: str) -> str:
-    return re.sub(r"[^a-z0-9]", "", s.lower())
-
-
 def _slug(name: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
-
-
-# ── data loading ──────────────────────────────────────────────────────────────
-
-def load_known_vcs() -> tuple[dict, dict]:
-    """Return (vc_by_canonical, alias_map).
-
-    alias_map: normalised string → canonical_name
-    """
-    raw = json.loads(KNOWN_VCS.read_text())
-    vcs: list[dict] = raw["known_vcs"]
-    vc_by_canonical: dict[str, dict] = {}
-    alias_map: dict[str, str] = {}
-    for vc in vcs:
-        canonical = vc["canonical_name"]
-        vc_by_canonical[canonical] = vc
-        alias_map[_norm(canonical)] = canonical
-        for alias in vc.get("aliases") or []:
-            alias_map[_norm(alias)] = canonical
-    return vc_by_canonical, alias_map
-
-
-def resolve_name(raw: str, alias_map: dict[str, str]) -> str:
-    """Map a raw investor name from the ledger to its canonical form."""
-    lower = raw.strip().lower()
-    if lower in MERGE_TO:
-        return MERGE_TO[lower]
-    canonical = alias_map.get(_norm(raw))
-    return canonical if canonical else raw.strip()
 
 
 def load_profile(canonical_name: str) -> str | None:

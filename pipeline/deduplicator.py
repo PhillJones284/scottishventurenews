@@ -318,6 +318,21 @@ def run(date: str = None):
         merge_candidates = []
     staged_pairs = {frozenset((c["record_a"], c["record_b"])) for c in merge_candidates}
 
+    # Pairs already resolved as "merged" in a past run, keyed by the pair and pointing
+    # at the id that survived. This makes that resolution binding: if the same pair
+    # resurfaces (e.g. a source article gets re-scraped and reproduces the same
+    # deterministic id), it must not silently become a fresh standalone duplicate.
+    # staged_pairs (above) only stops the pair from being re-flagged for review — it
+    # does nothing to stop the record itself being re-added to the ledger, which is
+    # exactly how the 2026-08-12 Wordsmith AI and Esk duplicates happened. Requires
+    # merged_into on the historical entry; entries without it (see the warning near
+    # the end of this function) can't participate and fall back to normal handling.
+    resolved_merges = {
+        frozenset((c["record_a"], c["record_b"])): c["merged_into"]
+        for c in merge_candidates
+        if c.get("status") == "merged" and c.get("merged_into")
+    }
+
     def _stage_merge_candidate(match_type, record_a, record_b, note, scope):
         pair = frozenset((record_a, record_b))
         if pair in staged_pairs:
@@ -333,18 +348,34 @@ def run(date: str = None):
             "status": "pending",
         })
 
-    for f in flagged:
-        a_id, b_id = f["records"]
-        _stage_merge_candidate(f["reason"].replace("_duplicate", ""), a_id, b_id, f["note"], "within_run")
-
     new_this_run = 0
     updated_existing = 0
     output_investments = []
 
+    # Run-local id -> surviving id, populated below whenever a record's id changes
+    # because it definite-merged into a ledger entry (see the "definite" branch).
+    # Needed because `flagged` (within-run probable/possible pairs) is computed
+    # before ledger reconciliation and still refers to run-local ids — if we staged
+    # those directly, a pair could end up referencing an id that no longer exists
+    # anywhere in investments_deduped.json or ledger.json once its record has been
+    # absorbed into a ledger entry under the ledger's id.
+    id_remap = {}
+
     for record in canonical:
         ledger_match, match_type = _match_against_ledger(record, ledger_entries)
 
+        if match_type in ("probable", "possible") and ledger_match is not None:
+            survivor_id = resolved_merges.get(frozenset((record["id"], ledger_match["id"])))
+            if survivor_id and survivor_id == ledger_match["id"]:
+                # This exact pair was already resolved as a merge, and the survivor
+                # it was merged into is still the current best match — binding.
+                # Auto-merge via the "definite" path below instead of re-flagging
+                # (already prevented by staged_pairs) or adding a fresh duplicate.
+                match_type = "definite"
+
         if match_type == "definite":
+            run_local_id = record["id"]
+
             # Merge into the existing ledger entry — fill gaps in either direction
             # (see _merge()) rather than blindly taking the newer extraction's fields,
             # which previously let a thin/unsourced re-extraction (e.g. a Crunchbase
@@ -365,6 +396,11 @@ def run(date: str = None):
             # reflects the merge — ledger_match is the same object held in that list.
             ledger_match.clear()
             ledger_match.update(merged)
+
+            # Read the surviving id AFTER the merge — it depends on which record
+            # won as merge base (_merge keeps `base`'s id), so it isn't knowable
+            # up front.
+            id_remap[run_local_id] = ledger_match["id"]
 
             updated_existing += 1
             output_investments.append(ledger_match)
@@ -390,10 +426,41 @@ def run(date: str = None):
 
             output_investments.append(record)
 
+    # Stage within-run flagged pairs only now, after ledger reconciliation above —
+    # remap each run-local id through id_remap to the id it actually survived under.
+    # Staging these earlier (before reconciliation) is the root cause of the
+    # 2026-08-12 dangling-id bug: a run record that definite-merged into a ledger
+    # entry keeps the ledger entry's id, not its own, so a pair staged beforehand
+    # could point at an id that no longer exists anywhere in investments_deduped.json
+    # or ledger.json.
+    for f in flagged:
+        a_id, b_id = f["records"]
+        a_id = id_remap.get(a_id, a_id)
+        b_id = id_remap.get(b_id, b_id)
+        f["records"] = [a_id, b_id]
+        if a_id == b_id:
+            # Both sides of the pair merged into the same ledger entry — not a
+            # duplicate of itself, so there's nothing left to review.
+            continue
+        _stage_merge_candidate(f["reason"].replace("_duplicate", ""), a_id, b_id, f["note"], "within_run")
+
     with open(merge_candidates_path, "w") as f:
         json.dump(merge_candidates, f, indent=2)
 
     pending_candidates = [c for c in merge_candidates if c["status"] == "pending"]
+
+    missing_merged_into = [
+        f"{c['record_a']} | {c['record_b']}"
+        for c in merge_candidates
+        if c.get("status") == "merged" and not c.get("merged_into")
+    ]
+    if missing_merged_into:
+        logger.warning(
+            "%d 'merged' merge_candidates entries have no merged_into and won't be "
+            "binding if the pair resurfaces: %s",
+            len(missing_merged_into),
+            missing_merged_into,
+        )
 
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),

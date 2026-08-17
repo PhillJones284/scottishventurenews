@@ -1,4 +1,4 @@
-"""Computes deterministic report numbers for the weekly reporter (Stage 3.5).
+"""Computes deterministic report numbers for the monthly reporter (Stage 3.5).
 
 Pure aggregation step (no LLM) — produces every number "The Numbers" section
 needs: quarter/year deal count and capital, investor rankings, stage/sector/
@@ -22,21 +22,16 @@ import argparse
 import calendar
 import json
 from collections import defaultdict
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
 PROCESSED_DIR = ROOT / "data" / "processed"
 LEDGER_PATH = PROCESSED_DIR / "ledger.json"
 MERGE_CANDIDATES_PATH = PROCESSED_DIR / "merge_candidates.json"
-DEDUPED_PATH = PROCESSED_DIR / "investments_deduped.json"
 HISTORY_PATH = PROCESSED_DIR / "report_history.json"
 OUT_PATH = PROCESSED_DIR / "report_stats.json"
 SOURCES_PATH = ROOT / "config" / "sources.json"
-
-# How recent an announcement_date has to be (relative to the run date) to count
-# as "fresh news" rather than backfill in the this-run new/backfill split.
-RECENT_WINDOW_DAYS = 14
 
 
 def _quarter_bounds(d: date):
@@ -202,21 +197,32 @@ def _slim(r):
     }
 
 
-def _this_run_split(run_date):
-    """New-or-updated records from investments_deduped.json, split into genuinely
-    new (announced recently) vs backfill (announced well before it surfaced)."""
-    if not DEDUPED_PATH.exists():
-        return {"new_count": 0, "genuinely_new_records": [], "backfill_records": [], "backfill_capital_gbp_millions": 0.0}
+def _since_last_report_split(ledger, last_report_date):
+    """Records first seen since the last report, split into genuinely new
+    (announced during the reporting period) vs backfill (announced earlier,
+    only just discovered) — both measured against the reporting-period
+    boundary (`last_report_date`), not a fixed day-window.
 
-    deduped = json.loads(DEDUPED_PATH.read_text())
-    records = deduped.get("investments", deduped) if isinstance(deduped, dict) else deduped
-    new_records = [r for r in records if r.get("is_new_this_run")]
+    Sourced from the ledger's `first_seen` / `announcement_date` fields
+    rather than investments_deduped.json's `is_new_this_run` flag. That flag
+    only reflects the most recent Stage 3 (dedup) run — fine when the
+    reporter ran every time Stage 3 did, but the newsletter is now assembled
+    monthly from several weekly data-pipeline runs, so trusting the last
+    run's flag would silently drop everything the earlier weeks' runs found.
 
-    cutoff = (run_date - timedelta(days=RECENT_WINDOW_DAYS)).isoformat()
+    `last_report_date` is `None` for the first-ever issue, in which case
+    everything currently in the ledger counts as belonging to this issue.
+    """
+    new_records = [
+        r for r in ledger
+        if r.get("first_seen") and (last_report_date is None or r["first_seen"] > last_report_date)
+    ]
+
     genuinely_new, backfill = [], []
     for r in new_records:
         ad = r.get("announcement_date")
-        (genuinely_new if ad and ad >= cutoff else backfill).append(r)
+        is_genuinely_new = ad and (last_report_date is None or ad >= last_report_date)
+        (genuinely_new if is_genuinely_new else backfill).append(r)
 
     return {
         "new_count": len(new_records),
@@ -306,7 +312,7 @@ def run(date_str=None):
         "ytd_sector_mix": ytd_sector_mix,
         "ytd_sector_capital_mix": ytd_sector_capital_mix,
         "location_mix": location_mix,
-        "this_run": _this_run_split(run_date),
+        "since_last_report": _since_last_report_split(ledger, prior["run_date"] if prior else None),
         "monitored_source_count": _monitored_source_count(),
         **chart_period,
     }
