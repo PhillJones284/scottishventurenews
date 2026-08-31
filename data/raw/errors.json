@@ -382,5 +382,23 @@
     "url": "https://greenangelventures.com/stories/",
     "error": "ECONNRESET on repeated WebFetch attempts (3x) — site unreachable via Stage 1b direct fetch this run",
     "timestamp": "2026-08-17T00:00:00Z"
+  },
+  {
+    "source": "scottish-financial-review",
+    "url": "https://scottishfinancialreview.com",
+    "error": "RSS fetch failed: Server error '500 Internal Server Error' for url 'https://scottishfinancialreview.com/feed/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500; fallback page fetch also failed: The read operation timed out",
+    "timestamp": "2026-08-31T08:46:47.661069+00:00"
+  },
+  {
+    "source": "sifted-uk",
+    "url": "https://sifted.eu/articles/wordsmith-14m-series-b-extension/",
+    "error": "HTTP 403 Forbidden — sifted.eu blocking non-browser client (link-candidate follow-up from Stage 1c firecrawl output; Wordsmith $14m Series B extension already captured via crunchbase.json this run)",
+    "timestamp": "2026-08-31T09:03:03.615710+00:00"
+  },
+  {
+    "source": "sifted-uk",
+    "url": "https://sifted.eu/articles/wordsmith-ai-legal-tech-raise-index-ventures-highland/",
+    "error": "HTTP 403 Forbidden — sifted.eu blocking non-browser client (link-candidate follow-up from Stage 1c firecrawl output; Wordsmith $70m Series B already captured via duckduckgo-scottish-vc candidates this run)",
+    "timestamp": "2026-08-31T09:03:03.616078+00:00"
   }
 ]

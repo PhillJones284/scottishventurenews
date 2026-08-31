@@ -1,12 +1,12 @@
 ---
 canonical_name: Kelvin Capital
-last_updated: 2026-08-17
-last_updated_via: "2026-08-17 data pipeline run"
+last_updated: 2026-08-31
+last_updated_via: "2026-08-31 data pipeline run"
 ---
 
 ### Kelvin Capital
 **Historical deals in ledger**: 1 (Kenoteq)
-**Sectors favoured**: Property & Construction Tech
+**Sectors favoured**: Energy & Cleantech, Property & Construction Tech, Other
 **Stages**: Growth
 **HQ**: Glasgow
-**Trajectory**: Limited data point — this is Kelvin Capital's first appearance in the ledger, so no trend can yet be projected. Kelvin Capital is a Glasgow-based investor with a West of Scotland focus, typically active at Seed and Series A; this deal — a £0.9m growth round for Kenoteq (13 August 2026) — sits a stage later than its usual Seed/Series A range. One Scottish deal so far in 2026, totalling £0.9m.
+**Trajectory**: Still a single Scottish deal recorded, with no additional activity since the last refresh (17 August 2026) — this remains a limited data point rather than a trend. Kelvin Capital is a Glasgow-based investor with a stated West of Scotland focus, typically active at Seed and Series A; its one recorded deal, a £0.9m growth round for Kenoteq (13 August 2026), sits a stage later than that usual range. One Scottish deal so far in 2026, totalling £0.9m.

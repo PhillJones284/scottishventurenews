@@ -1,7 +1,7 @@
 ---
 canonical_name: Index Ventures
-last_updated: 2026-08-12
-last_updated_via: "manual refresh"
+last_updated: 2026-08-31
+last_updated_via: "2026-08-31 data pipeline run"
 ---
 
 ### Index Ventures
@@ -9,4 +9,4 @@ last_updated_via: "manual refresh"
 **Sectors favoured**: AI & Machine Learning, SaaS & Enterprise Software, Other
 **Stages**: Series B, Series B extension
 **HQ**: London / San Francisco
-**Trajectory**: Index Ventures' ledger correctly shows two Scottish deals: its co-lead role in Wordsmith AI's £52m Series B (June 2026), and Wordsmith AI's £10.374m Series B extension (6 August 2026), where Index Ventures participated as an existing investor while Intact Private Capital led. Note for the record: an earlier refresh today (12 August 2026) briefly showed three deals due to a ledger duplicate — a resurfaced/re-scraped copy of the June Series B — which has since been found and merged out; the real trajectory is a grow from one deal (the original Series B) to two (adding the August extension), not one to three. Both deals fall within the trailing six months, up from zero in the prior six-month period. Two Scottish deals recorded so far in 2026, totalling £62.37m combined. Index Ventures is one of Europe's most prominent tech VCs, with a global portfolio including Wise, Figma, and Notion; its continued involvement in Wordsmith AI's growth, rather than a one-off entry, is likely to keep raising the profile of Edinburgh's AI scene internationally.
+**Trajectory**: Index Ventures has two confirmed Scottish deals: a co-lead role in Wordsmith's ~£52m Series B (4 June 2026) and participation in the £10.374m Series B extension for Wordsmith AI (6 August 2026), led by new investor Intact Private Capital. Both fall within the trailing six months versus zero in the prior period, an increase off a low base rather than an established cadence. This gives Index Ventures two Scottish deals so far in 2026, totalling £62.37m. Note: the ledger briefly and incorrectly showed a third record here due to a re-scraped article reproducing an already-merged Wordsmith duplicate — that has since been fixed and the count above is correct. Index Ventures is one of Europe's most prominent tech VCs — from training data: its global portfolio includes Wise, Figma, and Notion — and its continued involvement in Wordsmith AI points to sustained rather than one-off interest in Edinburgh's AI scene.

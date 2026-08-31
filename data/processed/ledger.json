@@ -583,7 +583,7 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-05-27",
-    "last_seen": "2026-08-12",
+    "last_seen": "2026-08-31",
     "is_new_this_run": false,
     "round_type_normalised": true
   },
@@ -594,6 +594,7 @@
     "company_sectors": [
       "Agritech & Foodtech",
       "Life Sciences",
+      "sustainable seaweed / aquaculture",
       "sustainable seaweed, agtech"
     ],
     "sector_normalised": true,
@@ -626,7 +627,7 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-05-27",
-    "last_seen": "2026-08-12",
+    "last_seen": "2026-08-31",
     "is_new_this_run": false
   },
   {
@@ -667,7 +668,7 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-05-27",
-    "last_seen": "2026-08-12",
+    "last_seen": "2026-08-31",
     "is_new_this_run": false,
     "round_type_normalised": true
   },
@@ -907,41 +908,6 @@
     "duplicate_of": null,
     "first_seen": "2026-06-08",
     "last_seen": "2026-06-08",
-    "is_new_this_run": true
-  },
-  {
-    "id": "bead-biopharma_unknown_2026-06-23",
-    "company_name": "Bead BioPharma",
-    "company_location": "Other Scotland",
-    "company_sectors": [
-      "Life Sciences"
-    ],
-    "sector_normalised": true,
-    "round_type": "Unknown",
-    "amount_original": "undisclosed",
-    "amount_gbp_millions": null,
-    "currency_original": "GBP",
-    "investors": [
-      "Archangels"
-    ],
-    "lead_investor": "Archangels",
-    "announcement_date": "2026-06-23",
-    "source_url": "https://angelcapital.scot/news/scottish-biotech-bead-biopharma-emerges-from-stealth-mode-with-novel-cancer-drug-platform/",
-    "source_name": "Angel Capital Scotland",
-    "headline": "Scottish biotech Bead BioPharma emerges from stealth mode with novel cancer drug platform",
-    "summary": "Bead BioPharma, a Scottish life sciences company backed by Archangels, announced its emergence from stealth mode following the submission of its first patent, marking its formal entry into the oncology (antibody-drug conjugate) sector. No specific new funding round or amount was disclosed in this article.",
-    "confidence": "low",
-    "data_quality_score": 75,
-    "issues": [],
-    "raw_snippet": "Archangels-backed company files first patent on platform targeting one of oncology's fastest-growing therapy classes. Scotland's Bead BioPharma, a Scottish life sciences company backed by Archangels, announced its emergence from stealth mode following the submission of its first patent, a milestone that marks the company's formal entry into one of the most commercially active sectors in global oncology.",
-    "source_urls": [
-      "https://angelcapital.scot/news/scottish-biotech-bead-biopharma-emerges-from-stealth-mode-with-novel-cancer-drug-platform/"
-    ],
-    "source_count": 1,
-    "merge_confidence": null,
-    "duplicate_of": null,
-    "first_seen": "2026-06-08",
-    "last_seen": "2026-06-24",
     "is_new_this_run": true
   },
   {
@@ -1187,7 +1153,7 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-07-06",
-    "last_seen": "2026-08-12",
+    "last_seen": "2026-08-31",
     "is_new_this_run": false
   },
   {
@@ -1270,7 +1236,7 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-06-08",
-    "last_seen": "2026-08-12",
+    "last_seen": "2026-08-31",
     "is_new_this_run": false,
     "round_type_normalised": true
   },
@@ -1319,7 +1285,7 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-06-08",
-    "last_seen": "2026-08-12",
+    "last_seen": "2026-08-31",
     "is_new_this_run": false
   },
   {
@@ -1592,79 +1558,7 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-08-03",
-    "last_seen": "2026-08-17",
-    "is_new_this_run": false
-  },
-  {
-    "id": "fidra-energy_debt-financing_2026-07-17",
-    "company_name": "Fidra Energy",
-    "company_location": "Other Scotland",
-    "company_sectors": [
-      "Other"
-    ],
-    "sector_normalised": false,
-    "round_type": "Debt Financing",
-    "round_type_normalised": false,
-    "amount_original": "\u00a3231,000,000",
-    "amount_gbp_millions": 231.0,
-    "currency_original": "GBP",
-    "investors": [],
-    "lead_investor": null,
-    "announcement_date": "2026-07-17",
-    "source_url": "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
-    "source_name": "Crunchbase",
-    "headline": "",
-    "summary": "",
-    "confidence": "high",
-    "data_quality_score": 55,
-    "issues": [
-      "investor_unnamed"
-    ],
-    "raw_snippet": "",
-    "source_urls": [
-      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2"
-    ],
-    "source_count": 1,
-    "merge_confidence": "definite",
-    "duplicate_of": null,
-    "first_seen": "2026-08-12",
-    "last_seen": "2026-08-17",
-    "is_new_this_run": false
-  },
-  {
-    "id": "social-investment-scotland_debt-financing_2026-07-30",
-    "company_name": "Social Investment Scotland",
-    "company_location": "Other Scotland",
-    "company_sectors": [
-      "Other"
-    ],
-    "sector_normalised": false,
-    "round_type": "Debt Financing",
-    "round_type_normalised": false,
-    "amount_original": "\u00a33,500,000",
-    "amount_gbp_millions": 3.5,
-    "currency_original": "GBP",
-    "investors": [],
-    "lead_investor": null,
-    "announcement_date": "2026-07-30",
-    "source_url": "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
-    "source_name": "Crunchbase",
-    "headline": "",
-    "summary": "",
-    "confidence": "high",
-    "data_quality_score": 55,
-    "issues": [
-      "investor_unnamed"
-    ],
-    "raw_snippet": "",
-    "source_urls": [
-      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2"
-    ],
-    "source_count": 1,
-    "merge_confidence": "definite",
-    "duplicate_of": null,
-    "first_seen": "2026-08-12",
-    "last_seen": "2026-08-17",
+    "last_seen": "2026-08-31",
     "is_new_this_run": false
   },
   {
@@ -1699,11 +1593,11 @@
       "https://www.scottish-enterprise-mediacentre.com/news/regenerus-laboratories-secures-a-combined-gbp-8m-investment-to-expand-advance-diagnostic-testing-platform-internationally"
     ],
     "source_count": 1,
-    "merge_confidence": null,
+    "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-08-12",
-    "last_seen": "2026-08-12",
-    "is_new_this_run": true
+    "last_seen": "2026-08-31",
+    "is_new_this_run": false
   },
   {
     "id": "wordsmith-ai_series-b-extension_2026-08-06",
@@ -1742,50 +1636,16 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-08-12",
-    "last_seen": "2026-08-12",
-    "is_new_this_run": true
-  },
-  {
-    "id": "wordsmith-ai_series-b_2026-08-05",
-    "company_name": "Wordsmith AI",
-    "company_location": "Other Scotland",
-    "company_sectors": [
-      "Other"
-    ],
-    "sector_normalised": false,
-    "round_type": "Series B",
-    "round_type_normalised": true,
-    "amount_original": "\u00a310,400,000",
-    "amount_gbp_millions": 10.4,
-    "currency_original": "GBP",
-    "investors": [],
-    "lead_investor": null,
-    "announcement_date": "2026-08-05",
-    "source_url": "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
-    "source_name": "Crunchbase",
-    "headline": "",
-    "summary": "",
-    "confidence": "high",
-    "data_quality_score": 65,
-    "issues": [
-      "investor_unnamed"
-    ],
-    "raw_snippet": "",
-    "source_urls": [
-      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2"
-    ],
-    "source_count": 1,
-    "merge_confidence": null,
-    "duplicate_of": null,
-    "first_seen": "2026-08-17",
-    "last_seen": "2026-08-17",
-    "is_new_this_run": true
+    "last_seen": "2026-08-31",
+    "is_new_this_run": false
   },
   {
     "id": "kenoteq_growth_2026-08-13",
     "company_name": "Kenoteq",
     "company_location": "Edinburgh",
     "company_sectors": [
+      "Energy & Cleantech",
+      "Other",
       "Property & Construction Tech"
     ],
     "sector_normalised": true,
@@ -1807,16 +1667,130 @@
     "summary": "Edinburgh-based sustainable construction firm Kenoteq has secured almost \u00a3900,000 in fresh backing as the first tranche of an ongoing funding round targeting \u00a32m in total. The round is led by Kelvin Capital alongside the Scottish Enterprise Co-Investment Fund and existing investors, and will fund increased production of Kenoteq's K-Briq recycled brick product. Also reported by The Herald (heraldscotland.com) on 2026-08-17 with matching details.",
     "confidence": "high",
     "data_quality_score": 95,
-    "issues": [],
+    "issues": [
+      "investor_unnamed"
+    ],
     "raw_snippet": "The investment into Edinburgh-based Kenoteq has been led by Kelvin Capital alongside the Scottish Enterprise Co-Investment Fund and several existing investors who have chosen to increase their backing of the business. The investment round remains open as the company continues discussions with prospective investors. Kenoteq is targeting a total raise of \u00a32 million.",
     "source_urls": [
+      "https://angelcapital.scot/deals/kenoteq-secures-just-under-900000-investment-to-accelerate-commercial-growth/",
+      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
+      "https://www.kelvincapital.com/2026/08/21/kenoteq-secures-just-under-900000-investment-to-accelerate-commercial-growth/",
       "https://www.scotsman.com/business/scottish-firm-behind-green-building-bricks-secures-ps900k-growth-backing-8918340"
+    ],
+    "source_count": 4,
+    "merge_confidence": "definite",
+    "duplicate_of": null,
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-31",
+    "is_new_this_run": false
+  },
+  {
+    "id": "bead-biopharma_not-disclosed_2026-06-23",
+    "company_name": "Bead BioPharma",
+    "company_location": "Other Scotland",
+    "company_sectors": [
+      "Life Sciences"
+    ],
+    "sector_normalised": true,
+    "round_type": "Not Disclosed",
+    "round_type_normalised": true,
+    "amount_original": "undisclosed",
+    "amount_gbp_millions": null,
+    "currency_original": "GBP",
+    "investors": [
+      "Archangels"
+    ],
+    "lead_investor": "Archangels",
+    "announcement_date": "2026-06-23",
+    "source_url": "https://angelcapital.scot/news/scottish-biotech-bead-biopharma-emerges-from-stealth-mode-with-novel-cancer-drug-platform/",
+    "source_name": "Angel Capital Scotland",
+    "headline": "Scottish biotech Bead BioPharma emerges from stealth mode with novel cancer drug platform",
+    "summary": "Scottish life sciences company Bead BioPharma, backed by angel syndicate Archangels, announced its emergence from stealth mode after filing its first patent on a novel oncology drug platform. No specific investment amount was disclosed in this announcement.",
+    "confidence": "low",
+    "data_quality_score": 85,
+    "issues": [],
+    "raw_snippet": "Archangels-backed company files first patent on platform targeting one of oncology's fastest-growing therapy classes. Scotland's Bead BioPharma, a Scottish life sciences company backed by Archangels, announced its emergence from stealth mode following the submission of its first patent.",
+    "source_urls": [
+      "https://angelcapital.scot/news/scottish-biotech-bead-biopharma-emerges-from-stealth-mode-with-novel-cancer-drug-platform/",
+      "https://archangelsonline.com/scottish-biotech-bead-biopharma-emerges-from-stealth-mode-with-novel-cancer-drug-platform/"
+    ],
+    "source_count": 2,
+    "merge_confidence": "definite",
+    "duplicate_of": null,
+    "first_seen": "2026-06-08",
+    "last_seen": "2026-08-31",
+    "is_new_this_run": false
+  },
+  {
+    "id": "singular-photonics_seed_2026-08-19",
+    "company_name": "Singular Photonics",
+    "company_location": "Other Scotland",
+    "company_sectors": [
+      "Other"
+    ],
+    "sector_normalised": false,
+    "round_type": "Seed",
+    "round_type_normalised": true,
+    "amount_original": "\u00a31,600,000",
+    "amount_gbp_millions": 1.6,
+    "currency_original": "GBP",
+    "investors": [],
+    "lead_investor": null,
+    "announcement_date": "2026-08-19",
+    "source_url": "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
+    "source_name": "Crunchbase",
+    "headline": "",
+    "summary": "",
+    "confidence": "high",
+    "data_quality_score": 65,
+    "issues": [
+      "investor_unnamed"
+    ],
+    "raw_snippet": "",
+    "source_urls": [
+      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2"
     ],
     "source_count": 1,
     "merge_confidence": null,
     "duplicate_of": null,
-    "first_seen": "2026-08-17",
-    "last_seen": "2026-08-17",
+    "first_seen": "2026-08-31",
+    "last_seen": "2026-08-31",
+    "is_new_this_run": true
+  },
+  {
+    "id": "hexseed-technology_pre-seed_2026-08-18",
+    "company_name": "HexSeed Technology",
+    "company_location": "Other Scotland",
+    "company_sectors": [
+      "Other"
+    ],
+    "sector_normalised": false,
+    "round_type": "Pre-Seed",
+    "round_type_normalised": true,
+    "amount_original": "\u00a3600,000",
+    "amount_gbp_millions": 0.6,
+    "currency_original": "GBP",
+    "investors": [],
+    "lead_investor": null,
+    "announcement_date": "2026-08-18",
+    "source_url": "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
+    "source_name": "Crunchbase",
+    "headline": "",
+    "summary": "",
+    "confidence": "high",
+    "data_quality_score": 65,
+    "issues": [
+      "investor_unnamed"
+    ],
+    "raw_snippet": "",
+    "source_urls": [
+      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2"
+    ],
+    "source_count": 1,
+    "merge_confidence": null,
+    "duplicate_of": null,
+    "first_seen": "2026-08-31",
+    "last_seen": "2026-08-31",
     "is_new_this_run": true
   }
 ]

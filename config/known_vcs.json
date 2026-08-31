@@ -816,6 +816,31 @@
       ],
       "scotland_active": true,
       "notes": "University of Strathclyde's investment arm, focused on early-stage university spinouts. Flagged from https://www.scottish-enterprise-mediacentre.com/news/quickblock-secures-gbp-940-000-to-scale-defence-infrastructure-solutions-across-europe (2026-07-23) — co-led QUICKBLOCK's £940k equity round alongside Equity Gap and Scottish Enterprise; Anne Henderson, Head of Investment at Strathclyde Inspire, quoted as having backed QUICKBLOCK since early stage."
+    },
+    {
+      "canonical_name": "Lloyds Banking Group",
+      "aliases": [
+        "Lloyds Bank",
+        "Lloyds"
+      ],
+      "hq": "London, UK",
+      "stage_focus": [
+        "Growth"
+      ],
+      "scotland_active": true,
+      "notes": "Corporate/strategic investor, not a dedicated VC fund. Participated as an existing strategic investor alongside PXN Ventures in Aveni's (Edinburgh) £12m growth round, announced 2026-06-03. https://www.pxnventures.co.uk/aveni-extends-market-leading-wealth-and-compliance-platform-with-12m-raise/ — this is its first identified Scottish deal."
+    },
+    {
+      "canonical_name": "Nationwide",
+      "aliases": [
+        "Nationwide Building Society"
+      ],
+      "hq": "Swindon, UK",
+      "stage_focus": [
+        "Growth"
+      ],
+      "scotland_active": true,
+      "notes": "Corporate/strategic investor, not a dedicated VC fund. Participated as an existing strategic investor alongside PXN Ventures in Aveni's (Edinburgh) £12m growth round, announced 2026-06-03. https://www.pxnventures.co.uk/aveni-extends-market-leading-wealth-and-compliance-platform-with-12m-raise/ — this is its first identified Scottish deal."
     }
   ]
 }

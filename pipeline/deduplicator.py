@@ -400,17 +400,41 @@ def run(date: str = None):
     # absorbed into a ledger entry under the ledger's id.
     id_remap = {}
 
-    for record in canonical:
-        ledger_match, match_type = _match_against_ledger(record, ledger_entries)
+    ledger_by_id = {entry["id"]: entry for entry in ledger_entries}
 
-        if match_type in ("probable", "possible") and ledger_match is not None:
-            survivor_id = resolved_merges.get(frozenset((record["id"], ledger_match["id"])))
-            if survivor_id and survivor_id == ledger_match["id"]:
-                # This exact pair was already resolved as a merge, and the survivor
-                # it was merged into is still the current best match — binding.
-                # Auto-merge via the "definite" path below instead of re-flagging
-                # (already prevented by staged_pairs) or adding a fresh duplicate.
-                match_type = "definite"
+    for record in canonical:
+        # Binding check by id membership, run BEFORE the priority-based scan below.
+        # _match_against_ledger picks whichever ledger entry scores the highest-
+        # priority match type across the WHOLE ledger — it can prefer a "probable"
+        # match against an unrelated record over a lower-priority "possible" match
+        # against the actual, previously-resolved duplicate. When that happened
+        # (2026-08-31, Wordsmith AI), the old code below only ever checked the pair
+        # _match_against_ledger happened to return, missed the real resolved pair
+        # entirely, and let the duplicate back into the ledger as a fresh record.
+        # Scanning resolved_merges by this record's id first — independent of what
+        # _match_against_ledger would pick — makes the binding unconditional.
+        bound_survivor_id = next(
+            (
+                survivor_id
+                for pair, survivor_id in resolved_merges.items()
+                if record["id"] in pair and survivor_id in ledger_by_id
+            ),
+            None,
+        )
+
+        if bound_survivor_id:
+            ledger_match, match_type = ledger_by_id[bound_survivor_id], "definite"
+        else:
+            ledger_match, match_type = _match_against_ledger(record, ledger_entries)
+
+            if match_type in ("probable", "possible") and ledger_match is not None:
+                survivor_id = resolved_merges.get(frozenset((record["id"], ledger_match["id"])))
+                if survivor_id and survivor_id == ledger_match["id"]:
+                    # This exact pair was already resolved as a merge, and the survivor
+                    # it was merged into is still the current best match — binding.
+                    # Auto-merge via the "definite" path below instead of re-flagging
+                    # (already prevented by staged_pairs) or adding a fresh duplicate.
+                    match_type = "definite"
 
         if match_type == "definite":
             run_local_id = record["id"]
