@@ -15,19 +15,19 @@
 
   <header>
     <h1>Intelligence Sources</h1>
-    <p>Every source monitored by the automated pipeline. Regenerated each run. &nbsp;·&nbsp; Last updated 2026-08-31</p>
+    <p>Every source monitored by the automated pipeline. Regenerated each run. &nbsp;·&nbsp; Last updated 2026-09-02</p>
   </header>
 
   <div class="stats-bar">
-    <div class="stat"><div class="stat-value">44</div><div class="stat-label">Total</div></div>
-    <div class="stat"><div class="stat-value">14</div><div class="stat-label">News Sites</div></div>
+    <div class="stat"><div class="stat-value">45</div><div class="stat-label">Total</div></div>
+    <div class="stat"><div class="stat-value">15</div><div class="stat-label">News Sites</div></div>
     <div class="stat"><div class="stat-value">24</div><div class="stat-label">VC Newsrooms</div></div>
     <div class="stat"><div class="stat-value">2</div><div class="stat-label">Search Engines</div></div>
   </div>
 
   <section class="src-group">
     <div class="group-header">
-      <h2>News Sites</h2><span class="group-count">14</span>
+      <h2>News Sites</h2><span class="group-count">15</span>
     </div>
     <p class="group-desc">Scraped automatically each run via RSS feed or direct fetch.</p>
     <div class="table-wrap">
@@ -37,6 +37,10 @@
       <tr>
         <td class="src-name"><a href="https://www.scottish-enterprise-mediacentre.com/news" target="_blank" rel="noopener">Scottish Enterprise Newsroom</a><span class="badge badge-rss">RSS</span></td>
         <td class="src-notes">Official newsroom of Scottish Enterprise, Scotland&#x27;s economic development agency. Publishes press releases on grants/funding to Scottish companies, FDI wins, and startup investment news — includes VC-relevant deals where Scottish Enterprise co-invests alongside private VCs (e.g. QUICKBLOCK, Regenerus Laboratories, ReVentas — all July 2026). Also carries non-VC content (grants, FDI announcements, general economic policy) that won&#x27;t pass the investment keyword filter, which is expected. RSS feed at /feed/rss confirmed valid, 10 items, dated. Added 2026-08-01 after Phill manually found the QUICKBLOCK piece and it turned out not to be covered by any existing source.</td>
+      </tr>
+      <tr>
+        <td class="src-name"><a href="https://www.uktech.news" target="_blank" rel="noopener">UKTN (UK Tech News)</a><span class="badge badge-rss">RSS</span></td>
+        <td class="src-notes">National UK tech news outlet with dense funding-round coverage (daily feed, weekly &#x27;UK tech funding roundup&#x27; digest). Has a dedicated /tag/scotland/feed but it&#x27;s too sparse/stale (gaps of months) to use as the primary feed, so using the main feed + Stage 1a keyword filter instead. Confirmed valid RSS, no bot protection on plain fetch, dated items. Added 2026-09-01 after Phill manually found a UKTN Scotland deal not covered by any existing source.</td>
       </tr>
       <tr>
         <td class="src-name"><a href="https://scottishfinancialreview.com" target="_blank" rel="noopener">Scottish Financial Review</a><span class="badge badge-rss">RSS</span></td>
