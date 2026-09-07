@@ -12,6 +12,17 @@
       "notes": "Official newsroom of Scottish Enterprise, Scotland's economic development agency. Publishes press releases on grants/funding to Scottish companies, FDI wins, and startup investment news — includes VC-relevant deals where Scottish Enterprise co-invests alongside private VCs (e.g. QUICKBLOCK, Regenerus Laboratories, ReVentas — all July 2026). Also carries non-VC content (grants, FDI announcements, general economic policy) that won't pass the investment keyword filter, which is expected. RSS feed at /feed/rss confirmed valid, 10 items, dated. Added 2026-08-01 after Phill manually found the QUICKBLOCK piece and it turned out not to be covered by any existing source."
     },
     {
+      "slug": "uktech-news",
+      "name": "UKTN (UK Tech News)",
+      "type": "news_site",
+      "url": "https://www.uktech.news",
+      "search_path": null,
+      "rss_url": "https://www.uktech.news/feed",
+      "queries": [],
+      "best_effort": false,
+      "notes": "National UK tech news outlet with dense funding-round coverage (daily feed, weekly 'UK tech funding roundup' digest). Has a dedicated /tag/scotland/feed but it's too sparse/stale (gaps of months) to use as the primary feed, so using the main feed + Stage 1a keyword filter instead. Confirmed valid RSS, no bot protection on plain fetch, dated items. Added 2026-09-01 after Phill manually found a UKTN Scotland deal not covered by any existing source."
+    },
+    {
       "slug": "scottish-financial-review",
       "name": "Scottish Financial Review",
       "type": "news_site",

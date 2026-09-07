@@ -400,5 +400,23 @@
     "url": "https://sifted.eu/articles/wordsmith-ai-legal-tech-raise-index-ventures-highland/",
     "error": "HTTP 403 Forbidden — sifted.eu blocking non-browser client (link-candidate follow-up from Stage 1c firecrawl output; Wordsmith $70m Series B already captured via duckduckgo-scottish-vc candidates this run)",
     "timestamp": "2026-08-31T09:03:03.616078+00:00"
+  },
+  {
+    "source": "businesscloud-scotland",
+    "url": "https://businesscloud.co.uk",
+    "error": "RSS fetch failed: Exceeded maximum allowed redirects. (fell back to page fetch, which succeeded)",
+    "timestamp": "2026-09-02T10:39:29.651585+00:00"
+  },
+  {
+    "source": "sifted-uk",
+    "url": "https://sifted.eu/articles/wordsmith-14m-series-b-extension/",
+    "error": "HTTP 403 Forbidden — sifted.eu blocking non-browser client (link-candidate follow-up from Stage 1c firecrawl output; extracted successfully instead from primary source https://www.wordsmith.ai/blog/wordsmith-extends-series-b-with-investment-from-intact-private-capital-and-ft-ventures — deal already present in ledger as wordsmith-ai_series-b-extension_2026-08-06, rediscovery expected to auto-merge)",
+    "timestamp": "2026-09-04T00:00:00Z"
+  },
+  {
+    "source": "sifted-uk",
+    "url": "https://sifted.eu/articles/xylo-raises-2-8m/",
+    "error": "HTTP 403 Forbidden — sifted.eu blocking non-browser client (link-candidate follow-up from Stage 1c firecrawl output; resolved via web search instead — Xylo is a London-based govtech company, not Scottish, so no record extracted)",
+    "timestamp": "2026-09-04T00:00:00Z"
   }
 ]

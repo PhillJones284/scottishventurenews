@@ -583,7 +583,7 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-05-27",
-    "last_seen": "2026-08-31",
+    "last_seen": "2026-09-04",
     "is_new_this_run": false,
     "round_type_normalised": true
   },
@@ -594,6 +594,7 @@
     "company_sectors": [
       "Agritech & Foodtech",
       "Life Sciences",
+      "Sustainable seaweed / Agtech",
       "sustainable seaweed / aquaculture",
       "sustainable seaweed, agtech"
     ],
@@ -627,7 +628,7 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-05-27",
-    "last_seen": "2026-08-31",
+    "last_seen": "2026-09-04",
     "is_new_this_run": false
   },
   {
@@ -636,6 +637,7 @@
     "company_location": "Other Scotland",
     "company_sectors": [
       "Energy & Cleantech",
+      "Low-carbon insulation / Building materials",
       "low-carbon insulation / materials",
       "low-carbon insulation manufacturing",
       "low-carbon insulation, sustainability"
@@ -668,7 +670,7 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-05-27",
-    "last_seen": "2026-08-31",
+    "last_seen": "2026-09-04",
     "is_new_this_run": false,
     "round_type_normalised": true
   },
@@ -1600,11 +1602,13 @@
     "is_new_this_run": false
   },
   {
-    "id": "wordsmith-ai_series-b-extension_2026-08-06",
+    "id": "wordsmith-ai_series-b-extension_2026-08-05",
     "company_name": "Wordsmith AI",
     "company_location": "Edinburgh",
     "company_sectors": [
-      "AI & Machine Learning"
+      "AI & Machine Learning",
+      "Other",
+      "SaaS & Enterprise Software"
     ],
     "sector_normalised": true,
     "round_type": "Series B extension",
@@ -1619,24 +1623,27 @@
       "FT Ventures"
     ],
     "lead_investor": "Intact Private Capital",
-    "announcement_date": "2026-08-06",
-    "source_url": "https://scottishfinancialreview.com/2026/08/06/ft-ventures-invests-as-wordsmith-ai-raises-14m/",
-    "source_name": "Scottish Financial Review",
-    "headline": "FT Ventures invests as Wordsmith AI raises $14m",
-    "summary": "Edinburgh and New York-based legal AI platform Wordsmith AI raised a $14m extension to its Series B, led by new investor Intact Private Capital, with FT Ventures also becoming a shareholder alongside existing investors Highland Europe and Index Ventures.",
+    "announcement_date": "2026-08-05",
+    "source_url": "https://www.wordsmith.ai/blog/wordsmith-extends-series-b-with-investment-from-intact-private-capital-and-ft-ventures",
+    "source_name": "Wordsmith AI (company blog; teaser discovered via Sifted, sifted.eu article itself returned HTTP 403)",
+    "headline": "Wordsmith Extends Series B with Investment from Intact Private Capital and FT Ventures",
+    "summary": "Edinburgh-founded legal AI startup Wordsmith AI raised a $14 million extension to its Series B, led by new investor Intact Private Capital with new backer FT Ventures and follow-on investment from existing shareholders Highland Europe and Index Ventures. This brings total Series B funding to $84m and lifetime funding to $114m, as the company reports 14x year-on-year revenue growth and expands into North American financial services and insurance markets.",
     "confidence": "high",
-    "data_quality_score": 85,
-    "issues": [],
-    "raw_snippet": "Wordsmith AI, the Edinburgh and New York-based AI-powered in-house legal assistant platform, has announced a $14 million extension to its Series B, led by new investment from Intact Private Capital alongside existing investors Highland Europe and Index Ventures. FT Ventures has also become a shareholder in Wordsmith.",
+    "data_quality_score": 90,
+    "issues": [
+      "investor_unnamed"
+    ],
+    "raw_snippet": "Wordsmith AI, an artificial intelligence platform exclusively serving in-house legal departments, secured a $14 million Series B extension from Intact Private Capital and FT Ventures. The company has achieved 14x year-over-year revenue growth and serves over 500 enterprises including BT, FT, Sage, and Canva. 'Every dollar that leaves a legal team and goes to outside counsel is a decision. Too often, those decisions are made by default rather than by design.' \u2014 Ross McNairn, CEO and co-founder",
     "source_urls": [
       "https://scottishfinancialreview.com/2026/08/06/ft-ventures-invests-as-wordsmith-ai-raises-14m/",
-      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2"
+      "https://www.crunchbase.com/organization/wordsmith",
+      "https://www.wordsmith.ai/blog/wordsmith-extends-series-b-with-investment-from-intact-private-capital-and-ft-ventures"
     ],
-    "source_count": 2,
+    "source_count": 3,
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-08-12",
-    "last_seen": "2026-08-31",
+    "last_seen": "2026-09-04",
     "is_new_this_run": false
   },
   {
@@ -1673,7 +1680,7 @@
     "raw_snippet": "The investment into Edinburgh-based Kenoteq has been led by Kelvin Capital alongside the Scottish Enterprise Co-Investment Fund and several existing investors who have chosen to increase their backing of the business. The investment round remains open as the company continues discussions with prospective investors. Kenoteq is targeting a total raise of \u00a32 million.",
     "source_urls": [
       "https://angelcapital.scot/deals/kenoteq-secures-just-under-900000-investment-to-accelerate-commercial-growth/",
-      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
+      "https://www.crunchbase.com/organization/kenoteq",
       "https://www.kelvincapital.com/2026/08/21/kenoteq-secures-just-under-900000-investment-to-accelerate-commercial-growth/",
       "https://www.scotsman.com/business/scottish-firm-behind-green-building-bricks-secures-ps900k-growth-backing-8918340"
     ],
@@ -1681,7 +1688,7 @@
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-08-17",
-    "last_seen": "2026-08-31",
+    "last_seen": "2026-09-04",
     "is_new_this_run": false
   },
   {
@@ -1724,45 +1731,56 @@
   {
     "id": "singular-photonics_seed_2026-08-19",
     "company_name": "Singular Photonics",
-    "company_location": "Other Scotland",
+    "company_location": "Edinburgh",
     "company_sectors": [
-      "Other"
+      "Other",
+      "Semiconductor"
     ],
     "sector_normalised": false,
     "round_type": "Seed",
     "round_type_normalised": true,
-    "amount_original": "\u00a31,600,000",
+    "amount_original": "\u00a31.6m",
     "amount_gbp_millions": 1.6,
     "currency_original": "GBP",
-    "investors": [],
-    "lead_investor": null,
+    "investors": [
+      "ACF Investors",
+      "Wren Capital",
+      "Cambridge Angels",
+      "Scottish Enterprise Investment Fund",
+      "Quantum Exponential",
+      "Old College Capital"
+    ],
+    "lead_investor": "ACF Investors",
     "announcement_date": "2026-08-19",
-    "source_url": "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
-    "source_name": "Crunchbase",
-    "headline": "",
-    "summary": "",
+    "source_url": "https://www.uktech.news/semiconductor/university-of-edinburgh-spinout-singular-photonics-secures-1-6m-20260819?utm_source=scottish%20enterprise&utm_medium=social&utm_term=linkedin&utm_content=7f228721-395e-4393-80ff-30872f342382&utm_campaign=se_web",
+    "source_name": "UKTN",
+    "headline": "University of Edinburgh spinout Singular Photonics secures \u00a31.6m",
+    "summary": "University of Edinburgh spinout Singular Photonics has closed an oversubscribed $2.15m (\u00a31.6m) seed funding round led by ACF Investors, with participation from Wren Capital, Cambridge Angels, Scottish Enterprise, Quantum Exponential and Old College Capital. The company develops single-photon avalanche diode (SPAD) image sensors with on-chip computation for machine vision, industrial automation and medical imaging.",
     "confidence": "high",
-    "data_quality_score": 65,
+    "data_quality_score": 90,
     "issues": [
       "investor_unnamed"
     ],
-    "raw_snippet": "",
+    "raw_snippet": "University of Edinburgh spinout Singular Photonics has closed an oversubscribed $2.15m (\u00a31.6m) funding round led by ACF Investors, with participation from Wren Capital, Cambridge Angels, Scottish Enterprise, Quantum Exponential and Old College Capital.",
     "source_urls": [
-      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2"
+      "https://www.crunchbase.com/organization/singular-photonics",
+      "https://www.uktech.news/semiconductor/university-of-edinburgh-spinout-singular-photonics-secures-1-6m-20260819?utm_source=scottish%20enterprise&utm_medium=social&utm_term=linkedin&utm_content=7f228721-395e-4393-80ff-30872f342382&utm_campaign=se_web"
     ],
-    "source_count": 1,
-    "merge_confidence": null,
+    "source_count": 2,
+    "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-08-31",
-    "last_seen": "2026-08-31",
-    "is_new_this_run": true
+    "last_seen": "2026-09-04",
+    "is_new_this_run": false
   },
   {
-    "id": "hexseed-technology_pre-seed_2026-08-18",
+    "id": "hexseed-technology_pre-seed_2026-08-21",
     "company_name": "HexSeed Technology",
-    "company_location": "Other Scotland",
+    "company_location": "Aberdeen",
     "company_sectors": [
-      "Other"
+      "Deep Tech",
+      "Other",
+      "Semiconductor"
     ],
     "sector_normalised": false,
     "round_type": "Pre-Seed",
@@ -1770,27 +1788,32 @@
     "amount_original": "\u00a3600,000",
     "amount_gbp_millions": 0.6,
     "currency_original": "GBP",
-    "investors": [],
+    "investors": [
+      "Carbon13",
+      "Net Zero Technology Centre",
+      "Vento"
+    ],
     "lead_investor": null,
-    "announcement_date": "2026-08-18",
-    "source_url": "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
-    "source_name": "Crunchbase",
-    "headline": "",
-    "summary": "",
-    "confidence": "high",
-    "data_quality_score": 65,
+    "announcement_date": "2026-08-21",
+    "source_url": "https://www.uktech.news/funding/uk-tech-funding-roundup-this-weeks-deals-from-callosum-to-economad-20260821",
+    "source_name": "UKTN",
+    "headline": "UK tech funding roundup: This week's deals from Callosum to EcoNomad",
+    "summary": "Aberdeen-based HexSeed Technology, founded in 2025, raised \u00a3600,000 to develop industrial synthetic diamond coatings from captured CO2 that prevent AI data centre semiconductors (gallium nitride power chips) from overheating. Investors include Carbon13, Net Zero Technology Centre and Vento. Exact per-company announcement date not stated in this roundup; article covers deals reported 17-21 August 2026.",
+    "confidence": "medium",
+    "data_quality_score": 90,
     "issues": [
       "investor_unnamed"
     ],
-    "raw_snippet": "",
+    "raw_snippet": "HexSeed \u2013 \u00a3600,000\nSector: Semiconductor\nHQ: Aberdeen\nInvestors: Carbon13, Net Zero Technology Centre and Vento\nFounded in 2025, HexSeed Technology transforms captured CO\u2082 into industrial synthetic diamond coatings applied directly to gallium nitride (GaN) power chips to prevent AI data centre semiconductors from overheating.",
     "source_urls": [
-      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2"
+      "https://www.crunchbase.com/organization/hexseed-technology",
+      "https://www.uktech.news/funding/uk-tech-funding-roundup-this-weeks-deals-from-callosum-to-economad-20260821"
     ],
-    "source_count": 1,
-    "merge_confidence": null,
+    "source_count": 2,
+    "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-08-31",
-    "last_seen": "2026-08-31",
-    "is_new_this_run": true
+    "last_seen": "2026-09-04",
+    "is_new_this_run": false
   }
 ]

@@ -257,9 +257,10 @@
     "note": "Same company name, different round types ('Series B' vs 'Series B extension') \u2014 deferred by Phill on 2026-08-12 (remote, away from laptop): thin Crunchbase record with no investor/amount, needs manual investigation before resolving. Left pending intentionally.",
     "flagged_date": "2026-08-12",
     "status": "merged",
-    "merged_into": "wordsmith-ai_series-b-extension_2026-08-06",
+    "merged_into": "wordsmith-ai_series-b-extension_2026-08-05",
     "resolved_date": "2026-08-12",
-    "resolution_note": "Confirmed by Phill on 2026-08-12 after checking the Crunchbase page directly: the thin Crunchbase record (no investor, \u00a310.4m \u2014 close to the extension's \u00a310.374m/$14m) is Crunchbase's entry for the Aug 6 Series B extension, not the original June round. Merged into wordsmith-ai_series-b-extension_2026-08-06 (kept as primary per Phill), adding the Crunchbase source_url. Amount/investor fields kept from the extension's press-sourced record."
+    "resolution_note": "Confirmed by Phill on 2026-08-12 after checking the Crunchbase page directly: the thin Crunchbase record (no investor, \u00a310.4m \u2014 close to the extension's \u00a310.374m/$14m) is Crunchbase's entry for the Aug 6 Series B extension, not the original June round. Merged into wordsmith-ai_series-b-extension_2026-08-06 (kept as primary per Phill), adding the Crunchbase source_url. Amount/investor fields kept from the extension's press-sourced record.",
+    "merged_into_updated": "2026-09-04: merged_into repointed from wordsmith-ai_series-b-extension_2026-08-06 to wordsmith-ai_series-b-extension_2026-08-05 \u2014 the ledger entry's id changed this run when a fresh wordsmith.ai blog scrape (announcement_date 2026-08-05, one day earlier than the scottishfinancialreview.com article that originally seeded the 2026-08-06 id) definite-matched and became the new merge base. Updated so the resolved-merges binding check keeps working against the ledger's current id."
   },
   {
     "match_type": "possible",
@@ -303,7 +304,7 @@
     "flagged_date": "2026-08-31",
     "status": "merged",
     "resolved_date": "2026-08-31",
-    "resolution_note": "Same underlying story (Bead BioPharma emerging from stealth, backed by Archangels), same announcement date, same source article (angelcapital.scot) — re-scraped this run with a second corroborating source (archangelsonline.com) and a different round_type label. Merged into bead-biopharma_not-disclosed_2026-06-23 (newer extraction, higher data_quality_score, 2 source_urls). Kept the earlier first_seen (2026-06-08) and latest last_seen (2026-08-31), unioned source_urls, confidence stays 'low' (amount still undisclosed).",
+    "resolution_note": "Same underlying story (Bead BioPharma emerging from stealth, backed by Archangels), same announcement date, same source article (angelcapital.scot) \u2014 re-scraped this run with a second corroborating source (archangelsonline.com) and a different round_type label. Merged into bead-biopharma_not-disclosed_2026-06-23 (newer extraction, higher data_quality_score, 2 source_urls). Kept the earlier first_seen (2026-06-08) and latest last_seen (2026-08-31), unioned source_urls, confidence stays 'low' (amount still undisclosed).",
     "merged_into": "bead-biopharma_not-disclosed_2026-06-23"
   },
   {
@@ -311,11 +312,11 @@
     "scope": "against_ledger",
     "record_a": "wordsmith-ai_series-b_2026-06-03",
     "record_b": "wordsmith-ai_series-b_2026-06-04",
-    "note": "Similar company names ('Wordsmith AI' vs 'Wordsmith') — third occurrence of this exact pair (originally merged 2026-08-03, resurfaced and re-merged 2026-08-12, resurfaced again here)",
+    "note": "Similar company names ('Wordsmith AI' vs 'Wordsmith') \u2014 third occurrence of this exact pair (originally merged 2026-08-03, resurfaced and re-merged 2026-08-12, resurfaced again here)",
     "flagged_date": "2026-08-31",
     "status": "merged",
     "resolved_date": "2026-08-31",
-    "resolution_note": "The futurescot.com article was re-scraped a third time, reproducing the deterministic id wordsmith-ai_series-b_2026-06-03. The 2026-08-12 'resolved merges are binding' fix in pipeline/deduplicator.py did not catch this: _match_against_ledger picks whichever ledger entry scores the highest-priority match type across the whole ledger, and this record scored 'probable' against the unrelated wordsmith-ai_series-b-extension_2026-08-06 (same name, overlapping investors, within 90 days) — a strictly higher priority than the 'possible' match against the actual duplicate wordsmith-ai_series-b_2026-06-04 (name similarity 'Wordsmith AI' vs 'Wordsmith' only clears the possible threshold). The binding lookup then checked only the wrong (extension) pair, found it was previously 'dismissed' rather than 'merged', and let the record through as a fresh standalone entry. No new pending entry appeared this run because that wrong pair was already in staged_pairs (which includes dismissed entries), silently suppressing re-flagging. Found via a VC profile refresh showing Highland Europe/Index Ventures with 3 Scottish deals instead of 2. Merged into wordsmith-ai_series-b_2026-06-04 (kept as canonical, per the original 2026-08-03/2026-08-12 resolutions), unioning source_urls (already contained the futurescot.com URL) and extending last_seen to 2026-08-31. See deduplicator.py for the proposed code fix to the underlying match-selection bug.",
+    "resolution_note": "The futurescot.com article was re-scraped a third time, reproducing the deterministic id wordsmith-ai_series-b_2026-06-03. The 2026-08-12 'resolved merges are binding' fix in pipeline/deduplicator.py did not catch this: _match_against_ledger picks whichever ledger entry scores the highest-priority match type across the whole ledger, and this record scored 'probable' against the unrelated wordsmith-ai_series-b-extension_2026-08-06 (same name, overlapping investors, within 90 days) \u2014 a strictly higher priority than the 'possible' match against the actual duplicate wordsmith-ai_series-b_2026-06-04 (name similarity 'Wordsmith AI' vs 'Wordsmith' only clears the possible threshold). The binding lookup then checked only the wrong (extension) pair, found it was previously 'dismissed' rather than 'merged', and let the record through as a fresh standalone entry. No new pending entry appeared this run because that wrong pair was already in staged_pairs (which includes dismissed entries), silently suppressing re-flagging. Found via a VC profile refresh showing Highland Europe/Index Ventures with 3 Scottish deals instead of 2. Merged into wordsmith-ai_series-b_2026-06-04 (kept as canonical, per the original 2026-08-03/2026-08-12 resolutions), unioning source_urls (already contained the futurescot.com URL) and extending last_seen to 2026-08-31. See deduplicator.py for the proposed code fix to the underlying match-selection bug.",
     "merged_into": "wordsmith-ai_series-b_2026-06-04"
   },
   {
@@ -323,11 +324,23 @@
     "scope": "against_ledger",
     "record_a": "wordsmith-ai_series-b_2026-08-05",
     "record_b": "wordsmith-ai_series-b-extension_2026-08-06",
-    "note": "Thin Crunchbase stub (no investor/amount detail) for the August Series B extension — second occurrence of this pair (originally merged 2026-08-12)",
+    "note": "Thin Crunchbase stub (no investor/amount detail) for the August Series B extension \u2014 second occurrence of this pair (originally merged 2026-08-12)",
     "flagged_date": "2026-08-31",
     "status": "merged",
     "resolved_date": "2026-08-31",
-    "resolution_note": "Same Crunchbase record as the pair merged on 2026-08-12 (Phill confirmed then it's Crunchbase's entry for the Aug 6 extension, not the June round). Resurfaced sometime between 2026-08-12 and 2026-08-17 (first_seen on the resurfaced record was 2026-08-17) via the same pre-2026-08-31 binding-check gap described in the wordsmith-ai_series-b_2026-06-03 entry above — found during a routine ledger check after that gap was identified, not from a fresh scrape this run. Re-merged into wordsmith-ai_series-b-extension_2026-08-06 (kept as canonical, press-sourced), source_urls already covered the Crunchbase link so no union needed, extended last_seen to 2026-08-31. Now protected going forward by the 2026-08-31 deduplicator.py fix (binding check scans resolved_merges by record id first, independent of the priority-based ledger scan).",
-    "merged_into": "wordsmith-ai_series-b-extension_2026-08-06"
+    "resolution_note": "Same Crunchbase record as the pair merged on 2026-08-12 (Phill confirmed then it's Crunchbase's entry for the Aug 6 extension, not the June round). Resurfaced sometime between 2026-08-12 and 2026-08-17 (first_seen on the resurfaced record was 2026-08-17) via the same pre-2026-08-31 binding-check gap described in the wordsmith-ai_series-b_2026-06-03 entry above \u2014 found during a routine ledger check after that gap was identified, not from a fresh scrape this run. Re-merged into wordsmith-ai_series-b-extension_2026-08-06 (kept as canonical, press-sourced), source_urls already covered the Crunchbase link so no union needed, extended last_seen to 2026-08-31. Now protected going forward by the 2026-08-31 deduplicator.py fix (binding check scans resolved_merges by record id first, independent of the priority-based ledger scan).",
+    "merged_into": "wordsmith-ai_series-b-extension_2026-08-05",
+    "merged_into_updated": "2026-09-04: merged_into repointed from wordsmith-ai_series-b-extension_2026-08-06 to wordsmith-ai_series-b-extension_2026-08-05 \u2014 the ledger entry's id changed this run when a fresh wordsmith.ai blog scrape (announcement_date 2026-08-05, one day earlier than the scottishfinancialreview.com article that originally seeded the 2026-08-06 id) definite-matched and became the new merge base. Updated so the resolved-merges binding check keeps working against the ledger's current id."
+  },
+  {
+    "match_type": "possible",
+    "scope": "within_run",
+    "record_a": "wordsmith-ai_series-b-extension_2026-08-06",
+    "record_b": "wordsmith-ai_series-b-extension_2026-08-05",
+    "note": "Same company name, different round types ('Series B' vs 'Series B extension')",
+    "flagged_date": "2026-09-04",
+    "status": "dismissed",
+    "resolved_date": "2026-09-04",
+    "resolution_note": "Not a real duplicate decision \u2014 a deduplicator bug artifact. This run, two run-local records (a thin Crunchbase stub 'wordsmith-ai_series-b_2026-08-05' and a fresh wordsmith.ai blog scrape 'wordsmith-ai_series-b-extension_2026-08-05') both definite-matched the same existing ledger entry (previously id 'wordsmith-ai_series-b-extension_2026-08-06'). The deduplicator merged each into that ledger entry separately; the second merge's _merge() picked the blog record as base (higher data_quality_score) and renamed the ledger entry's id to 'wordsmith-ai_series-b-extension_2026-08-05'. The within-run flagged-pair remap for the first (Crunchbase) match had already captured the OLD id ('...-08-06') before the rename, so this pair's record_a is a phantom id that no longer corresponds to any record \u2014 both sides actually refer to the same single ledger entry, now at 'wordsmith-ai_series-b-extension_2026-08-05'. Root cause fixed in pipeline/deduplicator.py 2026-09-04 (id_remap is now re-synced for every run-local id that has matched a given ledger object, not just the most recent one). Historical merged_into pointers for this deal (2026-08-12, 2026-08-31 entries) updated in the same pass to the current id."
   }
 ]

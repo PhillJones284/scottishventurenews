@@ -402,6 +402,23 @@ def run(date: str = None):
 
     ledger_by_id = {entry["id"]: entry for entry in ledger_entries}
 
+    # Guards against two failure modes when two different run-local records both
+    # definite-match the SAME ledger entry within one run (e.g. a thin Crunchbase
+    # stub and a fuller press-sourced record for the same deal, both scraped this
+    # run — first seen 2026-09-04, Wordsmith AI): (1) each match would otherwise
+    # append the same (mutated) ledger object to output_investments again,
+    # producing a literal duplicate row in investments_deduped.json; (2) the
+    # second match's _merge() can pick the second record as base and overwrite
+    # the ledger entry's id, silently invalidating any id_remap entry already
+    # recorded for the first record's run-local id — that stale entry then leaks
+    # into a within-run flagged pair as a phantom id referring to nothing.
+    # Tracked by object identity (a ledger entry can be renamed mid-loop, so its
+    # id string alone isn't a stable key); run_local_ids_by_ledger_object records
+    # every run-local id that has matched a given ledger object so id_remap can
+    # be re-synced to its current id after each subsequent match.
+    appended_ledger_entries = set()
+    run_local_ids_by_ledger_object = {}
+
     for record in canonical:
         # Binding check by id membership, run BEFORE the priority-based scan below.
         # _match_against_ledger picks whichever ledger entry scores the highest-
@@ -462,11 +479,18 @@ def run(date: str = None):
 
             # Read the surviving id AFTER the merge — it depends on which record
             # won as merge base (_merge keeps `base`'s id), so it isn't knowable
-            # up front.
-            id_remap[run_local_id] = ledger_match["id"]
+            # up front. Re-sync id_remap for every run-local id that has ever
+            # matched this ledger object (not just this one), in case a prior
+            # match's id_remap entry is now stale because this merge renamed it.
+            ledger_key = id(ledger_match)
+            run_local_ids_by_ledger_object.setdefault(ledger_key, []).append(run_local_id)
+            for rid in run_local_ids_by_ledger_object[ledger_key]:
+                id_remap[rid] = ledger_match["id"]
 
             updated_existing += 1
-            output_investments.append(ledger_match)
+            if ledger_key not in appended_ledger_entries:
+                appended_ledger_entries.add(ledger_key)
+                output_investments.append(ledger_match)
         else:
             # No match, or only probable/possible — never auto-merge below "definite".
             # Add as its own ledger entry; a probable/possible match gets staged for review

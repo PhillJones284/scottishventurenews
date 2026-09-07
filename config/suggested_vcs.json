@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "canonical_name": "Carbon13",
+    "aliases": [],
+    "hq": null,
+    "stage_focus": "Pre-seed / venture builder",
+    "scotland_active": true,
+    "notes": "Flagged from UKTN funding roundup (https://www.uktech.news/funding/uk-tech-funding-roundup-this-weeks-deals-from-callosum-to-economad-20260821) as an investor in Aberdeen-based HexSeed Technology's £600k round, 2026-09-04 run."
+  },
+  {
+    "canonical_name": "Net Zero Technology Centre",
+    "aliases": [],
+    "hq": "Aberdeen",
+    "stage_focus": null,
+    "scotland_active": true,
+    "notes": "Flagged from UKTN funding roundup (https://www.uktech.news/funding/uk-tech-funding-roundup-this-weeks-deals-from-callosum-to-economad-20260821) as an investor in Aberdeen-based HexSeed Technology's £600k round, 2026-09-04 run. May be an industry/innovation body rather than a pure VC — worth confirming before promoting to known_vcs.json."
+  },
+  {
+    "canonical_name": "Vento",
+    "aliases": [],
+    "hq": null,
+    "stage_focus": null,
+    "scotland_active": true,
+    "notes": "Flagged from UKTN funding roundup (https://www.uktech.news/funding/uk-tech-funding-roundup-this-weeks-deals-from-callosum-to-economad-20260821) as an investor in Aberdeen-based HexSeed Technology's £600k round, 2026-09-04 run."
+  },
+  {
+    "canonical_name": "Intact Private Capital",
+    "aliases": [],
+    "hq": null,
+    "stage_focus": "Growth",
+    "scotland_active": true,
+    "notes": "Lead investor in Wordsmith AI's $14m Series B extension (https://www.wordsmith.ai/blog/wordsmith-extends-series-b-with-investment-from-intact-private-capital-and-ft-ventures), announced 2026-08-05. Flagged 2026-09-04 run; deal already present in ledger (kenoteq/wordsmith rediscovery) but investor was not yet staged."
+  },
+  {
+    "canonical_name": "FT Ventures",
+    "aliases": [],
+    "hq": null,
+    "stage_focus": null,
+    "scotland_active": true,
+    "notes": "New investor in Wordsmith AI's $14m Series B extension (https://www.wordsmith.ai/blog/wordsmith-extends-series-b-with-investment-from-intact-private-capital-and-ft-ventures), announced 2026-08-05. Flagged 2026-09-04 run."
+  }
+]
