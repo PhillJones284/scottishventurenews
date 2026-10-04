@@ -1680,15 +1680,16 @@
     "raw_snippet": "The investment into Edinburgh-based Kenoteq has been led by Kelvin Capital alongside the Scottish Enterprise Co-Investment Fund and several existing investors who have chosen to increase their backing of the business. The investment round remains open as the company continues discussions with prospective investors. Kenoteq is targeting a total raise of \u00a32 million.",
     "source_urls": [
       "https://angelcapital.scot/deals/kenoteq-secures-just-under-900000-investment-to-accelerate-commercial-growth/",
+      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
       "https://www.crunchbase.com/organization/kenoteq",
       "https://www.kelvincapital.com/2026/08/21/kenoteq-secures-just-under-900000-investment-to-accelerate-commercial-growth/",
       "https://www.scotsman.com/business/scottish-firm-behind-green-building-bricks-secures-ps900k-growth-backing-8918340"
     ],
-    "source_count": 4,
+    "source_count": 5,
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-08-17",
-    "last_seen": "2026-09-04",
+    "last_seen": "2026-09-11",
     "is_new_this_run": false
   },
   {
@@ -1763,14 +1764,15 @@
     ],
     "raw_snippet": "University of Edinburgh spinout Singular Photonics has closed an oversubscribed $2.15m (\u00a31.6m) funding round led by ACF Investors, with participation from Wren Capital, Cambridge Angels, Scottish Enterprise, Quantum Exponential and Old College Capital.",
     "source_urls": [
+      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
       "https://www.crunchbase.com/organization/singular-photonics",
       "https://www.uktech.news/semiconductor/university-of-edinburgh-spinout-singular-photonics-secures-1-6m-20260819?utm_source=scottish%20enterprise&utm_medium=social&utm_term=linkedin&utm_content=7f228721-395e-4393-80ff-30872f342382&utm_campaign=se_web"
     ],
-    "source_count": 2,
+    "source_count": 3,
     "merge_confidence": "definite",
     "duplicate_of": null,
     "first_seen": "2026-08-31",
-    "last_seen": "2026-09-04",
+    "last_seen": "2026-09-17",
     "is_new_this_run": false
   },
   {
@@ -1806,14 +1808,389 @@
     ],
     "raw_snippet": "HexSeed \u2013 \u00a3600,000\nSector: Semiconductor\nHQ: Aberdeen\nInvestors: Carbon13, Net Zero Technology Centre and Vento\nFounded in 2025, HexSeed Technology transforms captured CO\u2082 into industrial synthetic diamond coatings applied directly to gallium nitride (GaN) power chips to prevent AI data centre semiconductors from overheating.",
     "source_urls": [
+      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
       "https://www.crunchbase.com/organization/hexseed-technology",
       "https://www.uktech.news/funding/uk-tech-funding-roundup-this-weeks-deals-from-callosum-to-economad-20260821"
+    ],
+    "source_count": 3,
+    "merge_confidence": "definite",
+    "duplicate_of": null,
+    "first_seen": "2026-08-31",
+    "last_seen": "2026-10-04",
+    "is_new_this_run": false
+  },
+  {
+    "id": "lentitek_growth_2026-09-07",
+    "company_name": "Lentitek",
+    "company_location": "Edinburgh",
+    "company_sectors": [
+      "Life Sciences"
+    ],
+    "sector_normalised": true,
+    "round_type": "Growth",
+    "round_type_normalised": true,
+    "amount_original": "\u00a3725,000",
+    "amount_gbp_millions": 0.725,
+    "currency_original": "GBP",
+    "investors": [
+      "Equity Gap",
+      "new and existing investors (unnamed)"
+    ],
+    "lead_investor": "Equity Gap",
+    "announcement_date": "2026-09-07",
+    "source_url": "https://angelcapital.scot/deals/lentitek-strengthens-finances-as-commercial-traction-accelerates/",
+    "source_name": "Angel Capital Scotland",
+    "headline": "Lentitek strengthens finances as commercial traction accelerates",
+    "summary": "Edinburgh-based biotech Lentitek has secured a \u00a3725,000 equity investment led by Equity Gap, alongside new and existing investors, to accelerate commercialisation of its technology, which improves the manufacturability and quality of cell and gene therapies. The investment follows a breakthrough year in which the company transitioned from R&D to revenue-generating, driven by growing interest in next-generation in vivo CAR-T treatments.",
+    "confidence": "medium",
+    "data_quality_score": 95,
+    "issues": [],
+    "raw_snippet": "Edinburgh based biotech Lentitek has secured an equity investment of \u00a3725,000 from new and existing investors led by Equity Gap to accelerate commercialisation of its technology which improves manufacturability and quality of cell & gene therapies. This most recent investment follows a breakthrough year for the company in which it transitioned from R&D to revenue-generating, with several significant deals signed and much more in the pipeline.",
+    "source_urls": [
+      "https://angelcapital.scot/deals/lentitek-strengthens-finances-as-commercial-traction-accelerates/"
+    ],
+    "source_count": 1,
+    "merge_confidence": null,
+    "duplicate_of": null,
+    "first_seen": "2026-09-11",
+    "last_seen": "2026-09-11",
+    "is_new_this_run": true
+  },
+  {
+    "id": "t12-engineering_grant_2026-09-08",
+    "company_name": "T12 Engineering",
+    "company_location": "Other Scotland",
+    "company_sectors": [
+      "Other"
+    ],
+    "sector_normalised": false,
+    "round_type": "Grant",
+    "round_type_normalised": true,
+    "amount_original": null,
+    "amount_gbp_millions": null,
+    "currency_original": "GBP",
+    "investors": [],
+    "lead_investor": null,
+    "announcement_date": "2026-09-08",
+    "source_url": "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
+    "source_name": "Crunchbase",
+    "headline": "",
+    "summary": "",
+    "confidence": "high",
+    "data_quality_score": 50,
+    "issues": [
+      "amount_missing",
+      "investor_unnamed"
+    ],
+    "raw_snippet": "",
+    "source_urls": [
+      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2"
+    ],
+    "source_count": 1,
+    "merge_confidence": "definite",
+    "duplicate_of": null,
+    "first_seen": "2026-09-11",
+    "last_seen": "2026-09-17",
+    "is_new_this_run": false
+  },
+  {
+    "id": "strathberry_growth-/-private-equity-(minority-stake)_2026-09-08",
+    "company_name": "Strathberry",
+    "company_location": "Edinburgh",
+    "company_sectors": [
+      "Luxury leather goods / Fashion retail",
+      "Other"
+    ],
+    "sector_normalised": false,
+    "round_type": "Growth / Private equity (minority stake)",
+    "round_type_normalised": false,
+    "amount_original": "undisclosed (deal values company at approx. \u00a3100m)",
+    "amount_gbp_millions": 100.0,
+    "currency_original": "GBP",
+    "investors": [
+      "Soho Square Capital"
+    ],
+    "lead_investor": "Soho Square Capital",
+    "announcement_date": "2026-09-08",
+    "source_url": "https://dailybusinessgroup.co.uk/2026/09/soho-square-backs-strathberry-and-takes-board-seat/",
+    "source_name": "Daily Business",
+    "headline": "Soho Square backs Strathberry and takes board seat",
+    "summary": "Edinburgh luxury handbag brand Strathberry has secured a minority-stake growth investment from London-based Soho Square Capital, valuing the company at around \u00a3100m and marking the exit of previous backer BGF (which invested \u00a38m in 2022). Soho Square director David Steel joins the board; the funding will support US expansion including Strathberry's first store in New York. Founders Guy and Leeanne Hundleby remain in control of the business.",
+    "confidence": "high",
+    "data_quality_score": 75,
+    "issues": [
+      "amount_missing",
+      "investor_unnamed"
+    ],
+    "raw_snippet": "Scottish luxury leather brand Strathberry secured equity backing from Soho Square Capital, with director David Steel joining the company's board. The investment will fuel expansion in North America and establish the brand's first U.S. retail location in New York. This marks Strathberry's second funding round, following BGF's 2022 investment that helped increase revenues more than fivefold. Soho Square took a minority stake in the business alongside its capital investment, enabling Strathberry founders Guy and Leeanne Hundleby to remain in control of the Edinburgh-based company.",
+    "source_urls": [
+      "https://dailybusinessgroup.co.uk/2026/09/soho-square-backs-strathberry-and-takes-board-seat/",
+      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2"
     ],
     "source_count": 2,
     "merge_confidence": "definite",
     "duplicate_of": null,
-    "first_seen": "2026-08-31",
-    "last_seen": "2026-09-04",
+    "first_seen": "2026-09-11",
+    "last_seen": "2026-10-04",
     "is_new_this_run": false
+  },
+  {
+    "id": "mironid_series-b_2026-08-05",
+    "company_name": "Mironid",
+    "company_location": "Glasgow",
+    "company_sectors": [
+      "Life Sciences"
+    ],
+    "sector_normalised": true,
+    "round_type": "Series B",
+    "round_type_normalised": true,
+    "amount_original": "\u00a334m ($46m)",
+    "amount_gbp_millions": 34.0,
+    "currency_original": "GBP",
+    "investors": [
+      "Scottish National Investment Bank (SNIB)",
+      "Roche Venture Fund",
+      "Epidarex Capital",
+      "Sofinnova Partners",
+      "BioGeneration Ventures",
+      "University of Strathclyde (Strathclyde Inspire)",
+      "European Investment Fund (EIF)"
+    ],
+    "lead_investor": "Scottish National Investment Bank (SNIB)",
+    "announcement_date": "2026-08-05",
+    "source_url": "https://mironid.com/2026/08/05/mironid-raises-46-million-in-series-b-financing-to-advance-clinical-development-of-its-treatment-for-rare-kidney-disease/",
+    "source_name": "Mironid (company press release); also covered by DIGIT.fyi, Daily Business, Insider Media, thebusinessdesk.com, thebank.scot",
+    "headline": "Mironid raises $46 million in Series B financing to advance clinical development of its treatment for rare kidney disease",
+    "summary": "Glasgow-based biopharmaceutical company Mironid has raised \u00a334m ($46m) in a Series B round, including an \u00a38.4m equity investment from the Scottish National Investment Bank, to support clinical development of its first-in-class small-molecule therapeutic for Autosomal Dominant Polycystic Kidney Disease (ADPKD). Existing investors Roche Venture Fund, Epidarex Capital, Sofinnova Partners, BioGeneration Ventures and the University of Strathclyde also participated, alongside new investor the European Investment Fund.",
+    "confidence": "high",
+    "data_quality_score": 95,
+    "issues": [],
+    "raw_snippet": "Glasgow-based biopharmaceutical company Mironid has raised \u00a334m in a Series B funding round, which includes an \u00a38.4m equity investment from the Scottish National Investment Bank (SNIB). SNIB joins existing investors, including Roche Venture Fund, Epidarex Capital, Sofinnova Partners, BioGeneration Ventures, and the University of Strathclyde. The capital will support clinical development of Mironid's small molecule therapeutics for the treatment of Autosomal Dominant Polycystic Kidney Disease (ADPKD).",
+    "source_urls": [
+      "https://mironid.com/2026/08/05/mironid-raises-46-million-in-series-b-financing-to-advance-clinical-development-of-its-treatment-for-rare-kidney-disease/"
+    ],
+    "source_count": 1,
+    "merge_confidence": null,
+    "duplicate_of": null,
+    "first_seen": "2026-09-11",
+    "last_seen": "2026-09-11",
+    "is_new_this_run": true
+  },
+  {
+    "id": "igii_series-b_2026-09-16",
+    "company_name": "iGii",
+    "company_location": "Unknown",
+    "company_sectors": [
+      "Deep Tech",
+      "Other"
+    ],
+    "sector_normalised": true,
+    "round_type": "Series B",
+    "round_type_normalised": true,
+    "amount_original": "\u00a311.7m equity (part of \u00a322.7m combined package, including \u00a311m Scottish Enterprise funding)",
+    "amount_gbp_millions": 11.7,
+    "currency_original": "GBP",
+    "investors": [
+      "Scottish National Investment Bank",
+      "PXN Ventures",
+      "Archangels",
+      "Scottish Enterprise Investment Fund"
+    ],
+    "lead_investor": "Scottish National Investment Bank",
+    "announcement_date": "2026-09-16",
+    "source_url": "https://www.heraldscotland.com/news/26542883.igii-secures-22-7m-amid-plans-scottish-expansion/?ref=rss",
+    "source_name": "The Herald (Business)",
+    "headline": "\u00a322.7m boost for iGii comes with a promise to grow in Scotland",
+    "summary": "Stirling-based deep tech company iGii, maker of the proprietary carbon nanomaterial Gii, secured \u00a322.7m in combined funding to accelerate commercialisation and industrial adoption of its technology. The package comprises an \u00a311.7m Series B led by the Scottish National Investment Bank, with PXN Ventures and Archangels also participating, alongside \u00a311m of Scottish Enterprise funding.",
+    "confidence": "high",
+    "data_quality_score": 90,
+    "issues": [
+      "location_unknown",
+      "company_not_clearly_scottish"
+    ],
+    "raw_snippet": "The round comprises an \u00a311.7 million Series B investment led by the Scottish National Investment Bank (\u201cThe Bank\u201d), with additional backing from PXN Ventures and Archangels, alongside \u00a311 million funding from Scottish Enterprise.",
+    "source_urls": [
+      "https://angelcapital.scot/deals/igii-secures-22-7m-as-it-targets-the-next-industrial-revolution-in-advanced-materials/",
+      "https://archangelsonline.com/igii-secures-22-7m-as-it-targets-the-next-industrial-revolution-in-advanced-materials/",
+      "https://scottishfinancialreview.com/2026/09/16/igii-stirling-advanced-materials-firm-raises-23m/",
+      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
+      "https://www.heraldscotland.com/news/26542883.igii-secures-22-7m-amid-plans-scottish-expansion/?ref=rss",
+      "https://www.pxnventures.co.uk/igii-secures-22-7m-to-target-the-next-industrial-revolution/",
+      "https://www.scottish-enterprise-mediacentre.com/news/igii-secures-gbp-22-7m-as-it-targets-the-next-industrial-revolution-in-advanced-materials"
+    ],
+    "source_count": 7,
+    "merge_confidence": "definite",
+    "duplicate_of": null,
+    "first_seen": "2026-09-17",
+    "last_seen": "2026-10-04",
+    "is_new_this_run": false
+  },
+  {
+    "id": "csignum_growth_2026-09-23",
+    "company_name": "CSignum",
+    "company_location": "Edinburgh",
+    "company_sectors": [
+      "Deep Tech"
+    ],
+    "sector_normalised": true,
+    "round_type": "Growth",
+    "round_type_normalised": true,
+    "amount_original": "\u00a32.6m",
+    "amount_gbp_millions": 2.6,
+    "currency_original": "GBP",
+    "investors": [
+      "Archangels",
+      "PXN Ventures",
+      "Scottish Enterprise Investment Fund",
+      "British Business Bank",
+      "a group of US-based angel investors"
+    ],
+    "lead_investor": null,
+    "announcement_date": "2026-09-23",
+    "source_url": "https://www.scottish-enterprise-mediacentre.com/news/csignum-secures-gbp-2-6-million-to-accelerate-underwater-and-through-ground-monitoring-of-critical-infrastructure",
+    "source_name": "Scottish Enterprise Newsroom",
+    "headline": "CSignum secures \u00a32.6 million to accelerate underwater and through-ground monitoring of critical infrastructure",
+    "summary": "CSignum, headquartered in Bathgate near Edinburgh, completed a \u00a32.6 million funding round to accelerate commercial deployment of its EM2 wireless communications product portfolio. Investors include Archangels, PXN Ventures, Scottish Enterprise, British Business Bank and US-based angels. The round coincided with a CEO transition to John Nicholls.",
+    "confidence": "high",
+    "data_quality_score": 100,
+    "issues": [
+      "location_unknown",
+      "company_not_clearly_scottish"
+    ],
+    "raw_snippet": "Founded in 2020, CSignum is headquartered in Bathgate near Edinburgh and continues to add staff in the UK, USA and EU as it scales its operations. ... Archangels, PXN Ventures, Scottish Enterprise, British Business Bank and a group of US-based angel investors have provided additional investment.",
+    "source_urls": [
+      "https://angelcapital.scot/deals/csignum-secures-2-6-million-to-accelerate-underwater-and-through-ground-monitoring-of-critical-infrastructure/",
+      "https://www.pxnventures.co.uk/csignum-secures-2-6-million-for-underwater-and-through-ground-critical-infrastructure-monitoring/",
+      "https://www.scotsman.com/business/pivotal-moment-as-scottish-underwater-monitoring-scale-up-secures-ps26-million-9155255",
+      "https://www.scottish-enterprise-mediacentre.com/news/csignum-secures-gbp-2-6-million-to-accelerate-underwater-and-through-ground-monitoring-of-critical-infrastructure"
+    ],
+    "source_count": 4,
+    "merge_confidence": "definite",
+    "duplicate_of": null,
+    "first_seen": "2026-10-04",
+    "last_seen": "2026-10-04",
+    "is_new_this_run": true
+  },
+  {
+    "id": "solarsub_seed_2026-09-24",
+    "company_name": "SolarSub",
+    "company_location": "Edinburgh",
+    "company_sectors": [
+      "Energy & Cleantech",
+      "Other"
+    ],
+    "sector_normalised": true,
+    "round_type": "Seed",
+    "round_type_normalised": true,
+    "amount_original": "\u00a31.34m",
+    "amount_gbp_millions": 1.34,
+    "currency_original": "GBP",
+    "investors": [
+      "Sustainable Ventures",
+      "Zinc VC",
+      "Scottish Enterprise Investment Fund",
+      "Old College Capital (OCC)",
+      "SFC Capital",
+      "British Business Bank"
+    ],
+    "lead_investor": "Sustainable Ventures",
+    "announcement_date": "2026-09-24",
+    "source_url": "https://edinburgh-innovations.ed.ac.uk/news/student-startup-solarsub-raises-1-3m-for-solar-panel-technology",
+    "source_name": "Edinburgh Innovations \u2014 News",
+    "headline": "Student startup SolarSub raises \u00a31.3m for solar panel technology",
+    "summary": "University of Edinburgh graduate startup SolarSub raised \u00a31.34m for its passive cooling technology that improves solar panel efficiency. The round was led by Sustainable Ventures with participation from Zinc VC, Scottish Enterprise, Old College Capital, SFC Capital and the British Business Bank.",
+    "confidence": "high",
+    "data_quality_score": 100,
+    "issues": [
+      "possible_grant_not_vc"
+    ],
+    "raw_snippet": "University of Edinburgh graduate startup SolarSub has raised \u00a31.34 million for its cooling technology that helps solar panels run efficiently. The funding round was led by Sustainable Ventures, with participation from Zinc VC, Scottish Enterprise, Old College Capital (OCC) \u2013 the University\u2019s venture investment fund, SFC Capital, the British Business Bank and support from Innovate UK's Investor Partnership grant.",
+    "source_urls": [
+      "https://edinburgh-innovations.ed.ac.uk/news/student-startup-solarsub-raises-1-3m-for-solar-panel-technology",
+      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
+      "https://www.scottish-enterprise-mediacentre.com/news/solarsub-announces-gbp-1-34-million-funding-round-to-advance-passive-solar-cooling-technology"
+    ],
+    "source_count": 3,
+    "merge_confidence": "definite",
+    "duplicate_of": null,
+    "first_seen": "2026-10-04",
+    "last_seen": "2026-10-04",
+    "is_new_this_run": true
+  },
+  {
+    "id": "miller-homes_secondary-market_2026-09-17",
+    "company_name": "Miller Homes",
+    "company_location": "Other Scotland",
+    "company_sectors": [
+      "Other"
+    ],
+    "sector_normalised": false,
+    "round_type": "Secondary Market",
+    "round_type_normalised": false,
+    "amount_original": null,
+    "amount_gbp_millions": null,
+    "currency_original": "GBP",
+    "investors": [],
+    "lead_investor": null,
+    "announcement_date": "2026-09-17",
+    "source_url": "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
+    "source_name": "Crunchbase",
+    "headline": "",
+    "summary": "",
+    "confidence": "high",
+    "data_quality_score": 40,
+    "issues": [
+      "amount_missing",
+      "investor_unnamed"
+    ],
+    "raw_snippet": "",
+    "source_urls": [
+      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2"
+    ],
+    "source_count": 1,
+    "merge_confidence": null,
+    "duplicate_of": null,
+    "first_seen": "2026-10-04",
+    "last_seen": "2026-10-04",
+    "is_new_this_run": true
+  },
+  {
+    "id": "subsea-micropiles_growth_2026-09-29",
+    "company_name": "Subsea Micropiles",
+    "company_location": "Aberdeen",
+    "company_sectors": [
+      "Energy & Cleantech"
+    ],
+    "sector_normalised": true,
+    "round_type": "Growth",
+    "round_type_normalised": true,
+    "amount_original": "\u00a38.15m (\u00a36.7m commercial investment from Scottish National Investment Bank plus \u00a31.45m Scottish Enterprise Regional Selective Assistance grant), supporting a total \u00a35m+ facility investment",
+    "amount_gbp_millions": 8.15,
+    "currency_original": "GBP",
+    "investors": [
+      "Scottish National Investment Bank",
+      "Scottish Enterprise Investment Fund"
+    ],
+    "lead_investor": "Scottish National Investment Bank",
+    "announcement_date": "2026-09-29",
+    "source_url": "https://www.scottish-enterprise-mediacentre.com/news/major-offshore-wind-expansion-at-port-of-montrose",
+    "source_name": "Scottish Enterprise Newsroom",
+    "headline": "Major offshore wind expansion at Port of Montrose",
+    "summary": "Subsea Micropiles, an Aberdeenshire-headquartered offshore wind foundations company, is establishing a new manufacturing facility at the Port of Montrose to produce anchor and foundation systems for floating offshore wind turbines, creating around 80 jobs. The expansion is backed by a \u00a36.7m commercial investment from the Scottish National Investment Bank and a \u00a31.45m Scottish Enterprise grant.",
+    "confidence": "high",
+    "data_quality_score": 100,
+    "issues": [
+      "possible_grant_not_vc"
+    ],
+    "raw_snippet": "It is being supported by \u00a31.45 million funding from Scottish Enterprise, following a \u00a36.7 million commercial investment delivered through the Scottish National Investment Bank, as part of the Scottish Government\u2019s \u00a3500 million commitment to support offshore wind ports and supply chain.",
+    "source_urls": [
+      "https://www.scottish-enterprise-mediacentre.com/news/major-offshore-wind-expansion-at-port-of-montrose"
+    ],
+    "source_count": 1,
+    "merge_confidence": null,
+    "duplicate_of": null,
+    "first_seen": "2026-10-04",
+    "last_seen": "2026-10-04",
+    "is_new_this_run": true
   }
 ]

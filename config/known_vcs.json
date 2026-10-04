@@ -793,7 +793,7 @@
         "Private Equity"
       ],
       "scotland_active": true,
-      "notes": "Manually added by Phill 2026-07-20 as lead investor on Nu-Style Products' Private Equity round (22 June 2026, amount undisclosed) — no source article yet, only deal terms confirmed verbally. HQ and firm background not yet verified."
+      "notes": "Manually added by Phill 2026-07-20 as lead investor on Nu-Style Products' Private Equity round (22 June 2026, amount undisclosed) \u2014 no source article yet, only deal terms confirmed verbally. HQ and firm background not yet verified."
     },
     {
       "canonical_name": "Chiltern Capital",
@@ -801,7 +801,7 @@
       "hq": "London",
       "stage_focus": null,
       "scotland_active": true,
-      "notes": "Flagged from https://www.heraldscotland.com/news/26403951.glasgow-firm-xburo-reveals-uk-hopes-investment-deal/?ref=rss (2026-07-23) — backed Glasgow/Edinburgh engineering consultancy Xburo UK with an undisclosed growth investment. Portfolio described as spanning UK, Europe and North America; this appears to be its first identified Scottish deal."
+      "notes": "Flagged from https://www.heraldscotland.com/news/26403951.glasgow-firm-xburo-reveals-uk-hopes-investment-deal/?ref=rss (2026-07-23) \u2014 backed Glasgow/Edinburgh engineering consultancy Xburo UK with an undisclosed growth investment. Portfolio described as spanning UK, Europe and North America; this appears to be its first identified Scottish deal."
     },
     {
       "canonical_name": "University of Strathclyde (Strathclyde Inspire)",
@@ -815,7 +815,7 @@
         "Seed"
       ],
       "scotland_active": true,
-      "notes": "University of Strathclyde's investment arm, focused on early-stage university spinouts. Flagged from https://www.scottish-enterprise-mediacentre.com/news/quickblock-secures-gbp-940-000-to-scale-defence-infrastructure-solutions-across-europe (2026-07-23) — co-led QUICKBLOCK's £940k equity round alongside Equity Gap and Scottish Enterprise; Anne Henderson, Head of Investment at Strathclyde Inspire, quoted as having backed QUICKBLOCK since early stage."
+      "notes": "University of Strathclyde's investment arm, focused on early-stage university spinouts. Flagged from https://www.scottish-enterprise-mediacentre.com/news/quickblock-secures-gbp-940-000-to-scale-defence-infrastructure-solutions-across-europe (2026-07-23) \u2014 co-led QUICKBLOCK's \u00a3940k equity round alongside Equity Gap and Scottish Enterprise; Anne Henderson, Head of Investment at Strathclyde Inspire, quoted as having backed QUICKBLOCK since early stage."
     },
     {
       "canonical_name": "Lloyds Banking Group",
@@ -828,7 +828,7 @@
         "Growth"
       ],
       "scotland_active": true,
-      "notes": "Corporate/strategic investor, not a dedicated VC fund. Participated as an existing strategic investor alongside PXN Ventures in Aveni's (Edinburgh) £12m growth round, announced 2026-06-03. https://www.pxnventures.co.uk/aveni-extends-market-leading-wealth-and-compliance-platform-with-12m-raise/ — this is its first identified Scottish deal."
+      "notes": "Corporate/strategic investor, not a dedicated VC fund. Participated as an existing strategic investor alongside PXN Ventures in Aveni's (Edinburgh) \u00a312m growth round, announced 2026-06-03. https://www.pxnventures.co.uk/aveni-extends-market-leading-wealth-and-compliance-platform-with-12m-raise/ \u2014 this is its first identified Scottish deal."
     },
     {
       "canonical_name": "Nationwide",
@@ -840,7 +840,127 @@
         "Growth"
       ],
       "scotland_active": true,
-      "notes": "Corporate/strategic investor, not a dedicated VC fund. Participated as an existing strategic investor alongside PXN Ventures in Aveni's (Edinburgh) £12m growth round, announced 2026-06-03. https://www.pxnventures.co.uk/aveni-extends-market-leading-wealth-and-compliance-platform-with-12m-raise/ — this is its first identified Scottish deal."
+      "notes": "Corporate/strategic investor, not a dedicated VC fund. Participated as an existing strategic investor alongside PXN Ventures in Aveni's (Edinburgh) \u00a312m growth round, announced 2026-06-03. https://www.pxnventures.co.uk/aveni-extends-market-leading-wealth-and-compliance-platform-with-12m-raise/ \u2014 this is its first identified Scottish deal."
+    },
+    {
+      "canonical_name": "Carbon13",
+      "aliases": [],
+      "hq": "Unknown",
+      "stage_focus": [
+        "Pre-Seed"
+      ],
+      "scotland_active": true,
+      "notes": "Pre-seed venture builder. Flagged from UKTN funding roundup (https://www.uktech.news/funding/uk-tech-funding-roundup-this-weeks-deals-from-callosum-to-economad-20260821) as an investor in Aberdeen-based HexSeed Technology's \u00a3600k round, 2026-09-04 run."
+    },
+    {
+      "canonical_name": "Vento",
+      "aliases": [],
+      "hq": "Unknown",
+      "stage_focus": [
+        "Pre-Seed"
+      ],
+      "scotland_active": true,
+      "notes": "Flagged from UKTN funding roundup (https://www.uktech.news/funding/uk-tech-funding-roundup-this-weeks-deals-from-callosum-to-economad-20260821) as an investor in Aberdeen-based HexSeed Technology's \u00a3600k round, 2026-09-04 run."
+    },
+    {
+      "canonical_name": "Intact Private Capital",
+      "aliases": [],
+      "hq": "Unknown",
+      "stage_focus": [
+        "Growth"
+      ],
+      "scotland_active": true,
+      "notes": "Lead investor in Wordsmith AI's $14m Series B extension (https://www.wordsmith.ai/blog/wordsmith-extends-series-b-with-investment-from-intact-private-capital-and-ft-ventures), announced 2026-08-05."
+    },
+    {
+      "canonical_name": "FT Ventures",
+      "aliases": [],
+      "hq": "Unknown",
+      "stage_focus": [
+        "Growth"
+      ],
+      "scotland_active": true,
+      "notes": "New investor in Wordsmith AI's $14m Series B extension (https://www.wordsmith.ai/blog/wordsmith-extends-series-b-with-investment-from-intact-private-capital-and-ft-ventures), announced 2026-08-05."
+    },
+    {
+      "canonical_name": "ACF Investors",
+      "aliases": [
+        "Angel CoFund"
+      ],
+      "hq": "UK",
+      "stage_focus": [
+        "Seed",
+        "Series A"
+      ],
+      "scotland_active": true,
+      "notes": "UK co-investment VC (~\u00a3100m AUM, manages Angel CoFund/Delta Fund); only invests alongside sector-smart angel syndicates who lead/co-lead, prototype-to-scaling stage, typically $300k-$1m per deal. Lead investor in University of Edinburgh spinout Singular Photonics' \u00a31.6m seed round (https://www.uktech.news/semiconductor/university-of-edinburgh-spinout-singular-photonics-secures-1-6m-20260819), announced 2026-08-19."
+    },
+    {
+      "canonical_name": "Wren Capital",
+      "aliases": [],
+      "hq": "London",
+      "stage_focus": [
+        "Seed"
+      ],
+      "scotland_active": true,
+      "notes": "London angel/VC group founded 2011, early-stage science/engineering/software focus (semiconductors, genome editing, satellites, medical devices), typically \u00a350k-\u00a3200k per round. Participant in Singular Photonics' \u00a31.6m seed round, announced 2026-08-19."
+    },
+    {
+      "canonical_name": "Cambridge Angels",
+      "aliases": [],
+      "hq": "Cambridge",
+      "stage_focus": [
+        "Seed"
+      ],
+      "scotland_active": true,
+      "notes": "UK angel network active since 2001, 150+ companies backed; focus on deep tech, life sciences/healthcare and engineering/science-based technologies, typically \u00a3150k-\u00a31.5m per round. Participant in Singular Photonics' \u00a31.6m seed round, announced 2026-08-19."
+    },
+    {
+      "canonical_name": "Net Zero Technology Centre",
+      "aliases": [
+        "NZTC"
+      ],
+      "hq": "Aberdeen",
+      "stage_focus": [
+        "Pre-Seed"
+      ],
+      "scotland_active": true,
+      "notes": "Government-funded (\u00a3180m UK/Scottish gov) Aberdeen-based net-zero/decarbonisation innovation centre, primarily active via grants and co-investment programmes rather than pure equity VC. Co-investor alongside Carbon13 and Vento in Aberdeen-based HexSeed Technology's \u00a3600k pre-seed round (https://www.uktech.news/funding/uk-tech-funding-roundup-this-weeks-deals-from-callosum-to-economad-20260821), 2026-08-21."
+    },
+    {
+      "canonical_name": "Soho Square Capital",
+      "aliases": [],
+      "hq": "London",
+      "stage_focus": [
+        "Growth"
+      ],
+      "scotland_active": true,
+      "notes": "London PE firm founded 2021, ~\u00a3250m AUM, minority-stake growth investments in established UK/European SMEs across industrials, IT and telecoms/media. Sole investor in Edinburgh luxury brand Strathberry's minority-stake growth round valuing the company at ~\u00a3100m and marking BGF's exit (https://dailybusinessgroup.co.uk/2026/09/soho-square-backs-strathberry-and-takes-board-seat/), announced 2026-09-08."
+    },
+    {
+      "canonical_name": "Sustainable Ventures",
+      "aliases": [],
+      "hq": "London",
+      "stage_focus": [
+        "Pre-Seed",
+        "Seed",
+        "Series A"
+      ],
+      "scotland_active": true,
+      "notes": "London-based climate-tech accelerator/VC founded 2011; Europe's leading climate-tech ecosystem platform (investment + workspaces + venture support), 278+ investments. Led SolarSub's \u00a31.34m seed round (Edinburgh solar cooling tech spinout), reported 2026-09-24/25."
+    },
+    {
+      "canonical_name": "Zinc VC",
+      "aliases": [
+        "Zinc"
+      ],
+      "hq": "London",
+      "stage_focus": [
+        "Pre-Seed",
+        "Seed"
+      ],
+      "scotland_active": true,
+      "notes": "London-based VC and venture builder founded 2017, focused on \"science-for-impact\" sectors (climate, energy, food/agritech, deep tech, healthtech, financial resilience). ~50 investments to date. Participated in SolarSub's \u00a31.34m seed round (Edinburgh solar cooling tech spinout), reported 2026-09-24/25."
     }
   ]
 }

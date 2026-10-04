@@ -342,5 +342,28 @@
     "status": "dismissed",
     "resolved_date": "2026-09-04",
     "resolution_note": "Not a real duplicate decision \u2014 a deduplicator bug artifact. This run, two run-local records (a thin Crunchbase stub 'wordsmith-ai_series-b_2026-08-05' and a fresh wordsmith.ai blog scrape 'wordsmith-ai_series-b-extension_2026-08-05') both definite-matched the same existing ledger entry (previously id 'wordsmith-ai_series-b-extension_2026-08-06'). The deduplicator merged each into that ledger entry separately; the second merge's _merge() picked the blog record as base (higher data_quality_score) and renamed the ledger entry's id to 'wordsmith-ai_series-b-extension_2026-08-05'. The within-run flagged-pair remap for the first (Crunchbase) match had already captured the OLD id ('...-08-06') before the rename, so this pair's record_a is a phantom id that no longer corresponds to any record \u2014 both sides actually refer to the same single ledger entry, now at 'wordsmith-ai_series-b-extension_2026-08-05'. Root cause fixed in pipeline/deduplicator.py 2026-09-04 (id_remap is now re-synced for every run-local id that has matched a given ledger object, not just the most recent one). Historical merged_into pointers for this deal (2026-08-12, 2026-08-31 entries) updated in the same pass to the current id."
+  },
+  {
+    "match_type": "possible",
+    "scope": "against_ledger",
+    "record_a": "lentitek_growth_2026-09-07",
+    "record_b": "lentitek_seed_2026-05-01",
+    "note": "Same company name, different round types ('Growth' vs 'Seed')",
+    "flagged_date": "2026-09-11",
+    "status": "dismissed",
+    "resolved_date": "2026-09-11",
+    "resolution_note": "Confirmed with Phill: separate deals, not a duplicate. Different amounts (\u00a3725k vs \u00a3700k), 4 months apart (2026-09-07 vs 2026-05-01), and the newer Angel Capital Scotland article explicitly frames it as a follow-on ('This most recent investment follows a breakthrough year...'). Both records kept as-is in the ledger."
+  },
+  {
+    "match_type": "possible",
+    "scope": "against_ledger",
+    "record_a": "strathberry_growth-/-private-equity-(minority-stake)_2026-09-08",
+    "record_b": "strathberry_private-equity_2026-09-08",
+    "note": "Same company name, different round types ('Growth / Private equity (minority stake)' vs 'Private Equity')",
+    "flagged_date": "2026-09-11",
+    "status": "merged",
+    "resolved_date": "2026-09-11",
+    "resolution_note": "Confirmed with Phill: same deal. Daily Business article (full detail: Soho Square Capital, ~\u00a3100m valuation, BGF exit, board seat) and a same-day Crunchbase stub (blank headline/summary, no amount, no investor named) both cover the same Soho Square Capital minority-stake investment in Strathberry announced 2026-09-08. Merged into the Daily Business record (richer data, data_quality_score 75 vs 40), unioned source_urls to include the Crunchbase link, merge_confidence set to 'definite'.",
+    "merged_into": "strathberry_growth-/-private-equity-(minority-stake)_2026-09-08"
   }
 ]

@@ -1,7 +1,7 @@
 ---
 canonical_name: Kelvin Capital
-last_updated: 2026-09-04
-last_updated_via: "2026-09-04 data pipeline run"
+last_updated: 2026-09-11
+last_updated_via: "2026-09-11 data pipeline run"
 ---
 
 ### Kelvin Capital
