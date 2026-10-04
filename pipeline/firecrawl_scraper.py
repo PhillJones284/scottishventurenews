@@ -151,6 +151,110 @@ _PARSERS = {
 
 
 # ---------------------------------------------------------------------------
+# PROTOTYPE (2026-10-04) — Firecrawl native search() path
+#
+# duckduckgo-scottish-vc runs several distinct text queries rather than
+# scraping one fixed URL, so it doesn't fit the single scrape_url() per
+# source shape above. Firecrawl's search() API runs the query itself and,
+# with scrape_options, returns each result already rendered to markdown —
+# a closer replacement for fetcher.py's old _fetch_queries() (plain httpx
+# search + per-result fetch) than scrape_url() would be.
+#
+# Sources using this path are marked "firecrawl_mode": "search" in
+# sources.json and registered in _SEARCH_PARSERS below (not _PARSERS —
+# the run() loop checks firecrawl_mode first and takes this branch instead
+# of calling scrape_url()).
+#
+# NOT YET WIRED INTO Stage 1b: this writes output_mode "link_candidates"
+# records with `text` already populated from Firecrawl's render, but
+# .claude/agents/scraper.md Step 2c currently always re-WebFetches the url
+# for link_candidates entries, ignoring any pre-fetched text. For the 403/429
+# URLs this source hits, a Stage 1b WebFetch may hit the same block that
+# Firecrawl just avoided. Fully wiring this up would mean either teaching
+# Step 2c to skip the re-fetch when `text` is already present, or giving
+# this source its own output_mode. Left as link_candidates for this
+# prototype so the existing contract isn't changed without Phill's sign-off.
+# ---------------------------------------------------------------------------
+
+def _parse_duckduckgo_scottish_vc(results: list[dict]) -> list[dict]:
+    candidates = []
+    seen_urls = set()
+    for r in results:
+        url = r["url"]
+        if url in seen_urls:
+            continue
+        seen_urls.add(url)
+        candidates.append({
+            "source_slug": "duckduckgo-scottish-vc",
+            "source_name": "DuckDuckGo — Scottish VC search",
+            "url": url,
+            "title": r.get("title"),
+            "published": None,
+            "text": r.get("markdown") or r.get("description"),
+            "company_hint": None,
+            "needs_extraction": True,
+            "fetched_via": "firecrawl_search",
+            "matched_query": r.get("query"),
+        })
+    return candidates
+
+
+_SEARCH_PARSERS = {
+    "duckduckgo-scottish-vc": _parse_duckduckgo_scottish_vc,
+}
+
+
+def _run_search_source(app, source: dict, date: str) -> int:
+    """
+    Runs each of source["queries"] through Firecrawl's native search() API
+    (web results, scraped to markdown), dedupes by URL across queries, parses
+    via _SEARCH_PARSERS[slug], and writes the output file. Returns the
+    record count written. Per-query failures are caught and logged; other
+    queries for the same source continue.
+    """
+    from firecrawl.v2.types import ScrapeOptions
+
+    slug = source["slug"]
+    search_limit = source.get("search_limit", 8)
+    all_results = []
+    seen_urls: set = set()
+
+    for query in source["queries"]:
+        try:
+            resp = app.search(
+                query,
+                sources=["web"],
+                limit=search_limit,
+                scrape_options=ScrapeOptions(formats=["markdown"]),
+            )
+            for doc in (resp.web or []):
+                meta = getattr(doc, "metadata", None)
+                doc_url = getattr(meta, "url", None) if meta else None
+                if not doc_url or doc_url in seen_urls:
+                    continue
+                seen_urls.add(doc_url)
+                all_results.append({
+                    "query": query,
+                    "url": doc_url,
+                    "title": getattr(meta, "title", None) if meta else None,
+                    "description": getattr(meta, "description", None) if meta else None,
+                    "markdown": getattr(doc, "markdown", None),
+                })
+        except Exception as e:
+            logger.warning("Stage 1c (%s): search failed for query '%s' — %s", slug, query, e)
+
+    deals = _SEARCH_PARSERS[slug](all_results)
+    output_mode = source.get("output_mode", "deals")
+    if output_mode == "link_candidates":
+        out_path = DATA_RAW / f"{date}_{slug}_candidates.json"
+    else:
+        out_path = DATA_RAW / f"{date}_{slug}.json"
+    out_path.write_text(json.dumps(deals, indent=2, ensure_ascii=False))
+    logger.info("Stage 1c (%s): wrote %d %s → %s", slug, len(deals), output_mode, out_path.name)
+    return len(deals)
+
+
+# ---------------------------------------------------------------------------
 # Runner
 # ---------------------------------------------------------------------------
 
@@ -181,10 +285,12 @@ def run(date: str | None = None) -> dict[str, int]:
     # Validate parse functions exist for all configured sources before fetching anything.
     for source in firecrawl_sources:
         slug = source["slug"]
-        if slug not in _PARSERS:
+        registry = _SEARCH_PARSERS if source.get("firecrawl_mode") == "search" else _PARSERS
+        if slug not in registry:
             raise NotImplementedError(
                 f"No parse function registered for firecrawl source '{slug}'. "
-                "Add _parse_{slug}() to pipeline/firecrawl_scraper.py and register it in _PARSERS."
+                "Add _parse_{slug}() to pipeline/firecrawl_scraper.py and register it in "
+                f"{'_SEARCH_PARSERS' if source.get('firecrawl_mode') == 'search' else '_PARSERS'}."
             )
 
     app = FirecrawlApp(api_key=api_key)
@@ -192,6 +298,11 @@ def run(date: str | None = None) -> dict[str, int]:
 
     for source in firecrawl_sources:
         slug = source["slug"]
+
+        if source.get("firecrawl_mode") == "search":
+            results[slug] = _run_search_source(app, source, date)
+            continue
+
         url = source["url"]
         wait_ms = source.get("wait_ms", 5000)
 

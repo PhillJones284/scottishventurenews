@@ -5,6 +5,7 @@ import html as html_lib
 import io
 import json
 import logging
+import os
 import re
 import time
 import xml.etree.ElementTree as ET
@@ -14,7 +15,10 @@ from urllib.parse import quote_plus, unquote, urljoin
 
 import httpx
 import trafilatura
+from dotenv import load_dotenv
 from markitdown import MarkItDown
+
+load_dotenv()
 
 logger = logging.getLogger(__name__)
 
@@ -60,6 +64,35 @@ def _extract_text(resp: httpx.Response) -> str | None:
         except Exception:
             return None
     return trafilatura.extract(resp.text)
+
+
+_firecrawl_app = None
+_firecrawl_unavailable = False
+
+
+def _firecrawl_fallback_text(url: str) -> str | None:
+    """Targeted per-URL fallback for search-result links that plain httpx can't
+    extract (bot-blocked domains returning 403/429, or a thin/empty trafilatura
+    extract). Costs ~1 Firecrawl credit per call — only invoked on a primary
+    extraction failure, never as a blanket replacement for the httpx fetch.
+    See 2026-10-04 investigation: duckduckgo-scottish-vc was losing ~9/48
+    results to bot-blocking that Firecrawl's rendering gets past cleanly."""
+    global _firecrawl_app, _firecrawl_unavailable
+    if _firecrawl_unavailable:
+        return None
+    if _firecrawl_app is None:
+        api_key = os.environ.get("FIRECRAWL_API_KEY")
+        if not api_key:
+            _firecrawl_unavailable = True
+            return None
+        from firecrawl import FirecrawlApp
+        _firecrawl_app = FirecrawlApp(api_key=api_key)
+    try:
+        result = _firecrawl_app.scrape_url(url, formats=["markdown"])
+        return result.markdown or None
+    except Exception as e:
+        logger.warning("Firecrawl fallback failed for %s: %s", url, e)
+        return None
 
 
 def _parse_feed(xml_text: str) -> list:
@@ -435,6 +468,9 @@ def _fetch_queries(client: httpx.Client, source: dict, candidates: list, log: di
                     article_text = _extract_text(article_resp)
                 except Exception:
                     pass
+
+                if not article_text:
+                    article_text = _firecrawl_fallback_text(result_url)
 
                 if not article_text:
                     total_failures += 1
