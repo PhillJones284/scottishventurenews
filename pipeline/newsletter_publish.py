@@ -1,11 +1,12 @@
 """Publishes the monthly report as a draft on Buttondown.
 
-Reads `data/reports/YYYY-MM-DD_vc-report.md`, rewrites its two embedded chart
-image links to point at the copies already published to GitHub Pages (Stage 8
-copies them into `docs/charts/`, and Stage 9 pushes `docs/` before this stage
-runs — Buttondown's API doesn't accept file attachments, so the charts need a
-public URL to embed), then creates a draft on Buttondown for manual review and
-send.
+Reads `data/reports/YYYY-MM-DD_vc-report.md`, rewrites any embedded local
+image links (the two Stage 3.6 charts, and any editorial image Phill included)
+to point at the copies already published to GitHub Pages (Stage 8 copies
+charts into `docs/charts/`, an editorial image is copied to `docs/` alongside
+`index.html`, and Stage 9 pushes `docs/` before this stage runs — Buttondown's
+API doesn't accept file attachments, so every embedded image needs a public
+URL), then creates a draft on Buttondown for manual review and send.
 
 Charts were previously hosted via an ImgBB upload, but ImgBB began gating
 hotlinked images in emails behind a paid Pro plan (discovered 2026-07-20 when
@@ -35,7 +36,7 @@ from dotenv import load_dotenv
 ROOT = Path(__file__).parent.parent
 REPORTS_DIR = ROOT / "data" / "reports"
 PROCESSED_DIR = ROOT / "data" / "processed"
-DOCS_CHARTS_DIR = ROOT / "docs" / "charts"
+DOCS_DIR = ROOT / "docs"
 
 BUTTONDOWN_EMAILS_URL = "https://api.buttondown.com/v1/emails"
 
@@ -57,11 +58,18 @@ SUBSCRIBE_BLOCK = """
 {{ subscribe_form }}
 """
 
-IMAGE_LINK_RE = re.compile(r"!\[([^\]]*)\]\((charts/[^)]+\.png)\)")
+IMAGE_LINK_RE = re.compile(r"!\[([^\]]*)\]\(((?!https?://)[^)]+\.(?:png|jpe?g|gif|webp))\)")
 
 
-def _rewrite_chart_links(report_text: str) -> tuple[str, list[dict]]:
-    """Replace local chart paths with their published GitHub Pages URLs.
+def _rewrite_local_image_links(report_text: str) -> tuple[str, list[dict]]:
+    """Replace any local image path (charts, or an editorial image) with its
+    published GitHub Pages URL.
+
+    Local paths are resolved relative to `docs/`, since that's the directory
+    Stage 8/9 publish image copies into (charts under `docs/charts/`, an
+    editorial image at the `docs/` root — see `.claude/agents/reporter.md` and
+    CLAUDE.md's "Adding an editorial" section). Buttondown's API doesn't accept
+    file attachments, so every embedded image needs a public URL.
 
     Returns (rewritten_text, images_metadata) — images_metadata is kept in the
     manifest for informational purposes only (there's no upload to undo on
@@ -71,15 +79,14 @@ def _rewrite_chart_links(report_text: str) -> tuple[str, list[dict]]:
 
     def replace(match):
         alt_text, relative_path = match.group(1), match.group(2)
-        filename = Path(relative_path).name
-        docs_path = DOCS_CHARTS_DIR / filename
+        docs_path = DOCS_DIR / relative_path
         if not docs_path.exists():
             raise FileNotFoundError(
-                f"Chart not found at {docs_path} — Stage 8/9 must run (and push docs/) "
-                f"before Stage 10 links to it"
+                f"Image not found at {docs_path} — Stage 8/9 must run (and push docs/, "
+                f"including any editorial image) before Stage 10 links to it"
             )
-        url = f"{SITE_BASE}/charts/{filename}"
-        images.append({"filename": filename, "url": url})
+        url = f"{SITE_BASE}/{relative_path}"
+        images.append({"filename": relative_path, "url": url})
         return f"![{alt_text}]({url})"
 
     rewritten = IMAGE_LINK_RE.sub(replace, report_text)
@@ -132,7 +139,7 @@ def run(date_str: str | None = None) -> dict:
     )
     if n_inserted == 0:
         raise ValueError("Could not find '## The Numbers' heading to insert the subscribe block before")
-    body, images = _rewrite_chart_links(body_text + EMAIL_FOOTER)
+    body, images = _rewrite_local_image_links(body_text + EMAIL_FOOTER)
 
     draft = _publish_to_buttondown(subject, body, buttondown_key)
 

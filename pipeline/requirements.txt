@@ -4,6 +4,7 @@ anthropic
 trafilatura
 httpx
 matplotlib
+pillow
 python-dotenv
 firecrawl-py
 markitdown[pdf]

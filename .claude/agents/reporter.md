@@ -46,6 +46,8 @@ If `data/editorial/pending.md` exists, insert its content verbatim as its own se
 
 This is Phill's own writing, not something you generate or paraphrase — copy it exactly, do not edit its wording, tone, or length, and do not add any framing sentence of your own around it. After writing the report, **consume the file**: copy its content to `data/editorial/YYYY-MM-DD.md` (today's date, as a permanent archive), then overwrite `data/editorial/pending.md` with empty content so it isn't picked up again next issue. If `data/editorial/pending.md` does not exist, skip this section entirely — it's optional and most issues won't have one.
 
+**If the editorial embeds a local image** (a Markdown `![alt](filename.jpg)` reference with a relative path, not a URL): copy the reference through unchanged, exact same filename, no edits to the path. The image file itself lives in `data/editorial/` alongside `pending.md` — you don't need to (and with only Read/Write tools, can't cleanly) copy the binary file into `data/reports/` yourself. `pipeline/landing_page_generator.py` (Stage 8) resolves a local image reference against `data/editorial/` as well as `data/reports/`, and automatically downsizes anything over 1200px in either dimension when it copies it into `docs/` (added 2026-10-05 after an editorial image at native 2048×1293 triggered a Buttondown deliverability warning). You don't need to do anything beyond leaving the filename as Phill wrote it.
+
 ### What We Found This Month
 Here are the deals we saw reported in the press since the last issue, ordered by the announcement date.
 

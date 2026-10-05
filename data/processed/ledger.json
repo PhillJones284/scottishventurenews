@@ -1857,43 +1857,6 @@
     "is_new_this_run": true
   },
   {
-    "id": "t12-engineering_grant_2026-09-08",
-    "company_name": "T12 Engineering",
-    "company_location": "Other Scotland",
-    "company_sectors": [
-      "Other"
-    ],
-    "sector_normalised": false,
-    "round_type": "Grant",
-    "round_type_normalised": true,
-    "amount_original": null,
-    "amount_gbp_millions": null,
-    "currency_original": "GBP",
-    "investors": [],
-    "lead_investor": null,
-    "announcement_date": "2026-09-08",
-    "source_url": "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
-    "source_name": "Crunchbase",
-    "headline": "",
-    "summary": "",
-    "confidence": "high",
-    "data_quality_score": 50,
-    "issues": [
-      "amount_missing",
-      "investor_unnamed"
-    ],
-    "raw_snippet": "",
-    "source_urls": [
-      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2"
-    ],
-    "source_count": 1,
-    "merge_confidence": "definite",
-    "duplicate_of": null,
-    "first_seen": "2026-09-11",
-    "last_seen": "2026-09-17",
-    "is_new_this_run": false
-  },
-  {
     "id": "strathberry_growth-/-private-equity-(minority-stake)_2026-09-08",
     "company_name": "Strathberry",
     "company_location": "Edinburgh",
@@ -2112,43 +2075,6 @@
     ],
     "source_count": 3,
     "merge_confidence": "definite",
-    "duplicate_of": null,
-    "first_seen": "2026-10-04",
-    "last_seen": "2026-10-04",
-    "is_new_this_run": true
-  },
-  {
-    "id": "miller-homes_secondary-market_2026-09-17",
-    "company_name": "Miller Homes",
-    "company_location": "Other Scotland",
-    "company_sectors": [
-      "Other"
-    ],
-    "sector_normalised": false,
-    "round_type": "Secondary Market",
-    "round_type_normalised": false,
-    "amount_original": null,
-    "amount_gbp_millions": null,
-    "currency_original": "GBP",
-    "investors": [],
-    "lead_investor": null,
-    "announcement_date": "2026-09-17",
-    "source_url": "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2",
-    "source_name": "Crunchbase",
-    "headline": "",
-    "summary": "",
-    "confidence": "high",
-    "data_quality_score": 40,
-    "issues": [
-      "amount_missing",
-      "investor_unnamed"
-    ],
-    "raw_snippet": "",
-    "source_urls": [
-      "https://www.crunchbase.com/discover/funding_rounds/e3120c30307a4df552a2e1c7559da4a2"
-    ],
-    "source_count": 1,
-    "merge_confidence": null,
     "duplicate_of": null,
     "first_seen": "2026-10-04",
     "last_seen": "2026-10-04",
